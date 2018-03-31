@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Image of the logo of Hospital of Valais-->
+
+    <item
+        android:id="@+id/logo_hospital"
+        android:icon="@drawable/ic_logo_hospital"
+
+        android:title="@string/show_apartment"/>
+
+    <!-- red bar : If time -->
+
 
 </menu>
