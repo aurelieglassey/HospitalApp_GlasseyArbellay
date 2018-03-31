@@ -4,6 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorAppBackgroud</item>
+        <item name="android:titleTextColor">#000</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:actionButtonStyle">@style/logoStyle</item>
@@ -12,6 +13,7 @@
 
     <style name="CustomActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/colorAppBackgroud</item>
+
     </style>
 
     <style name="logoStyle" parent="Widget.AppCompat.ActionButton">

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFF</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#858587</color>
+    <color name="colorAccent">#be0003</color>
     <color name="colorGreyButton">#A0A0A0</color>
     <color name="colorButtonBackgroud">#FFF</color>
     <color name="colorAppBackgroud">#FFF</color>
+    <color name="colorTextTitle">#000</color>
+
 </resources>
