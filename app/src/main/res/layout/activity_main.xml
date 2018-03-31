@@ -1,50 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorAppBackgroud"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_mainActivity_listPatients"
-        android:layout_width="149dp"
-        android:layout_height="53dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/generalbutton"
-        android:text="@string/btn_list_of_patient"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="128dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_mainActivity_listMedecine"
-        android:layout_width="149dp"
-        android:layout_height="53dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/generalbutton"
-        android:text="@string/btn_list_of_medicine"
-        app:layout_constraintEnd_toEndOf="@+id/btn_mainActivity_listPatients"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_mainActivity_listPatients"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="211dp" />
+        <Button
+            android:id="@+id/btn_mainActivity_listPatients"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight="1"
+            android:background="@drawable/generalbutton"
+            android:text="@string/btn_list_of_patient"
+            />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_mainActivity_Settings"
-        android:layout_width="149dp"
-        android:layout_height="53dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/btn_settings"
-        android:background="@drawable/generalbutton"
-        app:layout_constraintEnd_toEndOf="@+id/btn_mainActivity_listMedecine"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_mainActivity_listMedecine"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="287dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_mainActivity_listMedecine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/generalbutton"
+            android:text="@string/btn_list_of_medicine"
+
+           />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_mainActivity_Settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/generalbutton"
+            android:text="@string/btn_settings"
+          />
+    </LinearLayout>
+
+</LinearLayout>
