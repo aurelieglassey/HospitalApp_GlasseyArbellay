@@ -3,4 +3,5 @@
     <string name="btn_list_of_patient">List of patients</string>
     <string name="btn_list_of_medicine">List of medicine</string>
     <string name="btn_settings">Settings</string>
+    <string name="main_activity_title">Hospital App</string>
 </resources>
