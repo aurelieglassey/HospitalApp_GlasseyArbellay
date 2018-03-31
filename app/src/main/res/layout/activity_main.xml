@@ -5,25 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorBackgroud"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btn_mainActivity_listPatients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="149dp"
+        android:layout_height="53dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
+        android:background="@drawable/generalbutton"
         android:text="@string/btn_list_of_patient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="133dp" />
+        tools:layout_editor_absoluteY="128dp" />
 
     <Button
         android:id="@+id/btn_mainActivity_listMedecine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="149dp"
+        android:layout_height="53dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/generalbutton"
         android:text="@string/btn_list_of_medicine"
         app:layout_constraintEnd_toEndOf="@+id/btn_mainActivity_listPatients"
         app:layout_constraintHorizontal_bias="0.0"
@@ -33,10 +36,11 @@
 
     <Button
         android:id="@+id/btn_mainActivity_Settings"
-        android:layout_width="138dp"
-        android:layout_height="wrap_content"
+        android:layout_width="149dp"
+        android:layout_height="53dp"
         android:layout_marginEnd="16dp"
         android:text="@string/btn_settings"
+        android:background="@drawable/generalbutton"
         app:layout_constraintEnd_toEndOf="@+id/btn_mainActivity_listMedecine"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btn_mainActivity_listMedecine"
