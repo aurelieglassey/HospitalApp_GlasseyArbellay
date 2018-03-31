@@ -5,9 +5,8 @@
 
     <item
         android:id="@+id/logo_hospital"
-        android:icon="@drawable/ic_logo_hospital"
-
-        android:title="@string/show_apartment"/>
+        android:icon="@drawable/ic_logo_hospital_hdpi"
+        android:title="@string/logo_hospital"/>
 
     <!-- red bar : If time -->
 

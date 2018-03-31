@@ -18,9 +18,13 @@
     <string name="title_patient">Patient</string>
 
 
+
     <!-- Label of the application -->
 
 
     <!-- Buttons of the application -->
+
+    <!-- Name of the image-->
+    <string name="logo_hospital">Logo hospital</string>
 
 </resources>
