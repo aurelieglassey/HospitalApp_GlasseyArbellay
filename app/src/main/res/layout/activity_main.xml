@@ -7,51 +7,88 @@
     android:layout_height="match_parent"
     android:background="@color/colorAppBackgroud"
     tools:context=".MainActivity">
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="80dp">
+    </View>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btn_mainActivity_listPatients"
-            android:layout_width="match_parent"
-            android:layout_height="53dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/generalbutton"
-            android:text="@string/btn_list_of_patient"
-            />
+            android:text="@string/btn_list_of_patient" />
+        <View
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
     </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="80dp">
+    </View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+        <View
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btn_mainActivity_listMedecine"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/generalbutton"
-            android:text="@string/btn_list_of_medicine"
-
-           />
+            android:text="@string/btn_list_of_medicine" />
+        <View
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
     </LinearLayout>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="80dp">
+    </View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+        <View
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/btn_mainActivity_Settings"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/generalbutton"
-            android:text="@string/btn_settings"
-          />
+            android:text="@string/btn_settings" />
+        <View
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -10,9 +10,7 @@
         android:title="@string/logo_hospital"
 
 
-        app:showAsAction="ifRoom|withText"
-
-        />
+        app:showAsAction="ifRoom|withText" />
 
     <!-- red bar : If time -->
 
