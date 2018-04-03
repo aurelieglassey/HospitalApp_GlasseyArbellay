@@ -17,12 +17,12 @@ public class ListOfPatientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_patient);
 
-        setupActionBar();
+        /*setupActionBar();
 
-        final String [] cantons = getResources().getStringArray(R.array.patient_array);
+        final String [] patient = getResources().getStringArray(R.array.patient_array);
         ListView list;
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listofpatient_laylout, cantons){
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listofpatient_laylout, patient){
 
             // Call for every entry in the ArrayAdapter
             @Override
@@ -39,16 +39,16 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
                 //Add Text to the layout
                 TextView textView1 = (TextView) view.findViewById(R.id.listview_listofpatient);
-                textView1.setText(cantons[position]);
+                textView1.setText(patient[position]);
 
                 return view;
             }
         };
 
         //ListView
-        list = (ListView) findViewById(R.id.listofpatient_main);
-        list.setAdapter(adapter);
-
+        //list = (ListView) findViewById(R.id.);
+        //list.setAdapter(adapter);
+*/
 
 
     }
