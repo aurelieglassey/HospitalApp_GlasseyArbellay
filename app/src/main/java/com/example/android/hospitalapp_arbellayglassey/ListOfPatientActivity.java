@@ -45,9 +45,6 @@ public class ListOfPatientActivity extends AppCompatActivity {
             }
         };
 
-        //ListView
-        list = (ListView) findViewById(R.id.listofpatient_main);
-        list.setAdapter(adapter);
 
 
 

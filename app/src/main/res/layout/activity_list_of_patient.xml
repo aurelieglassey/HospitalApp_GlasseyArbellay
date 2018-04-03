@@ -15,14 +15,15 @@
             android:id="@id/listofpatient_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"/>
+            android:layout_margin="20dp" />
 
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_add_patient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/generalbutton" />
+            android:text="Ajout d'un patient"
+            android:background="@drawable/generalbutton"/>
     </LinearLayout>
 
 </LinearLayout>
