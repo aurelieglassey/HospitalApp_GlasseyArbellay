@@ -18,7 +18,6 @@
     <string name="title_patient">Patient</string>
 
 
-
     <!-- Label of the apqplication -->
 
 
@@ -27,4 +26,11 @@
     <!-- Name of the image-->
     <string name="logo_hospital">Logo hospital</string>
 
+
+    <!-- Virtual list of patient -->
+    <string-array name="patient_array">
+        <item>Olivier Arbellay</item>
+        <item>Aurélie Glassey</item>
+        <item>Quentin Remion</item>
+    </string-array>
 </resources>
