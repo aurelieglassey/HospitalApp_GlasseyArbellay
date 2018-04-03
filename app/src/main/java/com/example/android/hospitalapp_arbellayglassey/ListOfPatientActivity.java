@@ -18,6 +18,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_patient);
 
+        // test
 
         setupActionBar();
 
