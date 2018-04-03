@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         btntest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MedecineDetails.class);
+                Intent intent = new Intent(MainActivity.this, MedecineAdd.class);
                 MainActivity.this.startActivity(intent);
             }
         });
