@@ -44,7 +44,6 @@
 
 
                 <!-- Name -->
-
                 <TextView
                     android:id="@+id/textNameMedecineDetails"
                     android:layout_width="match_parent"
