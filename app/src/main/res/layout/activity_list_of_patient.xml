@@ -8,10 +8,25 @@
     android:background="@color/colorAppBackgroud"
     tools:context=".ListOfPatientActivity">
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="80dp">
-    </View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btn_add_patient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add a patient "
+            android:background="@drawable/generalbutton"/>
+
+
+    </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,24 +49,6 @@
         android:layout_width="fill_parent"
         android:layout_height="80dp">
     </View>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <View
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
-        <Button
-            android:id="@+id/btn_add_patient"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:background="@drawable/generalbutton"/>
-
-
-    </LinearLayout>
 
 
 

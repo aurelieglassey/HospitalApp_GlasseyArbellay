@@ -41,6 +41,7 @@
 
     <!-- Name of the image-->
     <string name="logo_hospital">Logo hospital</string>
+    <string name="btn_add_newPatient">Add a patient</string>
 
 
     <!-- Virtual list of patient -->
