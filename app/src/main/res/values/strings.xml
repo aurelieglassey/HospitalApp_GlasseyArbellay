@@ -23,9 +23,8 @@
     <string name="label_age">Age</string>
     <string name="label_gender">Gender</string>
     <string name="label_room">Room</string>
-    <string name="lable_blood_group">Blood Group</string>
+    <string name="label_blood_group">Blood Group</string>
     <string name="label_reasons_admission">Reason of Admission</string>
-    <string name="label_quantity">Quantity</string>
     <string name="list_of_medecine">Listo of Medecine</string>
     <string name="label_type_medecine">Type</string>
     <string name="label_active_ingredient">Active Ingredient</string>
@@ -37,11 +36,15 @@
 
     <!-- Buttons of the application -->
     <string name="btn_ok">Ok</string>
-
+    <string name="btn_show_treatment">Show treatment</string>
 
     <!-- Name of the image-->
     <string name="logo_hospital">Logo hospital</string>
     <string name="btn_add_newPatient">Add a patient</string>
+
+
+
+
 
 
     <!-- Virtual list of patient -->
@@ -50,5 +53,6 @@
         <item>Aurélie Glassey</item>
         <item>Quentin Remion</item>
     </string-array>
+
 
 </resources>
