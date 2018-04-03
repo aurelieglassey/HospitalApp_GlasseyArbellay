@@ -2,6 +2,7 @@ package com.example.android.hospitalapp_arbellayglassey;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,8 @@ public class ListOfPatientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_patient);
 
-    // test
-        /*setupActionBar();
+
+        setupActionBar();
 
         final String [] patient = getResources().getStringArray(R.array.patient_array);
         ListView list;
@@ -49,7 +50,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
         //ListView
         //list = (ListView) findViewById(R.id.);
         //list.setAdapter(adapter);
-*/
+
 
 
     }

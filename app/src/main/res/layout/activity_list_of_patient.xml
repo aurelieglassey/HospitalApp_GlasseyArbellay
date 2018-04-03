@@ -12,18 +12,21 @@
         android:orientation="vertical">
 
         <listView
-            android:id="@id/listofpatient_main"
+            android:id="@+id/listofpatient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp" />
-
+            android:layout_margin="20dp"
+             />
 
         <Button
             android:id="@+id/btn_add_patient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ajout d'un patient"
+            android:text=""
             android:background="@drawable/generalbutton"/>
+
     </LinearLayout>
+
+
 
 </LinearLayout>
