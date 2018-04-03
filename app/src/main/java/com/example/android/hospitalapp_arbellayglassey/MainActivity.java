@@ -10,11 +10,24 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     private Button btnListOfPatient;
     private Button btnListOfMedecine;
+    private Button btntest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        btnListOfPatient = (Button) findViewById(R.id.btn_mainActivity_listPatients);
+        btnListOfPatient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ListOfPatientActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
 
         btnListOfMedecine = (Button) findViewById(R.id.btn_mainActivity_listMedecine);
         btnListOfMedecine.setOnClickListener(new View.OnClickListener() {
@@ -26,11 +39,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        btnListOfPatient = (Button) findViewById(R.id.btn_mainActivity_listPatients);
-        btnListOfPatient.setOnClickListener(new View.OnClickListener() {
+
+        btntest = (Button) findViewById(R.id.btn_mainActivity_Settings);
+        btntest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ListOfPatientActivity.class);
+                Intent intent = new Intent(MainActivity.this, MedecineDetails.class);
                 MainActivity.this.startActivity(intent);
             }
         });

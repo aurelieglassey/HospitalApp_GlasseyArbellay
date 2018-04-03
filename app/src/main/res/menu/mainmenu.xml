@@ -4,8 +4,6 @@
 
     <!-- Image of the logo of Hospital of Valais-->
 
-
-
     <item
         android:id="@+id/logo_hospital"
         android:icon="@drawable/ic_logo_hospital_hdpi"
