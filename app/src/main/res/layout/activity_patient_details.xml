@@ -7,7 +7,9 @@
     tools:context=".PatientDetails"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingTop="16dp" >
+    android:paddingTop="16dp"
+    android:background="@color/colorAppBackgroud">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,6 +27,8 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
+        <!--     Name and button layout       -->
+
         <LinearLayout
             android:id="@+id/nameAndButtonDetails"
             android:layout_width="match_parent"
@@ -41,12 +45,15 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <ImageButton
-                android:id="@+id/modifyButton"
+                android:id="@+id/modifyPatientDetailsButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@mipmap/ic_launcher_round" />
+                app:srcCompat="@drawable/ic_mode_edit_black" />
         </LinearLayout>
+
+
+        <!--     Age and Gender layout       -->
 
 
         <View
@@ -60,6 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal">
+
+            <!--     Age layout       -->
 
             <LinearLayout
                 android:id="@+id/LayoutAgeDetails"
@@ -86,6 +95,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
             </LinearLayout>
 
+            <!--     Gender layout       -->
+
+
             <LinearLayout
                 android:id="@+id/LayoutGenderDetails"
                 android:layout_width="match_parent"
@@ -111,6 +123,10 @@
             </LinearLayout>
         </LinearLayout>
 
+
+
+        <!--     Room and blood layout       -->
+
         <View
             android:id="@+id/view2"
             android:layout_width="match_parent"
@@ -122,6 +138,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal">
+
+            <!--     Room layout       -->
 
             <LinearLayout
                 android:id="@+id/LayoutRoomDetails"
@@ -148,6 +166,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
             </LinearLayout>
 
+
+            <!--     Blood group layout       -->
+
             <LinearLayout
                 android:id="@+id/LayoutBloodGroupDetails"
                 android:layout_width="match_parent"
@@ -172,6 +193,9 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
             </LinearLayout>
         </LinearLayout>
+
+
+        <!--     Reasons of admission       -->
         <View
             android:id="@+id/view3"
             android:layout_width="match_parent"
@@ -201,6 +225,8 @@
             android:layout_height="30dp"
             android:layout_weight="1" />
 
+
+        <!--     Button show treatment      -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -217,7 +243,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/generalbutton"
-                android:text="Show Treatment" />
+                android:text="@string/btn_show_treatment" />
             <View
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
