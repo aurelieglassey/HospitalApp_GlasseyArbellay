@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 public class ListOfPatientActivity extends AppCompatActivity {
 
+    // test
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
