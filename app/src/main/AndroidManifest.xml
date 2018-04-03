@@ -26,9 +26,14 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"></meta-data>
+                android:value=".MainActivity" />
         </activity>
-        <activity android:name=".ListOfMedecineActivity"></activity>
+        <activity android:name=".MedecineDetails" />
+        <activity android:name=".MedecineAdd" />
+        <activity android:name=".MedecineModify" />
+        <activity android:name=".PatientDetails" />
+        <activity android:name=".PatientAdd" />
+        <activity android:name=".PatientModify"></activity>
     </application>
 
 </manifest>
