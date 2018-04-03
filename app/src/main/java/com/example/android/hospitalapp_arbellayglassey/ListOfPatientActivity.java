@@ -18,16 +18,11 @@ public class ListOfPatientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_patient);
 
-        // test
-
-        setupActionBar();
-
         final String [] patient = getResources().getStringArray(R.array.patient_array);
         ListView list;
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listofpatient_laylout, patient){
+        ArrayAdapter<String>adapter = new ArrayAdapter<String>(this, R.layout.listofpatient_laylout, patient) {
 
-            // Call for every entry in the ArrayAdapter
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view;
@@ -48,9 +43,10 @@ public class ListOfPatientActivity extends AppCompatActivity {
             }
         };
 
-        //ListView
         list = (ListView) findViewById(R.id.listofpatient);
         list.setAdapter(adapter);
+
+
 
 
 

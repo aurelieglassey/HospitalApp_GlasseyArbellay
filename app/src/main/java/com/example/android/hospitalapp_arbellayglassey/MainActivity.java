@@ -9,12 +9,22 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnListOfPatient;
-
+    private Button btnListOfMedecine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btnListOfMedecine = (Button) findViewById(R.id.btn_mainActivity_listMedecine);
+        btnListOfMedecine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ListOfMedecineActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
 
         btnListOfPatient = (Button) findViewById(R.id.btn_mainActivity_listPatients);
         btnListOfPatient.setOnClickListener(new View.OnClickListener() {
