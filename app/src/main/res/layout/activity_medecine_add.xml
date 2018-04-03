@@ -36,7 +36,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Enter a name" />
+                android:text="Modify the current name" />
 
 
             <View
@@ -64,7 +64,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Enter a type" />
+                android:text="Modify the current type" />
 
 
             <View
@@ -90,7 +90,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Enter an active ingredient" />
+                android:text="Modify the current name the active ingredient" />
 
 
 
@@ -118,7 +118,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Enter a Manufacturer" />
+                android:text="Modify the current Manufacturer" />
 
 
             <View
@@ -145,7 +145,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Enter sides effects" />
+                android:text="Modify the current sides effects" />
 
 
 
@@ -200,7 +200,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Enter how to apply this medecine" />
+                android:text="Modify how to apply this medecine" />
 
 
             <View
@@ -223,12 +223,12 @@
 
 
                 <Button
-                    android:id="@+id/buttonOKNewMedecine"
+                    android:id="@+id/buttonOkModifyMedecine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/generalbutton"
-                    android:text="Ok" />
+                    android:text="Save modifications" />
 
                 <View
                     android:layout_width="match_parent"
