@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class ListOfMedecineActivity extends AppCompatActivity {
 
     //Button add a new medecine
@@ -25,33 +28,12 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         pressBtnAddNewMedecine();
 
 
-        final String [] medecine = getResources().getStringArray(R.array.medecine_array);
+        final ArrayList<String> medecine = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.medecine_array)));
         ListView list;
 
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(this, R.layout.listofmedecine_layout, medecine) {
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view;
-                //If View doesn't exist create a new view
-                if (convertView == null) {
-                    // Create the Layout
-                    LayoutInflater inflater = getLayoutInflater();
-                    view = inflater.inflate(R.layout.listofmedecine_layout, parent, false);
-                } else {
-                    view = convertView;
-                }
-
-                //Add Text to the layout
-                TextView textView1 = (TextView) view.findViewById(R.id.listview_listofmedecine);
-                textView1.setText(medecine[position]);
-
-                return view;
-            }
-        };
-
+        Intent intent = new Intent(ListOfMedecineActivity.this, MedecineDetails.class);
         list = (ListView) findViewById(R.id.listofmedecine);
-        list.setAdapter(adapter);
+        list.setAdapter(new ListViewWithDelBtnAdapter(medecine, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
 
 
     }
