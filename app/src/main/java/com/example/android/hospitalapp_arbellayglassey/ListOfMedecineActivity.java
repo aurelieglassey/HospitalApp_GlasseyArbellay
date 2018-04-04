@@ -1,20 +1,27 @@
 package com.example.android.hospitalapp_arbellayglassey;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class ListOfMedecineActivity extends AppCompatActivity {
 
+    //Button add a new medecine
+    private Button btnAddNewMedecine;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_medecine);
+
+        presseBtnAddNewMedecine();
 
 
         final String [] medecine = getResources().getStringArray(R.array.medecine_array);
@@ -49,6 +56,20 @@ public class ListOfMedecineActivity extends AppCompatActivity {
 
 
 
+
+
+    }
+
+
+    public void presseBtnAddNewMedecine(){
+        btnAddNewMedecine = (Button) findViewById(R.id.btn_add_medecine);
+        btnAddNewMedecine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListOfMedecineActivity.this, MedecineAdd.class);
+                ListOfMedecineActivity.this.startActivity(intent);
+            }
+        });
 
 
     }
