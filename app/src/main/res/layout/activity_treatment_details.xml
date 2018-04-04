@@ -121,7 +121,57 @@
                     android:text="per day"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
             </LinearLayout>
+
+
         </LinearLayout>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_weight="1" />
+
+
+        <TextView
+            android:id="@+id/labelListOfMedicineTreatmentDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/list_of_medecine"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="1" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btn_add_patient"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/ic_add_circle_black" />
+            <View
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
     </LinearLayout>
+
+
 
 </LinearLayout>

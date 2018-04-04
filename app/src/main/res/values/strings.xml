@@ -1,4 +1,5 @@
 <resources>
+    //test
 
     <!-- Activity main page -->
     <string name="app_name">HospitalApp_ArbellayGlassey</string>
@@ -25,7 +26,7 @@
     <string name="label_room">Room</string>
     <string name="label_blood_group">Blood Group</string>
     <string name="label_reasons_admission">Reason of Admission</string>
-    <string name="list_of_medecine">Listo of Medecine</string>
+    <string name="list_of_medecine">List of Medecine</string>
     <string name="label_type_medecine">Type</string>
     <string name="label_active_ingredient">Active Ingredient</string>
     <string name="label_manufacturer">Manufacturer</string>
