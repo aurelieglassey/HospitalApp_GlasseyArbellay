@@ -29,7 +29,7 @@ public class TreatmentDetails extends AppCompatActivity {
         setContentView(R.layout.activity_treatment_details);
 
         //Add a medecine to the treatment of a patient
-        addMedecineToTreatment();
+        pressAddMedecineToTreatment();
         pressBtnModifyTreatment();
 
         // adding list
@@ -44,7 +44,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
 
     //When the user decide to add medecine to a treatment
-    public void addMedecineToTreatment(){
+    public void pressAddMedecineToTreatment(){
         //Find the id view for the button add a medecine to a treatment
         btnAddMedecineToTreatment = (Button) findViewById(R.id.btn_add_medicine);
 
