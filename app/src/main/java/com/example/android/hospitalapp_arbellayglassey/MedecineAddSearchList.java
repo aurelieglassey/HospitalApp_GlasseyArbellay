@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MedecineAddSearchList extends AppCompatActivity {
 
     //Button to add a new medecine
@@ -23,37 +26,14 @@ public class MedecineAddSearchList extends AppCompatActivity {
 
         pressBtnAddNewMedecine();
 
-        //Create a list of string with medecine with the content of the medecine array
-        final String [] medecineAddSearchList = getResources().getStringArray(R.array.medecine_array);
+        // adding list
+        final ArrayList<String> medecine = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.medecine_array)));
         ListView list;
 
-        //Create an ArrayAdapter to adapte in a view the list
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listmedecineaddsearchlist_layout, medecineAddSearchList) {
 
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view;
-                //If View doesn't exist create a new view
-                if (convertView == null) {
-                    // Create the Layout
-                    LayoutInflater inflater = getLayoutInflater();
-                    view = inflater.inflate(R.layout.listmedecineaddsearchlist_layout, parent, false);
-                } else {
-                    view = convertView;
-                }
-
-                //Add Text to the layout
-                TextView textView1 = (TextView) view.findViewById(R.id.listview_listofmedecinefortreatment);
-                textView1.setText(medecineAddSearchList[position]);
-
-                return view;
-            }
-        };
-
-        //Find the view where we want to display the data
+        Intent intent = new Intent(MedecineAddSearchList.this, TreatmentDetails.class);
         list = (ListView) findViewById(R.id.listofmedecinesearchlist);
-        list.setAdapter(adapter);
-
+        list.setAdapter(new ListViewWithAddBtnAdapter(medecine, MedecineAddSearchList.this, intent, R.layout.listmedecineaddsearchlist_layout, R.id.listview_listofmedecineaddsearchlist, R.id.addMedecineForTreatmentButton));
 
 
     }

@@ -38,7 +38,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
         Intent intent = new Intent(ListOfPatientActivity.this, PatientDetails.class);
         list = (ListView) findViewById(R.id.listofpatient);
-        list.setAdapter(new ListViewWithDelBtnAdapter(patient, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient));
+        list.setAdapter(new ListViewWithDelBtnAdapter(patient, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton));
 
 
 
