@@ -3,8 +3,7 @@ package com.example.android.hospitalapp_arbellayglassey;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.AdapterView.OnItemClickListener;
-import android.view.LayoutInflater;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,7 +13,11 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toast;
+
+import java.nio.channels.InterruptedByTimeoutException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class ListOfPatientActivity extends AppCompatActivity {
 
     //Button add a new patient
@@ -29,35 +32,14 @@ public class ListOfPatientActivity extends AppCompatActivity {
         //Button to add a new patient for the list
         pressBtnNewPatient();
 
-        final String [] patient = getResources().getStringArray(R.array.patient_array);
+        final ArrayList<String> patient = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.patient_array)));
         ListView list;
 
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(this, R.layout.listofpatient_laylout, patient) {
 
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view;
-                //If View doesn't exist create a new view
-                if (convertView == null) {
-                    // Create the Layout
-                    LayoutInflater inflater = getLayoutInflater();
-                    view = inflater.inflate(R.layout.listofpatient_laylout, parent, false);
-                } else {
-                    view = convertView;
-                }
-
-                //Add Text to the layout
-                TextView textView1 = (TextView) view.findViewById(R.id.listview_listofpatient);
-                ImageButton imageButton1 = (ImageButton) view.findViewById(R.id.deletePatientButton);
-                textView1.setText(patient[position]);
-
-                return view;
-            }
-        };
-
+        Intent intent = new Intent(ListOfPatientActivity.this, PatientDetails.class);
         list = (ListView) findViewById(R.id.listofpatient);
-        list.setAdapter(adapter);
+        list.setAdapter(new ListViewWithDelBtnAdapter(patient, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient));
+
 
 
     }
@@ -74,6 +56,8 @@ public class ListOfPatientActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void setupActionBar() {
 
