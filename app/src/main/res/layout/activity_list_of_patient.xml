@@ -13,15 +13,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <View
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
+
         <Button
             android:id="@+id/btn_add_patient"
-            android:layout_width="match_parent"
+            android:layout_width="58dp"
             android:layout_height="wrap_content"
-            android:text="Add a patient "
-            android:background="@drawable/generalbutton"/>
+            android:background="@drawable/ic_add_circle_black" />
+        <View
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
 
     </LinearLayout>

@@ -33,6 +33,7 @@
     <string name="label_max_per_day">Max per day</string>
     <string name="label_application_medecine">Application</string>
     <string name="label_list_of_medecine">List of all medecine</string>
+    <string name="label_quantity">Quantity</string>
 
     <!-- Buttons of the application -->
     <string name="btn_ok">Ok</string>
@@ -41,10 +42,6 @@
     <!-- Name of the image-->
     <string name="logo_hospital">Logo hospital</string>
     <string name="btn_add_newPatient">Add a patient</string>
-
-
-
-
 
 
     <!-- Virtual list of patient -->
@@ -61,7 +58,6 @@
         <item>NeoCitran</item>
         <item>Pulmex</item>
     </string-array>
-
 
 
 </resources>
