@@ -10,7 +10,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     private Button btnListOfPatient;
     private Button btnListOfMedecine;
-    private Button btntest;
+    private Button btnSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,39 +18,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-        btnListOfPatient = (Button) findViewById(R.id.btn_mainActivity_listPatients);
-        btnListOfPatient.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ListOfPatientActivity.class);
-                MainActivity.this.startActivity(intent);
-            }
-        });
-
-
-        btnListOfMedecine = (Button) findViewById(R.id.btn_mainActivity_listMedecine);
-        btnListOfMedecine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ListOfMedecineActivity.class);
-                MainActivity.this.startActivity(intent);
-            }
-        });
-
-
-
-        btntest = (Button) findViewById(R.id.btn_mainActivity_Settings);
-        btntest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MedecineAddSearchList.class);
-                MainActivity.this.startActivity(intent);
-            }
-        });
-
-
-
+        //The 3 Buttons of the main activity
+        pressBtnListOfPatient();
+        pressBtnListOfMedecine();
+        pressBtnSettings();
 
     }
 
@@ -63,5 +34,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //When the user press on the button list of medecine
+    public void pressBtnListOfMedecine(){
+        btnListOfMedecine = (Button) findViewById(R.id.btn_mainActivity_listMedecine);
+        btnListOfMedecine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ListOfMedecineActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
+    }
+
+    //When the user press on the button list of Patient
+    public void pressBtnListOfPatient(){
+        btnListOfPatient = (Button) findViewById(R.id.btn_mainActivity_listPatients);
+        btnListOfPatient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ListOfPatientActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
+
+
+
+    }
+
+    //When the user press on the button list of Settings
+    public void pressBtnSettings(){
+        btnSettings = (Button) findViewById(R.id.btn_mainActivity_Settings);
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Settings.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
+
+
+
+    }
 
 }

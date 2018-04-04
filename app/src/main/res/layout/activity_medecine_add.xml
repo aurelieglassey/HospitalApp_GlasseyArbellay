@@ -222,13 +222,15 @@
                     android:layout_weight="1" />
 
 
+
                 <Button
-                    android:id="@+id/buttonOkModifyMedecine"
+                    android:id="@+id/buttonOKNewMedecine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/generalbutton"
-                    android:text="Save modifications" />
+                    android:text="Ok" />
+
 
                 <View
                     android:layout_width="match_parent"

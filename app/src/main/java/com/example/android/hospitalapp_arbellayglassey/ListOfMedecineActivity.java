@@ -21,7 +21,8 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_medecine);
 
-        presseBtnAddNewMedecine();
+        //Button to add a new Medecine to the list of medecine
+        pressBtnAddNewMedecine();
 
 
         final String [] medecine = getResources().getStringArray(R.array.medecine_array);
@@ -53,15 +54,11 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         list.setAdapter(adapter);
 
 
-
-
-
-
-
     }
 
 
-    public void presseBtnAddNewMedecine(){
+    //When the user press on the button add new medecine
+    public void pressBtnAddNewMedecine(){
         btnAddNewMedecine = (Button) findViewById(R.id.btn_add_medecine);
         btnAddNewMedecine.setOnClickListener(new View.OnClickListener() {
             @Override

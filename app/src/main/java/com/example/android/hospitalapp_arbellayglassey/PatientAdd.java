@@ -17,7 +17,14 @@ public class PatientAdd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_add);
 
+        //Button to confirm that we want to add this new patient
+        pressOkAddPatient();
 
+
+    }
+
+    //When the user decide to add the patient to the list he press on ok
+    public void pressOkAddPatient(){
         //Find the id view for the button ok to add a patient
         okAddPatient = (Button) findViewById(R.id.btn_ok_add_patient);
 

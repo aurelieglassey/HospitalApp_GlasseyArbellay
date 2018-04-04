@@ -224,12 +224,12 @@
 
 
                 <Button
-                    android:id="@+id/buttonOKNewMedecine"
+                    android:id="@+id/buttonOkModifyMedecine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/generalbutton"
-                    android:text="Ok" />
+                    android:text="Save modifications" />
 
                 <View
                     android:layout_width="match_parent"
