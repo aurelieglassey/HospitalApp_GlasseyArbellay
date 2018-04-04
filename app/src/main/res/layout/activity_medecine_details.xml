@@ -76,7 +76,7 @@
                 android:text="@string/label_type_medecine"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/colorGreyButton"
-                android:textSize="12sp" />/>
+                android:textSize="12sp" />
 
 
             <TextView
