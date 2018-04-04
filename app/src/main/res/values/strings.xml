@@ -90,6 +90,8 @@
         <item>Buscopan</item>
         <item>Buscopan</item>
     </string-array>
+    <string name="btn_modify_treatment">Modify the treatment</string>
+    <string name="btn_modify_patient">Modify patient</string>
 
 
 </resources>

@@ -37,7 +37,8 @@
         <activity android:name=".PatientModify" />
         <activity android:name=".TreatmentDetails" />
         <activity android:name=".MedecineAddSearchList" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".TreatmentModify"></activity>
     </application>
 
 </manifest>

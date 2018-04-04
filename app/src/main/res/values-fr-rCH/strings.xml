@@ -33,4 +33,6 @@
     <string name="logo_hospital">Logo hôpital</string>
     <string name="btn_add_newPatient">Ajout d\'un patient</string>
     <string name="btn_chosen_language">Langue choisie</string>
+    <string name="btn_modify_treatment">Modifier le traitement</string>
+    <string name="btn_modify_patient">Modifier le patient</string>
 </resources>

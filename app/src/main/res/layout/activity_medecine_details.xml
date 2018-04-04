@@ -53,7 +53,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
                 <ImageButton
-                    android:id="@+id/editMedecineDetails"
+                    android:id="@+id/btn_modify_MedecineDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

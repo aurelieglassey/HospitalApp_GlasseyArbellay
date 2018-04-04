@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TreatmentDetails"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:background="@color/colorAppBackgroud">
+    android:background="@color/colorAppBackgroud"
+    tools:context=".TreatmentModify">
 
 
     <LinearLayout
@@ -18,7 +18,7 @@
 
 
         <TextView
-            android:id="@+id/labelAdmissionTreatmentDetails"
+            android:id="@+id/labelAdmissionTreatmentModify"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -30,26 +30,20 @@
         <!--     Reasons of admissions and button layout       -->
 
         <LinearLayout
-            android:id="@+id/AdmissionAndButtonDetails"
+            android:id="@+id/AdmissionAndButtonModify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/AdmissionTreatmentDetails"
+                android:id="@+id/AdmissionTreatmentModify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Broken arm and multiples fractures due to fall from heaven"
+                android:text="Modify Broken arm and multiples fractures due to fall from heaven"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-            <ImageButton
-                android:id="@+id/btn_modify_treatment"
-                android:layout_width="wrap_content"
-                android:layout_height="42dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ic_mode_edit_black" />
         </LinearLayout>
 
 
@@ -71,13 +65,13 @@
             <!--     Name layout       -->
 
             <LinearLayout
-                android:id="@+id/LayoutNameTreatmentDetails"
+                android:id="@+id/LayoutNameTreatmentModify"
                 android:layout_width="171dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/labelNameTreatmentsDetails"
+                    android:id="@+id/labelNameTreatmentsModify"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -87,11 +81,11 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/nameTreatmentDetails"
+                    android:id="@+id/nameTreatmentModify"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Trauma AG"
+                    android:text="Modify "
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
             </LinearLayout>
 
@@ -99,13 +93,13 @@
 
 
             <LinearLayout
-                android:id="@+id/LayoutQuantityTreatmentDetails"
+                android:id="@+id/LayoutQuantityTreatmentModify"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/labelQuantityTreatmentDetail"
+                    android:id="@+id/labelQuantityTreatmentModify"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -115,63 +109,48 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/quantityTreatmentDetails"
+                    android:id="@+id/quantityTreatmentModify"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="per day"
+                    android:text="Modify"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
             </LinearLayout>
 
 
         </LinearLayout>
-
         <View
-            android:id="@+id/view3"
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:layout_weight="1" />
-
-
-        <TextView
-            android:id="@+id/labelListOfMedicineTreatmentDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/list_of_medecine"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
-
-        <ListView
+            android:id="@+id/view4"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_weight="1"
-            android:id="@+id/listofmedicinefortreatment"/>
-
-
+            android:layout_weight="1" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="horizontal">
-            <View
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
 
-            <Button
-                android:id="@+id/btn_add_medicine"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/ic_add_circle_black" />
             <View
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
+            <Button
+                android:id="@+id/btn_modify_treatment"
+                android:layout_width="194dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/generalbutton"
+                android:text="@string/btn_modify_treatment" />
 
+            <View
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
         </LinearLayout>
 
     </LinearLayout>
+
 
 
 

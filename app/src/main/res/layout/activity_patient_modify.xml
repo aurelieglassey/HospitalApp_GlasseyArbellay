@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/label_name"
+                android:text="Modify"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
 
@@ -84,7 +84,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/label_age"
+                        android:text="Modify"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
 
@@ -111,7 +111,7 @@
                         android:id="@+id/genderPatientModify"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_gender"
+                        android:text="Modify"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
             </LinearLayout>
@@ -154,7 +154,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/label_room"
+                        android:text="Modify"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
 
@@ -181,7 +181,7 @@
                         android:id="@+id/bloodGroupPatientModify"
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
-                        android:text="Blood"
+                        android:text="Modify"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
             </LinearLayout>
@@ -209,7 +209,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/label_reasons_admission"
+                android:text="Modify"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <View
@@ -237,7 +237,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/generalbutton"
-                    android:text="@string/btn_ok" />
+                    android:text="@string/btn_modify_patient" />
 
                 <View
                     android:layout_width="100dp"

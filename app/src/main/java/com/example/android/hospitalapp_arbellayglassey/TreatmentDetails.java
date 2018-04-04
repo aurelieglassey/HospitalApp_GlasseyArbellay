@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,6 +20,8 @@ public class TreatmentDetails extends AppCompatActivity {
 
     //Button to add a medecine to a treatment
     private Button btnAddMedecineToTreatment;
+    //Button to modify a treatment
+    private ImageButton btnModifyTreatment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
         //Add a medecine to the treatment of a patient
         addMedecineToTreatment();
-
+        pressBtnModifyTreatment();
 
         // adding list
         final ArrayList<String> medecine = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.medecine_array)));
@@ -53,6 +56,23 @@ public class TreatmentDetails extends AppCompatActivity {
                 TreatmentDetails.this.startActivity(intent);
             }
         });
+    }
+
+    //When the user decide to modify the treatment of a patient
+    public void pressBtnModifyTreatment(){
+
+        //Find the id view for the button modify the treatment
+        btnModifyTreatment = (ImageButton) findViewById(R.id.btn_modify_treatment);
+
+        //Add a listener to modify the treatment of a patient
+        btnModifyTreatment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TreatmentDetails.this, TreatmentModify.class);
+                TreatmentDetails.this.startActivity(intent);
+            }
+        });
+
     }
 
 }
