@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ListOfPatientActivity extends AppCompatActivity {
 
@@ -53,6 +55,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
                 //Add Text to the layout
                 TextView textView1 = (TextView) view.findViewById(R.id.listview_listofpatient);
+                ImageButton imageButton1 = (ImageButton) view.findViewById(R.id.deletePatientButton);
                 textView1.setText(patient[position]);
 
                 return view;
@@ -61,6 +64,23 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
         list = (ListView) findViewById(R.id.listofpatient);
         list.setAdapter(adapter);
+
+
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(ListOfPatientActivity.this, "Patient selected: "+ patient[position], Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+                //Intent intent = new Intent(ListOfPatientActivity.this, PatientDetails.class);
+                //ListOfPatientActivity.this.startActivity(intent);
+
+
+
 
 
 

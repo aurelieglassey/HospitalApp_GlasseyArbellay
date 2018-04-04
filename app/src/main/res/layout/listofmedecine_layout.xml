@@ -25,7 +25,7 @@
             />
 
         <ImageButton
-            android:id="@+id/deleteMedecineForTreatmentButton"
+            android:id="@+id/deleteMedecineButton"
 
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
