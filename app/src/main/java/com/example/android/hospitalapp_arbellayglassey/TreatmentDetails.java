@@ -1,23 +1,43 @@
 package com.example.android.hospitalapp_arbellayglassey;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class TreatmentDetails extends AppCompatActivity {
 
 
+    //Button to add a medecine to a treatment
+    private Button btnAddMedecineToTreatment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_details);
 
+        //Find the id view for the button add a medecine to a treatment
+        btnAddMedecineToTreatment = (Button) findViewById(R.id.btn_show_treatment);
+
+        //Add a listener to access to the medecine add search activity
+        btnAddMedecineToTreatment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TreatmentDetails.this, MedecineAddSearchList.class);
+                TreatmentDetails.this.startActivity(intent);
+            }
+        });
+
+
+
+
+        // adding list
 
         final String [] medicineForTreatment = getResources().getStringArray(R.array.medecine_array);
         ListView list;
@@ -47,8 +67,5 @@ public class TreatmentDetails extends AppCompatActivity {
         list = (ListView) findViewById(R.id.listofmedicinefortreatment);
         list.setAdapter(adapter);
 
-
-
-        // adding list
     }
 }

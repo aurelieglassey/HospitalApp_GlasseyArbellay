@@ -36,7 +36,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Modify the current name" />
+                android:text="Add a current name" />
 
 
             <View
@@ -64,7 +64,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Modify the current type" />
+                android:text="Add a current type" />
 
 
             <View
@@ -90,7 +90,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Modify the current name the active ingredient" />
+                android:text="Add a current name the active ingredient" />
 
 
 
@@ -118,7 +118,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Modify the current Manufacturer" />
+                android:text="Add a current Manufacturer" />
 
 
             <View
@@ -145,7 +145,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Modify the current sides effects" />
+                android:text="Add a current sides effects" />
 
 
 
@@ -174,7 +174,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="number"
-                android:text="Enter max"/>
+                android:text="Add a  max"/>
 
 
             <View
@@ -200,7 +200,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Modify how to apply this medecine" />
+                android:text="Add how to apply this medecine" />
 
 
             <View
