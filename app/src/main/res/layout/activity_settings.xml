@@ -4,12 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:background="@color/colorAppBackgroud"
     tools:context=".Settings">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Futures settings" />
+
+
+        <Button
+            android:id="@+id/btn_change_language_settings"
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/generalbutton"
+            android:text="@string/btn_chosen_language" />
+
+
+
 </LinearLayout>

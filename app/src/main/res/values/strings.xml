@@ -18,7 +18,7 @@
     <string name="title_patient">Patient</string>
 
 
-    <!-- Label of the apqplication -->
+    <!-- Label of the application -->
     <string name="label_name">Name</string>
     <string name="label_age">Age</string>
     <string name="label_gender">Gender</string>
@@ -35,9 +35,12 @@
     <string name="label_list_of_medecine">List of all medecine</string>
     <string name="label_quantity">Quantity</string>
 
+
     <!-- Buttons of the application -->
     <string name="btn_ok">Ok</string>
     <string name="btn_show_treatment">Show treatment</string>
+    <string name="btn_chosen_language">Chosen language</string>
+
 
     <!-- Name of the image-->
     <string name="logo_hospital">Logo hospital</string>
@@ -58,6 +61,12 @@
         <item>Kiki Duay</item>
         <item>Daniela Louren </item>
         <item>Dolfi Reich</item>
+    </string-array>
+
+    <!-- Virtual list of Language-->
+    <string-array name="language_array">
+        <item>English</item>
+        <item>Français</item>
     </string-array>
 
 

@@ -1,5 +1,6 @@
 package com.example.android.hospitalapp_arbellayglassey;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,7 +24,10 @@ public class MainActivity extends AppCompatActivity {
         pressBtnListOfMedecine();
         pressBtnSettings();
 
+
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
