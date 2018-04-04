@@ -55,4 +55,13 @@
     </string-array>
 
 
+    <!-- Virtual list of medecine-->
+    <string-array name="medecine_array">
+        <item>Dafalgan</item>
+        <item>NeoCitran</item>
+        <item>Pulmex</item>
+    </string-array>
+
+
+
 </resources>

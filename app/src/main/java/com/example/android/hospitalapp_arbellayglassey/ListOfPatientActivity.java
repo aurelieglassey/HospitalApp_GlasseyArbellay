@@ -13,12 +13,11 @@ import android.widget.TextView;
 
 public class ListOfPatientActivity extends AppCompatActivity {
 
-    // test
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_patient);
+
 
         final String [] patient = getResources().getStringArray(R.array.patient_array);
         ListView list;
