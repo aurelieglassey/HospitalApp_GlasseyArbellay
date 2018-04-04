@@ -34,6 +34,30 @@
 
         </ListView>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btn_add_new_medicine"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/ic_add_circle_black" />
+            <View
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
 

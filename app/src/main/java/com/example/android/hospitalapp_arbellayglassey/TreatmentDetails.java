@@ -22,23 +22,11 @@ public class TreatmentDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_details);
 
-        //Find the id view for the button add a medecine to a treatment
-        btnAddMedecineToTreatment = (Button) findViewById(R.id.btn_show_treatment);
-
-        //Add a listener to access to the medecine add search activity
-        btnAddMedecineToTreatment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TreatmentDetails.this, MedecineAddSearchList.class);
-                TreatmentDetails.this.startActivity(intent);
-            }
-        });
-
-
+        //Add a medecine to the treatment of a patient
+        addMedecineToTreatment();
 
 
         // adding list
-
         final String [] medicineForTreatment = getResources().getStringArray(R.array.medecine_array);
         ListView list;
 
@@ -68,4 +56,21 @@ public class TreatmentDetails extends AppCompatActivity {
         list.setAdapter(adapter);
 
     }
+
+
+    //When the user decide to add medecine to a treatment
+    public void addMedecineToTreatment(){
+        //Find the id view for the button add a medecine to a treatment
+        btnAddMedecineToTreatment = (Button) findViewById(R.id.btn_add_medicine);
+
+        //Add a listener to access to the medecine add search activity
+        btnAddMedecineToTreatment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TreatmentDetails.this, MedecineAddSearchList.class);
+                TreatmentDetails.this.startActivity(intent);
+            }
+        });
+    }
+
 }

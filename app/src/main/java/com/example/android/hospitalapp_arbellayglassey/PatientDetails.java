@@ -16,7 +16,14 @@ public class PatientDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_details);
 
+        //Press on the button Show Treatment
+        pressBtnShowTreatment();
 
+
+    }
+
+    //When the user decide to display the treatment of a patient
+    public void pressBtnShowTreatment(){
         //Find the id view for the button show the treatement of a patient
         btnShowTreatment = (Button) findViewById(R.id.btn_show_treatment);
 
@@ -28,5 +35,6 @@ public class PatientDetails extends AppCompatActivity {
                 PatientDetails.this.startActivity(intent);
             }
         });
+
     }
 }

@@ -21,17 +21,7 @@ public class MedecineAddSearchList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medecine_add_search_list);
 
-        //Find the id view for the button add a new medecine
-        btnAddNewMedecine = (Button) findViewById(R.id.btn_show_treatment);
-
-        //Add a listener to access to new medecine activity
-        btnAddNewMedecine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MedecineAddSearchList.this, MedecineAdd.class);
-                MedecineAddSearchList.this.startActivity(intent);
-            }
-        });
+        pressBtnAddNewMedecine();
 
         //Create a list of string with medecine with the content of the medecine array
         final String [] medecineAddSearchList = getResources().getStringArray(R.array.medecine_array);
@@ -66,10 +56,21 @@ public class MedecineAddSearchList extends AppCompatActivity {
 
 
 
+    }
 
 
+    public void pressBtnAddNewMedecine(){
 
+        //Find the id view for the button add a new medecine
+        btnAddNewMedecine = (Button) findViewById(R.id.btn_add_new_medicine);
 
-
+        //Add a listener to access to new medecine activity
+        btnAddNewMedecine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MedecineAddSearchList.this, MedecineAdd.class);
+                MedecineAddSearchList.this.startActivity(intent);
+            }
+        });
     }
 }
