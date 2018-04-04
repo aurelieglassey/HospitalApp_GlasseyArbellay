@@ -19,6 +19,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
     //Button add a new patient
     private Button btnNewPatient;
+    //pussh
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
