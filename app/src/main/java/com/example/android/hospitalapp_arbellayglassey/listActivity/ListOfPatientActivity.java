@@ -9,18 +9,23 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapter;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.AppDatabase;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Patient;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientAdd;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
 import com.example.android.hospitalapp_arbellayglassey.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ListOfPatientActivity extends AppCompatActivity {
 
     //Button add a new patient
     private Button btnNewPatient;
-    //pussh
+    AppDatabase db  = AppDatabase.getAppDatabase(this);
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +35,15 @@ public class ListOfPatientActivity extends AppCompatActivity {
         //Button to add a new patient for the list
         pressBtnNewPatient();
 
-        final ArrayList<String> patient = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.patient_array)));
+        final ArrayList<String> patients = new ArrayList<String>();
+
+        final List<Patient> listPatient = db.patientDao().getAllPatient();
+
+        for (Patient p : listPatient){
+            patients.add(p.get)
+        }
+
+
         ListView list;
 
 
@@ -55,8 +68,11 @@ public class ListOfPatientActivity extends AppCompatActivity {
         });
     }
 
+    //get the db and get the patients list
+    private void initiateDB(){
 
 
+    }
     private void setupActionBar() {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);

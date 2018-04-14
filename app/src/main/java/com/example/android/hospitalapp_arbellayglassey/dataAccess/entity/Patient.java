@@ -18,11 +18,8 @@ public class Patient {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "lastname")
-    private String lastname;
-
-    @ColumnInfo(name = "firstname")
-    private String firstname;
+    @ColumnInfo(name = "Name")
+    private String name;
 
     @ColumnInfo(name = "gender")
     private char gender;

@@ -8,6 +8,8 @@ import android.arch.persistence.room.Update;
 
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Patient;
 
+import java.util.List;
+
 @Dao
 public interface PatientDao {
 
@@ -22,7 +24,7 @@ public interface PatientDao {
 
     //Get a list of patient
     @Query("SELECT * FROM Patient")
-    public Patient[] getAllPatient();
+    public List<Patient> getAllPatient();
 
     //Get a patient by ID
     @Query("SELECT * FROM Patient WHERE id = :idsearch")
