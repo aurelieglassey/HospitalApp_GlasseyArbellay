@@ -12,7 +12,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
                 parentColumns = "id", //Va chercher dans treatment son id
                 childColumns = "idTreatment", //Met l'id treatment en foreign key dans patient sous le nom de idTreatment
                 onDelete = CASCADE))
-
+// b
 public class Patient {
 
     @PrimaryKey(autoGenerate = true)
