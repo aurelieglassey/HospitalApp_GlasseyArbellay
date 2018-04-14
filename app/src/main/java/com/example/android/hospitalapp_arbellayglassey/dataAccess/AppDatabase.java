@@ -26,16 +26,15 @@ public abstract class AppDatabase extends RoomDatabase{
     private static final Object LOCK = new Object();
 
     public abstract PatientDao patientDao();
-    public abstract MedecineDao medecineDao();
-    public abstract TreatmentDao treatmentDao();
-    public abstract TreatmentMedecineLinkDao treatmentMedecineLinkDao();
+   // public abstract MedecineDao medecineDao();
+    //public abstract TreatmentDao treatmentDao();
+    //public abstract TreatmentMedecineLinkDao treatmentMedecineLinkDao();
 
     public synchronized static AppDatabase getAppDatabase (Context context) {
         if (INSTANCE == null) {
             synchronized (LOCK) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "hospitalDatabase").build();
-
 
                 }
             }

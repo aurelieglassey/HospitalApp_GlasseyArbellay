@@ -23,8 +23,8 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
     //Button add a new patient
     private Button btnNewPatient;
-    AppDatabase db  = AppDatabase.getAppDatabase(this);
-
+    AppDatabase db ;
+    ArrayList<String> patients;
 
 
     @Override
@@ -35,15 +35,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
         //Button to add a new patient for the list
         pressBtnNewPatient();
 
-        final ArrayList<String> patients = new ArrayList<String>();
-
-        final List<Patient> listPatient = db.patientDao().getAllPatient();
-
-        for (Patient p : listPatient){
-            patients.add(p.getName().toString());
-        }
-
-
+        readDB();
         ListView list;
 
 
@@ -51,6 +43,20 @@ public class ListOfPatientActivity extends AppCompatActivity {
         list = (ListView) findViewById(R.id.listofpatient);
         list.setAdapter(new ListViewWithDelBtnAdapter(patients, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton));
 
+
+
+    }
+
+    public void readDB(){
+
+        patients = new ArrayList<String>();
+
+        db = AppDatabase.getAppDatabase(this);
+        List<Patient> listPatient = db.patientDao().getAllPatient();
+
+        for (Patient p : listPatient){
+            patients.add(p.getName().toString());
+        }
 
 
     }

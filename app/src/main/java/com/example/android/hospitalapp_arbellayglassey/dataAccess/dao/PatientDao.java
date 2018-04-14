@@ -24,10 +24,10 @@ public interface PatientDao {
 
     //Get a list of patient
     @Query("SELECT * FROM Patient")
-    public List<Patient> getAllPatient();
+    List<Patient> getAllPatient();
 
     //Get a patient by ID
     @Query("SELECT * FROM Patient WHERE id = :idsearch")
-    public Patient getOnePatientById(int idsearch);
+    Patient getOnePatientById(int idsearch);
 
 }
