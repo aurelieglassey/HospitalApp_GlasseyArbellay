@@ -1,4 +1,4 @@
-package com.example.android.hospitalapp_arbellayglassey;
+package com.example.android.hospitalapp_arbellayglassey.settings;
 
 import android.app.DialogFragment;
 

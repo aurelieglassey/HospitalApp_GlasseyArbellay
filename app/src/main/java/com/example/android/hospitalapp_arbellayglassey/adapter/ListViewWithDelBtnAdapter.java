@@ -1,4 +1,4 @@
-package com.example.android.hospitalapp_arbellayglassey;
+package com.example.android.hospitalapp_arbellayglassey.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,23 +13,24 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapter {
+public class ListViewWithDelBtnAdapter extends BaseAdapter implements ListAdapter {
+
     private int layout ;
     private int listViewLayout;
     private ArrayList<String> list ;
     private Context context;
     private Intent intent;
-    int idAddButton;
+    int idDelButton;
 
     // constructor to get all the necessary variables
 
-    public ListViewWithAddBtnAdapter(ArrayList<String> list, Context context, Intent intent, int layout, int idListViewLayout, int idAddButton) {
+    public ListViewWithDelBtnAdapter(ArrayList<String> list, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton) {
         this.list = list;
         this.context = context;
         this.intent = intent;
         this.layout = layout;
         this.listViewLayout = idListViewLayout;
-        this.idAddButton = idAddButton;
+        this.idDelButton = idDelButton;
     }
 
     @Override
@@ -63,15 +64,22 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
         TextView txtView = (TextView)view.findViewById(listViewLayout);
         txtView.setText(list.get(position));
 
-
-
-        //Handle buttons and add onClickListeners
-        ImageButton addBtn= (ImageButton)view.findViewById(idAddButton);
-        addBtn.setOnClickListener(new View.OnClickListener(){
+        //On click listener to get the correct details
+        txtView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Object to add: "+ list.get(position).toString(), Toast.LENGTH_LONG).show();
                 context.startActivity(intent);
+                Toast.makeText(context, "Object to see details: "+ list.get(position).toString(), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        //Handle buttons and add onClickListeners
+        ImageButton delbtn= (ImageButton)view.findViewById(idDelButton);
+        delbtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Object to vanish: "+ list.get(position).toString(), Toast.LENGTH_LONG).show();
 
             }
         });

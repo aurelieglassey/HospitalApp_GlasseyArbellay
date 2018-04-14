@@ -1,4 +1,4 @@
-package com.example.android.hospitalapp_arbellayglassey;
+package com.example.android.hospitalapp_arbellayglassey.patient;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import com.example.android.hospitalapp_arbellayglassey.R;
+import com.example.android.hospitalapp_arbellayglassey.treatment.TreatmentDetails;
 
 public class PatientDetails extends AppCompatActivity {
 

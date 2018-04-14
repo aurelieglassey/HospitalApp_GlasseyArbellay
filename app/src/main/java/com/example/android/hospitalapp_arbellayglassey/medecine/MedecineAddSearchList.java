@@ -1,15 +1,15 @@
-package com.example.android.hospitalapp_arbellayglassey;
+package com.example.android.hospitalapp_arbellayglassey.medecine;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import com.example.android.hospitalapp_arbellayglassey.R;
+import com.example.android.hospitalapp_arbellayglassey.treatment.TreatmentDetails;
+import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithAddBtnAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,10 +1,12 @@
-package com.example.android.hospitalapp_arbellayglassey;
+package com.example.android.hospitalapp_arbellayglassey.treatment;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.android.hospitalapp_arbellayglassey.R;
 
 public class TreatmentModify extends AppCompatActivity {
 
