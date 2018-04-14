@@ -40,7 +40,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
         final List<Patient> listPatient = db.patientDao().getAllPatient();
 
         for (Patient p : listPatient){
-            patients.add(p.get)
+            patients.add(p.getName().toString());
         }
 
 
@@ -49,7 +49,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
         Intent intent = new Intent(ListOfPatientActivity.this, PatientDetails.class);
         list = (ListView) findViewById(R.id.listofpatient);
-        list.setAdapter(new ListViewWithDelBtnAdapter(patient, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton));
+        list.setAdapter(new ListViewWithDelBtnAdapter(patients, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton));
 
 
 

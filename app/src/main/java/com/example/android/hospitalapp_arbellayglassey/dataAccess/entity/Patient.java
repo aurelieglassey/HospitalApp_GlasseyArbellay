@@ -18,7 +18,7 @@ public class Patient {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "Name")
+    @ColumnInfo(name = "name")
     private String name;
 
     @ColumnInfo(name = "gender")
@@ -36,64 +36,56 @@ public class Patient {
     @ColumnInfo(name = "reason_of_admission")
     private String reasonAdmission;
 
+    @ColumnInfo(name = "idTreatment")
+    private int idTreatment;
 
 
-    //Getters and setters
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
+    public Patient(int id, String name, char gender, int roomNumber, String bloodGroup, int age, String reasonAdmission, int idTreatment) {
         this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.roomNumber = roomNumber;
+        this.bloodGroup = bloodGroup;
+        this.age = age;
+        this.reasonAdmission = reasonAdmission;
+        this.idTreatment = idTreatment;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getId() {
+        return id;
     }
 
     public char getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
-        this.gender = gender;
-    }
-
     public int getRoomNumber() {
         return roomNumber;
-    }
-
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
     }
 
     public String getBloodGroup() {
         return bloodGroup;
     }
 
-    public void setBloodGroup(String bloodGroup) {
-        this.bloodGroup = bloodGroup;
-    }
-
     public int getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getReasonAdmission() {
         return reasonAdmission;
     }
 
-    public void setReasonAdmission(String reasonAdmission) {
-        this.reasonAdmission = reasonAdmission;
+    public int getIdTreatment() {
+        return idTreatment;
     }
+
+
+    //Getters and setters
 
 
 

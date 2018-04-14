@@ -11,14 +11,14 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 //Table de jointure entre Treatment et Medecine
 @Entity(tableName = "TreatmentMedecineLink",
         //Les indices sont un lien unique entre les tables Treatment et Medecine par lequel on ajoute les propriétés d'un index
-        indices = {@Index("name"), @Index(value = {"idTreatment", "idMedecine"})},
+        primaryKeys = {"idTreatment", "idMedecine"},
+        //indices = {@Index("name"), @Index(value = {"idTreatment", "idMedecine"})},
         //Lien de 2 foreign key des tables Treatment et medecine
         foreignKeys =
                 //FK de Table Treatment
                 {@ForeignKey(entity=Treatment.class, parentColumns = "id", childColumns = "idTreatment", onDelete = CASCADE) ,
                         //FK de Table Medecine
-                        @ForeignKey(entity = Medecine.class, parentColumns = "id", childColumns = "idPatient", onDelete = CASCADE)})
-
+                        @ForeignKey(entity = Medecine.class, parentColumns = "id", childColumns = "idMedecine", onDelete = CASCADE)})
 public class TreatmentMedecineLink {
 
     @PrimaryKey(autoGenerate = true)
@@ -30,29 +30,25 @@ public class TreatmentMedecineLink {
     @ColumnInfo(name = "quantity_per_day")
     private String quantityPerDay;
 
-
-    //Getters and setters
-    public int getIdTreatment() {
-        return idTreatment;
+    public TreatmentMedecineLink(int idTreatment, int idMedecine, String quantityPerDay) {
+        this.idTreatment = idTreatment;
+        this.idMedecine = idMedecine;
+        this.quantityPerDay = quantityPerDay;
     }
 
-    public void setIdTreatment(int idTreatment) {
-        this.idTreatment = idTreatment;
+
+
+    //Getters and setters
+
+    public int getIdTreatment() {
+        return idTreatment;
     }
 
     public int getIdMedecine() {
         return idMedecine;
     }
 
-    public void setIdMedecine(int idMedecine) {
-        this.idMedecine = idMedecine;
-    }
-
     public String getQuantityPerDay() {
         return quantityPerDay;
-    }
-
-    public void setQuantityPerDay(String quantityPerDay) {
-        this.quantityPerDay = quantityPerDay;
     }
 }
