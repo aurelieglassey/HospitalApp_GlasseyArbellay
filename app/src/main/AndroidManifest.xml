@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ListOfPatientActivity"
+            android:name=".listActivity.ListOfPatientActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait">
@@ -28,17 +28,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".ListOfMedecineActivity" />
-        <activity android:name=".MedecineDetails" />
-        <activity android:name=".MedecineAdd" />
-        <activity android:name=".MedecineModify" />
-        <activity android:name=".PatientDetails" />
-        <activity android:name=".PatientAdd" />
-        <activity android:name=".PatientModify" />
-        <activity android:name=".TreatmentDetails" />
-        <activity android:name=".MedecineAddSearchList" />
-        <activity android:name=".Settings" />
-        <activity android:name=".TreatmentModify"></activity>
+        <activity android:name=".listActivity.ListOfMedecineActivity" />
+        <activity android:name=".medecine.MedecineDetails" />
+        <activity android:name=".medecine.MedecineAdd" />
+        <activity android:name=".medecine.MedecineModify" />
+        <activity android:name=".patient.PatientDetails" />
+        <activity android:name=".patient.PatientAdd" />
+        <activity android:name=".patient.PatientModify" />
+        <activity android:name=".treatment.TreatmentDetails" />
+        <activity android:name=".medecine.MedecineAddSearchList" />
+        <activity android:name=".settings.Settings" />
+        <activity android:name=".treatment.TreatmentModify"></activity>
     </application>
 
 </manifest>

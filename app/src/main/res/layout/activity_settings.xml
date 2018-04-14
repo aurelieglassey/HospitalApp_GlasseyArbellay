@@ -8,7 +8,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:background="@color/colorAppBackgroud"
-    tools:context=".Settings">
+    tools:context=".settings.Settings">
 
 
 
