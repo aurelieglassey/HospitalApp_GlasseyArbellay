@@ -12,7 +12,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 @Entity(tableName = "TreatmentMedecineLink",
         //Les indices sont un lien unique entre les tables Treatment et Medecine par lequel on ajoute les propriétés d'un index
         primaryKeys = {"idTreatment", "idMedecine"},
-        //indices = {@Index("name"), @Index(value = {"idTreatment", "idMedecine"})},
+        indices = {@Index(value = {"idTreatment"})},
         //Lien de 2 foreign key des tables Treatment et medecine
         foreignKeys =
                 //FK de Table Treatment
@@ -21,10 +21,8 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
                         @ForeignKey(entity = Medecine.class, parentColumns = "id", childColumns = "idMedecine", onDelete = CASCADE)})
 public class TreatmentMedecineLink {
 
-    @PrimaryKey(autoGenerate = true)
     private int idTreatment;
 
-    @PrimaryKey(autoGenerate = true)
     private int idMedecine;
 
     @ColumnInfo(name = "quantity_per_day")
