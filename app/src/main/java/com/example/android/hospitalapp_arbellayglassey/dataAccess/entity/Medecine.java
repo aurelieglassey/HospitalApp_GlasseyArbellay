@@ -7,6 +7,7 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "Medecine")
 public class Medecine {
 
+    //test
     @PrimaryKey(autoGenerate = true)
     private int id;
 
