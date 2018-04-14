@@ -12,7 +12,9 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
         foreignKeys = @ForeignKey(entity = Patient.class,
                 parentColumns = "id",
                 childColumns = "idPatient",
-                onDelete = CASCADE))
+                onDelete = CASCADE,
+                onUpdate = CASCADE
+        ))
 
 public class Treatment {
 
