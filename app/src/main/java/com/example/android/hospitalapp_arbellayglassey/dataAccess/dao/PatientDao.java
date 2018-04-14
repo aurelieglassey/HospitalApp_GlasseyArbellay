@@ -24,7 +24,7 @@ public interface PatientDao {
     @Query("SELECT * FROM Patient")
     public Patient[] getAllPatient();
 
-    //Get a patient from ID
+    //Get a patient by ID
     @Query("SELECT * FROM Patient WHERE id = :idsearch")
     public Patient getOnePatientById(int idsearch);
 
