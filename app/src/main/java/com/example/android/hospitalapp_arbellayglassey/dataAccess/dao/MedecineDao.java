@@ -6,7 +6,8 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Medecine;
+
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 
 import java.util.List;
 
@@ -14,19 +15,19 @@ import java.util.List;
 public interface MedecineDao {
 
     @Insert
-    void insertMedecine(Medecine medecine);
+    void insertMedecine(MedecineEntity medecine);
 
     @Delete
-    void deleteMedecine(Medecine medecine);
+    void deleteMedecine(MedecineEntity medecine);
 
     @Update
-    void updateMedecine(Medecine medecine);
+    void updateMedecine(MedecineEntity medecine);
 
     //Get a list of all Medecine
     @Query("SELECT * FROM Medecine")
-    public List<Medecine> getAllMedecine();
+    public List<MedecineEntity> getAllMedecine();
 
     //Get a medecine from ID
     @Query("SELECT * FROM Medecine WHERE id = :idsearch")
-    public Medecine getOneMedecineById(int idsearch);
+    public MedecineEntity getOneMedecineById(int idsearch);
 }

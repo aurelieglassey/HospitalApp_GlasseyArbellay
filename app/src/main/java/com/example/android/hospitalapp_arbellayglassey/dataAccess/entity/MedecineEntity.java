@@ -5,7 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity(tableName = "Medecine")
-public class Medecine {
+public class MedecineEntity {
 
 
     @PrimaryKey(autoGenerate = true)
@@ -32,7 +32,7 @@ public class Medecine {
     @ColumnInfo(name = "max_per_day")
     private int maxPerDay;
 
-    public Medecine(int id, String name, String type, String activeIngredient, String manufacturers, String application, String sideEffects, int maxPerDay) {
+    public MedecineEntity(int id, String name, String type, String activeIngredient, String manufacturers, String application, String sideEffects, int maxPerDay) {
         this.id = id;
         this.name = name;
         this.type = type;

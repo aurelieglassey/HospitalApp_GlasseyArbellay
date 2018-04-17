@@ -16,10 +16,10 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
         //Lien de 2 foreign key des tables Treatment et medecine
         foreignKeys =
                 //FK de Table Treatment
-                {@ForeignKey(entity=Treatment.class, parentColumns = "id", childColumns = "idTreatment", onDelete = CASCADE) ,
+                {@ForeignKey(entity=TreatmentEntity.class, parentColumns = "id", childColumns = "idTreatment", onDelete = CASCADE) ,
                         //FK de Table Medecine
-                        @ForeignKey(entity = Medecine.class, parentColumns = "id", childColumns = "idMedecine", onDelete = CASCADE)})
-public class TreatmentMedecineLink {
+                        @ForeignKey(entity = MedecineEntity.class, parentColumns = "id", childColumns = "idMedecine", onDelete = CASCADE)})
+public class TreatmentMedecineLinkEntity {
 
     private int idTreatment;
 
@@ -28,7 +28,7 @@ public class TreatmentMedecineLink {
     @ColumnInfo(name = "quantity_per_day")
     private String quantityPerDay;
 
-    public TreatmentMedecineLink(int idTreatment, int idMedecine, String quantityPerDay) {
+    public TreatmentMedecineLinkEntity(int idTreatment, int idMedecine, String quantityPerDay) {
         this.idTreatment = idTreatment;
         this.idMedecine = idMedecine;
         this.quantityPerDay = quantityPerDay;

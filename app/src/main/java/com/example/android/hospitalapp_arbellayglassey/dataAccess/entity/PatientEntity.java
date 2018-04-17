@@ -8,12 +8,12 @@ import android.arch.persistence.room.PrimaryKey;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "Patient",
-        foreignKeys = @ForeignKey(entity = Treatment.class,
+        foreignKeys = @ForeignKey(entity = TreatmentEntity.class,
                 parentColumns = "id", //Va chercher dans treatment son id
                 childColumns = "idTreatment", //Met l'id treatment en foreign key dans patient sous le nom de idTreatment
                 onDelete = CASCADE))
 
-public class Patient {
+public class PatientEntity {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -41,7 +41,7 @@ public class Patient {
 
 
 
-    public Patient(int id, String name, char gender, int roomNumber, String bloodGroup, int age, String reasonAdmission, int idTreatment) {
+    public PatientEntity(int id, String name, char gender, int roomNumber, String bloodGroup, int age, String reasonAdmission, int idTreatment) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -51,6 +51,7 @@ public class Patient {
         this.reasonAdmission = reasonAdmission;
         this.idTreatment = idTreatment;
     }
+    //Getters and setters
 
     public String getName() {
         return name;
@@ -85,7 +86,6 @@ public class Patient {
     }
 
 
-    //Getters and setters
 
 
 

@@ -7,23 +7,23 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Transaction;
 import android.arch.persistence.room.Update;
 
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Patient;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Treatment;
+
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
 
 @Dao
 public interface TreatmentDao {
 
     @Insert
-    void insertTreatmentt(Treatment treatment);
+    void insertTreatmentt(TreatmentEntity treatment);
 
     @Delete
-    void deleteTreatmentt(Treatment treatment);
+    void deleteTreatmentt(TreatmentEntity treatment);
 
     @Update
-    void updatetTreatmentt(Treatment treatment);
+    void updatetTreatmentt(TreatmentEntity treatment);
 
     //Get a treatment by idPatient
     @Query("SELECT * FROM Treatment WHERE id = :idPatient")
-    public Treatment getTreatmentByPatientId(int idPatient);
+    public TreatmentEntity getTreatmentByPatientId(int idPatient);
 
 }

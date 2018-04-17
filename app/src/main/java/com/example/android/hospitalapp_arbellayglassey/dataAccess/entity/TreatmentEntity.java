@@ -9,14 +9,14 @@ import android.arch.persistence.room.PrimaryKey;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity (tableName = "Treatment",
-        foreignKeys = @ForeignKey(entity = Patient.class,
+        foreignKeys = @ForeignKey(entity = PatientEntity.class,
                 parentColumns = "id",
                 childColumns = "idPatient",
                 onDelete = CASCADE,
                 onUpdate = CASCADE
         ))
 
-public class Treatment {
+public class TreatmentEntity {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -27,7 +27,7 @@ public class Treatment {
     @ColumnInfo(name = "idPatient")
     private int idPatient;
 
-    public Treatment(int id, String name, int idPatient) {
+    public TreatmentEntity(int id, String name, int idPatient) {
         this.id = id;
         this.name = name;
         this.idPatient = idPatient;

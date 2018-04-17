@@ -5,19 +5,19 @@ import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Patient;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentMedecineLink;
+
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentMedecineLinkEntity;
 
 @Dao
 public interface TreatmentMedecineLinkDao {
 
     //Get all treatmentMedecine by an id treatment
     @Query("SELECT * FROM treatmentmedecinelink WHERE idTreatment = :idTreamtentSearch")
-    public TreatmentMedecineLink getAllTreatmentMedecineByIdTreatment(int idTreamtentSearch);
+    public TreatmentMedecineLinkEntity getAllTreatmentMedecineByIdTreatment(int idTreamtentSearch);
 
     @Insert
-    public void insertTreatmentMedecine (TreatmentMedecineLink treatmentMedecineLink);
+    public void insertTreatmentMedecine (TreatmentMedecineLinkEntity treatmentMedecineLink);
 
     @Delete
-    public void deleteTreatmentMedecine (TreatmentMedecineLink treatmentMedecineLink);
+    public void deleteTreatmentMedecine (TreatmentMedecineLinkEntity treatmentMedecineLink);
 }
