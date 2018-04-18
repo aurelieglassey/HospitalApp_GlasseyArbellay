@@ -10,13 +10,14 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.dao.MedecineDa
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.dao.PatientDao;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.dao.TreatmentDao;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.dao.TreatmentMedecineLinkDao;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Medecine;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Patient;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Treatment;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentMedecineLink;
+
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentMedecineLinkEntity;
 
 
-@Database(entities = {Patient.class, Medecine.class, Treatment.class, TreatmentMedecineLink.class}, version = 1)
+@Database(entities = {PatientEntity.class, MedecineEntity.class, TreatmentEntity.class, TreatmentMedecineLinkEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase{
 
     private static AppDatabase INSTANCE;

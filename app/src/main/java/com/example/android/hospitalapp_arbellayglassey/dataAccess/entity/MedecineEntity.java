@@ -32,6 +32,10 @@ public class MedecineEntity {
     @ColumnInfo(name = "max_per_day")
     private int maxPerDay;
 
+    public MedecineEntity(){
+
+    }
+
     public MedecineEntity(int id, String name, String type, String activeIngredient, String manufacturers, String application, String sideEffects, int maxPerDay) {
         this.id = id;
         this.name = name;
@@ -73,6 +77,34 @@ public class MedecineEntity {
 
     public int getMaxPerDay() {
         return maxPerDay;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setActiveIngredient(String activeIngredient) {
+        this.activeIngredient = activeIngredient;
+    }
+
+    public void setManufacturers(String manufacturers) {
+        this.manufacturers = manufacturers;
+    }
+
+    public void setApplication(String application) {
+        this.application = application;
+    }
+
+    public void setSideEffects(String sideEffects) {
+        this.sideEffects = sideEffects;
+    }
+
+    public void setMaxPerDay(int maxPerDay) {
+        this.maxPerDay = maxPerDay;
     }
 
 
