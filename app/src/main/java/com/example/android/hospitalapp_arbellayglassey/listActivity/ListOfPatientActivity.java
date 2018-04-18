@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapter;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.AppDatabase;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Patient;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientAdd;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
 import com.example.android.hospitalapp_arbellayglassey.R;
@@ -52,9 +52,9 @@ public class ListOfPatientActivity extends AppCompatActivity {
         patients = new ArrayList<String>();
 
         db = AppDatabase.getAppDatabase(this);
-        List<Patient> listPatient = db.patientDao().getAllPatient();
+        List<PatientEntity> listPatient = db.patientDao().getAllPatient();
 
-        for (Patient p : listPatient){
+        for (PatientEntity p : listPatient){
             patients.add(p.getName().toString());
         }
 

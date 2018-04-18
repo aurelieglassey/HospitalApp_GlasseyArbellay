@@ -14,7 +14,9 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
                 onDelete = CASCADE))
 
 public class PatientEntity {
-//test
+
+
+    //test
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -39,7 +41,7 @@ public class PatientEntity {
     @ColumnInfo(name = "idTreatment")
     private int idTreatment;
 
-    public PatientEntity (){
+    public PatientEntity() {
 
     }
 
@@ -86,6 +88,11 @@ public class PatientEntity {
 
     public int getIdTreatment() {
         return idTreatment;
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 
