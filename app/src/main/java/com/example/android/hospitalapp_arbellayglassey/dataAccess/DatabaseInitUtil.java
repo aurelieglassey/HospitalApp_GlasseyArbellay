@@ -8,17 +8,45 @@ import java.util.List;
 
 public class DatabaseInitUtil {
 
-    //test
+    //Initalize the database
     static void initalizeDB (AppDatabase db){
+
+        //Create 2 lists
         List<MedecineEntity> listMedecine = new ArrayList<MedecineEntity>();
         List<PatientEntity> listPatient = new ArrayList<PatientEntity>();
 
-        generateData();
+        //Generate some data and insert them inside a database
+        generateData(listMedecine, listPatient);
         insertData(db, listMedecine, listPatient);
     }
 
-    private static void generateData(){
+    //Create some data for the 2 lists
+    private static void generateData(List<MedecineEntity> lm, List<PatientEntity> lp){
 
+        //Create medecine
+        MedecineEntity m1 = new MedecineEntity();
+        m1.setName("Dafalgan");
+        m1.setType("Analgesic");
+        m1.setActiveIngredient("Paracetamol");
+        m1.setApplication("Dilute in a glass of water");
+        m1.setManufacturers("Brisol-myers");
+        m1.setSideEffects("Vomi");
+        m1.setMaxPerDay(3);
+
+        MedecineEntity m2 = new MedecineEntity();
+        m2.setName("Neocitran");
+        m2.setType("Chloryhdrate de pseudoéphédrine");
+        m2.setActiveIngredient("Paracetamol");
+        m2.setApplication("Dilute in a glass of water");
+        m2.setManufacturers("Sun Store");
+        m2.setSideEffects("Asthme");
+        m2.setMaxPerDay(2);
+
+        //Add the Medecine created in the list of medecine lm
+        lm.add(m1);
+        lm.add(m2);
+
+        //Create patients
         PatientEntity p1 = new PatientEntity();
         p1.setName("Aurélie Glassey");
         p1.setGender('F');
@@ -46,32 +74,27 @@ public class DatabaseInitUtil {
         p3.setReasonAdmission("blabla");
         p3.setIdTreatment(5);
 
-        MedecineEntity m1 = new MedecineEntity();
-        m1.setName("Dafalgan");
-        m1.setType("Analgesic");
-        m1.setActiveIngredient("Paracetamol");
-        m1.setApplication("Dilute in a glass of water");
-        m1.setManufacturers("Brisol-myers");
-        m1.setSideEffects("Vomi");
-        m1.setMaxPerDay(3);
+        //Add the patients created in the list of patient lp
+        lp.add(p1);
+        lp.add(p2);
+        lp.add(p3);
 
-        MedecineEntity m2 = new MedecineEntity();
-        m2.setName("Neocitran");
-        m2.setType("Chloryhdrate de pseudoéphédrine");
-        m2.setActiveIngredient("Paracetamol");
-        m2.setApplication("Dilute in a glass of water");
-        m2.setManufacturers("Sun Store");
-        m2.setSideEffects("Asthme");
-        m2.setMaxPerDay(2);
+
 
     }
 
-    private static void insertData(AppDatabase db, List<MedecineEntity> lm, List<PatientEntity> lp){
+    //Inserts the list inside the database
+    private static void insertData(AppDatabase db, List<MedecineEntity> lm, List<PatientEntity> lp) {
 
         db.beginTransaction();
 
-           //pas finit
-
+        try {
+            db.patientDao().insertAllPatient(lp);
+            db.medecineDao().insertAllMedecine(lm);
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
     }
 
 
