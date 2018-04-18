@@ -8,6 +8,7 @@ import java.util.List;
 
 public class DatabaseInitUtil {
 
+    //test
     static void initalizeDB (AppDatabase db){
         List<MedecineEntity> listMedecine = new ArrayList<MedecineEntity>();
         List<PatientEntity> listPatient = new ArrayList<PatientEntity>();
