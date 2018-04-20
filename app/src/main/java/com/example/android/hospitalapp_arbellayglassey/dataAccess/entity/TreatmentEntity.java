@@ -5,6 +5,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
@@ -13,12 +14,12 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
                 parentColumns = "idP",
                 childColumns = "idPatient",
                 onDelete = CASCADE,
-                onUpdate = CASCADE
-        ),primaryKeys = {"idT"})
-
+                onUpdate = CASCADE))
 public class TreatmentEntity {
 
     @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "idT")
     private int idT;
 
     @ColumnInfo(name = "name")
