@@ -55,11 +55,10 @@ public class ListOfPatientActivity extends AppCompatActivity {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfPatientActivity.this);
 
 
-
         List<PatientEntity> listPatient = db.patientDao().getAllPatient();
 
         for (PatientEntity p : listPatient){
-            patients.add(p.getName().toString());
+           patients.add(p.getName().toString());
         }
 
 

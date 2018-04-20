@@ -10,16 +10,16 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity (tableName = "Treatment",
         foreignKeys = @ForeignKey(entity = PatientEntity.class,
-                parentColumns = "id",
+                parentColumns = "idP",
                 childColumns = "idPatient",
                 onDelete = CASCADE,
                 onUpdate = CASCADE
-        ))
+        ),primaryKeys = {"idT"})
 
 public class TreatmentEntity {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int idT;
 
     @ColumnInfo(name = "name")
     private String name;
@@ -32,14 +32,14 @@ public class TreatmentEntity {
     }
 
     public TreatmentEntity(int id, String name, int idPatient) {
-        this.id = id;
+        this.idT = id;
         this.name = name;
         this.idPatient = idPatient;
     }
 
     //Getters and setters
-    public int getId() {
-        return id;
+    public int getIdT() {
+        return idT;
     }
 
     public String getName() {
@@ -51,8 +51,8 @@ public class TreatmentEntity {
     }
 
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdT(int id) {
+        this.idT = id;
     }
 
     public void setName(String name) {

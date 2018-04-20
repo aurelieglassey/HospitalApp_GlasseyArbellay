@@ -29,7 +29,7 @@ public interface MedecineDao {
     public List<MedecineEntity> getAllMedecine();
 
     //Get a medecine from ID
-    @Query("SELECT * FROM Medecine WHERE id = :idsearch")
+    @Query("SELECT * FROM Medecine WHERE idM = :idsearch")
     public MedecineEntity getOneMedecineById(int idsearch);
 
     //Insert list inside the database

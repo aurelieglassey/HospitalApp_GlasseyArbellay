@@ -3,22 +3,22 @@ package com.example.android.hospitalapp_arbellayglassey.dataAccess.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
-@Entity(tableName = "Patient",
-        foreignKeys = @ForeignKey(entity = TreatmentEntity.class,
-                parentColumns = "id", //Va chercher dans treatment son id
-                childColumns = "idTreatment", //Met l'id treatment en foreign key dans patient sous le nom de idTreatment
-                onDelete = CASCADE))
-
+@Entity(tableName = "Patient",  foreignKeys = @ForeignKey(entity = TreatmentEntity.class,
+        parentColumns = "idT", //Va chercher dans treatment son id
+        childColumns = "idTreatment", //Met l'id treatment en foreign key dans patient sous le nom de idTreatment
+        onDelete = ForeignKey.CASCADE)
+        , primaryKeys = {"idP"}
+        )
 public class PatientEntity {
 
-
-    //test
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @NonNull
+    private int idP;
 
     @ColumnInfo(name = "name")
     private String name;
@@ -38,7 +38,7 @@ public class PatientEntity {
     @ColumnInfo(name = "reason_of_admission")
     private String reasonAdmission;
 
-    @ColumnInfo(name = "idTreatment")
+    @ColumnInfo(name = "idtreatment")
     private int idTreatment;
 
     public PatientEntity() {
@@ -47,7 +47,7 @@ public class PatientEntity {
 
 
     public PatientEntity(int id, String name, char gender, int roomNumber, String bloodGroup, int age, String reasonAdmission, int idTreatment) {
-        this.id = id;
+        this.idP = id;
         this.name = name;
         this.gender = gender;
         this.roomNumber = roomNumber;
@@ -62,8 +62,8 @@ public class PatientEntity {
         return name;
     }
 
-    public int getId() {
-        return id;
+    public int getIdP() {
+        return idP;
     }
 
     public char getGender() {
@@ -91,8 +91,8 @@ public class PatientEntity {
     }
 
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdP(int id) {
+        this.idP = id;
     }
 
 

@@ -3,13 +3,14 @@ package com.example.android.hospitalapp_arbellayglassey.dataAccess.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-@Entity(tableName = "Medecine")
+@Entity(tableName = "Medecine",primaryKeys = {"idM"})
 public class MedecineEntity {
 
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @NonNull
+    private int idM;
 
     @ColumnInfo(name = "name")
     private String name;
@@ -37,7 +38,7 @@ public class MedecineEntity {
     }
 
     public MedecineEntity(int id, String name, String type, String activeIngredient, String manufacturers, String application, String sideEffects, int maxPerDay) {
-        this.id = id;
+        this.idM = id;
         this.name = name;
         this.type = type;
         this.activeIngredient = activeIngredient;
@@ -47,8 +48,8 @@ public class MedecineEntity {
         this.maxPerDay = maxPerDay;
     }
 
-    public int getId() {
-        return id;
+    public int getIdM() {
+        return idM;
     }
 
     public String getName() {
@@ -80,8 +81,8 @@ public class MedecineEntity {
     }
 
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdM(int id) {
+        this.idM = id;
     }
 
     public void setName(String name) {

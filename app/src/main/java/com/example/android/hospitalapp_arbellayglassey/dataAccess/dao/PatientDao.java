@@ -33,7 +33,7 @@ public interface PatientDao {
     List<PatientEntity> getAllPatient();
 
     //Get a patient by ID
-    @Query("SELECT * FROM Patient WHERE id = :idsearch")
+    @Query("SELECT * FROM Patient WHERE idP = :idsearch")
     PatientEntity getOnePatientById(int idsearch);
 
     //insert lists inside the database

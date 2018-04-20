@@ -23,7 +23,7 @@ public interface TreatmentDao {
     void updatetTreatmentt(TreatmentEntity treatment);
 
     //Get a treatment by idPatient
-    @Query("SELECT * FROM Treatment WHERE id = :idPatient")
+    @Query("SELECT * FROM Treatment WHERE idPatient = :idPatient")
     public TreatmentEntity getTreatmentByPatientId(int idPatient);
 
 }
