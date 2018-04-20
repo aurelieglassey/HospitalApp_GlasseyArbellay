@@ -34,6 +34,10 @@ public class TreatmentMedecineLinkEntity {
         this.quantityPerDay = quantityPerDay;
     }
 
+    public TreatmentMedecineLinkEntity() {
+
+    }
+
 
 
     //Getters and setters
@@ -48,5 +52,17 @@ public class TreatmentMedecineLinkEntity {
 
     public String getQuantityPerDay() {
         return quantityPerDay;
+    }
+
+    public void setIdTreatment(int idTreatment) {
+        this.idTreatment = idTreatment;
+    }
+
+    public void setIdMedecine(int idMedecine) {
+        this.idMedecine = idMedecine;
+    }
+
+    public void setQuantityPerDay(String quantityPerDay) {
+        this.quantityPerDay = quantityPerDay;
     }
 }

@@ -2,6 +2,8 @@ package com.example.android.hospitalapp_arbellayglassey.dataAccess;
 
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentMedecineLinkEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +13,10 @@ public class DatabaseInitUtil {
     //Initalize the database
     static void initializeDb (AppDatabase db){
 
-        //Create 2 lists
+        //Create lists
         List<MedecineEntity> listMedecine = new ArrayList<MedecineEntity>();
         List<PatientEntity> listPatient = new ArrayList<PatientEntity>();
+
 
         //Generate some data and insert them inside a database
         generateData(listMedecine, listPatient);
@@ -25,6 +28,7 @@ public class DatabaseInitUtil {
 
         //Create medecine
         MedecineEntity m1 = new MedecineEntity();
+       m1.setId(1);
         m1.setName("Dafalgan");
         m1.setType("Analgesic");
         m1.setActiveIngredient("Paracetamol");
@@ -34,6 +38,7 @@ public class DatabaseInitUtil {
         m1.setMaxPerDay(3);
 
         MedecineEntity m2 = new MedecineEntity();
+        m2.setId(2);
         m2.setName("Neocitran");
         m2.setType("Chloryhdrate de pseudoéphédrine");
         m2.setActiveIngredient("Paracetamol");
@@ -46,33 +51,62 @@ public class DatabaseInitUtil {
         lm.add(m1);
         lm.add(m2);
 
+
+        TreatmentEntity t1 = new TreatmentEntity();
+        t1.setId(1);
+        t1.setName("Aurelie_Treatment");
+        t1.setIdPatient(1);
+
+        TreatmentEntity t2 = new TreatmentEntity();
+        t2.setId(2);
+        t2.setName("Olivier_Treatment");
+        t2.setIdPatient(2);
+
+        TreatmentEntity t3 = new TreatmentEntity();
+        t3.setId(3);
+        t3.setName("Maud_Treatment");
+        t3.setIdPatient(3);
+
+        TreatmentMedecineLinkEntity tmtl = new TreatmentMedecineLinkEntity();
+        tmtl.setIdMedecine(1);
+        tmtl.setIdTreatment(1);
+        tmtl.setQuantityPerDay("2");
+
+        TreatmentMedecineLinkEntity tmt2 = new TreatmentMedecineLinkEntity();
+        tmt2.setIdMedecine(2);
+        tmt2.setIdTreatment(3);
+        tmt2.setQuantityPerDay("2");
+
         //Create patients
         PatientEntity p1 = new PatientEntity();
+        p1.setId(1);
         p1.setName("Aurélie Glassey");
         p1.setGender('F');
         p1.setRoomNumber(302);
         p1.setBloodGroup("A");
         p1.setAge(21);
         p1.setReasonAdmission("blabla");
-        p1.setIdTreatment(2);
+        p1.setIdTreatment(1);
 
         PatientEntity p2 = new PatientEntity();
+       p2.setId(2);
         p2.setName("Olivier Arbellay");
         p2.setGender('M');
         p2.setRoomNumber(303);
         p2.setBloodGroup("O");
         p2.setAge(22);
         p2.setReasonAdmission("blabla");
-        p2.setIdTreatment(4);
+        p2.setIdTreatment(2);
 
         PatientEntity p3 = new PatientEntity();
+       p3.setId(3);
         p3.setName("Maud Rouvinez");
         p3.setGender('F');
         p3.setRoomNumber(304);
         p3.setBloodGroup("B+");
         p3.setAge(21);
         p3.setReasonAdmission("blabla");
-        p3.setIdTreatment(5);
+        p3.setIdTreatment(3);
 
         //Add the patients created in the list of patient lp
         lp.add(p1);

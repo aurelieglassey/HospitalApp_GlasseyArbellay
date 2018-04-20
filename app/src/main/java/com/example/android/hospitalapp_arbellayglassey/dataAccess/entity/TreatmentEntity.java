@@ -27,6 +27,10 @@ public class TreatmentEntity {
     @ColumnInfo(name = "idPatient")
     private int idPatient;
 
+    public TreatmentEntity() {
+
+    }
+
     public TreatmentEntity(int id, String name, int idPatient) {
         this.id = id;
         this.name = name;
@@ -47,7 +51,15 @@ public class TreatmentEntity {
     }
 
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
-
+    public void setIdPatient(int idPatient) {
+        this.idPatient = idPatient;
+    }
 }
