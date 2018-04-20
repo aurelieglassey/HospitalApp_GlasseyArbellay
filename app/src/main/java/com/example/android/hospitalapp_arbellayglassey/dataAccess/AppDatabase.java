@@ -31,6 +31,7 @@ public abstract class AppDatabase extends RoomDatabase{
     public abstract TreatmentDao treatmentDao();
     public abstract TreatmentMedecineLinkDao treatmentMedecineLinkDao();
 
+    //begin of the singleton
     public synchronized static AppDatabase getAppDatabase (Context context) {
         if (INSTANCE == null) {
             synchronized (LOCK) {

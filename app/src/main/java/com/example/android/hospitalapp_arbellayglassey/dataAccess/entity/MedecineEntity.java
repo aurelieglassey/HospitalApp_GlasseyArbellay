@@ -32,7 +32,7 @@ public class MedecineEntity {
     @ColumnInfo(name = "max_per_day")
     private int maxPerDay;
 
-    public MedecineEntity(){
+    public MedecineEntity() {
 
     }
 
@@ -77,6 +77,11 @@ public class MedecineEntity {
 
     public int getMaxPerDay() {
         return maxPerDay;
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {
