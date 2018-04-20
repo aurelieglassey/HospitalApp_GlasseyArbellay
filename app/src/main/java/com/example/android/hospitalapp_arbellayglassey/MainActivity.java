@@ -1,12 +1,19 @@
 package com.example.android.hospitalapp_arbellayglassey;
 
+import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.AppDatabase;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseInitUtil;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
@@ -21,11 +28,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final DatabaseCreator databaseCreator = DatabaseCreator.getInstance(this.getApplication());
+        databaseCreator.createDb(this.getApplication());
+
 
         //The 3 Buttons of the main activity
         pressBtnListOfPatient();
         pressBtnListOfMedecine();
         pressBtnSettings();
+
+
 
 
 

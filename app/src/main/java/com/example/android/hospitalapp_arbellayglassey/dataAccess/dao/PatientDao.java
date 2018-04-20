@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
