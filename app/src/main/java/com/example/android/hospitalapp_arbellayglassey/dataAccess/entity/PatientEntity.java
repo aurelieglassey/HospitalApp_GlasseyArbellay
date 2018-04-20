@@ -6,6 +6,7 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
@@ -16,6 +17,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
         )
 public class PatientEntity {
     @PrimaryKey(autoGenerate = true)
+
     @NonNull
     @ColumnInfo(name = "idP")
     private int idP;
@@ -38,6 +40,7 @@ public class PatientEntity {
     @ColumnInfo(name = "reason_of_admission")
     private String reasonAdmission;
 
+    @Nullable
     @ColumnInfo(name = "idTreatment")
     private int idTreatment;
 
