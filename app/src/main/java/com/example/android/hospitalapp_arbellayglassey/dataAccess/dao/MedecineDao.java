@@ -35,4 +35,6 @@ public interface MedecineDao {
     //Insert list inside the database
     @Insert(onConflict = OnConflictStrategy.REPLACE) //replace the old data and continue the transaction
     void insertAllMedecine(List<MedecineEntity> listMedecine);
+
+
 }
