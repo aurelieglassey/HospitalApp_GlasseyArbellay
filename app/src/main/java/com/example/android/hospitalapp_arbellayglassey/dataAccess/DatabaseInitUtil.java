@@ -9,7 +9,7 @@ import java.util.List;
 public class DatabaseInitUtil {
 
     //Initalize the database
-    static void initalizeDB (AppDatabase db){
+    static void initializeDb (AppDatabase db){
 
         //Create 2 lists
         List<MedecineEntity> listMedecine = new ArrayList<MedecineEntity>();

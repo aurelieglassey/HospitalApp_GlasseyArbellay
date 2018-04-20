@@ -20,11 +20,11 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Treatme
 @Database(entities = {PatientEntity.class, MedecineEntity.class, TreatmentEntity.class, TreatmentMedecineLinkEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase{
 
-    private static AppDatabase INSTANCE;
+    static final String DATABASE_NAME = "hospital_database";
 
 
     //singleton instance object
-    private static final Object LOCK = new Object();
+   // private static final Object LOCK = new Object();
 
     public abstract PatientDao patientDao();
     public abstract MedecineDao medecineDao();
@@ -32,6 +32,7 @@ public abstract class AppDatabase extends RoomDatabase{
     public abstract TreatmentMedecineLinkDao treatmentMedecineLinkDao();
 
     //begin of the singleton
+    /* not sure if we need with the databaseCreator
     public synchronized static AppDatabase getAppDatabase (Context context) {
         if (INSTANCE == null) {
             synchronized (LOCK) {
@@ -44,5 +45,5 @@ public abstract class AppDatabase extends RoomDatabase{
 
     return INSTANCE;
     }
-
+*/
 }
