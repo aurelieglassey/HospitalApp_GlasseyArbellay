@@ -9,14 +9,11 @@ import android.support.annotation.NonNull;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
-@Entity(tableName = "Patient",  foreignKeys = @ForeignKey(entity = TreatmentEntity.class,
-        parentColumns = "idT", //Va chercher dans treatment son id
-        childColumns = "idTreatment", //Met l'id treatment en foreign key dans patient sous le nom de idTreatment
-        onDelete = ForeignKey.CASCADE)
-        )
+@Entity(tableName = "Patient")
 public class PatientEntity {
+
     @PrimaryKey(autoGenerate = true)
-    @NonNull
+
     @ColumnInfo(name = "idP")
     private int idP;
 
@@ -37,6 +34,7 @@ public class PatientEntity {
 
     @ColumnInfo(name = "reason_of_admission")
     private String reasonAdmission;
+
 
     @ColumnInfo(name = "idTreatment")
     private int idTreatment;

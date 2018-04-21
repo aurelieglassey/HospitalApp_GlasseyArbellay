@@ -1,5 +1,6 @@
 package com.example.android.hospitalapp_arbellayglassey.dataAccess.dao;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -11,6 +12,7 @@ import android.os.AsyncTask;
 
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.pojo.PatientWithTreatment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,12 @@ public interface PatientDao {
     //Get a list of patient
     @Query("SELECT * FROM Patient")
     List<PatientEntity> getAllPatient();
+
+    @Query("SELECT * FROM Patient")
+    LiveData<List<PatientEntity>> getAll();
+
+    @Query("SELECT * FROM Patient")
+    List<PatientEntity> getAllSync();
 
     //Get a patient by ID
     @Query("SELECT * FROM Patient WHERE idP = :idsearch")

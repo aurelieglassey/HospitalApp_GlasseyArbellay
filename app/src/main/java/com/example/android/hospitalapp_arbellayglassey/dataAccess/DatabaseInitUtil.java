@@ -125,6 +125,7 @@ public class DatabaseInitUtil {
         try {
             db.patientDao().insertAllPatient(lp);
             db.medecineDao().insertAllMedecine(lm);
+
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
