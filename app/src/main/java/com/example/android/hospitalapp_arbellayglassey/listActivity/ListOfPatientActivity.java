@@ -37,6 +37,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
         //Button to add a new patient for the list
         pressBtnNewPatient();
 
+        //try to read the DB
         try {
             readDB();
         } catch (ExecutionException e) {
@@ -47,6 +48,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
         ListView list;
 
 
+        //Intent to switch between the activities
         Intent intent = new Intent(ListOfPatientActivity.this, PatientDetails.class);
         list = (ListView) findViewById(R.id.listofpatient);
         list.setAdapter(new ListViewWithDelBtnAdapter(patients, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton));
@@ -55,16 +57,18 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
     }
 
+    //Read te db from our application
     public void readDB() throws ExecutionException, InterruptedException {
 
         patients = new ArrayList<String>();
 
+        //Access to the database creator
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfPatientActivity.this);
 
-        
-
+        //Executre and get all the patients from our database
         patientEntities = new GetPatients(ListOfPatientActivity.this).execute().get();
 
+        //Add the patient in the list to display it
         for (PatientEntity p : patientEntities){
            patients.add(p.getName());
         }
