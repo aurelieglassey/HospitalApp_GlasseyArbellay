@@ -91,7 +91,7 @@ public class DatabaseInitUtil {
 
         //Create patients
         PatientEntity p1 = new PatientEntity();
-        p1.setIdP(0);
+        p1.setIdP(1);
         p1.setName("Aurélie Glassey");
         p1.setGender('F');
         p1.setRoomNumber(302);
@@ -100,7 +100,7 @@ public class DatabaseInitUtil {
         p1.setReasonAdmission("blabla");
 
         PatientEntity p2 = new PatientEntity();
-        p2.setIdP(1);
+        p2.setIdP(2);
         p2.setName("Olivier Arbellay");
         p2.setGender('M');
         p2.setRoomNumber(303);
@@ -109,7 +109,7 @@ public class DatabaseInitUtil {
         p2.setReasonAdmission("blabla");
 
         PatientEntity p3 = new PatientEntity();
-        p3.setIdP(2);
+        p3.setIdP(3);
         p3.setName("Maud Rouvinez");
         p3.setGender('F');
         p3.setRoomNumber(304);
@@ -133,7 +133,7 @@ public class DatabaseInitUtil {
 
         try {
             db.medecineDao().insertAllMedecine(lm);
-           // db.patientDao().insertAllPatient(lp);
+           db.patientDao().insertAllPatient(lp);
             //db.treatmentMedecineLinkDao().insertAllLink(ll);
             //db.treatmentDao().insertAllTreatment(lt);
 

@@ -63,6 +63,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfPatientActivity.this);
 
+        
 
         patientEntities = new GetPatients(ListOfPatientActivity.this).execute().get();
 
