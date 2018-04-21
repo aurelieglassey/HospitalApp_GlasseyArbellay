@@ -13,12 +13,15 @@ import java.util.List;
 public class GetPatients extends AsyncTask<Void,Void, List<PatientEntity>> {
 
 
+    // Weak references will still allow the Activity to be garbage-collected
+    private final WeakReference<Context> mContext;
 
-    private Context context;
-
+    public GetPatients(Context view) {
+        mContext = new WeakReference<>(view);
+    }
     @Override
     protected List<PatientEntity> doInBackground(Void... voids) {
-        DatabaseCreator dbCreator = DatabaseCreator.getInstance(context);
+        DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());
         return dbCreator.getDatabase().patientDao().getAllPatient();
     }
 }

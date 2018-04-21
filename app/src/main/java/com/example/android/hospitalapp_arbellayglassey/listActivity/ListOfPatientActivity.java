@@ -1,6 +1,5 @@
 package com.example.android.hospitalapp_arbellayglassey.listActivity;
 
-import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +20,7 @@ import com.example.android.hospitalapp_arbellayglassey.R;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ListOfPatientActivity extends AppCompatActivity {
 
@@ -28,7 +28,6 @@ public class ListOfPatientActivity extends AppCompatActivity {
     private Button btnNewPatient;
     private List<PatientEntity> patientEntities;
 
-    AppDatabase db;
     ArrayList<String> patients;
 
 
@@ -40,7 +39,13 @@ public class ListOfPatientActivity extends AppCompatActivity {
         //Button to add a new patient for the list
         pressBtnNewPatient();
 
-        readDB();
+        try {
+            readDB();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         ListView list;
 
 
@@ -52,13 +57,18 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
     }
 
-    public void readDB(){
+    public void readDB() throws ExecutionException, InterruptedException {
 
         patients = new ArrayList<String>();
 
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfPatientActivity.this);
 
 
+        patientEntities = new GetPatients(ListOfPatientActivity.this).execute().get();
+
+        for (PatientEntity p : patientEntities){
+           patients.add(p.getName());
+        }
 
 
     }
