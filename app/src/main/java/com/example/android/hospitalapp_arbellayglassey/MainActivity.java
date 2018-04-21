@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnListOfMedecine;
     private Button btnSettings;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -10,21 +10,26 @@ import java.util.List;
 
 public class DatabaseInitUtil {
 
+   protected static List<MedecineEntity> lm;
+   protected static List<PatientEntity> lp;
+   protected static List<TreatmentEntity> lt;
+   protected static List<TreatmentMedecineLinkEntity> ll;
     //Initalize the database
     static void initializeDb (AppDatabase db){
 
         //Create lists
-        List<MedecineEntity> listMedecine = new ArrayList<MedecineEntity>();
-        List<PatientEntity> listPatient = new ArrayList<PatientEntity>();
-
+       lm = new ArrayList<MedecineEntity>();
+        lp = new ArrayList<PatientEntity>();
+        lt = new ArrayList<TreatmentEntity>();
+        ll = new ArrayList<TreatmentMedecineLinkEntity>();
 
         //Generate some data and insert them inside a database
-        generateData(listMedecine, listPatient);
-        insertData(db, listMedecine, listPatient);
+        generateData();
+        insertData(db);
     }
 
     //Create some data for the 2 lists
-    private static void generateData(List<MedecineEntity> lm, List<PatientEntity> lp){
+    private static void generateData(){
 
         //Create medecine
         MedecineEntity m1 = new MedecineEntity();
@@ -67,6 +72,10 @@ public class DatabaseInitUtil {
         t3.setName("Maud_Treatment");
         t3.setIdPatient(2);
 
+        lt.add(t1);
+        lt.add(t2);
+        lt.add(t3);
+
         TreatmentMedecineLinkEntity tmtl = new TreatmentMedecineLinkEntity();
         tmtl.setIdMedecine(1);
         tmtl.setIdTreatment(1);
@@ -76,6 +85,9 @@ public class DatabaseInitUtil {
         tmt2.setIdMedecine(2);
         tmt2.setIdTreatment(3);
         tmt2.setQuantityPerDay("2");
+
+        ll.add(tmtl);
+        ll.add(tmt2);
 
         //Create patients
         PatientEntity p1 = new PatientEntity();
@@ -118,13 +130,15 @@ public class DatabaseInitUtil {
     }
 
     //Inserts the list inside the database
-    private static void insertData(AppDatabase db, List<MedecineEntity> lm, List<PatientEntity> lp) {
+    private static void insertData(AppDatabase db) {
 
         db.beginTransaction();
 
         try {
-            db.patientDao().insertAllPatient(lp);
             db.medecineDao().insertAllMedecine(lm);
+            db.patientDao().insertAllPatient(lp);
+            db.treatmentMedecineLinkDao().insertAllLink(ll);
+            db.treatmentDao().insertAllTreatment(lt);
 
             db.setTransactionSuccessful();
         } finally {
