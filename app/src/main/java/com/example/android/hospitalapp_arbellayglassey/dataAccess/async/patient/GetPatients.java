@@ -1,5 +1,6 @@
 package com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
 
@@ -12,15 +13,12 @@ import java.util.List;
 public class GetPatients extends AsyncTask<Void,Void, List<PatientEntity>> {
 
 
-    // Weak references will still allow the Activity to be garbage-collected
-    private final WeakReference<View> mView;
 
-    public GetPatients(View view) {
-        mView = new WeakReference<>(view);
-    }
+    private Context context;
+
     @Override
     protected List<PatientEntity> doInBackground(Void... voids) {
-        DatabaseCreator dbCreator = DatabaseCreator.getInstance(mView.get().getContext());
+        DatabaseCreator dbCreator = DatabaseCreator.getInstance(context);
         return dbCreator.getDatabase().patientDao().getAllPatient();
     }
 }

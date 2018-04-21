@@ -53,6 +53,7 @@ public class PatientEntity {
         this.age = age;
         this.reasonAdmission = reasonAdmission;
         this.idTreatment = idTreatment;
+
     }
     //Getters and setters
 

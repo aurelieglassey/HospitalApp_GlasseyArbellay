@@ -10,6 +10,7 @@ import android.arch.persistence.room.Update;
 import android.os.AsyncTask;
 
 
+
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.pojo.PatientWithTreatment;
@@ -32,7 +33,7 @@ public interface PatientDao {
 
     //Get a list of patient
     @Query("SELECT * FROM Patient")
-    List<PatientEntity> getAllPatient();
+    public abstract List<PatientEntity> getAllPatient();
 
     @Query("SELECT * FROM Patient")
     LiveData<List<PatientEntity>> getAll();

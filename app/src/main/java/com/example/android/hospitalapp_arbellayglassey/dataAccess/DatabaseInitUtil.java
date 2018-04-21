@@ -98,7 +98,6 @@ public class DatabaseInitUtil {
         p1.setBloodGroup("A");
         p1.setAge(21);
         p1.setReasonAdmission("blabla");
-        p1.setIdTreatment(0);
 
         PatientEntity p2 = new PatientEntity();
         p2.setIdP(1);
@@ -108,7 +107,6 @@ public class DatabaseInitUtil {
         p2.setBloodGroup("O");
         p2.setAge(22);
         p2.setReasonAdmission("blabla");
-        p2.setIdTreatment(1);
 
         PatientEntity p3 = new PatientEntity();
         p3.setIdP(2);
@@ -118,7 +116,6 @@ public class DatabaseInitUtil {
         p3.setBloodGroup("B+");
         p3.setAge(21);
         p3.setReasonAdmission("blabla");
-        p3.setIdTreatment(2);
 
         //Add the patients created in the list of patient lp
         lp.add(p1);
@@ -136,9 +133,9 @@ public class DatabaseInitUtil {
 
         try {
             db.medecineDao().insertAllMedecine(lm);
-            db.patientDao().insertAllPatient(lp);
-            db.treatmentMedecineLinkDao().insertAllLink(ll);
-            db.treatmentDao().insertAllTreatment(lt);
+           // db.patientDao().insertAllPatient(lp);
+            //db.treatmentMedecineLinkDao().insertAllLink(ll);
+            //db.treatmentDao().insertAllTreatment(lt);
 
             db.setTransactionSuccessful();
         } finally {
