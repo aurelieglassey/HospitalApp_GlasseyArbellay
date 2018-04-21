@@ -8,17 +8,27 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapter;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
+
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.GetMedecines;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineAdd;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineDetails;
 import com.example.android.hospitalapp_arbellayglassey.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ListOfMedecineActivity extends AppCompatActivity {
 
     //Button add a new medecine
     private Button btnAddNewMedecine;
+    private List<MedecineEntity> MedecineEntities;
+
+    ArrayList<String> medecines;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +39,18 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         pressBtnAddNewMedecine();
 
 
-        final ArrayList<String> medecine = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.medecine_array)));
+        try {
+            readDB();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         ListView list;
 
         Intent intent = new Intent(ListOfMedecineActivity.this, MedecineDetails.class);
         list = (ListView) findViewById(R.id.listofmedecine);
-        list.setAdapter(new ListViewWithDelBtnAdapter(medecine, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
+        list.setAdapter(new ListViewWithDelBtnAdapter(medecines, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
 
 
     }
@@ -50,6 +66,22 @@ public class ListOfMedecineActivity extends AppCompatActivity {
                 ListOfMedecineActivity.this.startActivity(intent);
             }
         });
+
+
+    }
+    public void readDB() throws ExecutionException, InterruptedException {
+
+        medecines = new ArrayList<String>();
+
+        DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfMedecineActivity.this);
+
+
+
+        MedecineEntities = new GetMedecines(ListOfMedecineActivity.this).execute().get();
+
+        for (MedecineEntity p : MedecineEntities){
+            medecines.add(p.getName());
+        }
 
 
     }

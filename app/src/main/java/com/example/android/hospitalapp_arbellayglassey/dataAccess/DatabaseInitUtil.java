@@ -33,7 +33,7 @@ public class DatabaseInitUtil {
 
         //Create medecine
         MedecineEntity m1 = new MedecineEntity();
-        m1.setIdM(0);
+        m1.setIdM(1);
         m1.setName("Dafalgan");
         m1.setType("Analgesic");
         m1.setActiveIngredient("Paracetamol");
@@ -43,7 +43,7 @@ public class DatabaseInitUtil {
         m1.setMaxPerDay(3);
 
         MedecineEntity m2 = new MedecineEntity();
-        m2.setIdM(1);
+        m2.setIdM(2);
         m2.setName("Neocitran");
         m2.setType("Chloryhdrate de pseudoéphédrine");
         m2.setActiveIngredient("Paracetamol");

@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapter;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.AppDatabase;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.GetPatients;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
@@ -18,7 +17,6 @@ import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
 import com.example.android.hospitalapp_arbellayglassey.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 

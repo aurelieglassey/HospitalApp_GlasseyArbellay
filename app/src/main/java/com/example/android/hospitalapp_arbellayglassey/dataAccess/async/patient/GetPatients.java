@@ -16,8 +16,8 @@ public class GetPatients extends AsyncTask<Void,Void, List<PatientEntity>> {
     // Weak references will still allow the Activity to be garbage-collected
     private final WeakReference<Context> mContext;
 
-    public GetPatients(Context view) {
-        mContext = new WeakReference<>(view);
+    public GetPatients(Context c) {
+        mContext = new WeakReference<>(c);
     }
     @Override
     protected List<PatientEntity> doInBackground(Void... voids) {
