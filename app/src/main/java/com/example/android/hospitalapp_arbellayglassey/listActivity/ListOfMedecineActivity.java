@@ -24,6 +24,7 @@ import java.util.concurrent.ExecutionException;
 
 public class ListOfMedecineActivity extends AppCompatActivity {
 
+    //test
     //Button add a new medecine
     private Button btnAddNewMedecine;
     private List<MedecineEntity> MedecineEntities;
