@@ -91,7 +91,7 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
         delbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                // add a pop up when delete button is activated
                 new AlertDialog.Builder(context)
                         .setTitle("Delete")
                         .setMessage("Do you really want to delete this patient ?")

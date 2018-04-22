@@ -4,6 +4,7 @@ package com.example.android.hospitalapp_arbellayglassey.dataAccess.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,7 +16,11 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
                 parentColumns = "idP",
                 childColumns = "idPatient",
                 onDelete = CASCADE,
-                onUpdate = CASCADE))
+                onUpdate = CASCADE),
+        indices = {
+                @Index(
+                        value = {"idPatient"}
+                )})
 public class TreatmentEntity {
 
     @PrimaryKey(autoGenerate = true)
@@ -26,11 +31,9 @@ public class TreatmentEntity {
     private String name;
 
     @ColumnInfo(name = "idPatient")
-    @Nullable
     private int idPatient;
 
     public TreatmentEntity() {
-
     }
 
     public TreatmentEntity(int id, String name, int idPatient) {

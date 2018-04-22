@@ -14,14 +14,15 @@ public class DatabaseInitUtil {
    protected static List<PatientEntity> lp;
    protected static List<TreatmentEntity> lt;
    protected static List<TreatmentMedecineLinkEntity> ll;
+
     //Initalize the database
     static void initializeDb (AppDatabase db){
 
         //Create lists
-       lm = new ArrayList<MedecineEntity>();
-        lp = new ArrayList<PatientEntity>();
-        lt = new ArrayList<TreatmentEntity>();
-        ll = new ArrayList<TreatmentMedecineLinkEntity>();
+        lm = new ArrayList<>();
+        lp = new ArrayList<>();
+        lt = new ArrayList<>();
+        ll = new ArrayList<>();
 
         //Generate some data and insert them inside a database
         generateData();
@@ -57,37 +58,7 @@ public class DatabaseInitUtil {
         lm.add(m2);
 
 
-        TreatmentEntity t1 = new TreatmentEntity();
-        t1.setIdT(0);
-        t1.setName("Aurelie_Treatment");
-        t1.setIdPatient(0);
 
-        TreatmentEntity t2 = new TreatmentEntity();
-        t2.setIdT(1);
-        t2.setName("Olivier_Treatment");
-        t2.setIdPatient(1);
-
-        TreatmentEntity t3 = new TreatmentEntity();
-        t3.setIdT(2);
-        t3.setName("Maud_Treatment");
-        t3.setIdPatient(2);
-
-        lt.add(t1);
-        lt.add(t2);
-        lt.add(t3);
-
-        TreatmentMedecineLinkEntity tmtl = new TreatmentMedecineLinkEntity();
-        tmtl.setIdMedecine(1);
-        tmtl.setIdTreatment(1);
-        tmtl.setQuantityPerDay("2");
-
-        TreatmentMedecineLinkEntity tmt2 = new TreatmentMedecineLinkEntity();
-        tmt2.setIdMedecine(2);
-        tmt2.setIdTreatment(3);
-        tmt2.setQuantityPerDay("2");
-
-        ll.add(tmtl);
-        ll.add(tmt2);
 
         //Create patients
         PatientEntity p1 = new PatientEntity();
@@ -120,7 +91,42 @@ public class DatabaseInitUtil {
         //Add the patients created in the list of patient lp
         lp.add(p1);
         lp.add(p2);
+
+
+        TreatmentEntity t1 = new TreatmentEntity();
+        t1.setIdT(1);
+        t1.setName("Aurelie_Treatment");
+        t1.setIdPatient(1);
+
+        TreatmentEntity t2 = new TreatmentEntity();
+        t2.setIdT(2);
+        t2.setName("Olivier_Treatment");
+        t2.setIdPatient(2);
+
+        TreatmentEntity t3 = new TreatmentEntity();
+        t3.setIdT(3);
+        t3.setName("Maud_Treatment");
+        t3.setIdPatient(3);
+
+        lt.add(t1);
+        lt.add(t2);
+        lt.add(t3);
+
+        TreatmentMedecineLinkEntity tmtl = new TreatmentMedecineLinkEntity();
+        tmtl.setIdMedecine(1);
+        tmtl.setIdTreatment(1);
+        tmtl.setQuantityPerDay("2");
+
+        TreatmentMedecineLinkEntity tmt2 = new TreatmentMedecineLinkEntity();
+        tmt2.setIdMedecine(2);
+        tmt2.setIdTreatment(3);
+        tmt2.setQuantityPerDay("2");
+
+        ll.add(tmtl);
+        ll.add(tmt2);
         lp.add(p3);
+
+
 
 
 
@@ -133,9 +139,10 @@ public class DatabaseInitUtil {
 
         try {
             db.medecineDao().insertAllMedecine(lm);
-           db.patientDao().insertAllPatient(lp);
+            db.patientDao().insertAllPatient(lp);
+            db.treatmentDao().insertAllTreatment(lt);
+
             //db.treatmentMedecineLinkDao().insertAllLink(ll);
-            //db.treatmentDao().insertAllTreatment(lt);
 
             db.setTransactionSuccessful();
         } finally {
