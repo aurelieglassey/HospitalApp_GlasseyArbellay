@@ -1,6 +1,8 @@
 package com.example.android.hospitalapp_arbellayglassey.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,7 +91,18 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
         delbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Object to vanish: "+ list.get(position).toString(), Toast.LENGTH_LONG).show();
+
+                new AlertDialog.Builder(context)
+                        .setTitle("Delete")
+                        .setMessage("Do you really want to delete this patient ?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                Toast.makeText(context, "Object to vanish: "+ list.get(position).toString(), Toast.LENGTH_SHORT).show();
+                            }})
+                        .setNegativeButton(android.R.string.no, null).show();
+
 
             }
         });
