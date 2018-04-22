@@ -18,12 +18,15 @@ public class AsyncGetPatient extends AsyncTask<Integer, Void, PatientEntity>
 
         int id;
 
-        public AsyncGetPatient(Context view, int id ) {
-        mContext = new WeakReference<>(view);
+
+        //Constructor
+        public AsyncGetPatient(Context context, int id ) {
+        mContext = new WeakReference<>(context);
         this.id = id;
     }
 
 
+    //call the db and edit a patient
         @Override
         protected PatientEntity doInBackground(Integer... integers) {
             DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());

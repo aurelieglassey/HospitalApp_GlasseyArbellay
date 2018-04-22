@@ -9,6 +9,7 @@ import android.arch.persistence.room.Update;
 
 
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
+import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineAdd;
 
 import java.util.List;
 
@@ -31,6 +32,10 @@ public interface MedecineDao {
     //Get a medecine from ID
     @Query("SELECT * FROM Medecine WHERE idM = :idsearch")
     public MedecineEntity getOneMedecineById(int idsearch);
+
+    //Get a medecine from his id
+    @Query("SELECT * FROM Medecine WHERE idM = :id")
+    MedecineEntity getByIdSync(int id);
 
     //Insert list inside the database
     @Insert(onConflict = OnConflictStrategy.REPLACE) //replace the old data and continue the transaction

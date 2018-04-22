@@ -191,6 +191,7 @@
                 android:layout_weight="1"
                 android:text="@string/label_application_medecine"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorGreyButton"
                 android:textSize="12sp" />
 
             <EditText

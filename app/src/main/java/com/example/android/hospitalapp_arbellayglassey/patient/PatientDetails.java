@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutionException;
 
 public class PatientDetails extends AppCompatActivity {
 
-    //Button to show the treatment
+    //Variables
     private Button btnShowTreatment;
     private ImageButton btnModifyPatient;
     private PatientEntity patientEntity;
@@ -31,11 +31,12 @@ public class PatientDetails extends AppCompatActivity {
     private TextView textViewAdmission;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_details);
+
+        //Read the db
         try {
             readDB();
         } catch (ExecutionException e) {
@@ -44,6 +45,7 @@ public class PatientDetails extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //find the textview by his id
         textViewName = findViewById(R.id.namePatientDetails);
         textViewAge = findViewById(R.id.agePatientDetails);
         textViewGender = findViewById(R.id.genderPatientDetails);
@@ -68,9 +70,8 @@ public class PatientDetails extends AppCompatActivity {
 
 
 
+    //Read the db
     public void readDB() throws ExecutionException, InterruptedException {
-
-
 
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(PatientDetails.this);
 
@@ -84,6 +85,7 @@ public class PatientDetails extends AppCompatActivity {
 
     //When the user decide to display the treatment of a patient
     public void pressBtnShowTreatment(){
+
         //Find the id view for the button show the treatement of a patient
         btnShowTreatment = (Button) findViewById(R.id.btn_show_treatment);
 
