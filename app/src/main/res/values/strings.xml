@@ -21,7 +21,7 @@
     <!-- Label of the application -->
     <string name="label_name">Name</string>
     <string name="label_age">Age</string>
-    <string name="label_gender">Gender</string>
+    <string name="label_gender">Gender (F/M)</string>
     <string name="label_room">Room</string>
     <string name="label_blood_group">Blood Group</string>
     <string name="label_reasons_admission">Reason of Admission</string>

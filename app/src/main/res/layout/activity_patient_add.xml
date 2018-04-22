@@ -135,7 +135,7 @@
                 <!--     Room layout       -->
 
                 <LinearLayout
-                    android:id="@+id/LayoutRoomAdd"
+                    android:id="@+id/layoutRoomAdd"
                     android:layout_width="169dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">

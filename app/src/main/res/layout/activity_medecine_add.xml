@@ -21,7 +21,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/labelNameMedecineDetails"
+                android:id="@+id/labelNameMedecineAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -30,13 +30,13 @@
                 android:textColor="@color/colorGreyButton" />
 
             <EditText
-                android:id="@+id/editTextName"
+                android:id="@+id/editNameMedecineAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Add a current name" />
+                />
 
 
             <View
@@ -47,7 +47,7 @@
 
             <!-- Type -->
             <TextView
-                android:id="@+id/labelTypeMedecineDetails"
+                android:id="@+id/labelTypeMedecineAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -58,13 +58,13 @@
 
 
             <EditText
-                android:id="@+id/editTextType"
+                android:id="@+id/editTypeMedecineAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Add a current type" />
+               />
 
 
             <View
@@ -74,7 +74,7 @@
 
             <!-- Active ingredient -->
             <TextView
-                android:id="@+id/labelActiveIngredientMedecineDetails"
+                android:id="@+id/labelActiveIngredientMedecineAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -84,13 +84,13 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/editTextActiveIngredient"
+                android:id="@+id/editActiveIngredientMedecineAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Add a current name the active ingredient" />
+               />
 
 
 
@@ -102,7 +102,7 @@
 
             <!-- Manufacturer -->
             <TextView
-                android:id="@+id/labelManufacturerMedecineDetails"
+                android:id="@+id/labelManufacturerMedecineAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -112,13 +112,13 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/editTextManufacturer"
+                android:id="@+id/editManufacturerMedecineAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Add a current Manufacturer" />
+               />
 
 
             <View
@@ -129,7 +129,7 @@
 
             <!-- Side Effect -->
             <TextView
-                android:id="@+id/labelSideEffectMedecineDetails"
+                android:id="@+id/labelSideEffectMedecineAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -139,13 +139,13 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/editTextSideEffect"
+                android:id="@+id/editSideEffect"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Add a current sides effects" />
+             />
 
 
 
@@ -157,7 +157,7 @@
 
             <!-- Max per day -->
             <TextView
-                android:id="@+id/labelMaxDayMedecineDetails"
+                android:id="@+id/labelMaxDayMedecineAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -168,13 +168,13 @@
 
 
             <EditText
-                android:id="@+id/editTextMaxDay"
+                android:id="@+id/editMaxDayMedecineAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="number"
-                android:text="Add a  max"/>
+              />
 
 
             <View
@@ -185,22 +185,22 @@
 
             <!-- Application of medecine -->
             <TextView
-                android:id="@+id/labelApplicationMedecineDetails"
+                android:id="@+id/labelApplicationMedecineAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/label_application_medecine"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/editTextApplication"
+                android:id="@+id/editApplicationMedecineAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Add how to apply this medecine" />
+                />
 
 
             <View

@@ -11,17 +11,18 @@ import java.lang.ref.WeakReference;
 
 public class AsyncAddPatient extends AsyncTask<PatientEntity, Void, Long> {
 
-
-
     // Weak references will still allow the Activity to be garbage-collected
     private final WeakReference<Context> mContext;
 
     private PatientEntity patientEntity;
+
+    //Constructor of the AsyncAddPatient
     public AsyncAddPatient(Context c, PatientEntity patientEntity) {
         mContext = new WeakReference<>(c);
         this.patientEntity = patientEntity;
     }
 
+    //Call the DB and insert a new patient in the DB
     @Override
     protected Long doInBackground(PatientEntity... params) throws SQLiteConstraintException {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());

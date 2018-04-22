@@ -15,7 +15,7 @@
     <string name="title_patient">Patient</string>
     <string name="label_name">Nom</string>
     <string name="label_age">Age</string>
-    <string name="label_gender">Sexe</string>
+    <string name="label_gender">Sexe (F/M)</string>
     <string name="label_room">Chambre</string>
     <string name="label_blood_group">Groupe sanguin</string>
     <string name="label_reasons_admission">Raison de l\'admission</string>

@@ -1,4 +1,4 @@
-package com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient;
+package com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteConstraintException;
@@ -16,13 +16,14 @@ public class AsyncAddMedecine extends AsyncTask<PatientEntity, Void, Long> {
     private final WeakReference<Context> mContext;
 
     private MedecineEntity medecineEntity;
+
+    //constructor of the AsyncAddMedecine
     public AsyncAddMedecine(Context c, MedecineEntity medecineEntity) {
         mContext = new WeakReference<>(c);
         this.medecineEntity = medecineEntity;
     }
 
-
-
+    //Call the DB and insert a new medecine in the DB
     @Override
     protected Long doInBackground(PatientEntity... patientEntities) throws SQLiteConstraintException {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());

@@ -32,7 +32,8 @@ public class PatientAdd extends AppCompatActivity {
 
     }
 
-    //When the user decide to add the patient to the list he press on ok
+    //When the user want to add a new patient and the data are ok to be added
+    //button ok
     public void pressOkAddPatient(){
         //Find the id view for the button ok to add a patient
         okAddPatient = (Button) findViewById(R.id.btn_ok_add_patient);
@@ -42,7 +43,7 @@ public class PatientAdd extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Get all id of the texte view
+                //Get all id of a patient of the texte view
                 EditText namePatient = (EditText)findViewById(R.id.namePatientDetails);
                 EditText agePatient = (EditText)findViewById(R.id.agePatientAdd);
                 EditText genderPatient = (EditText)findViewById(R.id.genderPatientAdd);
@@ -51,6 +52,7 @@ public class PatientAdd extends AppCompatActivity {
                 EditText admissionPatient = (EditText)findViewById(R.id.admissionPatientAdd);
                 Intent intent = new Intent(PatientAdd.this, ListOfPatientActivity.class);
 
+                //Add the data of the text view in the patient
                 patientEntity = new PatientEntity();
                 patientEntity.setName(namePatient.getText().toString());
                 patientEntity.setAge(Integer.parseInt(agePatient.getText().toString()));
@@ -59,6 +61,7 @@ public class PatientAdd extends AppCompatActivity {
                 patientEntity.setBloodGroup(bloodPatient.getText().toString());
                 patientEntity.setReasonAdmission(admissionPatient.getText().toString());
 
+                //Call the method add patient
                 addPatient(patientEntity);
                 PatientAdd.this.startActivity(intent);
             }
@@ -66,6 +69,7 @@ public class PatientAdd extends AppCompatActivity {
     }
 
 
+    //Add a patient with the class AsyncAddPatient
     public void addPatient(PatientEntity patientEntity){
 
         try {
