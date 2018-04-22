@@ -115,12 +115,12 @@ public class DatabaseInitUtil {
         TreatmentMedecineLinkEntity tmtl = new TreatmentMedecineLinkEntity();
         tmtl.setIdMedecine(1);
         tmtl.setIdTreatment(1);
-        tmtl.setQuantityPerDay("2");
+        //tmtl.setQuantityPerDay("2");
 
         TreatmentMedecineLinkEntity tmt2 = new TreatmentMedecineLinkEntity();
         tmt2.setIdMedecine(2);
         tmt2.setIdTreatment(3);
-        tmt2.setQuantityPerDay("2");
+        // tmt2.setQuantityPerDay("2");
 
         ll.add(tmtl);
         ll.add(tmt2);
@@ -142,7 +142,7 @@ public class DatabaseInitUtil {
             db.patientDao().insertAllPatient(lp);
             db.treatmentDao().insertAllTreatment(lt);
 
-            //db.treatmentMedecineLinkDao().insertAllLink(ll);
+            db.treatmentMedecineLinkDao().insertAllLink(ll);
 
             db.setTransactionSuccessful();
         } finally {

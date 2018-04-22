@@ -65,7 +65,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
         //Access to the database creator
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfPatientActivity.this);
 
-        //Executre and get all the patients from our database
+        //Execute and get all the patients from our database
         patientEntities = new AsyncGetPatients(ListOfPatientActivity.this).execute().get();
 
         //Add the patient in the list to display it
@@ -89,11 +89,6 @@ public class ListOfPatientActivity extends AppCompatActivity {
         });
     }
 
-    //get the db and get the patients list
-    private void initiateDB(){
-
-
-    }
     private void setupActionBar() {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);

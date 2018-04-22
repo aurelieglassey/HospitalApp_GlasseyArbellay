@@ -13,6 +13,7 @@ import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.link.AsyncGetLinks;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncGetMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncGetTreatment;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
@@ -37,10 +38,11 @@ public class TreatmentDetails extends AppCompatActivity {
     private ImageButton btnModifyTreatment;
     private TreatmentEntity treatmentEntity;
     private PatientEntity patientEntity;
-    private List<TreatmentMedecineLinkEntity> linkEntity;
+    private List<TreatmentMedecineLinkEntity>  listLinkEntity;
     private int idPatient;
     private TextView textViewAdmission;
     private TextView textViewName;
+    ArrayList<String> medecines;
     //private TextView textViewAdmission;
 
 
@@ -72,13 +74,13 @@ public class TreatmentDetails extends AppCompatActivity {
         pressBtnModifyTreatment();
 
         // adding list
-        final ArrayList<String> medecine = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.medecine_array)));
+        //final ArrayList<String> medecine = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.medecine_array)));
         ListView list;
 
 
         Intent intent = new Intent(TreatmentDetails.this, MedecineDetails.class);
         list = (ListView) findViewById(R.id.listofmedicinefortreatment);
-        list.setAdapter(new ListViewWithDelBtnAdapterMedecine(medecine, medecineEntityList,TreatmentDetails.this, intent, R.layout.listofmedicinefortreatment_layout, R.id.listview_listofmedecinefortreatment, R.id.deleteMedecineForTreatmentButton));
+        list.setAdapter(new ListViewWithDelBtnAdapterMedecine(medecines, medecineEntityList,TreatmentDetails.this, intent, R.layout.listofmedicinefortreatment_layout, R.id.listview_listofmedecinefortreatment, R.id.deleteMedecineForTreatmentButton));
     }
 
 
@@ -118,13 +120,15 @@ public class TreatmentDetails extends AppCompatActivity {
 
 
 
-        DatabaseCreator dbCreator = DatabaseCreator.getInstance(TreatmentDetails.this);
-
         Intent intentGetId = getIntent();
         idPatient = intentGetId.getIntExtra("idP", 0);
         treatmentEntity = new AsyncGetTreatment(TreatmentDetails.this, idPatient).execute().get();
         patientEntity = new AsyncGetPatient(TreatmentDetails.this, idPatient).execute().get();
-        linkEntity = new AsyncGetLinks(TreatmentDetails.this, treatmentEntity.getIdT()).execute().get();
+        listLinkEntity = new AsyncGetLinks(TreatmentDetails.this, treatmentEntity.getIdT()).execute().get();
+        medecines = new ArrayList<>();
+        for (TreatmentMedecineLinkEntity linkEntity: listLinkEntity) {
+            medecines.add(new AsyncGetMedecine(TreatmentDetails.this,linkEntity.getIdMedecine()).execute().get().getName() );
+        }
 
 
     }
