@@ -35,4 +35,5 @@
     <string name="btn_chosen_language">Langue choisie</string>
     <string name="btn_modify_treatment">Modifier le traitement</string>
     <string name="btn_modify_patient">Modifier le patient</string>
+    <string name="actionbar_title_listPatient">" Liste de patients"</string>
 </resources>

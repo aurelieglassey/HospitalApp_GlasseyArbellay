@@ -33,7 +33,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_patient);
-
+        setTitle("List of patients ");
         //Button to add a new patient for the list
         pressBtnNewPatient();
 

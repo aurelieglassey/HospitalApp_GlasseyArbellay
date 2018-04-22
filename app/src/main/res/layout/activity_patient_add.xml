@@ -78,12 +78,14 @@
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="18sp" />
 
+
                     <EditText
                         android:id="@+id/agePatientAdd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/label_age"
+                        android:text="00"
+                        android:inputType="number"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
 
@@ -143,7 +145,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/label_room"
+                        android:text="00"
+                        android:inputType="number"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="18sp" />
@@ -203,7 +206,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/admissionPatientAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

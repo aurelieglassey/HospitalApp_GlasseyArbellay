@@ -44,8 +44,8 @@ public class PatientEntity {
     }
 
 
-    public PatientEntity(int id, String name, char gender, int roomNumber, String bloodGroup, int age, String reasonAdmission, int idTreatment) {
-        this.idP = id;
+    public PatientEntity(String name, char gender, int roomNumber, String bloodGroup, int age, String reasonAdmission, int idTreatment) {
+        //this.idP = id;
         this.name = name;
         this.gender = gender;
         this.roomNumber = roomNumber;

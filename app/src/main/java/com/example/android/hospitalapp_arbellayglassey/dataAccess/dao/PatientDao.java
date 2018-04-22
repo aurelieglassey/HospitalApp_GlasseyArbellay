@@ -7,15 +7,10 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
-import android.os.AsyncTask;
 
 
-
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.pojo.PatientWithTreatment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -23,7 +18,7 @@ public interface PatientDao {
 
 
     @Insert
-    void insertPatient(PatientEntity patient);
+    long insertPatient(PatientEntity patient);
 
     @Delete
     void deletePatient(PatientEntity patient);
