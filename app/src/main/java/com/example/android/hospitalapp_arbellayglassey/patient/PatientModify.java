@@ -31,21 +31,11 @@ public class PatientModify extends AppCompatActivity {
     private EditText editTextAdmission;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_modify);
-        pressBtnModifyPatient();
 
-        editTextName = findViewById(R.id.namePatientModify);
-        editTextAge = findViewById(R.id.agePatientModify);
-        editTextGender = findViewById(R.id.genderPatientModify);
-        editTextRoom = findViewById(R.id.ageRoomPatientModify);
-        editTextBlood = findViewById(R.id.bloodGroupPatientModify);
-        editTextAdmission = findViewById(R.id.admissionPatientModify);
 
         try {
             readDB();
@@ -55,6 +45,15 @@ public class PatientModify extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        pressBtnModifyPatient();
+
+        editTextName = findViewById(R.id.namePatientModify);
+        editTextAge = findViewById(R.id.agePatientModify);
+        editTextGender = findViewById(R.id.genderPatientModify);
+        editTextRoom = findViewById(R.id.ageRoomPatientModify);
+        editTextBlood = findViewById(R.id.bloodGroupPatientModify);
+        editTextAdmission = findViewById(R.id.admissionPatientModify);
+
         editTextName.setText(patientEntity.getName());
         editTextAge.setText(String.valueOf(patientEntity.getAge()));
         editTextGender.setText(String.valueOf(patientEntity.getGender()));
@@ -62,14 +61,10 @@ public class PatientModify extends AppCompatActivity {
         editTextBlood.setText(patientEntity.getBloodGroup());
         editTextAdmission.setText(patientEntity.getReasonAdmission());
 
-
-
     }
 
 
     public void readDB() throws ExecutionException, InterruptedException {
-
-
 
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(PatientModify.this);
 

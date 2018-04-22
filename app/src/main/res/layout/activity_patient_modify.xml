@@ -33,8 +33,6 @@
 
             <!--     Name and button layout       -->
 
-
-
             <EditText
                 android:id="@+id/namePatientModify"
                 android:layout_width="match_parent"

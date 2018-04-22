@@ -31,13 +31,13 @@
                 android:textColor="@color/colorGreyButton" />
 
             <EditText
-                android:id="@+id/editTextName"
+                android:id="@+id/editTextNameMedecineModify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Modify name" />
+               />
 
 
             <View
@@ -48,7 +48,7 @@
 
             <!-- Type -->
             <TextView
-                android:id="@+id/labelTypeMedecineDetails"
+                android:id="@+id/labelTypeMedecineModify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -59,13 +59,13 @@
 
 
             <EditText
-                android:id="@+id/editTextType"
+                android:id="@+id/editTextTypeMedecineModify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Modify type" />
+              />
 
 
             <View
@@ -75,7 +75,7 @@
 
             <!-- Active ingredient -->
             <TextView
-                android:id="@+id/labelActiveIngredientMedecineDetails"
+                android:id="@+id/labelActiveIngredientMedecineModify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -85,13 +85,13 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/editTextActiveIngredient"
+                android:id="@+id/editTextActiveIngredientModify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Modify active ingredient" />
+               />
 
 
 
@@ -103,7 +103,7 @@
 
             <!-- Manufacturer -->
             <TextView
-                android:id="@+id/labelManufacturerMedecineDetails"
+                android:id="@+id/labelManufacturerMedecineModify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -113,13 +113,13 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/editTextManufacturer"
+                android:id="@+id/editTextManufacturerMedecineModify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Modify Manufacturer" />
+             />
 
 
             <View
@@ -130,7 +130,7 @@
 
             <!-- Side Effect -->
             <TextView
-                android:id="@+id/labelSideEffectMedecineDetails"
+                android:id="@+id/labelSideEffectMedecineModify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -140,13 +140,13 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/editTextSideEffect"
+                android:id="@+id/editTextSideEffectMedecineModify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Modify sides effects" />
+              />
 
 
 
@@ -158,7 +158,7 @@
 
             <!-- Max per day -->
             <TextView
-                android:id="@+id/labelMaxDayMedecineDetails"
+                android:id="@+id/labelMaxDayMedecineModify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -169,13 +169,13 @@
 
 
             <EditText
-                android:id="@+id/editTextMaxDay"
+                android:id="@+id/editTextMaxDayMedecineModify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="number"
-                android:text="Modify max"/>
+              />
 
 
             <View
@@ -186,22 +186,23 @@
 
             <!-- Application of medecine -->
             <TextView
-                android:id="@+id/labelApplicationMedecineDetails"
+                android:id="@+id/labelApplicationMedecineModify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/label_application_medecine"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorGreyButton"
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/editTextApplication"
+                android:id="@+id/editTextApplicationMedecineModify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Modify how to apply this medecine" />
+              />
 
 
             <View
@@ -229,7 +230,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/generalbutton"
-                    android:text="Save modifications" />
+                    android:text="@string/btn_modify_medecine" />
 
                 <View
                     android:layout_width="match_parent"

@@ -40,8 +40,9 @@
     <string name="btn_ok">Ok</string>
     <string name="btn_show_treatment">Show treatment</string>
     <string name="btn_chosen_language">Chosen language</string>
-    <string name="btn_modify_treatment">Modify the treatment</string>
-    <string name="btn_modify_patient">Modify patient</string>
+    <string name="btn_modify_treatment">Save modifications</string>
+    <string name="btn_modify_patient">Save modifications</string>
+    <string name="btn_modify_medecine">Save modifications</string>
 
    <!-- All title of the action bar -->
     <string name="actionbar_title_listPatient">List of Patient</string>

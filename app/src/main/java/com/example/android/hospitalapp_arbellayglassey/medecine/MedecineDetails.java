@@ -78,13 +78,14 @@ public class MedecineDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MedecineDetails.this, MedecineModify.class);
+                intent.putExtra("idM", idMedecine);
                 MedecineDetails.this.startActivity(intent);
             }
         });
 
     }
 
-    //Read the db
+    //Read the db and get the medecine
     public void readDB() throws ExecutionException, InterruptedException {
 
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(MedecineDetails.this);
