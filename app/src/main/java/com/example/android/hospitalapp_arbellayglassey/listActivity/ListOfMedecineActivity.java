@@ -8,10 +8,9 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterMedecine;
-import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.GetMedecines;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncGetMedecines;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineAdd;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineDetails;
@@ -80,7 +79,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfMedecineActivity.this);
 
         //Get all medecines form our db
-        MedecineEntities = new GetMedecines(ListOfMedecineActivity.this).execute().get();
+        MedecineEntities = new AsyncGetMedecines(ListOfMedecineActivity.this).execute().get();
 
         //Add all the medecine in the list to display it
         for (MedecineEntity p : MedecineEntities){

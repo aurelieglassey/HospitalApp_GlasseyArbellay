@@ -9,13 +9,13 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Medecin
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-public class GetMedecines extends AsyncTask<Void,Void, List<MedecineEntity>> {
+public class AsyncGetMedecines extends AsyncTask<Void,Void, List<MedecineEntity>> {
 
 
 // Weak references will still allow the Activity to be garbage-collected
 private final WeakReference<Context> mContext;
 
-public GetMedecines(Context c) {
+public AsyncGetMedecines(Context c) {
         mContext = new WeakReference<>(c);
         }
 @Override

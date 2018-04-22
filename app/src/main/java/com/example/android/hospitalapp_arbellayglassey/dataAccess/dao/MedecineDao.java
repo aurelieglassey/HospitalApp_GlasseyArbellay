@@ -16,7 +16,7 @@ import java.util.List;
 public interface MedecineDao {
 
     @Insert
-    void insertMedecine(MedecineEntity medecine);
+    long insertMedecine(MedecineEntity medecine);
 
     @Delete
     void deleteMedecine(MedecineEntity medecine);
