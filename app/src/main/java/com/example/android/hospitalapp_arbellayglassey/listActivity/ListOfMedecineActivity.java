@@ -23,6 +23,7 @@ import java.util.concurrent.ExecutionException;
 
 public class ListOfMedecineActivity extends AppCompatActivity {
 
+    //test
     //Button add a new medecine
     private Button btnAddNewMedecine;
     private List<MedecineEntity> MedecineEntities;
@@ -37,7 +38,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         //Button to add a new Medecine to the list of medecine
         pressBtnAddNewMedecine();
 
-
+        //Try to access to the database
         try {
             readDB();
         } catch (ExecutionException e) {
@@ -47,6 +48,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         }
         ListView list;
 
+        //Switch between activities
         Intent intent = new Intent(ListOfMedecineActivity.this, MedecineDetails.class);
         list = (ListView) findViewById(R.id.listofmedecine);
         list.setAdapter(new ListViewWithDelBtnAdapterMedecine(medecines, MedecineEntities, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
@@ -68,16 +70,19 @@ public class ListOfMedecineActivity extends AppCompatActivity {
 
 
     }
+
+    //Read the db from our application
     public void readDB() throws ExecutionException, InterruptedException {
 
         medecines = new ArrayList<String>();
 
+        //access to the database creator
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfMedecineActivity.this);
 
-
-
+        //Get all medecines form our db
         MedecineEntities = new GetMedecines(ListOfMedecineActivity.this).execute().get();
 
+        //Add all the medecine in the list to display it
         for (MedecineEntity p : MedecineEntities){
             medecines.add(p.getName());
         }
