@@ -34,7 +34,6 @@ public class TreatmentEntity {
     private int idPatient;
 
     public TreatmentEntity() {
-
     }
 
     public TreatmentEntity(int id, String name, int idPatient) {
