@@ -34,9 +34,11 @@ public interface PatientDao {
     @Query("SELECT * FROM Patient")
     LiveData<List<PatientEntity>> getAll();
 
+    //Get a Patient from his id
     @Query("SELECT * FROM Patient WHERE idP = :id")
     PatientEntity getByIdSync(int id);
 
+    //Get all patients form the app
     @Query("SELECT * FROM Patient")
     List<PatientEntity> getAllSync();
 
