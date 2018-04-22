@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/label_name"
+
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
 
@@ -84,7 +84,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="00"
+
                         android:inputType="number"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
@@ -112,7 +112,7 @@
                         android:id="@+id/genderPatientAdd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_gender"
+
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
             </LinearLayout>
@@ -145,8 +145,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="00"
-                        android:inputType="number"
+                        android:text="Room Number"
+
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="18sp" />
@@ -156,7 +156,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/label_room"
+
+                        android:inputType="number"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
 
@@ -183,7 +184,7 @@
                         android:id="@+id/bloodGroupPatientAdd"
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
-                        android:text="Blood"
+
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
             </LinearLayout>
@@ -211,7 +212,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/label_reasons_admission"
+
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <View
