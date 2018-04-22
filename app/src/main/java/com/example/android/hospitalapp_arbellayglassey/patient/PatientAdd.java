@@ -6,10 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AddPatient;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncAddPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 
@@ -52,28 +51,13 @@ public class PatientAdd extends AppCompatActivity {
                 EditText admissionPatient = (EditText)findViewById(R.id.admissionPatientAdd);
                 Intent intent = new Intent(PatientAdd.this, ListOfPatientActivity.class);
 
-              /*Put the text in the intent
-                intent.putExtra("name", namePatient.getText().toString());
-                intent.putExtra("age", agePatient.getText().toString());
-                intent.putExtra("gender", genderPatient.getText().toString());
-                intent.putExtra("room", roomPatient.getText().toString());
-                intent.putExtra("blood", bloodPatient.getText().toString());
-                intent.putExtra("admission", admissionPatient.getText().toString());
-*/
-                String name = namePatient.getText().toString();
-                int age = Integer.parseInt(agePatient.getText().toString());
-                char gender = genderPatient.getText().charAt(0);
-//               int room = Integer.parseInt(roomPatient.getText().toString());
-                String blood = bloodPatient.getText().toString();
-                String admission = admissionPatient.getText().toString();
-
                 patientEntity = new PatientEntity();
-                patientEntity.setName(name);
-                patientEntity.setAge(age);
-                patientEntity.setGender(gender);
-               // patientEntity.setRoomNumber(room);
-                patientEntity.setBloodGroup(blood);
-                patientEntity.setReasonAdmission(admission);
+                patientEntity.setName(namePatient.getText().toString());
+                patientEntity.setAge(Integer.parseInt(agePatient.getText().toString()));
+                patientEntity.setGender(genderPatient.getText().charAt(0));
+                patientEntity.setRoomNumber(Integer.parseInt(roomPatient.getText().toString()));
+                patientEntity.setBloodGroup(bloodPatient.getText().toString());
+                patientEntity.setReasonAdmission(admissionPatient.getText().toString());
 
                 addPatient(patientEntity);
                 PatientAdd.this.startActivity(intent);
@@ -85,7 +69,7 @@ public class PatientAdd extends AppCompatActivity {
     public void addPatient(PatientEntity patientEntity){
 
         try {
-            Long id = new AddPatient(PatientAdd.this, patientEntity).execute().get();
+            Long id = new AsyncAddPatient(PatientAdd.this, patientEntity).execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

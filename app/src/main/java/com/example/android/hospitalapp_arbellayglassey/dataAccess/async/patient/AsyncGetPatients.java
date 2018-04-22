@@ -1,31 +1,27 @@
 package com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteConstraintException;
 import android.os.AsyncTask;
+import android.view.View;
 
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
-public class AddPatient extends AsyncTask<PatientEntity, Void, Long> {
-
+public class AsyncGetPatients extends AsyncTask<Void,Void, List<PatientEntity>> {
 
 
     // Weak references will still allow the Activity to be garbage-collected
     private final WeakReference<Context> mContext;
 
-    private PatientEntity patientEntity;
-    public AddPatient(Context c, PatientEntity patientEntity) {
+    public AsyncGetPatients(Context c) {
         mContext = new WeakReference<>(c);
-        this.patientEntity = patientEntity;
     }
-
     @Override
-    protected Long doInBackground(PatientEntity... params) throws SQLiteConstraintException {
+    protected List<PatientEntity> doInBackground(Void... voids) {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());
-        return dbCreator.getDatabase().patientDao().insertPatient(patientEntity);
-
+        return dbCreator.getDatabase().patientDao().getAllPatient();
     }
 }

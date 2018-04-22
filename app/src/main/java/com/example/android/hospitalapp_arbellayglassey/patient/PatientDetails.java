@@ -10,15 +10,10 @@ import android.widget.TextView;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.GetPatient;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.GetPatients;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
-import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.treatment.TreatmentDetails;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class PatientDetails extends AppCompatActivity {
@@ -82,7 +77,7 @@ public class PatientDetails extends AppCompatActivity {
         Intent intentGetId = getIntent();
         idPatient = intentGetId.getIntExtra("idP", 0);
 
-        patientEntity = new GetPatient(PatientDetails.this, idPatient).execute().get();
+        patientEntity = new AsyncGetPatient(PatientDetails.this, idPatient).execute().get();
 
 
     }

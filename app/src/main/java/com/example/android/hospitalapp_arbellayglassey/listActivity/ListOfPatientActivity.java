@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.GetPatients;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatients;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientAdd;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
@@ -66,7 +66,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfPatientActivity.this);
 
         //Executre and get all the patients from our database
-        patientEntities = new GetPatients(ListOfPatientActivity.this).execute().get();
+        patientEntities = new AsyncGetPatients(ListOfPatientActivity.this).execute().get();
 
         //Add the patient in the list to display it
         for (PatientEntity p : patientEntities){

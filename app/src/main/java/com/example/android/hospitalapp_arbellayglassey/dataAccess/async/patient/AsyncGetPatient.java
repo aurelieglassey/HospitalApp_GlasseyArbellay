@@ -9,7 +9,7 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Patient
 
 import java.lang.ref.WeakReference;
 
-public class GetPatient extends AsyncTask<Integer, Void, PatientEntity>
+public class AsyncGetPatient extends AsyncTask<Integer, Void, PatientEntity>
 
     {
 
@@ -18,7 +18,7 @@ public class GetPatient extends AsyncTask<Integer, Void, PatientEntity>
 
         int id;
 
-        public GetPatient(Context view, int id ) {
+        public AsyncGetPatient(Context view, int id ) {
         mContext = new WeakReference<>(view);
         this.id = id;
     }
