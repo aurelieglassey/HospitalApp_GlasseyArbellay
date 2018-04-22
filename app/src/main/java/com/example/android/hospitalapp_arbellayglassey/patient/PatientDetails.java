@@ -6,24 +6,83 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.GetPatient;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.GetPatients;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.treatment.TreatmentDetails;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class PatientDetails extends AppCompatActivity {
 
     //Button to show the treatment
     private Button btnShowTreatment;
     private ImageButton btnModifyPatient;
+    private PatientEntity patientEntity;
+    private int idPatient;
+    private TextView textViewName;
+    private TextView textViewAge;
+    private TextView textViewGender;
+    private TextView textViewRoom;
+    private TextView textViewBloodGroup;
+    private TextView textViewAdmission;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_details);
+        try {
+            readDB();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        textViewName = findViewById(R.id.namePatientDetails);
+        textViewAge = findViewById(R.id.agePatientDetails);
+        textViewGender = findViewById(R.id.genderPatientDetails);
+        textViewRoom = findViewById(R.id.roomPatientDetails);
+        textViewBloodGroup = findViewById(R.id.bloodGroupPatientDetails);
+        textViewAdmission = findViewById(R.id.admissionPatientDetails);
+
+        textViewName.setText(patientEntity.getName());
+        textViewAge.setText(String.valueOf(patientEntity.getAge()));
+        textViewGender.setText(String.valueOf(patientEntity.getGender()));
+        textViewRoom.setText(String.valueOf(patientEntity.getRoomNumber()));
+        textViewBloodGroup.setText(patientEntity.getBloodGroup());
+        textViewAdmission.setText(patientEntity.getReasonAdmission());
+
 
         //Press on the button Show Treatment
         pressBtnShowTreatment();
         pressBtnModifyPatient();
+
+
+    }
+
+
+
+    public void readDB() throws ExecutionException, InterruptedException {
+
+
+
+        DatabaseCreator dbCreator = DatabaseCreator.getInstance(PatientDetails.this);
+
+        Intent intentGetId = getIntent();
+        idPatient = intentGetId.getIntExtra("idP", 0);
+
+        patientEntity = new GetPatient(PatientDetails.this, idPatient).execute().get();
 
 
     }

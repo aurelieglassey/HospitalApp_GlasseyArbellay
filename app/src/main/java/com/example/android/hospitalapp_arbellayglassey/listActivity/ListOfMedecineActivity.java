@@ -7,18 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapter;
+import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterMedecine;
+import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.GetMedecines;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineAdd;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineDetails;
 import com.example.android.hospitalapp_arbellayglassey.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -52,7 +51,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         //Switch between activities
         Intent intent = new Intent(ListOfMedecineActivity.this, MedecineDetails.class);
         list = (ListView) findViewById(R.id.listofmedecine);
-        list.setAdapter(new ListViewWithDelBtnAdapter(medecines, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
+        list.setAdapter(new ListViewWithDelBtnAdapterMedecine(medecines, MedecineEntities, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
 
 
     }

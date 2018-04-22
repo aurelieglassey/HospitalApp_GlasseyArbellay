@@ -11,26 +11,34 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 
-public class ListViewWithDelBtnAdapter extends BaseAdapter implements ListAdapter {
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
+import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements ListAdapter {
 
     private int layout ;
     private int listViewLayout;
     private ArrayList<String> list ;
     private Context context;
     private Intent intent;
+    List<PatientEntity> Entities;
     int idDelButton;
+
 
     // constructor to get all the necessary variables
 
-    public ListViewWithDelBtnAdapter(ArrayList<String> list, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton) {
+    public ListViewWithDelBtnAdapterPatient(ArrayList<String> list, List<PatientEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
         this.list = list;
         this.context = context;
         this.intent = intent;
         this.layout = layout;
         this.listViewLayout = idListViewLayout;
         this.idDelButton = idDelButton;
+        this.Entities = Entities;
     }
 
     @Override
@@ -50,7 +58,7 @@ public class ListViewWithDelBtnAdapter extends BaseAdapter implements ListAdapte
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, ViewGroup parent) {
 
         View view = convertView;
 
@@ -64,10 +72,12 @@ public class ListViewWithDelBtnAdapter extends BaseAdapter implements ListAdapte
         TextView txtView = (TextView)view.findViewById(listViewLayout);
         txtView.setText(list.get(position));
 
+
         //On click listener to get the correct details
         txtView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intent.putExtra("idP", Entities.get(position).getIdP());
                 context.startActivity(intent);
                 Toast.makeText(context, "Object to see details: "+ list.get(position).toString(), Toast.LENGTH_LONG).show();
 

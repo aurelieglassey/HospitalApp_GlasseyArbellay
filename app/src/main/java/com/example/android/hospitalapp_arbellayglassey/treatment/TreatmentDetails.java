@@ -9,12 +9,14 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
-import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapter;
+import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterMedecine;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineAddSearchList;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineDetails;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class TreatmentDetails extends AppCompatActivity {
 
@@ -23,6 +25,10 @@ public class TreatmentDetails extends AppCompatActivity {
     private Button btnAddMedecineToTreatment;
     //Button to modify a treatment
     private ImageButton btnModifyTreatment;
+
+    List<MedecineEntity> medecineEntityList;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +46,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
         Intent intent = new Intent(TreatmentDetails.this, MedecineDetails.class);
         list = (ListView) findViewById(R.id.listofmedicinefortreatment);
-        list.setAdapter(new ListViewWithDelBtnAdapter(medecine, TreatmentDetails.this, intent, R.layout.listofmedicinefortreatment_layout, R.id.listview_listofmedecinefortreatment, R.id.deleteMedecineForTreatmentButton));
+        list.setAdapter(new ListViewWithDelBtnAdapterMedecine(medecine, medecineEntityList,TreatmentDetails.this, intent, R.layout.listofmedicinefortreatment_layout, R.id.listview_listofmedecinefortreatment, R.id.deleteMedecineForTreatmentButton));
     }
 
 
