@@ -20,7 +20,7 @@ public interface TreatmentMedecineLinkDao {
     public List<TreatmentMedecineLinkEntity> getAllTreatmentMedecineByIdTreatment(int idTreamtentSearch);
 
     @Insert
-    public void insertTreatmentMedecine (TreatmentMedecineLinkEntity treatmentMedecineLink);
+    public long insertTreatmentMedecine (TreatmentMedecineLinkEntity treatmentMedecineLink);
 
     @Delete
     public void deleteTreatmentMedecine (TreatmentMedecineLinkEntity treatmentMedecineLink);

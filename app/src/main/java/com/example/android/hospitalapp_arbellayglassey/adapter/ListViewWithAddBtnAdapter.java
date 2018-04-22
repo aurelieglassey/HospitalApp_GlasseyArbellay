@@ -6,12 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.link.AsyncAddLink;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentMedecineLinkEntity;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapter {
     private int layout ;
@@ -19,17 +27,22 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
     private ArrayList<String> list ;
     private Context context;
     private Intent intent;
+    List<MedecineEntity> Entities;
+    private int idT;
+    private int idP;
     int idAddButton;
 
     // constructor to get all the necessary variables
 
-    public ListViewWithAddBtnAdapter(ArrayList<String> list, Context context, Intent intent, int layout, int idListViewLayout, int idAddButton) {
+    public ListViewWithAddBtnAdapter(ArrayList<String> list,List<MedecineEntity> Entities, int idT, int idP, Context context, Intent intent, int layout, int idListViewLayout, int idAddButton) {
         this.list = list;
         this.context = context;
         this.intent = intent;
         this.layout = layout;
         this.listViewLayout = idListViewLayout;
         this.idAddButton = idAddButton;
+        this.Entities = Entities;
+        this.idT = idT;
     }
 
     @Override
@@ -71,6 +84,18 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Object to add: "+ list.get(position).toString(), Toast.LENGTH_LONG).show();
+                TreatmentMedecineLinkEntity linkEn = new TreatmentMedecineLinkEntity();
+                linkEn.setIdMedecine(Entities.get(position).getIdM());
+                linkEn.setIdTreatment(idT);
+                intent.putExtra("idP", idT);
+
+                try {
+                    new AsyncAddLink(context, linkEn).execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
                 context.startActivity(intent);
 
             }

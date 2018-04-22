@@ -94,6 +94,8 @@ public class TreatmentDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TreatmentDetails.this, MedecineAddSearchList.class);
+                intent.putExtra("idT", treatmentEntity.getIdT());
+                intent.putExtra("idP", idPatient);
                 TreatmentDetails.this.startActivity(intent);
             }
         });

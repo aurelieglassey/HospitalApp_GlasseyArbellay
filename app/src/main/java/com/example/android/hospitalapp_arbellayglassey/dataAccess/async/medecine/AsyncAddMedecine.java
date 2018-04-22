@@ -10,7 +10,7 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Patient
 
 import java.lang.ref.WeakReference;
 
-public class AsyncAddMedecine extends AsyncTask<PatientEntity, Void, Long> {
+public class AsyncAddMedecine extends AsyncTask<MedecineEntity, Void, Long> {
 
     // Weak references will still allow the Activity to be garbage-collected
     private final WeakReference<Context> mContext;
@@ -25,7 +25,7 @@ public class AsyncAddMedecine extends AsyncTask<PatientEntity, Void, Long> {
 
     //Call the DB and insert a new medecine in the DB
     @Override
-    protected Long doInBackground(PatientEntity... patientEntities) throws SQLiteConstraintException {
+    protected Long doInBackground(MedecineEntity... medecineEntities) throws SQLiteConstraintException {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());
         return dbCreator.getDatabase().medecineDao().insertMedecine(medecineEntity);
 
