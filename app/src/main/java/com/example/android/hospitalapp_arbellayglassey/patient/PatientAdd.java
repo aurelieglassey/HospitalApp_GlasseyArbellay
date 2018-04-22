@@ -9,8 +9,11 @@ import android.widget.EditText;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncAddPatient;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncAddTreatment;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
+import com.example.android.hospitalapp_arbellayglassey.treatment.TreatmentDetails;
 
 import java.util.concurrent.ExecutionException;
 
@@ -20,6 +23,7 @@ public class PatientAdd extends AppCompatActivity {
     //button ok
     private Button okAddPatient;
     private PatientEntity patientEntity;
+    private TreatmentEntity treatmentEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +77,19 @@ public class PatientAdd extends AppCompatActivity {
     public void addPatient(PatientEntity patientEntity){
 
         try {
+            //Add the new patient in the db
             Long id = new AsyncAddPatient(PatientAdd.this, patientEntity).execute().get();
+
+            //Add a treatment for the new patient.
+            //Create a name just for the new patient
+            String namePatient = patientEntity.getName().toString();
+            String officialNameTreatment = " Treatment - " + namePatient;
+
+            //create a treatment
+            treatmentEntity = new TreatmentEntity(officialNameTreatment,  id.intValue());
+            //Add the treatment in the db
+            Long idTreatment = new AsyncAddTreatment(PatientAdd.this, treatmentEntity).execute().get();
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -81,5 +97,8 @@ public class PatientAdd extends AppCompatActivity {
         }
 
     }
+
+
+
 }
 

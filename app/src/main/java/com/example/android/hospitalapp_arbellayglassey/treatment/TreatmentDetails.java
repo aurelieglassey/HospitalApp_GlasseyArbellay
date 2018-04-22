@@ -36,6 +36,7 @@ public class TreatmentDetails extends AppCompatActivity {
     private TreatmentEntity treatmentEntity;
     private PatientEntity patientEntity;
     private int idPatient;
+    private int idTreatment;
     private TextView textViewAdmission;
     private TextView textViewName;
     //private TextView textViewAdmission;
@@ -114,11 +115,11 @@ public class TreatmentDetails extends AppCompatActivity {
     public void readDB() throws ExecutionException, InterruptedException {
 
 
-
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(TreatmentDetails.this);
 
         Intent intentGetId = getIntent();
         idPatient = intentGetId.getIntExtra("idP", 0);
+      //  idTreatment = intentGetId.getIntExtra("idT", 0);
 
         treatmentEntity = new AsyncGetTreatment(TreatmentDetails.this, idPatient).execute().get();
         patientEntity = new AsyncGetPatient(TreatmentDetails.this, idPatient).execute().get();

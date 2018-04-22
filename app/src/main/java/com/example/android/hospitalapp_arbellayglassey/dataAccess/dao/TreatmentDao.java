@@ -18,7 +18,7 @@ import java.util.List;
 public interface TreatmentDao {
 
     @Insert
-    void insertTreatmentt(TreatmentEntity treatment);
+    long insertTreatment(TreatmentEntity treatment);
 
     @Delete
     void deleteTreatmentt(TreatmentEntity treatment);

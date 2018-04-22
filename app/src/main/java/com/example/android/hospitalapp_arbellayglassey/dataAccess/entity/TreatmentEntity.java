@@ -36,11 +36,12 @@ public class TreatmentEntity {
     public TreatmentEntity() {
     }
 
-    public TreatmentEntity(int id, String name, int idPatient) {
-        this.idT = id;
+    public TreatmentEntity(String name, int idPatient) {
         this.name = name;
         this.idPatient = idPatient;
     }
+
+
 
     //Getters and setters
     public int getIdT() {

@@ -95,6 +95,7 @@ public class PatientDetails extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PatientDetails.this, TreatmentDetails.class);
                 intent.putExtra("idP", patientEntity.getIdP());
+               // intent.putExtra("idT", idMedecine);
                 PatientDetails.this.startActivity(intent);
             }
         });
