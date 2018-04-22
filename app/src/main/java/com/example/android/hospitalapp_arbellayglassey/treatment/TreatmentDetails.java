@@ -7,16 +7,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterMedecine;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncGetTreatment;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineAddSearchList;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineDetails;
+import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class TreatmentDetails extends AppCompatActivity {
 
@@ -25,6 +33,13 @@ public class TreatmentDetails extends AppCompatActivity {
     private Button btnAddMedecineToTreatment;
     //Button to modify a treatment
     private ImageButton btnModifyTreatment;
+    private TreatmentEntity treatmentEntity;
+    private PatientEntity patientEntity;
+    private int idPatient;
+    private TextView textViewAdmission;
+    private TextView textViewName;
+    //private TextView textViewAdmission;
+
 
     List<MedecineEntity> medecineEntityList;
 
@@ -34,6 +49,20 @@ public class TreatmentDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_details);
+
+        textViewAdmission = findViewById(R.id.AdmissionTreatmentDetails);
+        textViewName = findViewById(R.id.nameTreatmentDetails);
+
+        try {
+            readDB();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        textViewName.setText(treatmentEntity.getName());
+        textViewAdmission.setText(patientEntity.getReasonAdmission());
 
         //Add a medecine to the treatment of a patient
         pressAddMedecineToTreatment();
@@ -79,6 +108,21 @@ public class TreatmentDetails extends AppCompatActivity {
                 TreatmentDetails.this.startActivity(intent);
             }
         });
+
+    }
+
+    public void readDB() throws ExecutionException, InterruptedException {
+
+
+
+        DatabaseCreator dbCreator = DatabaseCreator.getInstance(TreatmentDetails.this);
+
+        Intent intentGetId = getIntent();
+        idPatient = intentGetId.getIntExtra("idP", 0);
+
+        treatmentEntity = new AsyncGetTreatment(TreatmentDetails.this, idPatient).execute().get();
+        patientEntity = new AsyncGetPatient(TreatmentDetails.this, idPatient).execute().get();
+
 
     }
 
