@@ -30,13 +30,12 @@ public class TreatmentMedecineLinkEntity {
     @Nullable
     private int idMedecine;
 
-    @ColumnInfo(name = "quantity_per_day")
-    private String quantityPerDay;
+//    @ColumnInfo(name = "quantity_per_day")//   private String quantityPerDay;
 
     public TreatmentMedecineLinkEntity(int idTreatment, int idMedecine, String quantityPerDay) {
         this.idTreatment = idTreatment;
         this.idMedecine = idMedecine;
-        this.quantityPerDay = quantityPerDay;
+        //this.quantityPerDay = quantityPerDay;
     }
 
     public TreatmentMedecineLinkEntity() {
@@ -53,9 +52,7 @@ public class TreatmentMedecineLinkEntity {
         return idMedecine;
     }
 
-    public String getQuantityPerDay() {
-        return quantityPerDay;
-    }
+    //public String getQuantityPerDay() {return quantityPerDay;}
 
     public void setIdTreatment(int idTreatment) {
         this.idTreatment = idTreatment;
@@ -65,7 +62,5 @@ public class TreatmentMedecineLinkEntity {
         this.idMedecine = idMedecine;
     }
 
-    public void setQuantityPerDay(String quantityPerDay) {
-        this.quantityPerDay = quantityPerDay;
-    }
+    //public void setQuantityPerDay(String quantityPerDay) {this.quantityPerDay = quantityPerDay;}
 }

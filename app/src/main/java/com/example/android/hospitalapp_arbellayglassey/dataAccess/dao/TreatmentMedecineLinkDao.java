@@ -17,7 +17,7 @@ public interface TreatmentMedecineLinkDao {
 
     //Get all treatmentMedecine by an id treatment
     @Query("SELECT * FROM treatmentmedecinelink WHERE idTreatment = :idTreamtentSearch")
-    public TreatmentMedecineLinkEntity getAllTreatmentMedecineByIdTreatment(int idTreamtentSearch);
+    public List<TreatmentMedecineLinkEntity> getAllTreatmentMedecineByIdTreatment(int idTreamtentSearch);
 
     @Insert
     public void insertTreatmentMedecine (TreatmentMedecineLinkEntity treatmentMedecineLink);

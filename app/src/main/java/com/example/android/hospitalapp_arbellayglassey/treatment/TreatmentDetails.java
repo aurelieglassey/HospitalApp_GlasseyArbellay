@@ -12,11 +12,13 @@ import android.widget.TextView;
 import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.link.AsyncGetLinks;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncGetTreatment;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentMedecineLinkEntity;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineAddSearchList;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineDetails;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
@@ -35,8 +37,8 @@ public class TreatmentDetails extends AppCompatActivity {
     private ImageButton btnModifyTreatment;
     private TreatmentEntity treatmentEntity;
     private PatientEntity patientEntity;
+    private List<TreatmentMedecineLinkEntity> linkEntity;
     private int idPatient;
-    private int idTreatment;
     private TextView textViewAdmission;
     private TextView textViewName;
     //private TextView textViewAdmission;
@@ -115,14 +117,14 @@ public class TreatmentDetails extends AppCompatActivity {
     public void readDB() throws ExecutionException, InterruptedException {
 
 
+
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(TreatmentDetails.this);
 
         Intent intentGetId = getIntent();
         idPatient = intentGetId.getIntExtra("idP", 0);
-      //  idTreatment = intentGetId.getIntExtra("idT", 0);
-
         treatmentEntity = new AsyncGetTreatment(TreatmentDetails.this, idPatient).execute().get();
         patientEntity = new AsyncGetPatient(TreatmentDetails.this, idPatient).execute().get();
+        linkEntity = new AsyncGetLinks(TreatmentDetails.this, treatmentEntity.getIdT()).execute().get();
 
 
     }

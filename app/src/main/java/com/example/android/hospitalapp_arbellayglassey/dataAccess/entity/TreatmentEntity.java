@@ -31,6 +31,7 @@ public class TreatmentEntity {
     private String name;
 
     @ColumnInfo(name = "idPatient")
+    @Nullable
     private int idPatient;
 
     public TreatmentEntity() {
