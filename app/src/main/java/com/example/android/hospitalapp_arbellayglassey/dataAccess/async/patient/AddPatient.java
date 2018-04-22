@@ -11,6 +11,8 @@ import java.lang.ref.WeakReference;
 
 public class AddPatient extends AsyncTask<PatientEntity, Void, Long> {
 
+
+    
     // Weak references will still allow the Activity to be garbage-collected
     private final WeakReference<Context> mContext;
 
