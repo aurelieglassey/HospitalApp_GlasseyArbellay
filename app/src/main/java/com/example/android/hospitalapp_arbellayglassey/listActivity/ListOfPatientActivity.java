@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapter;
+import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.GetPatients;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
@@ -49,7 +49,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
         Intent intent = new Intent(ListOfPatientActivity.this, PatientDetails.class);
         list = (ListView) findViewById(R.id.listofpatient);
-        list.setAdapter(new ListViewWithDelBtnAdapter(patients, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton));
+        list.setAdapter(new ListViewWithDelBtnAdapterPatient(patients, patientEntities, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton));
 
 
 

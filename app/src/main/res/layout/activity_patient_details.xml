@@ -45,7 +45,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Aurelie Glassey"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
                 <ImageButton
@@ -95,7 +94,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="21"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
 
@@ -122,7 +120,6 @@
                         android:id="@+id/genderPatientDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="F"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
             </LinearLayout>
@@ -161,11 +158,10 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/ageRoomPatientDetails"
+                        android:id="@+id/roomPatientDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Jamais 203"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
 
@@ -192,7 +188,6 @@
                         android:id="@+id/bloodGroupPatientDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="0 Neg"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                 </LinearLayout>
             </LinearLayout>
@@ -220,7 +215,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Broken arm and multiples fractures due to fall from heaven"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <View
