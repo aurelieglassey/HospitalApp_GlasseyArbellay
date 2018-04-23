@@ -30,6 +30,9 @@ public class TreatmentEntity {
     @ColumnInfo(name = "name")
     private String name;
 
+    @ColumnInfo(name = "Max_quantity")
+    private int maxQuantity;
+
     @ColumnInfo(name = "idPatient")
     @Nullable
     private int idPatient;
@@ -37,8 +40,9 @@ public class TreatmentEntity {
     public TreatmentEntity() {
     }
 
-    public TreatmentEntity(String name, int idPatient) {
+    public TreatmentEntity(String name, int maxQuantity, int idPatient) {
         this.name = name;
+        this.maxQuantity = maxQuantity;
         this.idPatient = idPatient;
     }
 
@@ -68,5 +72,13 @@ public class TreatmentEntity {
 
     public void setIdPatient(int idPatient) {
         this.idPatient = idPatient;
+    }
+
+    public int getMaxQuantity() {
+        return maxQuantity;
+    }
+
+    public void setMaxQuantity(int maxQuantity) {
+        this.maxQuantity = maxQuantity;
     }
 }

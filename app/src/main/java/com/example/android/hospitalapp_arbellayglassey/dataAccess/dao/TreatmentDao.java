@@ -21,10 +21,10 @@ public interface TreatmentDao {
     long insertTreatment(TreatmentEntity treatment);
 
     @Delete
-    void deleteTreatmentt(TreatmentEntity treatment);
+    void deleteTreatment(TreatmentEntity treatment);
 
     @Update
-    void updatetTreatmentt(TreatmentEntity treatment);
+    void updatetTreatment(TreatmentEntity treatment);
 
     //Get a treatment by idPatient
     @Query("SELECT * FROM Treatment WHERE idPatient = :idPatient")

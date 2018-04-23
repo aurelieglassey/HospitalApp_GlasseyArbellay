@@ -43,9 +43,10 @@ public class TreatmentDetails extends AppCompatActivity {
     private int idPatient;
     private TextView textViewAdmission;
     private TextView textViewName;
+    private TextView textViewQuantityName;
 
+ //private TextView textViewAdmission;
     private ListViewWithDelBtnAdapterLink adapterLink;
-
     private List<MedecineEntity> medecineEntityList;
 
 
@@ -55,9 +56,6 @@ public class TreatmentDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_details);
 
-        textViewAdmission = findViewById(R.id.AdmissionTreatmentDetails);
-        textViewName = findViewById(R.id.nameTreatmentDetails);
-
 
         try {
             readDB();
@@ -65,8 +63,10 @@ public class TreatmentDetails extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        textViewName.setText(treatmentEntity.getName());
-        textViewAdmission.setText(patientEntity.getReasonAdmission());
+        //find the textview by his id
+        setId();
+        setText();
+
 
         //Add a medecine to the treatment of a patient
         pressAddMedecineToTreatment();
@@ -90,6 +90,7 @@ public class TreatmentDetails extends AppCompatActivity {
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
+        setText();
         adapterLink.refreshEvents(medecineEntityList);
 
     }
@@ -101,6 +102,19 @@ public class TreatmentDetails extends AppCompatActivity {
     }
 
 
+    public void setId(){
+        textViewAdmission = findViewById(R.id.AdmissionTreatmentDetails);
+        textViewName = findViewById(R.id.nameTreatmentDetails);
+        textViewQuantityName = findViewById(R.id.quantityTreatmentDetails);
+
+    }
+
+    public void setText(){
+        textViewName.setText(treatmentEntity.getName());
+        textViewQuantityName.setText(String.valueOf(treatmentEntity.getMaxQuantity()));
+        textViewAdmission.setText(patientEntity.getReasonAdmission());
+
+    }
 
     //When the user decide to add medecine to a treatment
     public void pressAddMedecineToTreatment(){
@@ -130,6 +144,8 @@ public class TreatmentDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TreatmentDetails.this, TreatmentModify.class);
+                intent.putExtra("idT", treatmentEntity.getIdT());
+                intent.putExtra("idP", idPatient);
                 TreatmentDetails.this.startActivity(intent);
             }
         });

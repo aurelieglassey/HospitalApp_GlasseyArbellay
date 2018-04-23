@@ -61,7 +61,6 @@ public class MedecineModify extends AppCompatActivity {
         editTextIngredient.setText(medecineEntity.getActiveIngredient());
         editTextEffects.setText(medecineEntity.getSideEffects());
         editTextMaxDay.setText(String.valueOf(medecineEntity.getMaxPerDay()));
-
         editTextApplication.setText(medecineEntity.getApplication());
     }
 

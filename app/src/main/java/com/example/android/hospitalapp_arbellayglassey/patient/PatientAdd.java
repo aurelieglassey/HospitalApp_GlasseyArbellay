@@ -35,7 +35,6 @@ public class PatientAdd extends AppCompatActivity {
         //Button to confirm that we want to add this new patient
         pressOkAddPatient();
 
-
     }
 
     //When the user want to add a new patient and the data are ok to be added
@@ -80,33 +79,15 @@ public class PatientAdd extends AppCompatActivity {
                     error = 1;
                 }
 
-               /* if (agePatient.getText().toString().length() == 0){
-                    agePatient.setError("Please enter a age");
-                    agePatient.requestFocus();
-                    error = 1;
-                }
-*/
 
-               /*
-                int s = Integer.parseInt(agePatient.getText().toString());
-                if (s == 0){
+
+              /*  int age = Integer.parseInt(agePatient.getText().toString());
+                if (age < 0){
                     agePatient.setError("Please enter a age");
                     agePatient.requestFocus();
                     error = 1;
                 }
                 */
-
-/*
-                String s = String.valueOf(agePatient.getText().toString());
-                if (s.length()== 0){
-                    agePatient.setError("Please enter a age");
-                    agePatient.requestFocus();
-                    error = 1;
-                }
-
-*/
-
-
 
                 //if the error is 0, it means that the fields are correctly fill
                 if (error == 0){
@@ -136,8 +117,10 @@ public class PatientAdd extends AppCompatActivity {
             String namePatient = patientEntity.getName().toString();
             String officialNameTreatment = " Treatment - " + namePatient;
 
+
             //create a treatment
-            treatmentEntity = new TreatmentEntity(officialNameTreatment,  id.intValue());
+            //1 is the default value for max quantity of this new treatment assigned to this new patient
+            treatmentEntity = new TreatmentEntity(officialNameTreatment, 1,  id.intValue());
             //Add the treatment in the db
             Long idTreatment = new AsyncAddTreatment(PatientAdd.this, treatmentEntity).execute().get();
 
