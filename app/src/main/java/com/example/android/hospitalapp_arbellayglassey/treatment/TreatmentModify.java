@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncGetTreatment;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncUpdateTreatment;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientModify;
@@ -25,7 +27,7 @@ public class TreatmentModify extends AppCompatActivity {
     private PatientEntity patientEntity;
     private int idTreatment;
     private  int idPatient;
-    private EditText editTextAdmission;
+    private TextView textViewAdmission;
     private EditText editTextName;
     private EditText editTextQuantity;
 
@@ -44,17 +46,17 @@ public class TreatmentModify extends AppCompatActivity {
 
         pressBtnModifyTreatment();
 
-        editTextAdmission = findViewById(R.id.AdmissionTreatmentModify);
+        textViewAdmission = findViewById(R.id.AdmissionTreatmentModify);
         editTextName = findViewById(R.id.nameTreatmentModify);
         editTextQuantity = findViewById(R.id.quantityTreatmentModify);
 
-        editTextAdmission.setText(patientEntity.getReasonAdmission());
+        textViewAdmission.setText(patientEntity.getReasonAdmission());
         editTextName.setText(treatmentEntity.getName());
         editTextQuantity.setText(String.valueOf(treatmentEntity.getMaxQuantity()));
 
     }
 
-
+    //When the user want to apply the changes he has made for the treatment
     public void pressBtnModifyTreatment(){
 
         btnModifyTreatmentOk = (Button) findViewById(R.id.btn_modify_treatment);
@@ -62,8 +64,14 @@ public class TreatmentModify extends AppCompatActivity {
         btnModifyTreatmentOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TreatmentModify.this, TreatmentDetails.class);
-                TreatmentModify.this.startActivity(intent);
+
+                treatmentEntity.setName(editTextName.getText().toString());
+                treatmentEntity.setMaxQuantity(Integer.parseInt(editTextQuantity.getText().toString()));
+
+                new AsyncUpdateTreatment(TreatmentModify.this).execute(treatmentEntity);
+                finish();
+                //Intent intent = new Intent(TreatmentModify.this, TreatmentDetails.class);
+                //TreatmentModify.this.startActivity(intent);
             }
         });
     }
@@ -82,4 +90,7 @@ public class TreatmentModify extends AppCompatActivity {
 
 
     }
+
+
+
 }

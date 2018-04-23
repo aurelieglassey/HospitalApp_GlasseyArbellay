@@ -36,7 +36,7 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/AdmissionTreatmentModify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,6 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Modify"
+                    android:inputType="number"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             </LinearLayout>

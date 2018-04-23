@@ -47,7 +47,6 @@ public class TreatmentDetails extends AppCompatActivity {
 
  //private TextView textViewAdmission;
     private ListViewWithDelBtnAdapterLink adapterLink;
-
     private List<MedecineEntity> medecineEntityList;
 
 
@@ -57,9 +56,6 @@ public class TreatmentDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_details);
 
-        textViewAdmission = findViewById(R.id.AdmissionTreatmentDetails);
-        textViewName = findViewById(R.id.nameTreatmentDetails);
-        textViewQuantityName = findViewById(R.id.quantityTreatmentDetails);
 
         try {
             readDB();
@@ -69,9 +65,10 @@ public class TreatmentDetails extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        textViewName.setText(treatmentEntity.getName());
-        textViewQuantityName.setText(String.valueOf(treatmentEntity.getMaxQuantity()));
-        textViewAdmission.setText(patientEntity.getReasonAdmission());
+        //find the textview by his id
+        setId();
+        setText();
+
 
         //Add a medecine to the treatment of a patient
         pressAddMedecineToTreatment();
@@ -98,6 +95,7 @@ public class TreatmentDetails extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        setText();
         adapterLink.refreshEvents(medecineEntityList);
 
     }
@@ -109,6 +107,19 @@ public class TreatmentDetails extends AppCompatActivity {
     }
 
 
+    public void setId(){
+        textViewAdmission = findViewById(R.id.AdmissionTreatmentDetails);
+        textViewName = findViewById(R.id.nameTreatmentDetails);
+        textViewQuantityName = findViewById(R.id.quantityTreatmentDetails);
+
+    }
+
+    public void setText(){
+        textViewName.setText(treatmentEntity.getName());
+        textViewQuantityName.setText(String.valueOf(treatmentEntity.getMaxQuantity()));
+        textViewAdmission.setText(patientEntity.getReasonAdmission());
+
+    }
 
     //When the user decide to add medecine to a treatment
     public void pressAddMedecineToTreatment(){
