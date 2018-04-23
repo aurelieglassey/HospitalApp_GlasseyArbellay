@@ -42,7 +42,7 @@ public class TreatmentDetails extends AppCompatActivity {
     private int idPatient;
     private TextView textViewAdmission;
     private TextView textViewName;
-    ArrayList<String> medecines;
+    private ListViewWithDelBtnAdapterMedecine adapterMedecine;
     //private TextView textViewAdmission;
 
 
@@ -125,14 +125,19 @@ public class TreatmentDetails extends AppCompatActivity {
         Intent intentGetId = getIntent();
         idPatient = intentGetId.getIntExtra("idP", 0);
         treatmentEntity = new AsyncGetTreatment(TreatmentDetails.this, idPatient).execute().get();
+
         patientEntity = new AsyncGetPatient(TreatmentDetails.this, idPatient).execute().get();
+
         listLinkEntity = new AsyncGetLinks(TreatmentDetails.this, treatmentEntity.getIdT()).execute().get();
-        medecines = new ArrayList<>();
+        medecineEntityList= new ArrayList<>();
+
         for (TreatmentMedecineLinkEntity linkEntity: listLinkEntity) {
-            medecines.add(new AsyncGetMedecine(TreatmentDetails.this,linkEntity.getIdMedecine()).execute().get().getName() );
+            medecineEntityList.add(new AsyncGetMedecine(TreatmentDetails.this,linkEntity.getIdMedecine()).execute().get());
         }
 
 
     }
+
+
 
 }

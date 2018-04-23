@@ -26,8 +26,9 @@ public class ListOfMedecineActivity extends AppCompatActivity {
     //Button add a new medecine
     private Button btnAddNewMedecine;
     private List<MedecineEntity> MedecineEntities;
+    private ListViewWithDelBtnAdapterMedecine adapterMedecine;
 
-    ArrayList<String> medecines;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
     //Read the db from our application
     public void readDB() throws ExecutionException, InterruptedException {
 
-        medecines = new ArrayList<String>();
+
 
         //access to the database creator
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfMedecineActivity.this);
@@ -82,9 +83,9 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         MedecineEntities = new AsyncGetMedecines(ListOfMedecineActivity.this).execute().get();
 
         //Add all the medecine in the list to display it
-        for (MedecineEntity p : MedecineEntities){
-            medecines.add(p.getName());
-        }
+        //for (MedecineEntity p : MedecineEntities){
+        //   medecines.add(p.getName());
+        //}
 
 
     }

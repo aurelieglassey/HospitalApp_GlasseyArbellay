@@ -1,26 +1,20 @@
 package com.example.android.hospitalapp_arbellayglassey.listActivity;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterPatient;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatients;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientAdd;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
 import com.example.android.hospitalapp_arbellayglassey.R;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -29,7 +23,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
     //Button add a new patient
     private Button btnNewPatient;
     private List<PatientEntity> patientEntities;
-    private ListViewWithDelBtnAdapterPatient listAdapter;
+    private ListViewWithDelBtnAdapterPatient adapterPatient;
 
 
 
@@ -56,8 +50,8 @@ public class ListOfPatientActivity extends AppCompatActivity {
         //Intent to switch between the activities
         Intent intent = new Intent(ListOfPatientActivity.this, PatientDetails.class);
         list = (ListView) findViewById(R.id.listofpatient);
-        listAdapter =  new ListViewWithDelBtnAdapterPatient( patientEntities, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton);
-        list.setAdapter(listAdapter);
+        adapterPatient =  new ListViewWithDelBtnAdapterPatient( patientEntities, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton);
+        list.setAdapter(adapterPatient);
 
 
 
@@ -75,7 +69,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        listAdapter.refreshEvents(patientEntities);
+        adapterPatient.refreshEvents(patientEntities);
 
     }
 
