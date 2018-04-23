@@ -116,6 +116,7 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
 
         return view;
     }
+
     public void refreshEvents(List<PatientEntity> patientEntities) {
         this.Entities.clear();
         this.Entities.addAll(patientEntities);

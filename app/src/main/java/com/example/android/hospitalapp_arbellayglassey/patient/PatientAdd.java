@@ -65,12 +65,33 @@ public class PatientAdd extends AppCompatActivity {
                 patientEntity.setBloodGroup(bloodPatient.getText().toString());
                 patientEntity.setReasonAdmission(admissionPatient.getText().toString());
 
-                //Call the method add patient
-                addPatient(patientEntity);
 
-                //PatientAdd.this.startActivity(intent);
-                finish();
+                  /* if (patientEntity.getName().toString().trim().equalsIgnoreCase("")){
+                    namePatient.setError("Enter name please");
+
+                }*/
+
+                  //Check if there is an error when the user fill the textview
+                //or if the user doesn't fill anyting.
+                int error = 0;
+                if (namePatient.getText().toString().length() == 0){
+                    namePatient.setError("Please fill this field");
+                    error = 1;
+                }
+
+
+                //if the error is 0, it means that the fields are correctly fill
+                if (error == 0){
+
+                    //Call the method add patient
+                    addPatient(patientEntity);
+
+                    //PatientAdd.this.startActivity(intent);
+                    finish();
+                }
             }
+
+
         });
     }
 
