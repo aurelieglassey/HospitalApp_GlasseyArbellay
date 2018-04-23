@@ -104,6 +104,7 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
                                 new AsyncDeleteMedecine(context, Entities.get(position)).execute();
                                 // pour delete et rerfresh la liste en live, del ici la liste d'entity à la position puis refresh
 
+                                
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
 
