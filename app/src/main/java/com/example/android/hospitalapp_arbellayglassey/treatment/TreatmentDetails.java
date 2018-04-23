@@ -43,7 +43,9 @@ public class TreatmentDetails extends AppCompatActivity {
     private int idPatient;
     private TextView textViewAdmission;
     private TextView textViewName;
+    private TextView textViewQuantityName;
 
+ //private TextView textViewAdmission;
     private ListViewWithDelBtnAdapterLink adapterLink;
 
     private List<MedecineEntity> medecineEntityList;
@@ -57,7 +59,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
         textViewAdmission = findViewById(R.id.AdmissionTreatmentDetails);
         textViewName = findViewById(R.id.nameTreatmentDetails);
-
+        textViewQuantityName = findViewById(R.id.quantityTreatmentDetails);
 
         try {
             readDB();
@@ -68,6 +70,7 @@ public class TreatmentDetails extends AppCompatActivity {
         }
 
         textViewName.setText(treatmentEntity.getName());
+        textViewQuantityName.setText(String.valueOf(treatmentEntity.getMaxQuantity()));
         textViewAdmission.setText(patientEntity.getReasonAdmission());
 
         //Add a medecine to the treatment of a patient
@@ -135,6 +138,8 @@ public class TreatmentDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TreatmentDetails.this, TreatmentModify.class);
+                intent.putExtra("idT", treatmentEntity.getIdT());
+                intent.putExtra("idP", idPatient);
                 TreatmentDetails.this.startActivity(intent);
             }
         });

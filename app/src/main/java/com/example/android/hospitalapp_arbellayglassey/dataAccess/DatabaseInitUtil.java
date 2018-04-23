@@ -96,16 +96,19 @@ public class DatabaseInitUtil {
         TreatmentEntity t1 = new TreatmentEntity();
         t1.setIdT(1);
         t1.setName("Aurelie_Treatment");
+        t1.setMaxQuantity(3);
         t1.setIdPatient(1);
 
         TreatmentEntity t2 = new TreatmentEntity();
         t2.setIdT(2);
         t2.setName("Olivier_Treatment");
+        t2.setMaxQuantity(7);
         t2.setIdPatient(2);
 
         TreatmentEntity t3 = new TreatmentEntity();
         t3.setIdT(3);
         t3.setName("Maud_Treatment");
+        t3.setMaxQuantity(7);
         t3.setIdPatient(3);
 
         lt.add(t1);

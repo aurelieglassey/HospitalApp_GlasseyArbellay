@@ -36,13 +36,15 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <TextView
+            <EditText
                 android:id="@+id/AdmissionTreatmentModify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Modify Broken arm and multiples fractures due to fall from heaven"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+
 
         </LinearLayout>
 
@@ -80,7 +82,7 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/nameTreatmentModify"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -108,7 +110,7 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/quantityTreatmentModify"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

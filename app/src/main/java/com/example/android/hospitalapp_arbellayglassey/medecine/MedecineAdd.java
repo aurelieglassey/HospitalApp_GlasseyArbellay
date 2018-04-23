@@ -40,7 +40,7 @@ public class MedecineAdd extends AppCompatActivity {
         btnAddNewMedecine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(MedecineAdd.this, ListOfMedecineActivity.class);
+               // Intent intent = new Intent(MedecineAdd.this, ListOfMedecineActivity.class);
 
                 //Get all (id) data of a madecine of the texte view
                 EditText nameMedecine = (EditText)findViewById(R.id.editNameMedecineAdd);
@@ -60,12 +60,52 @@ public class MedecineAdd extends AppCompatActivity {
                 medecineEntity.setMaxPerDay(Integer.parseInt(maxDayMedecine.getText().toString()));
                 medecineEntity.setApplication(applicationMedecine.getText().toString());
 
-                //Call the method add Medecine
-                addMedecine(medecineEntity);
+                //check if the user has correctly fiel the fields
+                int error = 0;
+                if (nameMedecine.getText().toString().length() == 0 ){
+                    nameMedecine.setError("Please enter a name");
+                    nameMedecine.requestFocus();
+                    error = 1;
+                }
+                if (typeMedecine.getText().toString().length() == 0 ){
+                    typeMedecine.setError("Please enter a type");
+                    typeMedecine.requestFocus();
+                    error = 1;
+                }
+                if (ingredientMedecine.getText().toString().length() == 0 ){
+                    ingredientMedecine.setError("Please enter a ingredient");
+                    ingredientMedecine.requestFocus();
+                    error = 1;
+                }
+                if (manufacturerMedecine.getText().toString().length() == 0 ){
+                    manufacturerMedecine.setError("Please enter a manufacturer");
+                    manufacturerMedecine.requestFocus();
+                    error = 1;
+                }
+                if (sideEffectMedecine.getText().toString().length() == 0 ){
+                    sideEffectMedecine.setError("Please enter side effects");
+                    sideEffectMedecine.requestFocus();
+                    error = 1;
+                }
+               /* if (maxDayMedecine.getText().toString().length() == 0 ){
+                    maxDayMedecine.setError("Please enter max day");
+                    maxDayMedecine.requestFocus();
+                    error = 1;
+                }
+                */
+                if (applicationMedecine.getText().toString().length() == 0 ){
+                    applicationMedecine.setError("Please enter an application");
+                    applicationMedecine.requestFocus();
+                    error = 1;
+                }
 
-                //MedecineAdd.this.startActivity(intent);
+                if (error == 0){
 
-                finish();
+                    //Call the method add Medecine
+                    addMedecine(medecineEntity);
+                    //MedecineAdd.this.startActivity(intent);
+                    finish();
+                }
 
             }
         });
