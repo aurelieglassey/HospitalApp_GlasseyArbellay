@@ -102,7 +102,10 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
                                 Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName().toString(), Toast.LENGTH_SHORT).show();
                                 intent.putExtra("idM", Entities.get(position).getIdM());
                                 new AsyncDeleteMedecine(context, Entities.get(position)).execute();
-                                // pour delete et rerfresh la liste en live, del ici la liste d'entity à la position puis refresh
+                                // delete the entites that was delete and notify changes
+                                Entities.remove(position);
+                                notifyDataSetChanged();
+
 
 
                             }})
