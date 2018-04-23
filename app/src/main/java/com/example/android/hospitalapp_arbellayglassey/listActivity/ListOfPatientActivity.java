@@ -1,10 +1,12 @@
 package com.example.android.hospitalapp_arbellayglassey.listActivity;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -25,8 +27,9 @@ public class ListOfPatientActivity extends AppCompatActivity {
     //Button add a new patient
     private Button btnNewPatient;
     private List<PatientEntity> patientEntities;
+    private ListViewWithDelBtnAdapterPatient listAdapter;
 
-    ArrayList<String> patients;
+
 
 
     @Override
@@ -51,27 +54,40 @@ public class ListOfPatientActivity extends AppCompatActivity {
         //Intent to switch between the activities
         Intent intent = new Intent(ListOfPatientActivity.this, PatientDetails.class);
         list = (ListView) findViewById(R.id.listofpatient);
-        list.setAdapter(new ListViewWithDelBtnAdapterPatient(patients, patientEntities, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton));
+        listAdapter =  new ListViewWithDelBtnAdapterPatient( patientEntities, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton);
+        list.setAdapter(listAdapter);
 
 
+
+
+    }
+    @Override
+    public void onRestart(){
+        super.onRestart();
+
+        try {
+            readDB();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        listAdapter.refreshEvents(patientEntities);
 
     }
 
     //Read te db from our application
     public void readDB() throws ExecutionException, InterruptedException {
 
-        patients = new ArrayList<String>();
+
 
         //Access to the database creator
-        DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfPatientActivity.this);
+        //DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfPatientActivity.this);
 
         //Execute and get all the patients from our database
         patientEntities = new AsyncGetPatients(ListOfPatientActivity.this).execute().get();
 
-        //Add the patient in the list to display it
-        for (PatientEntity p : patientEntities){
-           patients.add(p.getName());
-        }
 
 
     }

@@ -67,7 +67,9 @@ public class PatientAdd extends AppCompatActivity {
 
                 //Call the method add patient
                 addPatient(patientEntity);
-                PatientAdd.this.startActivity(intent);
+
+                //PatientAdd.this.startActivity(intent);
+                finish();
             }
         });
     }

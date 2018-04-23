@@ -23,7 +23,7 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
     private int layout ;
     private int listViewLayout;
-    private ArrayList<String> list ;
+
     private Context context;
     private Intent intent;
     List<MedecineEntity> Entities;
@@ -32,8 +32,8 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
     // constructor to get all the necessary variables
 
-    public ListViewWithDelBtnAdapterMedecine(ArrayList<String> list, List<MedecineEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
-        this.list = list;
+    public ListViewWithDelBtnAdapterMedecine(List<MedecineEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
+
         this.context = context;
         this.intent = intent;
         this.layout = layout;
@@ -44,12 +44,12 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
     @Override
     public int getCount() {
-        return list.size();
+        return Entities.size();
     }
 
     @Override
     public Object getItem(int pos) {
-        return list.get(pos);
+        return Entities.get(pos);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
         //Handle TextView and display string from your list
         TextView txtView = (TextView)view.findViewById(listViewLayout);
-        txtView.setText(list.get(position));
+        txtView.setText(Entities.get(position).getName());
 
 
         //On click listener to get the correct details
@@ -80,7 +80,7 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
             public void onClick(View v) {
                 intent.putExtra("idM", Entities.get(position).getIdM());
                 context.startActivity(intent);
-                Toast.makeText(context, "Object to see details: "+ list.get(position).toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Object to see details: "+ Entities.get(position).getName(), Toast.LENGTH_LONG).show();
 
             }
         });
@@ -98,7 +98,7 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                Toast.makeText(context, "Object to vanish: "+ list.get(position).toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
 

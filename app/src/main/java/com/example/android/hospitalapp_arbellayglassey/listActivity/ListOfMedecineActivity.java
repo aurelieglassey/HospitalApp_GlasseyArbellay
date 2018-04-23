@@ -50,7 +50,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         //Switch between activities
         Intent intent = new Intent(ListOfMedecineActivity.this, MedecineDetails.class);
         list = (ListView) findViewById(R.id.listofmedecine);
-        list.setAdapter(new ListViewWithDelBtnAdapterMedecine(medecines, MedecineEntities, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
+        list.setAdapter(new ListViewWithDelBtnAdapterMedecine( MedecineEntities, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
 
 
     }

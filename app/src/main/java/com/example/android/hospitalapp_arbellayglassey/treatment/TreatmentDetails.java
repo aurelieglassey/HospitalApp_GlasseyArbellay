@@ -80,7 +80,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
         Intent intent = new Intent(TreatmentDetails.this, MedecineDetails.class);
         list = (ListView) findViewById(R.id.listofmedicinefortreatment);
-        list.setAdapter(new ListViewWithDelBtnAdapterMedecine(medecines, medecineEntityList,TreatmentDetails.this, intent, R.layout.listofmedicinefortreatment_layout, R.id.listview_listofmedecinefortreatment, R.id.deleteMedecineForTreatmentButton));
+        list.setAdapter(new ListViewWithDelBtnAdapterMedecine( medecineEntityList,TreatmentDetails.this, intent, R.layout.listofmedicinefortreatment_layout, R.id.listview_listofmedecinefortreatment, R.id.deleteMedecineForTreatmentButton));
     }
 
 

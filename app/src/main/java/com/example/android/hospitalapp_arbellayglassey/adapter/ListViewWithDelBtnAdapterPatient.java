@@ -24,7 +24,7 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
 
     private int layout ;
     private int listViewLayout;
-    private ArrayList<String> list ;
+
     private Context context;
     private Intent intent;
     List<PatientEntity> Entities;
@@ -33,8 +33,8 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
 
     // constructor to get all the necessary variables
 
-    public ListViewWithDelBtnAdapterPatient(ArrayList<String> list, List<PatientEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
-        this.list = list;
+    public ListViewWithDelBtnAdapterPatient( List<PatientEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
+
         this.context = context;
         this.intent = intent;
         this.layout = layout;
@@ -45,12 +45,12 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
 
     @Override
     public int getCount() {
-        return list.size();
+        return Entities.size();
     }
 
     @Override
     public Object getItem(int pos) {
-        return list.get(pos);
+        return Entities.get(pos);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
 
         //Handle TextView and display string from your list
         TextView txtView = (TextView)view.findViewById(listViewLayout);
-        txtView.setText(list.get(position));
+        txtView.setText(Entities.get(position).getName());
 
 
         //On click listener to get the correct details
@@ -81,7 +81,7 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
             public void onClick(View v) {
                 intent.putExtra("idP", Entities.get(position).getIdP());
                 context.startActivity(intent);
-                Toast.makeText(context, "Object to see details: "+ list.get(position).toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Object to see details: "+ Entities.get(position).getName(), Toast.LENGTH_LONG).show();
 
             }
         });
@@ -99,7 +99,7 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                Toast.makeText(context, "Object to vanish: "+ list.get(position).toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
 
@@ -109,5 +109,10 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
 
 
         return view;
+    }
+    public void refreshEvents(List<PatientEntity> patientEntities) {
+        this.Entities.clear();
+        this.Entities.addAll(patientEntities);
+        notifyDataSetChanged();
     }
 }
