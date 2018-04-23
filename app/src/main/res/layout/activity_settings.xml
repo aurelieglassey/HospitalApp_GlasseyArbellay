@@ -12,14 +12,40 @@
 
 
 
-        <Button
-            android:id="@+id/btn_change_language_settings"
-            android:layout_width="194dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/generalbutton"
-            android:text="@string/btn_chosen_language" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/btnSettingsLanguage"
+                    android:layout_width="194dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/generalbutton"
+                    android:text="Langue"
+                    android:layout_gravity="center_horizontal|center_vertical"/>
+
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/btnSettingsAbout"
+                    android:layout_width="194dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/generalbutton"
+                    android:text="About"
+                    android:layout_gravity="center_horizontal|center_vertical"/>
+        </LinearLayout>
 
 
 </LinearLayout>

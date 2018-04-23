@@ -20,7 +20,7 @@ public class AsyncDeleteMedecine extends AsyncTask<MedecineEntity, Void, Void> {
         mContext = new WeakReference<>(c);
         this.me = me;
 
-}
+    }
 
     @Override
     protected Void doInBackground(MedecineEntity... medecineEntities) {

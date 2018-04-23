@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncDeletePatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
 
@@ -101,6 +102,10 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
 
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
+                                intent.putExtra("idP", Entities.get(position).getIdP());
+                                new AsyncDeletePatient(context, Entities.get(position)).execute();
+                                // pour delete et rerfresh la liste en live, del ici la liste d'entity à la position puis refresh
+
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
 

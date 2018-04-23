@@ -33,7 +33,7 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
     // constructor to get all the necessary variables
 
-    public ListViewWithDelBtnAdapterMedecine(ArrayList<String> list, List<MedecineEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
+    public ListViewWithDelBtnAdapterMedecine( List<MedecineEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
 
         this.context = context;
         this.intent = intent;
@@ -99,10 +99,10 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                Toast.makeText(context, "Object to vanish: "+ Entities.get(position).toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName().toString(), Toast.LENGTH_SHORT).show();
                                 intent.putExtra("idM", Entities.get(position).getIdM());
                                 new AsyncDeleteMedecine(context, Entities.get(position)).execute();
-
+                                // pour delete et rerfresh la liste en live, del ici la liste d'entity à la position puis refresh
 
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
