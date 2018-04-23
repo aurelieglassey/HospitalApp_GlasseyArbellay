@@ -43,6 +43,7 @@ public class TreatmentDetails extends AppCompatActivity {
     private int idPatient;
     private TextView textViewAdmission;
     private TextView textViewName;
+
     private ListViewWithDelBtnAdapterLink adapterLink;
 
     private List<MedecineEntity> medecineEntityList;
@@ -56,6 +57,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
         textViewAdmission = findViewById(R.id.AdmissionTreatmentDetails);
         textViewName = findViewById(R.id.nameTreatmentDetails);
+
 
         try {
             readDB();
