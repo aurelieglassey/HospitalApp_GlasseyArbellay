@@ -22,12 +22,10 @@ import java.util.concurrent.ExecutionException;
 
 public class ListOfMedecineActivity extends AppCompatActivity {
 
-    //test
     //Button add a new medecine
     private Button btnAddNewMedecine;
     private List<MedecineEntity> MedecineEntities;
     private ListViewWithDelBtnAdapterMedecine adapterMedecine;
-
 
 
     @Override
@@ -51,7 +49,8 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         //Switch between activities
         Intent intent = new Intent(ListOfMedecineActivity.this, MedecineDetails.class);
         list = (ListView) findViewById(R.id.listofmedecine);
-        list.setAdapter(new ListViewWithDelBtnAdapterMedecine(MedecineEntities, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
+        adapterMedecine = (new ListViewWithDelBtnAdapterMedecine(MedecineEntities, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
+        list.setAdapter(adapterMedecine);
 
 
     }
@@ -70,11 +69,23 @@ public class ListOfMedecineActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onRestart(){
+        super.onRestart();
 
+        try {
+            readDB();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        adapterMedecine.refreshEvents(MedecineEntities);
+
+    }
     //Read the db from our application
     public void readDB() throws ExecutionException, InterruptedException {
-
-
 
         //access to the database creator
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfMedecineActivity.this);
@@ -82,13 +93,6 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         //Get all medecines form our db
         MedecineEntities = new AsyncGetMedecines(ListOfMedecineActivity.this).execute().get();
 
-        //Add all the medecine in the list to display it
-        //for (MedecineEntity p : MedecineEntities){
-        //   medecines.add(p.getName());
-        //}
-
-
     }
-
 
 }
