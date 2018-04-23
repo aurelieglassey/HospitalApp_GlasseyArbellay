@@ -108,9 +108,7 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
 
                                 new AsyncDeleteLink(context, linkEntities.get(position)).execute();
 
-
-
-                                // delete the entites that was delete and notify changes
+                              // delete the entites that was delete and notify changes
                                 Entities.remove(position);
                                 notifyDataSetChanged();
 
