@@ -61,9 +61,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
         try {
             readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
 
@@ -75,7 +73,6 @@ public class TreatmentDetails extends AppCompatActivity {
         pressBtnModifyTreatment();
 
         // adding list
-        //final ArrayList<String> medecine = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.medecine_array)));
         ListView list;
 
 
@@ -90,9 +87,7 @@ public class TreatmentDetails extends AppCompatActivity {
         super.onRestart();
         try {
             readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
         adapterLink.refreshEvents(medecineEntityList);

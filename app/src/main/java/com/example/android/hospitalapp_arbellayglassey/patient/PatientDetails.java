@@ -16,6 +16,8 @@ import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
+import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 import com.example.android.hospitalapp_arbellayglassey.treatment.TreatmentDetails;
 
 import java.util.concurrent.ExecutionException;
@@ -43,9 +45,7 @@ public class PatientDetails extends AppCompatActivity {
         //Read the db
         try {
             readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
 
@@ -67,9 +67,7 @@ public class PatientDetails extends AppCompatActivity {
 
         try {
             readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
         setText();
@@ -119,7 +117,6 @@ public class PatientDetails extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PatientDetails.this, TreatmentDetails.class);
                 intent.putExtra("idP", patientEntity.getIdP());
-               // intent.putExtra("idT", idMedecine);
                 PatientDetails.this.startActivity(intent);
             }
         });
@@ -157,8 +154,24 @@ public class PatientDetails extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             // Show the Up button in the action bar.
-            actionBar.setDisplayHomeAsUpEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+
+
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, Settings.class);
+            startActivity(intent);
+        }
+        else{
+            finish();
+        }
+
+        return true;
     }
 
     /*
