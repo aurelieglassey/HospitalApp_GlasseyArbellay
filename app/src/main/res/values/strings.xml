@@ -44,7 +44,7 @@
     <string name="btn_modify_patient">Save modifications</string>
     <string name="btn_modify_medecine">Save modifications</string>
 
-   <!-- All title of the action bar -->
+    <!-- All title of the action bar -->
     <string name="actionbar_title_listPatient">List of Patient</string>
 
     <!-- Errors -->

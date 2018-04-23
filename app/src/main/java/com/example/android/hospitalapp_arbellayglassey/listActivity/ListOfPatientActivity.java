@@ -1,9 +1,11 @@
 package com.example.android.hospitalapp_arbellayglassey.listActivity;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -32,7 +34,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_patient);
-        setTitle("");
+
         //Button to add a new patient for the list
         pressBtnNewPatient();
 
@@ -101,26 +103,23 @@ public class ListOfPatientActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.mainmenu, menu);
+        setTitle(R.string.title_list_of_patient);
+        setupActionBar();
+        return true;
+
+    }
     private void setupActionBar() {
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-
-    }
-    /*
-    public void setActionBarTitle(String title) {
-        setTitle(title);
-    }
-
-    @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            if (!super.onMenuItemSelected(featureId, item)) {
-                NavUtils.navigateUpFromSameTask(this);
-            }
-            return true;
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        return super.onMenuItemSelected(featureId, item);
     }
-    */
+
+
 }
