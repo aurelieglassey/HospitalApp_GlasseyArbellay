@@ -81,7 +81,7 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
             public void onClick(View v) {
                 intent.putExtra("idM", Entities.get(position).getIdM());
                 context.startActivity(intent);
-                Toast.makeText(context, "Object to see details: "+ Entities.get(position).toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Object to see details: "+ Entities.get(position).getName().toString(), Toast.LENGTH_LONG).show();
 
             }
         });
