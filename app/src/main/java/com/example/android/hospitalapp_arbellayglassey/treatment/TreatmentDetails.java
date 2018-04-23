@@ -31,8 +31,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class TreatmentDetails extends AppCompatActivity {
-
-
+    
     //Button to add a medecine to a treatment
     private Button btnAddMedecineToTreatment;
     //Button to modify a treatment
