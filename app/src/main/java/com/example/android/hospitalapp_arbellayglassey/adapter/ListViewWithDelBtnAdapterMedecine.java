@@ -13,6 +13,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncDeleteMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 
@@ -32,7 +33,7 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
     // constructor to get all the necessary variables
 
-    public ListViewWithDelBtnAdapterMedecine(List<MedecineEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
+    public ListViewWithDelBtnAdapterMedecine(ArrayList<String> list, List<MedecineEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
 
         this.context = context;
         this.intent = intent;
@@ -80,7 +81,7 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
             public void onClick(View v) {
                 intent.putExtra("idM", Entities.get(position).getIdM());
                 context.startActivity(intent);
-                Toast.makeText(context, "Object to see details: "+ Entities.get(position).getName(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Object to see details: "+ Entities.get(position).toString(), Toast.LENGTH_LONG).show();
 
             }
         });
@@ -98,7 +99,11 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Object to vanish: "+ Entities.get(position).toString(), Toast.LENGTH_SHORT).show();
+                                intent.putExtra("idM", Entities.get(position).getIdM());
+                                new AsyncDeleteMedecine(context, Entities.get(position)).execute();
+
+
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
 
@@ -107,10 +112,5 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
 
         return view;
-    }
-    public void refreshEvents(List<MedecineEntity> medecineEntities) {
-        this.Entities.clear();
-        this.Entities.addAll(medecineEntities);
-        notifyDataSetChanged();
     }
 }
