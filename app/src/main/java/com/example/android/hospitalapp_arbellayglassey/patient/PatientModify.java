@@ -94,9 +94,10 @@ public class PatientModify extends AppCompatActivity {
                 patientEntity.setReasonAdmission(editTextAdmission.getText().toString());
 
                 new AsyncUpdatePatient(PatientModify.this).execute(patientEntity);
-                Intent intent = new Intent(PatientModify.this, PatientDetails.class);
-                intent.putExtra("idP", patientEntity.getIdP());
-                PatientModify.this.startActivity(intent);
+                //Intent intent = new Intent(PatientModify.this, PatientDetails.class);
+                //intent.putExtra("idP", patientEntity.getIdP());
+                //PatientModify.this.startActivity(intent);
+                finish();
             }
         });
 

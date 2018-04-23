@@ -26,6 +26,7 @@ public class PatientAdd extends AppCompatActivity {
     private TreatmentEntity treatmentEntity;
     //private String messageError = this.getString(R.string.Error_fill_this_fields);
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,9 @@ public class PatientAdd extends AppCompatActivity {
                 EditText roomPatient = (EditText)findViewById(R.id.ageRoomPatientAdd);
                 EditText bloodPatient = (EditText)findViewById(R.id.bloodGroupPatientAdd);
                 EditText admissionPatient = (EditText)findViewById(R.id.admissionPatientAdd);
-                Intent intent = new Intent(PatientAdd.this, ListOfPatientActivity.class);
+
+
+                //Intent intent = new Intent(PatientAdd.this, ListOfPatientActivity.class);
 
                 //Add the data of the text view in the patient
                 patientEntity = new PatientEntity();

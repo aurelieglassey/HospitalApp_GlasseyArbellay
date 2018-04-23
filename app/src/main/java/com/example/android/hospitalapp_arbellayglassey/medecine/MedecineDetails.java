@@ -44,25 +44,8 @@ public class MedecineDetails extends AppCompatActivity {
         }
 
         //find the textview by his id
-        textViewName = findViewById(R.id.textNameMedecineDetails);
-        textViewType = findViewById(R.id.textTypeMedecineDetails);
-        textViewIngredient = findViewById(R.id.textActiveIngredientMedecineDetails);
-        textViewManufacturer = findViewById(R.id.textManufacturerMedecineDetails);
-        textViewEffects = findViewById(R.id.textSideEffectMedecineDetails);
-        textViewMaxDay = findViewById(R.id.textMaxDayMedecineDetails);
-        textViewApplication = findViewById(R.id.textApplicationMedecineDetails);
-
-
-        textViewName.setText(medecineEntity.getName());
-        textViewType.setText(medecineEntity.getType());
-        textViewIngredient.setText(medecineEntity.getActiveIngredient());
-        textViewManufacturer.setText(medecineEntity.getManufacturers());
-        textViewEffects.setText(medecineEntity.getSideEffects());
-        textViewMaxDay.setText(String.valueOf(medecineEntity.getMaxPerDay()));
-        textViewApplication.setText(medecineEntity.getApplication());
-
-
-
+        setId();
+        setText();
         pressBtnModifyTreatment();
     }
 
@@ -77,14 +60,52 @@ public class MedecineDetails extends AppCompatActivity {
         btnModifyMedecine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(MedecineDetails.this, MedecineModify.class);
                 intent.putExtra("idM", idMedecine);
                 MedecineDetails.this.startActivity(intent);
+
+
+
             }
         });
 
     }
+    @Override
+    public void onRestart() {
+        super.onRestart();
 
+        try {
+            readDB();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        setText();
+    }
+
+
+
+    public void setId(){
+        textViewName = findViewById(R.id.textNameMedecineDetails);
+        textViewType = findViewById(R.id.textTypeMedecineDetails);
+        textViewIngredient = findViewById(R.id.textActiveIngredientMedecineDetails);
+        textViewManufacturer = findViewById(R.id.textManufacturerMedecineDetails);
+        textViewEffects = findViewById(R.id.textSideEffectMedecineDetails);
+        textViewMaxDay = findViewById(R.id.textMaxDayMedecineDetails);
+        textViewApplication = findViewById(R.id.textApplicationMedecineDetails);
+    }
+    public void setText(){
+        textViewName.setText(medecineEntity.getName());
+        textViewType.setText(medecineEntity.getType());
+        textViewIngredient.setText(medecineEntity.getActiveIngredient());
+        textViewManufacturer.setText(medecineEntity.getManufacturers());
+        textViewEffects.setText(medecineEntity.getSideEffects());
+        textViewMaxDay.setText(String.valueOf(medecineEntity.getMaxPerDay()));
+        textViewApplication.setText(medecineEntity.getApplication());
+
+    }
     //Read the db and get the medecine
     public void readDB() throws ExecutionException, InterruptedException {
 

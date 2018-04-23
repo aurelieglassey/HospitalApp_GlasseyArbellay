@@ -47,12 +47,12 @@ public class MedecineAddSearchList extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        Intent intent = new Intent(MedecineAddSearchList.this, TreatmentDetails.class);
+        //Intent intent = new Intent(MedecineAddSearchList.this, TreatmentDetails.class);
         Intent intentGetID = getIntent();
         idT = intentGetID.getIntExtra("idT",0);
         idP = intentGetID.getIntExtra("idP", 0);
         list = (ListView) findViewById(R.id.listofmedecinesearchlist);
-        list.setAdapter(new ListViewWithAddBtnAdapter(medecines, MedecineEntities, idT,idP,MedecineAddSearchList.this, intent, R.layout.listmedecineaddsearchlist_layout, R.id.listview_listofmedecineaddsearchlist, R.id.addMedecineForTreatmentButton));
+        list.setAdapter(new ListViewWithAddBtnAdapter(MedecineEntities, idT,idP,MedecineAddSearchList.this, R.layout.listmedecineaddsearchlist_layout, R.id.listview_listofmedecineaddsearchlist, R.id.addMedecineForTreatmentButton));
 
 
     }

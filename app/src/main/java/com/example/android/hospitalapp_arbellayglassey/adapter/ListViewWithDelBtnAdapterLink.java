@@ -13,30 +13,31 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncDeletePatient;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.link.AsyncDeleteLink;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncDeleteMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
-import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentMedecineLinkEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements ListAdapter {
+public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAdapter {
 
     private int layout ;
     private int listViewLayout;
-
+    private boolean isForLink;
     private Context context;
     private Intent intent;
-    List<PatientEntity> Entities;
+    List<MedecineEntity> Entities;
+    List<TreatmentMedecineLinkEntity> linkEntities;
     int idDelButton;
 
 
     // constructor to get all the necessary variables
 
-    public ListViewWithDelBtnAdapterPatient( List<PatientEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
-
+    public ListViewWithDelBtnAdapterLink(
+            List<TreatmentMedecineLinkEntity> linkEntities,List<MedecineEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
+        this.linkEntities = linkEntities;
         this.context = context;
         this.intent = intent;
         this.layout = layout;
@@ -81,10 +82,9 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
         txtView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("idP", Entities.get(position).getIdP());
+                intent.putExtra("idM", Entities.get(position).getIdM());
                 context.startActivity(intent);
-                Toast.makeText(context, "Object to see details: "+ Entities.get(position).getName(), Toast.LENGTH_LONG).show();
-
+                Toast.makeText(context, "Object to see details: "+ Entities.get(position).toString(), Toast.LENGTH_LONG).show();
 
             }
         });
@@ -97,20 +97,27 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
                 // add a pop up when delete button is activated
                 new AlertDialog.Builder(context)
                         .setTitle("Delete")
-                        .setMessage("Do you really want to delete this patient ?")
+                        .setMessage("Do you really want to delete this Medecine ?")
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
-                                intent.putExtra("idP", Entities.get(position).getIdP());
-                                new AsyncDeletePatient(context, Entities.get(position)).execute();
+                                Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName().toString(), Toast.LENGTH_SHORT).show();
+
+                                //intent.putExtra("idM", Entities.get(position).getIdM());
+
+                                new AsyncDeleteLink(context, linkEntities.get(position)).execute();
+
+
+
+                                // delete the entites that was delete and notify changes
                                 Entities.remove(position);
                                 notifyDataSetChanged();
 
+
+
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
-
 
             }
         });
@@ -118,10 +125,9 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
 
         return view;
     }
-
-    public void refreshEvents(List<PatientEntity> patientEntities) {
+    public void refreshEvents(List<MedecineEntity> medecineEntities) {
         this.Entities.clear();
-        this.Entities.addAll(patientEntities);
+        this.Entities.addAll(medecineEntities);
         notifyDataSetChanged();
     }
 }

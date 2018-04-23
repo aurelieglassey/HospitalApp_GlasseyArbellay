@@ -97,9 +97,10 @@ public class MedecineModify extends AppCompatActivity {
                 medecineEntity.setApplication(editTextApplication.getText().toString());
 
                 new AsyncUpdateMedecine(MedecineModify.this).execute(medecineEntity);
-                Intent intent = new Intent(MedecineModify.this, MedecineDetails.class);
-                intent.putExtra("idM", medecineEntity.getIdM());
-                MedecineModify.this.startActivity(intent);
+                //Intent intent = new Intent(MedecineModify.this, MedecineDetails.class);
+                //intent.putExtra("idM", medecineEntity.getIdM());
+                //MedecineModify.this.startActivity(intent);
+                finish();
             }
         });
 

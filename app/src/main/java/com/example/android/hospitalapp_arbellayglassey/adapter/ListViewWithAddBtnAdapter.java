@@ -1,5 +1,6 @@
 package com.example.android.hospitalapp_arbellayglassey.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -24,7 +25,7 @@ import java.util.concurrent.ExecutionException;
 public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapter {
     private int layout ;
     private int listViewLayout;
-    private ArrayList<String> list ;
+
     private Context context;
     private Intent intent;
     List<MedecineEntity> Entities;
@@ -34,8 +35,8 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
 
     // constructor to get all the necessary variables
 
-    public ListViewWithAddBtnAdapter(ArrayList<String> list,List<MedecineEntity> Entities, int idT, int idP, Context context, Intent intent, int layout, int idListViewLayout, int idAddButton) {
-        this.list = list;
+    public ListViewWithAddBtnAdapter(List<MedecineEntity> Entities, int idT, int idP, Context context,  int layout, int idListViewLayout, int idAddButton) {
+
         this.context = context;
         this.intent = intent;
         this.layout = layout;
@@ -47,12 +48,12 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
 
     @Override
     public int getCount() {
-        return list.size();
+        return Entities.size();
     }
 
     @Override
     public Object getItem(int pos) {
-        return list.get(pos);
+        return Entities.get(pos);
     }
 
     @Override
@@ -74,7 +75,7 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
 
         //Handle TextView and display string from your list
         TextView txtView = (TextView)view.findViewById(listViewLayout);
-        txtView.setText(list.get(position));
+        txtView.setText(Entities.get(position).getName());
 
 
 
@@ -83,11 +84,11 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
         addBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Object to add: "+ list.get(position).toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Object to add: "+ Entities.get(position).getName(), Toast.LENGTH_LONG).show();
                 TreatmentMedecineLinkEntity linkEn = new TreatmentMedecineLinkEntity();
                 linkEn.setIdMedecine(Entities.get(position).getIdM());
                 linkEn.setIdTreatment(idT);
-                intent.putExtra("idP", idT);
+                //intent.putExtra("idP", idT);
 
                 try {
                     new AsyncAddLink(context, linkEn).execute().get();
@@ -96,7 +97,8 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
-                context.startActivity(intent);
+                ((Activity)context).finish();
+                //context.startActivity(intent);
 
             }
         });

@@ -40,7 +40,7 @@ public class MedecineAdd extends AppCompatActivity {
         btnAddNewMedecine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MedecineAdd.this, ListOfMedecineActivity.class);
+                //Intent intent = new Intent(MedecineAdd.this, ListOfMedecineActivity.class);
 
                 //Get all (id) data of a madecine of the texte view
                 EditText nameMedecine = (EditText)findViewById(R.id.editNameMedecineAdd);
@@ -63,9 +63,9 @@ public class MedecineAdd extends AppCompatActivity {
                 //Call the method add Medecine
                 addMedecine(medecineEntity);
 
-                MedecineAdd.this.startActivity(intent);
+                //MedecineAdd.this.startActivity(intent);
 
-
+                finish();
 
             }
         });

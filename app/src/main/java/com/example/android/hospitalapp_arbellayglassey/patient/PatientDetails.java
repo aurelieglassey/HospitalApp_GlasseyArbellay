@@ -50,19 +50,9 @@ public class PatientDetails extends AppCompatActivity {
         }
 
         //find the textview by his id
-        textViewName = findViewById(R.id.namePatientDetails);
-        textViewAge = findViewById(R.id.agePatientDetails);
-        textViewGender = findViewById(R.id.genderPatientDetails);
-        textViewRoom = findViewById(R.id.roomPatientDetails);
-        textViewBloodGroup = findViewById(R.id.bloodGroupPatientDetails);
-        textViewAdmission = findViewById(R.id.admissionPatientDetails);
+        setId();
+        setText();
 
-        textViewName.setText(patientEntity.getName());
-        textViewAge.setText(String.valueOf(patientEntity.getAge()));
-        textViewGender.setText(String.valueOf(patientEntity.getGender()));
-        textViewRoom.setText(String.valueOf(patientEntity.getRoomNumber()));
-        textViewBloodGroup.setText(patientEntity.getBloodGroup());
-        textViewAdmission.setText(patientEntity.getReasonAdmission());
 
 
         //Press on the button Show Treatment
@@ -70,6 +60,36 @@ public class PatientDetails extends AppCompatActivity {
         pressBtnModifyPatient();
 
 
+    }
+    @Override
+    public void onRestart() {
+        super.onRestart();
+
+        try {
+            readDB();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        setText();
+    }
+
+    public void setId(){
+        textViewName = findViewById(R.id.namePatientDetails);
+        textViewAge = findViewById(R.id.agePatientDetails);
+        textViewGender = findViewById(R.id.genderPatientDetails);
+        textViewRoom = findViewById(R.id.roomPatientDetails);
+        textViewBloodGroup = findViewById(R.id.bloodGroupPatientDetails);
+        textViewAdmission = findViewById(R.id.admissionPatientDetails);
+    }
+    public void setText(){
+        textViewName.setText(patientEntity.getName());
+        textViewAge.setText(String.valueOf(patientEntity.getAge()));
+        textViewGender.setText(String.valueOf(patientEntity.getGender()));
+        textViewRoom.setText(String.valueOf(patientEntity.getRoomNumber()));
+        textViewBloodGroup.setText(patientEntity.getBloodGroup());
+        textViewAdmission.setText(patientEntity.getReasonAdmission());
     }
 
 

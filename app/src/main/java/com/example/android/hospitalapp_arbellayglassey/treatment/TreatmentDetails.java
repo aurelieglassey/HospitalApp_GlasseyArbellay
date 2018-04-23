@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
+import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterLink;
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.link.AsyncGetLinks;
@@ -42,11 +43,9 @@ public class TreatmentDetails extends AppCompatActivity {
     private int idPatient;
     private TextView textViewAdmission;
     private TextView textViewName;
-    private ListViewWithDelBtnAdapterMedecine adapterMedecine;
-    //private TextView textViewAdmission;
+    private ListViewWithDelBtnAdapterLink adapterLink;
 
-
-    List<MedecineEntity> medecineEntityList;
+    private List<MedecineEntity> medecineEntityList;
 
 
 
@@ -80,8 +79,30 @@ public class TreatmentDetails extends AppCompatActivity {
 
         Intent intent = new Intent(TreatmentDetails.this, MedecineDetails.class);
         list = (ListView) findViewById(R.id.listofmedicinefortreatment);
-        list.setAdapter(new ListViewWithDelBtnAdapterMedecine( medecineEntityList,TreatmentDetails.this, intent, R.layout.listofmedicinefortreatment_layout, R.id.listview_listofmedecinefortreatment, R.id.deleteMedecineForTreatmentButton));
+        adapterLink = new ListViewWithDelBtnAdapterLink(listLinkEntity,medecineEntityList,TreatmentDetails.this, intent, R.layout.listofmedicinefortreatment_layout, R.id.listview_listofmedecinefortreatment, R.id.deleteMedecineForTreatmentButton);
+        list.setAdapter(adapterLink);
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        try {
+            readDB();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        adapterLink.refreshEvents(medecineEntityList);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
 
 
     //When the user decide to add medecine to a treatment
