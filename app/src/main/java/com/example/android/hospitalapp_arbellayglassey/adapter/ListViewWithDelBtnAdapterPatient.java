@@ -83,6 +83,7 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
                 context.startActivity(intent);
                 Toast.makeText(context, "Object to see details: "+ Entities.get(position).getName(), Toast.LENGTH_LONG).show();
 
+
             }
         });
 

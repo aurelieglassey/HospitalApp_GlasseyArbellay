@@ -2,9 +2,11 @@ package com.example.android.hospitalapp_arbellayglassey.listActivity;
 
 import android.content.Intent;
 import android.provider.ContactsContract;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
@@ -110,4 +112,21 @@ public class ListOfPatientActivity extends AppCompatActivity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
+    /*
+    public void setActionBarTitle(String title) {
+        setTitle(title);
+    }
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            if (!super.onMenuItemSelected(featureId, item)) {
+                NavUtils.navigateUpFromSameTask(this);
+            }
+            return true;
+        }
+        return super.onMenuItemSelected(featureId, item);
+    }
+    */
 }

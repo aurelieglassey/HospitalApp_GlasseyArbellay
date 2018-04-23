@@ -108,4 +108,9 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
         return view;
     }
+    public void refreshEvents(List<MedecineEntity> medecineEntities) {
+        this.Entities.clear();
+        this.Entities.addAll(medecineEntities);
+        notifyDataSetChanged();
+    }
 }
