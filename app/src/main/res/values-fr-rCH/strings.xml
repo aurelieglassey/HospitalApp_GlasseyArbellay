@@ -36,4 +36,6 @@
     <string name="btn_modify_treatment">Modifier le traitement</string>
     <string name="btn_modify_patient">Modifier le patient</string>
     <string name="actionbar_title_listPatient">" Liste de patients"</string>
+    <string name="Error_fill_this_fields">Entrer ce champs svp</string>
+    <string name="btn_modify_medecine">Modifications enregistrées</string>
 </resources>

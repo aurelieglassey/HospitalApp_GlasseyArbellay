@@ -106,7 +106,6 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
                                 new AsyncDeletePatient(context, Entities.get(position)).execute();
                                 Entities.remove(position);
                                 notifyDataSetChanged();
-                                // pour delete et rerfresh la liste en live, del ici la liste d'entity à la position puis refresh
 
                             }})
                         .setNegativeButton(android.R.string.no, null).show();

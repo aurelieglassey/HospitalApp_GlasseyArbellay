@@ -24,6 +24,7 @@ public class PatientAdd extends AppCompatActivity {
     private Button okAddPatient;
     private PatientEntity patientEntity;
     private TreatmentEntity treatmentEntity;
+    //private String messageError = this.getString(R.string.Error_fill_this_fields);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,18 +67,42 @@ public class PatientAdd extends AppCompatActivity {
                 patientEntity.setReasonAdmission(admissionPatient.getText().toString());
 
 
-                  /* if (patientEntity.getName().toString().trim().equalsIgnoreCase("")){
-                    namePatient.setError("Enter name please");
-
-                }*/
-
                   //Check if there is an error when the user fill the textview
                 //or if the user doesn't fill anyting.
                 int error = 0;
-                if (namePatient.getText().toString().length() == 0){
-                    namePatient.setError("Please fill this field");
+                if (namePatient.getText().toString().length() == 0  ){
+                   //namePatient.setError(messageError);
+                    namePatient.setError("Please enter a name");
+                    namePatient.requestFocus();
                     error = 1;
                 }
+
+               /* if (agePatient.getText().toString().length() == 0){
+                    agePatient.setError("Please enter a age");
+                    agePatient.requestFocus();
+                    error = 1;
+                }
+*/
+
+               /*
+                int s = Integer.parseInt(agePatient.getText().toString());
+                if (s == 0){
+                    agePatient.setError("Please enter a age");
+                    agePatient.requestFocus();
+                    error = 1;
+                }
+                */
+
+/*
+                String s = String.valueOf(agePatient.getText().toString());
+                if (s.length()== 0){
+                    agePatient.setError("Please enter a age");
+                    agePatient.requestFocus();
+                    error = 1;
+                }
+
+*/
+
 
 
                 //if the error is 0, it means that the fields are correctly fill

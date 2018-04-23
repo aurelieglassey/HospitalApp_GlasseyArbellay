@@ -47,6 +47,8 @@
    <!-- All title of the action bar -->
     <string name="actionbar_title_listPatient">List of Patient</string>
 
+    <!-- Errors -->
+    <string name="Error_fill_this_fields">Please fill this field</string>
 
 
     <!-- Name of the image-->
