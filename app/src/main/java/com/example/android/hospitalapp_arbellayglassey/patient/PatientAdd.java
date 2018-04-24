@@ -1,8 +1,11 @@
 package com.example.android.hospitalapp_arbellayglassey.patient;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +16,7 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatmen
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
+import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 import com.example.android.hospitalapp_arbellayglassey.treatment.TreatmentDetails;
 
 import java.util.concurrent.ExecutionException;
@@ -130,6 +134,39 @@ public class PatientAdd extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.mainmenu, menu);
+        setTitle(R.string.title_new_patient);
+        setupActionBar();
+        return true;
+
+    }
+    private void setupActionBar() {
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+
+
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, Settings.class);
+            startActivity(intent);
+        }
+        else{
+            finish();
+        }
+
+        return true;
     }
 
 

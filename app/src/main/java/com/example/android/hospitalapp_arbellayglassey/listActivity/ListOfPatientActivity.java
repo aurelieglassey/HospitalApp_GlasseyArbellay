@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -16,6 +17,7 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Patient
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientAdd;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
 import com.example.android.hospitalapp_arbellayglassey.R;
+import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -119,6 +121,22 @@ public class ListOfPatientActivity extends AppCompatActivity {
             // Show the Up button in the action bar.
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+
+
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, Settings.class);
+            startActivity(intent);
+        }
+        else{
+            finish();
+        }
+
+        return true;
     }
 
 
