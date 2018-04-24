@@ -146,16 +146,22 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
+        <View
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_weight="1" />
+
 
         <LinearLayout
             android:id="@+id/linearlayoutbuttonAdd"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <View
-                android:layout_width="150dp"
-                android:layout_height="10dp"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
@@ -167,10 +173,9 @@
                 android:text="@string/btn_add_medecine_to_list_treatment" />
 
 
-
             <View
-                android:layout_width="150dp"
-                android:layout_height="70dp"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1" />
 
 
