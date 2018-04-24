@@ -8,7 +8,6 @@ import android.arch.persistence.room.PrimaryKey;
 public class PatientEntity {
 
     @PrimaryKey(autoGenerate = true)
-
     @ColumnInfo(name = "idP")
     private int idP;
 

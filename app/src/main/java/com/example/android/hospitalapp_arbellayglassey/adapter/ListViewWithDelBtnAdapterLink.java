@@ -25,7 +25,6 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
 
     private int layout ;
     private int listViewLayout;
-    private boolean isForLink;
     private Context context;
     private Intent intent;
     List<MedecineEntity> Entities;
@@ -110,6 +109,7 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
 
                               // delete the entites that was delete and notify changes
                                 Entities.remove(position);
+                                linkEntities.remove(position);
                                 notifyDataSetChanged();
 
 
@@ -123,9 +123,11 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
 
         return view;
     }
-    public void refreshEvents(List<MedecineEntity> medecineEntities) {
+    public void refreshEvents(List<MedecineEntity> medecineEntities, List<TreatmentMedecineLinkEntity> linkEntities) {
         this.Entities.clear();
         this.Entities.addAll(medecineEntities);
+        this.linkEntities.clear();
+        this.linkEntities.addAll(linkEntities);
         notifyDataSetChanged();
     }
 }

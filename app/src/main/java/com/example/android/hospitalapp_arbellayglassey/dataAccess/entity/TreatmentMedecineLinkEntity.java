@@ -12,7 +12,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 //Table de jointure entre Treatment et Medecine
 @Entity(tableName = "TreatmentMedecineLink",
         //Les indices sont un lien unique entre les tables Treatment et Medecine par lequel on ajoute les propriétés d'un index
-        primaryKeys = {"idTreatment", "idMedecine"},
+        //primaryKeys = {"idTreatment", "idMedecine"},
         indices = {@Index(value = {"idTreatment"})},
         //Lien de 2 foreign key des tables Treatment et medecine
         foreignKeys =
@@ -21,6 +21,12 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
                         //FK de Table Medecine
                         @ForeignKey(entity = MedecineEntity.class, parentColumns = "idM", childColumns = "idMedecine", onDelete = CASCADE)})
 public class TreatmentMedecineLinkEntity {
+
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "idL")
+    private int idL;
+
 
     @ColumnInfo(name = "idTreatment")
     @Nullable
@@ -62,5 +68,14 @@ public class TreatmentMedecineLinkEntity {
         this.idMedecine = idMedecine;
     }
 
-    //public void setQuantityPerDay(String quantityPerDay) {this.quantityPerDay = quantityPerDay;}
+    public int getIdL() {
+        return idL;
+    }
+
+    public void setIdL(int idL) {
+        this.idL = idL;
+    }
+
+
+
 }

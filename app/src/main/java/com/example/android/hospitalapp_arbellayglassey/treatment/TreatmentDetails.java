@@ -94,7 +94,7 @@ public class TreatmentDetails extends AppCompatActivity {
             e.printStackTrace();
         }
         setText();
-        adapterLink.refreshEvents(medecineEntityList);
+        adapterLink.refreshEvents(medecineEntityList, listLinkEntity);
 
     }
 
