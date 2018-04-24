@@ -33,7 +33,7 @@
             android:layout_weight="1"/>
 
         <Button
-            android:id="@+id/btnSettingsAbout"
+            android:id="@+id/btnSettingsLanguageFrench"
             android:layout_width="194dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
