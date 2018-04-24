@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncAddPatient;
@@ -23,12 +24,10 @@ import java.util.concurrent.ExecutionException;
 
 public class PatientAdd extends AppCompatActivity {
 
-
-    //button ok
     private Button okAddPatient;
     private PatientEntity patientEntity;
     private TreatmentEntity treatmentEntity;
-    //private String messageError = this.getString(R.string.Error_fill_this_fields);
+    private String messageError = this.getString(R.string.error_enter_field);
 
 
     @Override
@@ -60,41 +59,65 @@ public class PatientAdd extends AppCompatActivity {
                 EditText bloodPatient = (EditText)findViewById(R.id.bloodGroupPatientAdd);
                 EditText admissionPatient = (EditText)findViewById(R.id.admissionPatientAdd);
 
-
-                //Intent intent = new Intent(PatientAdd.this, ListOfPatientActivity.class);
-
-                //Add the data of the text view in the patient
-                patientEntity = new PatientEntity();
-                patientEntity.setName(namePatient.getText().toString());
-                patientEntity.setAge(Integer.parseInt(agePatient.getText().toString()));
-                patientEntity.setGender(genderPatient.getText().charAt(0));
-                patientEntity.setRoomNumber(Integer.parseInt(roomPatient.getText().toString()));
-                patientEntity.setBloodGroup(bloodPatient.getText().toString());
-                patientEntity.setReasonAdmission(admissionPatient.getText().toString());
-
-
-                  //Check if there is an error when the user fill the textview
+                //Check if there is an error when the user fill the textview
                 //or if the user doesn't fill anyting.
                 int error = 0;
+
+                //Check name
                 if (namePatient.getText().toString().length() == 0  ){
                    //namePatient.setError(messageError);
-                    namePatient.setError("Please enter a name");
+                    namePatient.setError(messageError);
                     namePatient.requestFocus();
                     error = 1;
                 }
 
-
-
-              /*  int age = Integer.parseInt(agePatient.getText().toString());
-                if (age < 0){
-                    agePatient.setError("Please enter a age");
+                //Check age
+                if(agePatient.getText().toString().length() == 0){
+                    agePatient.setError("blablablablalba");
                     agePatient.requestFocus();
                     error = 1;
                 }
-                */
+
+                //Check Gender
+                if (genderPatient.getText().toString().length() != 1){
+                    genderPatient.setError("blablablablalba");
+                    genderPatient.requestFocus();
+                    error = 1;
+                }
+
+                //Check Room
+                if(roomPatient.getText().toString().length() == 0){
+                    roomPatient.setError("blablablablalba");
+                    roomPatient.requestFocus();
+                    error = 1;
+                }
+
+                //Check blood Group
+                if (bloodPatient.getText().toString().length() == 0  ){
+                    bloodPatient.setError("blablablablalba");
+                    bloodPatient.requestFocus();
+                    error = 1;
+                }
+
+                //Check reason of admission
+                if (admissionPatient.getText().toString().length() == 0  ){
+                    admissionPatient.setError("blablablablalba");
+                    admissionPatient.requestFocus();
+                    error = 1;
+                }
+
 
                 //if the error is 0, it means that the fields are correctly fill
                 if (error == 0){
+
+                    //Add the data of the text view in the patient
+                    patientEntity = new PatientEntity();
+                    patientEntity.setName(namePatient.getText().toString());
+                    patientEntity.setAge(Integer.parseInt(agePatient.getText().toString()));
+                    patientEntity.setGender(genderPatient.getText().charAt(0));
+                    patientEntity.setRoomNumber(Integer.parseInt(roomPatient.getText().toString()));
+                    patientEntity.setBloodGroup(bloodPatient.getText().toString());
+                    patientEntity.setReasonAdmission(admissionPatient.getText().toString());
 
                     //Call the method add patient
                     addPatient(patientEntity);
@@ -102,8 +125,10 @@ public class PatientAdd extends AppCompatActivity {
                     //PatientAdd.this.startActivity(intent);
                     finish();
                 }
-            }
 
+                error = 0;
+
+            }
 
         });
     }

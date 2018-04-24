@@ -38,4 +38,6 @@
     <string name="actionbar_title_listPatient">" Liste de patients"</string>
     <string name="Error_fill_this_fields">Entrer ce champs svp</string>
     <string name="btn_modify_medecine">Modifications enregistrées</string>
+    <string name="error_enter_field">Entrez ce champs svp</string>
+    <string name="btn_add_medecine_to_list_treatment">Ajout d\'un médicament au traitment</string>
 </resources>

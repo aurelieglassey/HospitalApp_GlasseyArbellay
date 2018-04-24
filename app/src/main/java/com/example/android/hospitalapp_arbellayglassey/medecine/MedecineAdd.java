@@ -55,55 +55,63 @@ public class MedecineAdd extends AppCompatActivity {
                 EditText maxDayMedecine = (EditText)findViewById(R.id.editMaxDayMedecineAdd);
                 EditText applicationMedecine = (EditText)findViewById(R.id.editApplicationMedecineAdd);
 
-                medecineEntity = new MedecineEntity();
-                medecineEntity.setName(nameMedecine.getText().toString());
-                medecineEntity.setType(typeMedecine.getText().toString());
-                medecineEntity.setActiveIngredient(ingredientMedecine.getText().toString());
-                medecineEntity.setManufacturers(manufacturerMedecine.getText().toString());
-                medecineEntity.setSideEffects(sideEffectMedecine.getText().toString());
-                medecineEntity.setMaxPerDay(Integer.parseInt(maxDayMedecine.getText().toString()));
-                medecineEntity.setApplication(applicationMedecine.getText().toString());
-
                 //check if the user has correctly fiel the fields
                 int error = 0;
+                //Check name
                 if (nameMedecine.getText().toString().length() == 0 ){
-                    nameMedecine.setError("Please enter a name");
+                    nameMedecine.setError("vblablablablalba");
                     nameMedecine.requestFocus();
                     error = 1;
                 }
+                //Check type
                 if (typeMedecine.getText().toString().length() == 0 ){
-                    typeMedecine.setError("Please enter a type");
+                    typeMedecine.setError("blablablablalba");
                     typeMedecine.requestFocus();
                     error = 1;
                 }
+                //Check ingredient
                 if (ingredientMedecine.getText().toString().length() == 0 ){
-                    ingredientMedecine.setError("Please enter a ingredient");
+                    ingredientMedecine.setError("blablablablalba");
                     ingredientMedecine.requestFocus();
                     error = 1;
                 }
+                //check manufacturer
                 if (manufacturerMedecine.getText().toString().length() == 0 ){
-                    manufacturerMedecine.setError("Please enter a manufacturer");
+                    manufacturerMedecine.setError("Pblablablablalba");
                     manufacturerMedecine.requestFocus();
                     error = 1;
                 }
+                //check side effects
                 if (sideEffectMedecine.getText().toString().length() == 0 ){
-                    sideEffectMedecine.setError("Please enter side effects");
+                    sideEffectMedecine.setError("blablablablalba");
                     sideEffectMedecine.requestFocus();
                     error = 1;
                 }
-               /* if (maxDayMedecine.getText().toString().length() == 0 ){
-                    maxDayMedecine.setError("Please enter max day");
+
+                //check max day of this medecine
+                if(maxDayMedecine.getText().toString().length() == 0){
+                    maxDayMedecine.setError("blablablablalba");
                     maxDayMedecine.requestFocus();
                     error = 1;
                 }
-                */
+                //check application
                 if (applicationMedecine.getText().toString().length() == 0 ){
-                    applicationMedecine.setError("Please enter an application");
+                    applicationMedecine.setError("blablablablalba");
+                    applicationMedecine.setError("blablablablalba");
                     applicationMedecine.requestFocus();
                     error = 1;
                 }
 
+                //if error == 0 it means that the user has correctly fill all the fields
                 if (error == 0){
+                    medecineEntity = new MedecineEntity();
+                    medecineEntity.setName(nameMedecine.getText().toString());
+                    medecineEntity.setType(typeMedecine.getText().toString());
+                    medecineEntity.setActiveIngredient(ingredientMedecine.getText().toString());
+                    medecineEntity.setManufacturers(manufacturerMedecine.getText().toString());
+                    medecineEntity.setSideEffects(sideEffectMedecine.getText().toString());
+                    medecineEntity.setMaxPerDay(Integer.parseInt(maxDayMedecine.getText().toString()));
+                    medecineEntity.setApplication(applicationMedecine.getText().toString());
 
                     //Call the method add Medecine
                     addMedecine(medecineEntity);

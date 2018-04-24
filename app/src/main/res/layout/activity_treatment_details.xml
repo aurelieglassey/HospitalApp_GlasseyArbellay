@@ -72,13 +72,13 @@
 
             <LinearLayout
                 android:id="@+id/LayoutNameTreatmentDetails"
-                android:layout_width="171dp"
+                android:layout_width="250dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/labelNameTreatmentsDetails"
-                    android:layout_width="match_parent"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/label_name"
@@ -88,7 +88,7 @@
 
                 <TextView
                     android:id="@+id/nameTreatmentDetails"
-                    android:layout_width="match_parent"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
@@ -116,7 +116,7 @@
                 <TextView
                     android:id="@+id/quantityTreatmentDetails"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="46dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
             </LinearLayout>
 
@@ -141,36 +141,42 @@
             android:textSize="18sp" />
 
         <ListView
+            android:id="@+id/listofmedicinefortreatment"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_weight="1"
-            android:id="@+id/listofmedicinefortreatment"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
 
         <LinearLayout
+            android:id="@+id/linearlayoutbuttonAdd"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
+
             <View
                 android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_height="10dp"
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/btn_add_medicine"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/ic_add_circle_black" />
+                android:layout_width="194dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/generalbutton"
+                android:text="@string/btn_add_medecine_to_list_treatment" />
+
+
+
             <View
                 android:layout_width="150dp"
-                android:layout_height="match_parent"
+                android:layout_height="70dp"
                 android:layout_weight="1" />
 
 
         </LinearLayout>
 
     </LinearLayout>
-
 
 
 </LinearLayout>

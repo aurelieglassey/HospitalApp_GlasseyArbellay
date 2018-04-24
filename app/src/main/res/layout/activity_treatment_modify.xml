@@ -68,7 +68,7 @@
 
             <LinearLayout
                 android:id="@+id/LayoutNameTreatmentModify"
-                android:layout_width="171dp"
+                android:layout_width="250dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
@@ -84,7 +84,7 @@
 
                 <EditText
                     android:id="@+id/nameTreatmentModify"
-                    android:layout_width="match_parent"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Modify "
@@ -98,7 +98,8 @@
                 android:id="@+id/LayoutQuantityTreatmentModify"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_gravity="right">
 
                 <TextView
                     android:id="@+id/labelQuantityTreatmentModify"
@@ -114,8 +115,8 @@
                     android:id="@+id/quantityTreatmentModify"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Modify"
                     android:inputType="number"
+                    android:text="Modify"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             </LinearLayout>
@@ -127,6 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_weight="1" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

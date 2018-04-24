@@ -1,5 +1,8 @@
 <resources>
 
+
+    <string name="error_enter_field">Please enter this field</string>
+
     <!-- Activity main page -->
     <string name="app_name">HospitalApp_ArbellayGlassey</string>
     <string name="btn_list_of_patient">List of patients</string>
@@ -43,6 +46,7 @@
     <string name="btn_modify_treatment">Save modifications</string>
     <string name="btn_modify_patient">Save modifications</string>
     <string name="btn_modify_medecine">Save modifications</string>
+    <string name="btn_add_medecine_to_list_treatment">Add a medecine to this treatment</string>
 
     <!-- All title of the action bar -->
     <string name="actionbar_title_listPatient">List of Patient</string>
