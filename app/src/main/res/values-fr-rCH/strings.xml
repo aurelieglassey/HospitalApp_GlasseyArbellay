@@ -42,10 +42,10 @@
     <string name="btn_add_medecine_to_list_treatment">Ajout d\'un médicament au traitment</string>
     <string name="label_settings_language">Langue</string>
     <string name="label_settings_About">A propos</string>
-    <string name="btn_label_settings_background">Couleur de fond</string>
-    <string name="tkt_about">Cette application a été développée par 2 étudiant à la HES-SO Valais/Wallis. Elle permet au infirmières/infirmier de gérer les données des patiens ainsi que leur traitement et médicaments.</string>
-    <string name="txt_about">Cette application a été développée par 2 étudiant à la HES-SO Valais/Wallis. Elle permet au infirmières/infirmier de gérer les données des patiens ainsi que leur traitement et médicaments.</string>
+    <string name="btn_label_settings_background">Thèmes</string>
+    <string name="txt_about">Cette application a été développée par 2 étudiants à la HES-SO Valais/Wallis. Elle permet au infirmières/infirmiers de gérer les données des patients ainsi que leur traitement et médicaments.</string>
     <string name="title_settings_about">A propos</string>
     <string name="title_settings_language">Langues</string>
     <string name="title_settings_theme">Thèmes</string>
+    <string name="btnSettingsTheme">Thèmes</string>
 </resources>

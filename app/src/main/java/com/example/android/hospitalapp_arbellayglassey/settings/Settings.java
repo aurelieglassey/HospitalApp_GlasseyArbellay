@@ -2,8 +2,10 @@ package com.example.android.hospitalapp_arbellayglassey.settings;
 
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -18,10 +20,15 @@ public class Settings extends AppCompatActivity {
     private Button btnLanguage;
     private Button btnTheme;
 
+    //Title of the settings
+    private String titleSettings = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        titleSettings = this.getString(R.string.title_settings);
 
         //When the user press on "Language"
         pressBtnLanguage();
@@ -88,6 +95,24 @@ public class Settings extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.mainmenu, menu);
+        setTitle(titleSettings);
+        setupActionBar();
+        return true;
+
+    }
+
+    private void setupActionBar() {
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
 
 
 

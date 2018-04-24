@@ -62,7 +62,7 @@
     <string name="Error_fill_this_fields">Please fill this field</string>
 
     <!-- About -->
-    <string name="txt_about">This application was developped by 2 students in the HES-SO Valais/Wallis. The goal of this app is to provide to the nurse the possiblity to manage the data of their patients with their patient and medicine.</string>
+    <string name="txt_about">This application was developped by 2 students in the HES-SO Valais/Wallis. The goal of this application is to provide to the nurse the possiblity to manage the data of their patients with their treatment and medecine.</string>
 
     <!-- Name of the image-->
     <string name="logo_hospital">Logo hospital</string>
@@ -112,5 +112,7 @@
         <item>Buscopan</item>
         <item>Buscopan</item>
     </string-array>
+    <string name="btn_Language_English" translatable="false">English</string>
+    <string name="btn_Language_French" translatable="false">Français</string>
 
 </resources>

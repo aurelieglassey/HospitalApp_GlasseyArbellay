@@ -6,10 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".settings.SettingsLanguage">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Language" />
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnSettingsLanguageEnglish"
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/generalbutton"
+            android:text="@string/btn_Language_English"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:drawableBottom="@drawable/ic_flag_flat_gb"
+           />
+
+        <View
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnSettingsAbout"
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/generalbutton"
+            android:text="@string/btn_Language_French"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:drawableBottom="@drawable/ic_flag_flat_ch"/>
+
+
+    </LinearLayout>
+
+
+
 </LinearLayout>

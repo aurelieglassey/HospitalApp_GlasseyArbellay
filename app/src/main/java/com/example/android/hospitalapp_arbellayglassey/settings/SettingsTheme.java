@@ -21,10 +21,6 @@ public class SettingsTheme extends AppCompatActivity {
         titleTheme = this.getString(R.string.title_settings_theme);
     }
 
-
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -54,7 +50,6 @@ public class SettingsTheme extends AppCompatActivity {
         else{
             finish();
         }
-
         return true;
     }
 
