@@ -49,14 +49,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="dafalgan"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
                 <ImageButton
                     android:id="@+id/btn_modify_MedecineDetails"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="@color/colorAppBackgroud"
                     app:srcCompat="@drawable/ic_mode_edit_black" />
 
             </LinearLayout>
@@ -84,7 +84,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Analgesic"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <View
@@ -108,7 +107,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Paracetamol"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <View
@@ -133,7 +131,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Brisol-myers"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
 
@@ -159,7 +156,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sickness"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
 
@@ -185,7 +181,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
 
@@ -210,7 +205,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Dilute in a glass of water"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
 

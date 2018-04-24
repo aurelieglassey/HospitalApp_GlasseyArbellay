@@ -41,14 +41,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Broken arm and multiples fractures due to fall from heaven"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
             <ImageButton
                 android:id="@+id/btn_modify_treatment"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="42dp"
                 android:layout_weight="1"
+                android:background="@color/colorAppBackgroud"
                 app:srcCompat="@drawable/ic_mode_edit_black" />
         </LinearLayout>
 
@@ -91,7 +91,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Trauma AG"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
             </LinearLayout>
 
@@ -118,7 +117,6 @@
                     android:id="@+id/quantityTreatmentDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="per day"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
             </LinearLayout>
 
