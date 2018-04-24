@@ -72,7 +72,7 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
     }
 
     public void onClick(View v) {
-        String lang = "en";
+        String lang = "";
         switch (v.getId()) {
             case R.id.btnSettingsLanguageEnglish:
                 lang = "en";
@@ -80,7 +80,7 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
                 finish();
 
             case R.id.btnSettingsLanguageFrench:
-                lang = "fr";
+                lang = "fr-rCH";
                 Toast.makeText(SettingsLanguage.this, " Langue : Français ", Toast.LENGTH_LONG).show();
                 finish();
                 break;
