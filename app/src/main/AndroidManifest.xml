@@ -39,6 +39,9 @@
         <activity android:name=".medecine.MedecineAddSearchList" />
         <activity android:name=".settings.Settings" />
         <activity android:name=".treatment.TreatmentModify" />
+        <activity android:name=".settings.SettingsAbout" />
+        <activity android:name=".settings.SettingsLanguage" />
+        <activity android:name=".settings.SettingsTheme"></activity>
     </application>
 
 </manifest>

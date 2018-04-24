@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements ListAdapter {
 
-    
+
     private int layout ;
     private int listViewLayout;
     private Context context;
