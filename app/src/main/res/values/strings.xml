@@ -47,6 +47,9 @@
     <string name="btn_modify_patient">Save modifications</string>
     <string name="btn_modify_medecine">Save modifications</string>
     <string name="btn_add_medecine_to_list_treatment">Add a medecine to this treatment</string>
+    <string name="label_settings_language">Language</string>
+    <string name="label_settings_About">About</string>
+    <string name="label_settings_background">Background</string>
 
     <!-- All title of the action bar -->
     <string name="actionbar_title_listPatient">List of Patient</string>
@@ -54,6 +57,8 @@
     <!-- Errors -->
     <string name="Error_fill_this_fields">Please fill this field</string>
 
+    <!-- About -->
+    <string name="txt_about">This application was developped by 2 students in the HES-SO Valais/Wallis. The goal of this app is to provide to the nurse the possiblity to manage the data of their patients with their patient and medicine.</string>
 
     <!-- Name of the image-->
     <string name="logo_hospital">Logo hospital</string>

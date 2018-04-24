@@ -23,11 +23,13 @@ public class MedecineAdd extends AppCompatActivity {
     //Button to add a new Medecine
     private Button btnAddNewMedecine;
     private MedecineEntity medecineEntity;
+    private String messageError = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medecine_add);
+        messageError = this.getString(R.string.error_enter_field);
 
         //Button add new medecine
         pressBtnOKAddNewMedecine();
@@ -59,45 +61,44 @@ public class MedecineAdd extends AppCompatActivity {
                 int error = 0;
                 //Check name
                 if (nameMedecine.getText().toString().length() == 0 ){
-                    nameMedecine.setError("vblablablablalba");
+                    nameMedecine.setError(messageError);
                     nameMedecine.requestFocus();
                     error = 1;
                 }
                 //Check type
                 if (typeMedecine.getText().toString().length() == 0 ){
-                    typeMedecine.setError("blablablablalba");
+                    typeMedecine.setError(messageError);
                     typeMedecine.requestFocus();
                     error = 1;
                 }
                 //Check ingredient
                 if (ingredientMedecine.getText().toString().length() == 0 ){
-                    ingredientMedecine.setError("blablablablalba");
+                    ingredientMedecine.setError(messageError);
                     ingredientMedecine.requestFocus();
                     error = 1;
                 }
                 //check manufacturer
                 if (manufacturerMedecine.getText().toString().length() == 0 ){
-                    manufacturerMedecine.setError("Pblablablablalba");
+                    manufacturerMedecine.setError(messageError);
                     manufacturerMedecine.requestFocus();
                     error = 1;
                 }
                 //check side effects
                 if (sideEffectMedecine.getText().toString().length() == 0 ){
-                    sideEffectMedecine.setError("blablablablalba");
+                    sideEffectMedecine.setError(messageError);
                     sideEffectMedecine.requestFocus();
                     error = 1;
                 }
 
                 //check max day of this medecine
                 if(maxDayMedecine.getText().toString().length() == 0){
-                    maxDayMedecine.setError("blablablablalba");
+                    maxDayMedecine.setError(messageError);
                     maxDayMedecine.requestFocus();
                     error = 1;
                 }
                 //check application
                 if (applicationMedecine.getText().toString().length() == 0 ){
-                    applicationMedecine.setError("blablablablalba");
-                    applicationMedecine.setError("blablablablalba");
+                    applicationMedecine.setError(messageError);
                     applicationMedecine.requestFocus();
                     error = 1;
                 }

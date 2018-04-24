@@ -27,14 +27,14 @@ public class PatientAdd extends AppCompatActivity {
     private Button okAddPatient;
     private PatientEntity patientEntity;
     private TreatmentEntity treatmentEntity;
-    private String messageError = this.getString(R.string.error_enter_field);
+    private String messageError = "";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_add);
-
+        messageError = this.getString(R.string.error_enter_field);
         //Button to confirm that we want to add this new patient
         pressOkAddPatient();
 
@@ -73,35 +73,35 @@ public class PatientAdd extends AppCompatActivity {
 
                 //Check age
                 if(agePatient.getText().toString().length() == 0){
-                    agePatient.setError("blablablablalba");
+                    agePatient.setError(messageError);
                     agePatient.requestFocus();
                     error = 1;
                 }
 
                 //Check Gender
                 if (genderPatient.getText().toString().length() != 1){
-                    genderPatient.setError("blablablablalba");
+                    genderPatient.setError(messageError);
                     genderPatient.requestFocus();
                     error = 1;
                 }
 
                 //Check Room
                 if(roomPatient.getText().toString().length() == 0){
-                    roomPatient.setError("blablablablalba");
+                    roomPatient.setError(messageError);
                     roomPatient.requestFocus();
                     error = 1;
                 }
 
                 //Check blood Group
                 if (bloodPatient.getText().toString().length() == 0  ){
-                    bloodPatient.setError("blablablablalba");
+                    bloodPatient.setError(messageError);
                     bloodPatient.requestFocus();
                     error = 1;
                 }
 
                 //Check reason of admission
                 if (admissionPatient.getText().toString().length() == 0  ){
-                    admissionPatient.setError("blablablablalba");
+                    admissionPatient.setError(messageError);
                     admissionPatient.requestFocus();
                     error = 1;
                 }
