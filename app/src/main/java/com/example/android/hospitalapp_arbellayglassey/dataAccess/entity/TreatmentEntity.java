@@ -46,8 +46,6 @@ public class TreatmentEntity {
         this.idPatient = idPatient;
     }
 
-
-
     //Getters and setters
     public int getIdT() {
         return idT;
