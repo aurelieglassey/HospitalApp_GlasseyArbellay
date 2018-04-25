@@ -8,6 +8,7 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Treatme
 import java.util.ArrayList;
 import java.util.List;
 
+// this init is used to populate the db the first time with the app
 public class DatabaseInitUtil {
 
    protected static List<MedecineEntity> lm;
@@ -93,6 +94,8 @@ public class DatabaseInitUtil {
         lp.add(p2);
 
 
+
+        //create the treatment
         TreatmentEntity t1 = new TreatmentEntity();
         t1.setIdT(1);
         t1.setName("Aurelie_Treatment");

@@ -1,6 +1,8 @@
 package com.example.android.hospitalapp_arbellayglassey.medecine;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +18,8 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreato
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncGetMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncUpdateMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 
 import java.util.concurrent.ExecutionException;
@@ -33,39 +37,26 @@ public class MedecineModify extends AppCompatActivity {
     private EditText editTextEffects;
     private EditText editTextMaxDay;
     private EditText editTextApplication;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medecine_modify);
 
+        // read the db
         try {
             readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
-
+        // Method to be more lisible
         pressBtnModifyMedecine();
+        setId();
+        setText();
 
-        editTextName = findViewById(R.id.editTextNameMedecineModify);
-        editTextType = findViewById(R.id.editTextTypeMedecineModify);
-        editTextIngredient = findViewById(R.id.editTextActiveIngredientModify);
-        editTextManufacturer = findViewById(R.id.editTextManufacturerMedecineModify);
-        editTextIngredient = findViewById(R.id.editTextActiveIngredientModify);
-        editTextEffects = findViewById(R.id.editTextSideEffectMedecineModify);
-        editTextMaxDay = findViewById(R.id.editTextMaxDayMedecineModify);
-        editTextApplication = findViewById(R.id.editTextApplicationMedecineModify);
 
-        editTextName.setText(medecineEntity.getName());
-        editTextType.setText(medecineEntity.getType());
-        editTextIngredient.setText(medecineEntity.getActiveIngredient());
-        editTextManufacturer.setText(medecineEntity.getManufacturers());
-        editTextIngredient.setText(medecineEntity.getActiveIngredient());
-        editTextEffects.setText(medecineEntity.getSideEffects());
-        editTextMaxDay.setText(String.valueOf(medecineEntity.getMaxPerDay()));
-        editTextApplication.setText(medecineEntity.getApplication());
+
     }
 
 
@@ -78,6 +69,29 @@ public class MedecineModify extends AppCompatActivity {
         medecineEntity = new AsyncGetMedecine(MedecineModify.this, idMedecine).execute().get();
 
     }
+
+    public void setId (){
+        editTextName = findViewById(R.id.editTextNameMedecineModify);
+        editTextType = findViewById(R.id.editTextTypeMedecineModify);
+        editTextIngredient = findViewById(R.id.editTextActiveIngredientModify);
+        editTextManufacturer = findViewById(R.id.editTextManufacturerMedecineModify);
+        editTextIngredient = findViewById(R.id.editTextActiveIngredientModify);
+        editTextEffects = findViewById(R.id.editTextSideEffectMedecineModify);
+        editTextMaxDay = findViewById(R.id.editTextMaxDayMedecineModify);
+        editTextApplication = findViewById(R.id.editTextApplicationMedecineModify);
+    }
+    public void setText(){
+        editTextName.setText(medecineEntity.getName());
+        editTextType.setText(medecineEntity.getType());
+        editTextIngredient.setText(medecineEntity.getActiveIngredient());
+        editTextManufacturer.setText(medecineEntity.getManufacturers());
+        editTextIngredient.setText(medecineEntity.getActiveIngredient());
+        editTextEffects.setText(medecineEntity.getSideEffects());
+        editTextMaxDay.setText(String.valueOf(medecineEntity.getMaxPerDay()));
+        editTextApplication.setText(medecineEntity.getApplication());
+    }
+
+
 
     // When the user decide to modify the data of a medecine
     public void pressBtnModifyMedecine(){
@@ -100,23 +114,25 @@ public class MedecineModify extends AppCompatActivity {
                 medecineEntity.setApplication(editTextApplication.getText().toString());
 
                 new AsyncUpdateMedecine(MedecineModify.this).execute(medecineEntity);
-                //Intent intent = new Intent(MedecineModify.this, MedecineDetails.class);
-                //intent.putExtra("idM", medecineEntity.getIdM());
-                //MedecineModify.this.startActivity(intent);
+
                 finish();
             }
         });
 
     }
+
+    // setup the option menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.mainmenu, menu);
         setTitle(R.string.title_medecine);
         setupActionBar();
+        setupNavBar();
         return true;
 
     }
+    //
     private void setupActionBar() {
 
         ActionBar actionBar = getSupportActionBar();
@@ -125,9 +141,8 @@ public class MedecineModify extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
+    // implement button
     public boolean onOptionsItemSelected(MenuItem item){
-
-
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -140,5 +155,41 @@ public class MedecineModify extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    //setup navigation drawer
+    //this method setup the navigation drawer and implement the button to go to the list
+    public void setupNavBar() {
+        mDrawerLayout = findViewById(R.id.drawer_layout_details_medecine);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_details_medecine);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_list_of_patient:
+                                Intent intentPatient = new Intent(MedecineModify.this, ListOfPatientActivity.class);
+                                MedecineModify.this.startActivity(intentPatient);
+                                finish();
+                                break;
+                            case R.id.nav_list_of_medicine:
+                                Intent intentMed = new Intent(MedecineModify.this, ListOfMedecineActivity.class);
+                                MedecineModify.this.startActivity(intentMed);
+                                finish();
+                                break;
+                            default:
+                                break;
+                        }
+                        mDrawerLayout.closeDrawers();
+
+
+                        return true;
+                    }
+                });
     }
 }

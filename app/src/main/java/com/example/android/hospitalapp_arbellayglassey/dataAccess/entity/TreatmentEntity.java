@@ -11,6 +11,8 @@ import android.support.annotation.Nullable;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
+
+// this table have a foreign key which is the patient who have one treatment
 @Entity (tableName = "Treatment",
         foreignKeys = @ForeignKey(entity = PatientEntity.class,
                 parentColumns = "idP",
@@ -22,11 +24,13 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
                         value = {"idPatient"}
                 )})
 public class TreatmentEntity {
-
+ //PK
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "idT")
     private int idT;
 
+
+    //Some stuff
     @ColumnInfo(name = "name")
     private String name;
 
@@ -45,7 +49,6 @@ public class TreatmentEntity {
         this.maxQuantity = maxQuantity;
         this.idPatient = idPatient;
     }
-
     //Getters and setters
     public int getIdT() {
         return idT;

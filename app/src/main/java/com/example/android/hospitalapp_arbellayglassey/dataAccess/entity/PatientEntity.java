@@ -7,9 +7,12 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "Patient")
 public class PatientEntity {
 
+    // PK
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "idP")
     private int idP;
+
+    // somme stuff you can read it
 
     @ColumnInfo(name = "name")
     private String name;
@@ -33,11 +36,12 @@ public class PatientEntity {
     @ColumnInfo(name = "idTreatment")
     private int idTreatment;
 
+
     public PatientEntity() {
 
     }
 
-
+/*
     public PatientEntity(String name, char gender, int roomNumber, String bloodGroup, int age, String reasonAdmission, int idTreatment) {
         //this.idP = id;
         this.name = name;
@@ -49,6 +53,8 @@ public class PatientEntity {
         this.idTreatment = idTreatment;
 
     }
+
+ */
     //Getters and setters
 
     public String getName() {

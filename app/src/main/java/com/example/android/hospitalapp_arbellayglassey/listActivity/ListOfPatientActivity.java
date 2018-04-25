@@ -1,6 +1,8 @@
 package com.example.android.hospitalapp_arbellayglassey.listActivity;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatients;
@@ -28,6 +31,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
     private Button btnNewPatient;
     private List<PatientEntity> patientEntities;
     private ListViewWithDelBtnAdapterPatient adapterPatient;
+    private DrawerLayout mDrawerLayout;
 
 
 
@@ -39,13 +43,12 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
         //Button to add a new patient for the list
         pressBtnNewPatient();
+        setupNavBar();
 
         //try to read the DB
         try {
             readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
         ListView list;
@@ -67,9 +70,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
         try {
             readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
 
@@ -136,6 +137,39 @@ public class ListOfPatientActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    //this method setup the navigation drawer and implement the button to go to the list
+    public void setupNavBar() {
+        mDrawerLayout = findViewById(R.id.drawer_layout_list_of_patient);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_list_patient);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_list_of_patient:
+                                Toast.makeText(ListOfPatientActivity.this, "You are already on this activity", Toast.LENGTH_LONG);
+                                break;
+                            case R.id.nav_list_of_medicine:
+                                Intent intentMed = new Intent(ListOfPatientActivity.this, ListOfPatientActivity.class);
+                                ListOfPatientActivity.this.startActivity(intentMed);
+                                finish();
+                                break;
+                            default:
+                                break;
+                        }
+                        mDrawerLayout.closeDrawers();
+
+
+                        return true;
+                    }
+                });
     }
 
 

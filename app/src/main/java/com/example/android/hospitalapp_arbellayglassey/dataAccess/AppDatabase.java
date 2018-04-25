@@ -20,30 +20,16 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Treatme
 @Database(entities = {PatientEntity.class, MedecineEntity.class, TreatmentEntity.class, TreatmentMedecineLinkEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase{
 
+    // the db link to the differnet entity
+
     static final String DATABASE_NAME = "hospital_database";
 
 
-    //singleton instance object
-   // private static final Object LOCK = new Object();
-
+    //DAO
     public abstract PatientDao patientDao();
     public abstract MedecineDao medecineDao();
     public abstract TreatmentDao treatmentDao();
     public abstract TreatmentMedecineLinkDao treatmentMedecineLinkDao();
 
-    //begin of the singleton
-    /* not sure if we need with the databaseCreator
-    public synchronized static AppDatabase getAppDatabase (Context context) {
-        if (INSTANCE == null) {
-            synchronized (LOCK) {
-                if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "hospitalDatabase").build();
 
-                }
-            }
-        }
-
-    return INSTANCE;
-    }
-*/
 }

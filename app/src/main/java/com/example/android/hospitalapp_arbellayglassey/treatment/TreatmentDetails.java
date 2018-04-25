@@ -1,6 +1,8 @@
 package com.example.android.hospitalapp_arbellayglassey.treatment;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +26,8 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Medecin
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentMedecineLinkEntity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineAddSearchList;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineDetails;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
@@ -47,6 +51,7 @@ public class TreatmentDetails extends AppCompatActivity {
     private TextView textViewAdmission;
     private TextView textViewName;
     private TextView textViewQuantityName;
+    private DrawerLayout mDrawerLayout;
 
  //private TextView textViewAdmission;
     private ListViewWithDelBtnAdapterLink adapterLink;
@@ -157,29 +162,32 @@ public class TreatmentDetails extends AppCompatActivity {
 
     public void readDB() throws ExecutionException, InterruptedException {
 
-
-
+        //get the intent and add th id to the variable
         Intent intentGetId = getIntent();
         idPatient = intentGetId.getIntExtra("idP", 0);
+
+        // get the data
         treatmentEntity = new AsyncGetTreatment(TreatmentDetails.this, idPatient).execute().get();
-
         patientEntity = new AsyncGetPatient(TreatmentDetails.this, idPatient).execute().get();
-
         listLinkEntity = new AsyncGetLinks(TreatmentDetails.this, treatmentEntity.getIdT()).execute().get();
         medecineEntityList= new ArrayList<>();
 
+        //poulate the list
         for (TreatmentMedecineLinkEntity linkEntity: listLinkEntity) {
             medecineEntityList.add(new AsyncGetMedecine(TreatmentDetails.this,linkEntity.getIdMedecine()).execute().get());
         }
 
 
     }
+
+    //set up the action bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.mainmenu, menu);
         setTitle(patientEntity.getName());
         setupActionBar();
+        setupNavBar();
         return true;
 
     }
@@ -206,6 +214,41 @@ public class TreatmentDetails extends AppCompatActivity {
         }
 
         return true;
+    }
+    //setup navigation drawer
+    //this method setup the navigation drawer and implement the button to go to the list
+    public void setupNavBar() {
+        mDrawerLayout = findViewById(R.id.drawer_layoutt_details_treatment);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_treatment_details);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_list_of_patient:
+                                Intent intentPatient = new Intent(TreatmentDetails.this, ListOfPatientActivity.class);
+                                TreatmentDetails.this.startActivity(intentPatient);
+                                finish();
+                                break;
+                            case R.id.nav_list_of_medicine:
+                                Intent intentMed = new Intent(TreatmentDetails.this, ListOfMedecineActivity.class);
+                                TreatmentDetails.this.startActivity(intentMed);
+                                finish();
+                                break;
+                            default:
+                                break;
+                        }
+                        mDrawerLayout.closeDrawers();
+
+
+                        return true;
+                    }
+                });
     }
 
 

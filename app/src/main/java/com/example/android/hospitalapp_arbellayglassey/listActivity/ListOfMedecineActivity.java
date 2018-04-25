@@ -1,6 +1,8 @@
 package com.example.android.hospitalapp_arbellayglassey.listActivity;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.android.hospitalapp_arbellayglassey.MainActivity;
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 
@@ -26,10 +30,11 @@ import java.util.concurrent.ExecutionException;
 
 public class ListOfMedecineActivity extends AppCompatActivity {
 
-    //Button add a new medecine
+    //Button add a new medecine and variable
     private Button btnAddNewMedecine;
     private List<MedecineEntity> MedecineEntities;
     private ListViewWithDelBtnAdapterMedecine adapterMedecine;
+    private DrawerLayout mDrawerLayout;
 
 
     @Override
@@ -39,13 +44,12 @@ public class ListOfMedecineActivity extends AppCompatActivity {
 
         //Button to add a new Medecine to the list of medecine
         pressBtnAddNewMedecine();
+        setupNavBar();
 
         //Try to access to the database
         try {
             readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
         ListView list;
@@ -73,6 +77,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
 
 
     }
+    // on restart the activity, to refrehs the data
     @Override
     public void onRestart(){
         super.onRestart();
@@ -87,6 +92,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
 
         adapterMedecine.refreshEvents(MedecineEntities);
 
+
     }
     //Read the db from our application
     public void readDB() throws ExecutionException, InterruptedException {
@@ -98,6 +104,8 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         MedecineEntities = new AsyncGetMedecines(ListOfMedecineActivity.this).execute().get();
 
     }
+
+    //on create the menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -131,5 +139,38 @@ public class ListOfMedecineActivity extends AppCompatActivity {
 
         return true;
     }
+    //this method setup the navigation drawer and implement the button to go to the list
+    public void setupNavBar() {
+        mDrawerLayout = findViewById(R.id.drawer_layout_list_of_medecine);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_list_medecine);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_list_of_patient:
+                                Intent intentPatient = new Intent(ListOfMedecineActivity.this, ListOfPatientActivity.class);
+                                ListOfMedecineActivity.this.startActivity(intentPatient);
+                                finish();
+                                break;
+                            case R.id.nav_list_of_medicine:
+                                Toast.makeText(ListOfMedecineActivity.this, "You are already on this activity", Toast.LENGTH_LONG);
+                                break;
+                            default:
+                                break;
+                        }
+                        mDrawerLayout.closeDrawers();
+
+                        finish();
+                        return true;
+                    }
+                });
+    }
 
 }
+

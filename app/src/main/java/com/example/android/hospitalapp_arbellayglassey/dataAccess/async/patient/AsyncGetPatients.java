@@ -16,9 +16,12 @@ public class AsyncGetPatients extends AsyncTask<Void,Void, List<PatientEntity>> 
     // Weak references will still allow the Activity to be garbage-collected
     private final WeakReference<Context> mContext;
 
+    //constructor
     public AsyncGetPatients(Context c) {
         mContext = new WeakReference<>(c);
     }
+
+    // get a list of patient from the db
     @Override
     protected List<PatientEntity> doInBackground(Void... voids) {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());

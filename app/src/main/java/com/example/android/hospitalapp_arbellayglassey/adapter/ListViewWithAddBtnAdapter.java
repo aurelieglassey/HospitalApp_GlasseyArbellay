@@ -23,6 +23,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapter {
+
+    //variable of the adapter
     private int layout ;
     private int listViewLayout;
 
@@ -84,21 +86,21 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
         addBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+
+                // make a toast
                 Toast.makeText(context, "Object to add: "+ Entities.get(position).getName(), Toast.LENGTH_LONG).show();
                 TreatmentMedecineLinkEntity linkEn = new TreatmentMedecineLinkEntity();
+                // set the id to the link
                 linkEn.setIdMedecine(Entities.get(position).getIdM());
                 linkEn.setIdTreatment(idT);
-                //intent.putExtra("idP", idT);
 
+                //db access
                 try {
                     new AsyncAddLink(context, linkEn).execute().get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
+                } catch (InterruptedException | ExecutionException e) {
                     e.printStackTrace();
                 }
                 ((Activity)context).finish();
-                //context.startActivity(intent);
 
             }
         });

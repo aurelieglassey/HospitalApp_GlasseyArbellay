@@ -21,7 +21,7 @@ public class AsyncDeleteMedecine extends AsyncTask<MedecineEntity, Void, Void> {
         this.me = me;
 
     }
-
+    // delete the patient in the db in background
     @Override
     protected Void doInBackground(MedecineEntity... medecineEntities) {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());

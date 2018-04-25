@@ -9,12 +9,13 @@ import android.support.annotation.Nullable;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
-//Table de jointure entre Treatment et Medecine
+//LINK TABLE
 @Entity(tableName = "TreatmentMedecineLink",
-        //Les indices sont un lien unique entre les tables Treatment et Medecine par lequel on ajoute les propriétés d'un index
+
+        //CANNOT ADD TWO PK
         //primaryKeys = {"idTreatment", "idMedecine"},
         indices = {@Index(value = {"idTreatment"})},
-        //Lien de 2 foreign key des tables Treatment et medecine
+        //Link 2 foreign key from Treatment et medecine
         foreignKeys =
                 //FK de Table Treatment
                 {@ForeignKey(entity=TreatmentEntity.class, parentColumns = "idT", childColumns = "idTreatment", onDelete = CASCADE) ,
@@ -22,7 +23,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
                         @ForeignKey(entity = MedecineEntity.class, parentColumns = "idM", childColumns = "idMedecine", onDelete = CASCADE)})
 public class TreatmentMedecineLinkEntity {
 
-
+    // we need to add a link id to be sure, because when creating a link with the same pk it crash
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "idL")
     private int idL;
@@ -36,14 +37,15 @@ public class TreatmentMedecineLinkEntity {
     @Nullable
     private int idMedecine;
 
-//    @ColumnInfo(name = "quantity_per_day")//   private String quantityPerDay;
 
+    /*
     public TreatmentMedecineLinkEntity(int idTreatment, int idMedecine, String quantityPerDay) {
         this.idTreatment = idTreatment;
         this.idMedecine = idMedecine;
-        //this.quantityPerDay = quantityPerDay;
-    }
 
+    }
+    */
+    // constructor
     public TreatmentMedecineLinkEntity() {
 
     }
@@ -57,8 +59,6 @@ public class TreatmentMedecineLinkEntity {
     public int getIdMedecine() {
         return idMedecine;
     }
-
-    //public String getQuantityPerDay() {return quantityPerDay;}
 
     public void setIdTreatment(int idTreatment) {
         this.idTreatment = idTreatment;

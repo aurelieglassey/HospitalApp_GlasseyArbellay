@@ -24,13 +24,13 @@ import java.util.List;
 
 public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements ListAdapter {
 
+    //variable
     private int layout ;
     private int listViewLayout;
-
     private Context context;
     private Intent intent;
-    List<PatientEntity> Entities;
-    int idDelButton;
+    private List<PatientEntity> Entities;
+    private int idDelButton;
 
 
     // constructor to get all the necessary variables
@@ -102,10 +102,17 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
+                                //toaaast
                                 Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
-                                intent.putExtra("idP", Entities.get(position).getIdP());
+
+
+                                // delete the patient, may he repose in peace
                                 new AsyncDeletePatient(context, Entities.get(position)).execute();
-                                Entities.remove(position);
+
+                                // remove the patient from the list RIP
+                                 Entities.remove(position);
+
+                                // notify the change
                                 notifyDataSetChanged();
 
                             }})
@@ -118,7 +125,7 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
 
         return view;
     }
-
+    // like always, get a new list an refresh the list
     public void refreshEvents(List<PatientEntity> patientEntities) {
         this.Entities.clear();
         this.Entities.addAll(patientEntities);

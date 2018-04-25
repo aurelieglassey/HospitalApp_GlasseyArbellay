@@ -1,7 +1,8 @@
 package com.example.android.hospitalapp_arbellayglassey.medecine;
 
-import android.app.Application;
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncGetMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 
 import java.util.concurrent.ExecutionException;
@@ -23,6 +26,7 @@ public class MedecineDetails extends AppCompatActivity {
 
     //Variables
     private ImageButton btnModifyMedecine;
+    private DrawerLayout mDrawerLayout;
     private int idMedecine;
     private MedecineEntity medecineEntity;
     private TextView textViewName;
@@ -41,9 +45,7 @@ public class MedecineDetails extends AppCompatActivity {
         //Read the db
         try {
             readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
 
@@ -75,22 +77,22 @@ public class MedecineDetails extends AppCompatActivity {
         });
 
     }
+
+    // on restart to set the text with the new value
     @Override
     public void onRestart() {
         super.onRestart();
 
         try {
             readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
         setText();
     }
 
 
-
+ // i can't be more precise that the name of the method
     public void setId(){
         textViewName = findViewById(R.id.textNameMedecineDetails);
         textViewType = findViewById(R.id.textTypeMedecineDetails);
@@ -100,6 +102,7 @@ public class MedecineDetails extends AppCompatActivity {
         textViewMaxDay = findViewById(R.id.textMaxDayMedecineDetails);
         textViewApplication = findViewById(R.id.textApplicationMedecineDetails);
     }
+    // i can't be more precise that the name of the method
     public void setText(){
         textViewName.setText(medecineEntity.getName());
         textViewType.setText(medecineEntity.getType());
@@ -122,12 +125,15 @@ public class MedecineDetails extends AppCompatActivity {
 
 
     }
+
+    // set up the menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.mainmenu, menu);
         setTitle(R.string.title_medecine);
         setupActionBar();
+        setupNavBar();
         return true;
 
     }
@@ -154,5 +160,40 @@ public class MedecineDetails extends AppCompatActivity {
         }
 
         return true;
+    }
+    //setup navigation drawer
+    //this method setup the navigation drawer and implement the button to go to the list
+    public void setupNavBar() {
+        mDrawerLayout = findViewById(R.id.drawer_layout_details_medecine);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_details_medecine);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_list_of_patient:
+                                Intent intentPatient = new Intent(MedecineDetails.this, ListOfPatientActivity.class);
+                                MedecineDetails.this.startActivity(intentPatient);
+                                finish();
+                                break;
+                            case R.id.nav_list_of_medicine:
+                                Intent intentMed = new Intent(MedecineDetails.this, ListOfMedecineActivity.class);
+                                MedecineDetails.this.startActivity(intentMed);
+                                finish();
+                                break;
+                            default:
+                                break;
+                        }
+                        mDrawerLayout.closeDrawers();
+
+
+                        return true;
+                    }
+                });
     }
 }

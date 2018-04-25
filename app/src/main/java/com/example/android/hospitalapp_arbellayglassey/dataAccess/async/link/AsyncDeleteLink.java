@@ -21,7 +21,7 @@ public class AsyncDeleteLink extends AsyncTask<TreatmentMedecineLinkEntity, Void
         this.link = link;
 
     }
-
+    // delete the link
     @Override
     protected Void doInBackground(TreatmentMedecineLinkEntity... linkEntities) {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());

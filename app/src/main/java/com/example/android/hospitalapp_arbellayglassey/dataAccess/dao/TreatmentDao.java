@@ -20,6 +20,7 @@ public interface TreatmentDao {
     @Insert
     long insertTreatment(TreatmentEntity treatment);
 
+    // never used but it will be deleted on cascade when the patient is deleted
     @Delete
     void deleteTreatment(TreatmentEntity treatment);
 

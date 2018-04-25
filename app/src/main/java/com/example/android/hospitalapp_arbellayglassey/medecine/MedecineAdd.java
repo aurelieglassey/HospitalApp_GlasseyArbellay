@@ -1,6 +1,8 @@
 package com.example.android.hospitalapp_arbellayglassey.medecine;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,26 +12,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.android.hospitalapp_arbellayglassey.MainActivity;
 import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncAddMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 
 import java.util.concurrent.ExecutionException;
 
 public class MedecineAdd extends AppCompatActivity {
 
-    //Button to add a new Medecine
+    //Button to add a new Medecine and different variable used
     private Button btnAddNewMedecine;
     private MedecineEntity medecineEntity;
     private String messageError = "";
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medecine_add);
+
+        //add the error message
         messageError = this.getString(R.string.error_enter_field);
+
+        setupNavBar();
 
         //Button add new medecine
         pressBtnOKAddNewMedecine();
@@ -39,6 +48,7 @@ public class MedecineAdd extends AppCompatActivity {
     //button ok
     public void pressBtnOKAddNewMedecine(){
 
+
         //find the Id of the button ok
         btnAddNewMedecine = (Button) findViewById(R.id.buttonOKNewMedecine);
 
@@ -46,7 +56,7 @@ public class MedecineAdd extends AppCompatActivity {
         btnAddNewMedecine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Intent intent = new Intent(MedecineAdd.this, ListOfMedecineActivity.class);
+
 
                 //Get all (id) data of a madecine of the texte view
                 EditText nameMedecine = (EditText)findViewById(R.id.editNameMedecineAdd);
@@ -128,22 +138,24 @@ public class MedecineAdd extends AppCompatActivity {
     public void addMedecine(MedecineEntity medecineEntity){
         try {
             Long id = new AsyncAddMedecine(MedecineAdd.this, medecineEntity).execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
 
     }
+
+    // create the menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.mainmenu, menu);
         setTitle(R.string.title_new_medecine);
         setupActionBar();
+        setupNavBar();
         return true;
 
     }
+    // set up the action bar
     private void setupActionBar() {
 
         ActionBar actionBar = getSupportActionBar();
@@ -152,6 +164,8 @@ public class MedecineAdd extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
+
+    //  button of the action bar
     public boolean onOptionsItemSelected(MenuItem item){
 
 
@@ -168,4 +182,41 @@ public class MedecineAdd extends AppCompatActivity {
 
         return true;
     }
+
+    //setup navigation drawer
+    //this method setup the navigation drawer and implement the button to go to the list
+    public void setupNavBar() {
+        mDrawerLayout = findViewById(R.id.drawer_layout_add_medecine);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_add_medecine);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_list_of_patient:
+                                Intent intentPatient = new Intent(MedecineAdd.this, ListOfPatientActivity.class);
+                                MedecineAdd.this.startActivity(intentPatient);
+                                finish();
+                                break;
+                            case R.id.nav_list_of_medicine:
+                                Intent intentMed = new Intent(MedecineAdd.this, ListOfMedecineActivity.class);
+                                MedecineAdd.this.startActivity(intentMed);
+                                finish();
+                                break;
+                            default:
+                                break;
+                        }
+                        mDrawerLayout.closeDrawers();
+
+
+                        return true;
+                    }
+                });
+    }
+
 }

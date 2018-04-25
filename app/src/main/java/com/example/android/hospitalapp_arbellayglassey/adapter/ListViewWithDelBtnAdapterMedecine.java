@@ -22,13 +22,13 @@ import java.util.List;
 
 public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements ListAdapter {
 
-
+    //variable
     private int layout ;
     private int listViewLayout;
     private Context context;
     private Intent intent;
-    List<MedecineEntity> Entities;
-    int idDelButton;
+    private List<MedecineEntity> Entities;
+    private int idDelButton;
 
 
     // constructor to get all the necessary variables
@@ -81,7 +81,7 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
             public void onClick(View v) {
                 intent.putExtra("idM", Entities.get(position).getIdM());
                 context.startActivity(intent);
-                Toast.makeText(context, "Object to see details: "+ Entities.get(position).getName().toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Object to see details: "+ Entities.get(position).getName(), Toast.LENGTH_LONG).show();
 
             }
         });
@@ -100,16 +100,14 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
                             public void onClick(DialogInterface dialog, int whichButton) {
 
+                                // make a roasted toast
+                                Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
 
-                                Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName().toString(), Toast.LENGTH_SHORT).show();
-
-
-                                //intent.putExtra("idM", Entities.get(position).getIdM());
-
-
+                                //delete in the db
                                 new AsyncDeleteMedecine(context, Entities.get(position)).execute();
                                 // delete the entites that was delete and notify changes
                                 Entities.remove(position);
+                                // notify the change
                                 notifyDataSetChanged();
 
 
@@ -123,6 +121,8 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
         return view;
     }
+
+    //get new value to refresh the list
     public void refreshEvents(List<MedecineEntity> medecineEntities) {
         this.Entities.clear();
         this.Entities.addAll(medecineEntities);

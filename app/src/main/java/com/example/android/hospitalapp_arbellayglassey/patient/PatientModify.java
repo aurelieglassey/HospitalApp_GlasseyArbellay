@@ -1,6 +1,8 @@
 package com.example.android.hospitalapp_arbellayglassey.patient;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +17,8 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreato
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncUpdatePatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 
 import java.util.concurrent.ExecutionException;
@@ -33,6 +37,8 @@ public class PatientModify extends AppCompatActivity {
     private EditText editTextRoom;
     private EditText editTextBlood;
     private EditText editTextAdmission;
+    private DrawerLayout mDrawerLayout;
+
 
 
     @Override
@@ -98,20 +104,21 @@ public class PatientModify extends AppCompatActivity {
                 patientEntity.setReasonAdmission(editTextAdmission.getText().toString());
 
                 new AsyncUpdatePatient(PatientModify.this).execute(patientEntity);
-                //Intent intent = new Intent(PatientModify.this, PatientDetails.class);
-                //intent.putExtra("idP", patientEntity.getIdP());
-                //PatientModify.this.startActivity(intent);
+
                 finish();
             }
         });
 
     }
+
+    //set up the action bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.mainmenu, menu);
         setTitle(R.string.title_patient);
         setupActionBar();
+        setupNavBar();
         return true;
 
     }
@@ -138,6 +145,42 @@ public class PatientModify extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    //setup navigation drawer
+    //this method setup the navigation drawer and implement the button to go to the list
+    public void setupNavBar() {
+        mDrawerLayout = findViewById(R.id.drawer_layout_modify_patient);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_modify_patient);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_list_of_patient:
+                                Intent intentPatient = new Intent(PatientModify.this, ListOfPatientActivity.class);
+                                PatientModify.this.startActivity(intentPatient);
+                                finish();
+                                break;
+                            case R.id.nav_list_of_medicine:
+                                Intent intentMed = new Intent(PatientModify.this, ListOfMedecineActivity.class);
+                                PatientModify.this.startActivity(intentMed);
+                                finish();
+                                break;
+                            default:
+                                break;
+                        }
+                        mDrawerLayout.closeDrawers();
+
+
+                        return true;
+                    }
+                });
     }
 }
 

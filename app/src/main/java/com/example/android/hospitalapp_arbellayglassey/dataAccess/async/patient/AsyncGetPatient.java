@@ -16,7 +16,7 @@ public class AsyncGetPatient extends AsyncTask<Integer, Void, PatientEntity>
         // Weak references will still allow the Activity to be garbage-collected
         private final WeakReference<Context> mContext;
 
-        int id;
+        private int id;
 
 
         //Constructor

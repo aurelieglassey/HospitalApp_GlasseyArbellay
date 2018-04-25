@@ -9,10 +9,11 @@ import android.support.annotation.Nullable;
 @Entity(tableName = "Medecine")
 public class MedecineEntity {
 
-
+    //PK
     @PrimaryKey(autoGenerate = true)
     private int idM;
 
+    // somme stuff
     @ColumnInfo(name = "name")
     private String name;
 
@@ -34,10 +35,12 @@ public class MedecineEntity {
     @ColumnInfo(name = "max_per_day")
     private int maxPerDay;
 
+    // empty constructor
     public MedecineEntity() {
 
     }
 
+    /*
     public MedecineEntity(int id, String name, String type, String activeIngredient, String manufacturers, String application, String sideEffects, int maxPerDay) {
         this.idM = id;
         this.name = name;
@@ -48,7 +51,10 @@ public class MedecineEntity {
         this.sideEffects = sideEffects;
         this.maxPerDay = maxPerDay;
     }
+    */
 
+
+    //Getters and setters
     public int getIdM() {
         return idM;
     }
@@ -115,5 +121,5 @@ public class MedecineEntity {
     }
 
 
-    //Getters and setters
+
 }

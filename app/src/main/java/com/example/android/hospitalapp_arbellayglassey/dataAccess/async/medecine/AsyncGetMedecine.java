@@ -12,7 +12,7 @@ public class AsyncGetMedecine extends AsyncTask<Integer, Void, MedecineEntity> {
 
     private final WeakReference<Context> mContext;
 
-    int id;
+    private int id;
 
     //Constructor
     public AsyncGetMedecine(Context c, int id){

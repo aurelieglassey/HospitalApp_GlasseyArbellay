@@ -20,6 +20,8 @@ public class AsyncGetLinks extends AsyncTask<Void,Void, List<TreatmentMedecineLi
         mContext = new WeakReference<>(c);
         this.idT = idT;
     }
+
+    // get the links in the data base doing it in background
     @Override
     protected List<TreatmentMedecineLinkEntity> doInBackground(Void... voids) {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());

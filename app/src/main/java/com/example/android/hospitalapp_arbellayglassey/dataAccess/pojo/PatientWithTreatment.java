@@ -8,6 +8,8 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Treatme
 
 import java.util.List;
 
+// was created to try a solution, we try and failed but we try
+
 public class PatientWithTreatment {
 
     @Embedded

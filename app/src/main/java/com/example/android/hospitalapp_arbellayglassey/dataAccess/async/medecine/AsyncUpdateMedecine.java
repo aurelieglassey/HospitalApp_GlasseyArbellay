@@ -11,12 +11,12 @@ import java.lang.ref.WeakReference;
 public class AsyncUpdateMedecine extends AsyncTask<MedecineEntity, Void, Void> {
 
     private final WeakReference<Context> mContext;
-
+    // constructor
     public AsyncUpdateMedecine (Context context){
         this.mContext = new WeakReference<>(context);
     }
 
-
+    // update the medcines in background
     @Override
     protected Void doInBackground(MedecineEntity... params) {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());

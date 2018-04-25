@@ -18,6 +18,7 @@ public class AsyncUpdatePatient extends AsyncTask<PatientEntity, Void, Void> {
         mContext = new WeakReference<>(context);
     }
 
+    // update the patient in the db
     @Override
     protected Void doInBackground(PatientEntity... params) {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());

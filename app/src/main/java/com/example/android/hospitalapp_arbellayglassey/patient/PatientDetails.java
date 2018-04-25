@@ -1,7 +1,9 @@
 package com.example.android.hospitalapp_arbellayglassey.patient;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.NavUtils;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 import com.example.android.hospitalapp_arbellayglassey.treatment.TreatmentDetails;
@@ -35,6 +38,7 @@ public class PatientDetails extends AppCompatActivity {
     private TextView textViewRoom;
     private TextView textViewBloodGroup;
     private TextView textViewAdmission;
+    private DrawerLayout mDrawerLayout;
 
 
     @Override
@@ -49,9 +53,10 @@ public class PatientDetails extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //find the textview by his id
+
         setId();
         setText();
+        setupNavBar();
 
 
 
@@ -61,6 +66,7 @@ public class PatientDetails extends AppCompatActivity {
 
 
     }
+    // on restart methode that
     @Override
     public void onRestart() {
         super.onRestart();
@@ -72,7 +78,7 @@ public class PatientDetails extends AppCompatActivity {
         }
         setText();
     }
-
+    //find by id
     public void setId(){
         textViewName = findViewById(R.id.namePatientDetails);
         textViewAge = findViewById(R.id.agePatientDetails);
@@ -81,6 +87,10 @@ public class PatientDetails extends AppCompatActivity {
         textViewBloodGroup = findViewById(R.id.bloodGroupPatientDetails);
         textViewAdmission = findViewById(R.id.admissionPatientDetails);
     }
+
+
+
+    // set the tex
     public void setText(){
         textViewName.setText(patientEntity.getName());
         textViewAge.setText(String.valueOf(patientEntity.getAge()));
@@ -140,6 +150,7 @@ public class PatientDetails extends AppCompatActivity {
             });
 
     }
+    // setup the menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -158,8 +169,6 @@ public class PatientDetails extends AppCompatActivity {
         }
     }
     public boolean onOptionsItemSelected(MenuItem item){
-
-
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -174,21 +183,41 @@ public class PatientDetails extends AppCompatActivity {
         return true;
     }
 
-    /*
-    public void setActionBarTitle(String title) {
-        setTitle(title);
+    //setup navigation drawer
+    //this method setup the navigation drawer and implement the button to go to the list
+    public void setupNavBar() {
+        mDrawerLayout = findViewById(R.id.drawer_layout_details_patient);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_details_patient);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_list_of_patient:
+                                Intent intentPatient = new Intent(PatientDetails.this, ListOfPatientActivity.class);
+                                PatientDetails.this.startActivity(intentPatient);
+                                finish();
+                                break;
+                            case R.id.nav_list_of_medicine:
+                                Intent intentMed = new Intent(PatientDetails.this, ListOfMedecineActivity.class);
+                                PatientDetails.this.startActivity(intentMed);
+                                finish();
+                                break;
+                            default:
+                                break;
+                        }
+                        mDrawerLayout.closeDrawers();
+
+
+                        return true;
+                    }
+                });
     }
 
-    @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            if (!super.onMenuItemSelected(featureId, item)) {
-                NavUtils.navigateUpFromSameTask(this);
-            }
-            return true;
-        }
-        return super.onMenuItemSelected(featureId, item);
-    }
-    */
+
 }

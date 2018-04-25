@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout_modify_medecine"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAppBackgroud"
@@ -10,239 +11,246 @@
     android:paddingTop="16dp"
     tools:context=".medecine.MedecineModify">
 
-
-
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/labelNameMedecineDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_name"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/colorGreyButton" />
-
-            <EditText
-                android:id="@+id/editTextNameMedecineModify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-               />
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="1" />
-
-
-            <!-- Type -->
-            <TextView
-                android:id="@+id/labelTypeMedecineModify"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_type_medecine"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/colorGreyButton"
-                android:textSize="12sp" />/>
-
-
-            <EditText
-                android:id="@+id/editTextTypeMedecineModify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-              />
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="1" />
-
-            <!-- Active ingredient -->
-            <TextView
-                android:id="@+id/labelActiveIngredientMedecineModify"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_active_ingredient"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/colorGreyButton"
-                android:textSize="12sp" />
-
-            <EditText
-                android:id="@+id/editTextActiveIngredientModify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-               />
-
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="1" />
-
-
-            <!-- Manufacturer -->
-            <TextView
-                android:id="@+id/labelManufacturerMedecineModify"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_manufacturer"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/colorGreyButton"
-                android:textSize="12sp" />
-
-            <EditText
-                android:id="@+id/editTextManufacturerMedecineModify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-             />
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="1" />
-
-
-            <!-- Side Effect -->
-            <TextView
-                android:id="@+id/labelSideEffectMedecineModify"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_side_effect"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/colorGreyButton"
-                android:textSize="12sp" />
-
-            <EditText
-                android:id="@+id/editTextSideEffectMedecineModify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-              />
-
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="1" />
-
-
-            <!-- Max per day -->
-            <TextView
-                android:id="@+id/labelMaxDayMedecineModify"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_max_per_day"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/colorGreyButton"
-                android:textSize="12sp" />
-
-
-            <EditText
-                android:id="@+id/editTextMaxDayMedecineModify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="number"
-              />
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="1" />
-
-
-            <!-- Application of medecine -->
-            <TextView
-                android:id="@+id/labelApplicationMedecineModify"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_application_medecine"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/colorGreyButton"
-                android:textSize="12sp" />
-
-            <EditText
-                android:id="@+id/editTextApplicationMedecineModify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-              />
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="1" />
-
-
-            <!-- Layout for the button OK -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-
-                <Button
-                    android:id="@+id/buttonOkModifyMedecine"
+                <TextView
+                    android:id="@+id/labelNameMedecineDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/generalbutton"
-                    android:text="@string/btn_modify_medecine" />
+                    android:text="@string/label_name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/colorGreyButton" />
+
+                <EditText
+                    android:id="@+id/editTextNameMedecineModify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="20dp"
                     android:layout_weight="1" />
 
 
+                <!-- Type -->
+                <TextView
+                    android:id="@+id/labelTypeMedecineModify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/label_type_medecine"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/colorGreyButton"
+                    android:textSize="12sp" />/
+
+
+                <EditText
+                    android:id="@+id/editTextTypeMedecineModify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1" />
+
+                <!-- Active ingredient -->
+                <TextView
+                    android:id="@+id/labelActiveIngredientMedecineModify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/label_active_ingredient"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/colorGreyButton"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editTextActiveIngredientModify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1" />
+
+
+                <!-- Manufacturer -->
+                <TextView
+                    android:id="@+id/labelManufacturerMedecineModify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/label_manufacturer"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/colorGreyButton"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editTextManufacturerMedecineModify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1" />
+
+
+                <!-- Side Effect -->
+                <TextView
+                    android:id="@+id/labelSideEffectMedecineModify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/label_side_effect"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/colorGreyButton"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editTextSideEffectMedecineModify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1" />
+
+
+                <!-- Max per day -->
+                <TextView
+                    android:id="@+id/labelMaxDayMedecineModify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/label_max_per_day"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/colorGreyButton"
+                    android:textSize="12sp" />
+
+
+                <EditText
+                    android:id="@+id/editTextMaxDayMedecineModify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="number" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1" />
+
+
+                <!-- Application of medecine -->
+                <TextView
+                    android:id="@+id/labelApplicationMedecineModify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/label_application_medecine"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/colorGreyButton"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editTextApplicationMedecineModify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1" />
+
+
+                <!-- Layout for the button OK -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+
+                    <Button
+                        android:id="@+id/buttonOkModifyMedecine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/generalbutton"
+                        android:text="@string/btn_modify_medecine" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_weight="1" />
+
+
+                </LinearLayout>
+
+
             </LinearLayout>
+        </ScrollView>
 
 
-        </LinearLayout>
-    </ScrollView>
+    </FrameLayout>
 
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view_modify_medecine"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/nav_drawer" />
 
-</LinearLayout>
+</android.support.v4.widget.DrawerLayout>

@@ -4,10 +4,13 @@ import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -22,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private Button btnListOfPatient;
     private Button btnListOfMedecine;
     private Button btnSettings;
+    private Button navBtnListOfPatient;
+    private Button navBtnListOfMedecine;
+
+    private DrawerLayout mDrawerLayout;
 
     //test
 
@@ -34,13 +41,12 @@ public class MainActivity extends AppCompatActivity {
         databaseCreator.createDb(this.getApplication());
 
 
+        setupNavBar();
+
         //The 3 Buttons of the main activity
         pressBtnListOfPatient();
         pressBtnListOfMedecine();
         pressBtnSettings();
-
-
-
 
 
     }
@@ -56,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //When the user press on the button list of medecine
-    public void pressBtnListOfMedecine(){
+    public void pressBtnListOfMedecine() {
         btnListOfMedecine = (Button) findViewById(R.id.btn_mainActivity_listMedecine);
         btnListOfMedecine.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //When the user press on the button list of Patient
-    public void pressBtnListOfPatient(){
+    public void pressBtnListOfPatient() {
         btnListOfPatient = (Button) findViewById(R.id.btn_mainActivity_listPatients);
         btnListOfPatient.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,12 +86,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 
     //When the user press on the button list of Settings
-    public void pressBtnSettings(){
+    public void pressBtnSettings() {
         btnSettings = (Button) findViewById(R.id.btn_mainActivity_Settings);
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,9 +99,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
     }
 
-}
+    //setup navigation drawer
+
+    public void setupNavBar() {
+        mDrawerLayout = findViewById(R.id.drawer_layout_main_activity);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_main);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_list_of_patient:
+                                Intent intentPatient = new Intent(MainActivity.this, ListOfPatientActivity.class);
+                                MainActivity.this.startActivity(intentPatient);
+                                break;
+                            case R.id.nav_list_of_medicine:
+                                Intent intentMed = new Intent(MainActivity.this, ListOfMedecineActivity.class);
+                                MainActivity.this.startActivity(intentMed);
+                                break;
+                            default:
+                                break;
+                        }
+                            mDrawerLayout.closeDrawers();
+
+
+                            return true;
+                        }
+                    });
+                }
+
+    }

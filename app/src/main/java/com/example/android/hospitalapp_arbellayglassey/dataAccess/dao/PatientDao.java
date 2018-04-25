@@ -31,7 +31,7 @@ public interface PatientDao {
     public abstract List<PatientEntity> getAllPatient();
 
     //get a list of live data patient
-    @Query("SELECT * FROM Patient")
+    @Query("SELECT * FROM Patient ORDER BY name")
     LiveData<List<PatientEntity>> getAll();
 
     //Get a Patient from his id

@@ -23,6 +23,7 @@ import java.util.List;
 
 public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAdapter {
 
+    //variables
     private int layout ;
     private int listViewLayout;
     private Context context;
@@ -33,7 +34,6 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
 
 
     // constructor to get all the necessary variables
-
     public ListViewWithDelBtnAdapterLink(
             List<TreatmentMedecineLinkEntity> linkEntities,List<MedecineEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
         this.linkEntities = linkEntities;
@@ -57,8 +57,8 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
 
     @Override
     public long getItemId(int pos) {
-        return  0; // list.get(pos).getId();
-        //just return 0 if your list items do not have an Id variable.
+        return  0;
+
     }
 
     @Override
@@ -101,9 +101,9 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName().toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
 
-                                //intent.putExtra("idM", Entities.get(position).getIdM());
+
 
                                 new AsyncDeleteLink(context, linkEntities.get(position)).execute();
 
@@ -123,6 +123,8 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
 
         return view;
     }
+
+    // this method refresh the list to get the new data in the adapter
     public void refreshEvents(List<MedecineEntity> medecineEntities, List<TreatmentMedecineLinkEntity> linkEntities) {
         this.Entities.clear();
         this.Entities.addAll(medecineEntities);

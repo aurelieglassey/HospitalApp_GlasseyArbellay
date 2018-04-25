@@ -2,15 +2,21 @@ package com.example.android.hospitalapp_arbellayglassey.settings;
 
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
+import com.example.android.hospitalapp_arbellayglassey.patient.PatientModify;
 
 public class Settings extends AppCompatActivity {
 
@@ -19,6 +25,7 @@ public class Settings extends AppCompatActivity {
     private Button btnAbout;
     private Button btnLanguage;
     private Button btnTheme;
+    private DrawerLayout mDrawerLayout;
 
     //Title of the settings
     private String titleSettings = "";
@@ -56,6 +63,7 @@ public class Settings extends AppCompatActivity {
                 Settings.this.startActivity(intent);
             }
         });
+
 
     }
 
@@ -101,6 +109,7 @@ public class Settings extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.mainmenu, menu);
         setTitle(titleSettings);
         setupActionBar();
+        setupNavBar();
         return true;
 
     }
@@ -114,6 +123,39 @@ public class Settings extends AppCompatActivity {
         }
     }
 
+    //setup navigation drawer
+    //this method setup the navigation drawer and implement the button to go to the list
+    public void setupNavBar() {
+        mDrawerLayout = findViewById(R.id.drawer_layout_settings);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_settings);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_list_of_patient:
+                                Intent intentPatient = new Intent(Settings.this, ListOfPatientActivity.class);
+                                Settings.this.startActivity(intentPatient);
+                                finish();
+                                break;
+                            case R.id.nav_list_of_medicine:
+                                Intent intentMed = new Intent(Settings.this, ListOfMedecineActivity.class);
+                                Settings.this.startActivity(intentMed);
+                                finish();
+                                break;
+                            default:
+                                break;
+                        }
+                        mDrawerLayout.closeDrawers();
 
 
+                        return true;
+                    }
+                });
+    }
 }

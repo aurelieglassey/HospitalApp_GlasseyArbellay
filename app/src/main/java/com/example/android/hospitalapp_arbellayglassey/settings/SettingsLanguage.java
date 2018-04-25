@@ -3,6 +3,8 @@ package com.example.android.hospitalapp_arbellayglassey.settings;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.android.hospitalapp_arbellayglassey.MainActivity;
 import com.example.android.hospitalapp_arbellayglassey.R;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 
 import java.util.Locale;
 
@@ -22,6 +26,8 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
     private String titleLanguage = "";
     private Locale myLocale;
     private Button btnEnglish, btnFrench;
+    private DrawerLayout mDrawerLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +47,27 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
 
     }
 
-
+    // it change the langue
     public void changeLang(String lang)
     {
+        //ignorecase
         if (lang.equalsIgnoreCase(""))
             return;
+        //set locale
         myLocale = new Locale(lang);
+        //save
         saveLocale(lang);
+
+        //set the new configurtion of the language
         Locale.setDefault(myLocale);
         android.content.res.Configuration config = new android.content.res.Configuration();
         config.locale = myLocale;
+        // update the change
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
     }
 
+    //Save the language to locale
     public void saveLocale(String lang)
     {
         String langPref = "Language";
@@ -72,6 +85,7 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
         changeLang(language);
     }
 
+    // on click listener that will launh the main activity and set the string language
     public void onClick(View v) {
         String lang = "";
         switch (v.getId()) {
@@ -80,7 +94,7 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
                 Toast.makeText(SettingsLanguage.this, " Language : English ", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(SettingsLanguage.this, MainActivity.class);
                 startActivity(intent);
-               // finish();
+                finish();
                 break;
 
                 
@@ -89,7 +103,7 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
                 Toast.makeText(SettingsLanguage.this, " Langue : Français ", Toast.LENGTH_LONG).show();
                 Intent intent2 = new Intent(SettingsLanguage.this, MainActivity.class);
                 startActivity(intent2);
-                // finish();
+                finish();
                 break;
             default:
                 break;
@@ -104,6 +118,7 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
         getMenuInflater().inflate(R.menu.mainmenu, menu);
         setTitle(titleLanguage);
         setupActionBar();
+        setupNavBar();
         return true;
 
     }
@@ -115,6 +130,8 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
+
+
     public boolean onOptionsItemSelected(MenuItem item){
 
         int id = item.getItemId();
@@ -129,6 +146,41 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
         }
 
         return true;
+    }
+    //setup navigation drawer
+    //this method setup the navigation drawer and implement the button to go to the list
+    public void setupNavBar() {
+        mDrawerLayout = findViewById(R.id.drawer_layout_settings_language);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_settings_language);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_list_of_patient:
+                                Intent intentPatient = new Intent(SettingsLanguage.this, ListOfPatientActivity.class);
+                                SettingsLanguage.this.startActivity(intentPatient);
+                                finish();
+                                break;
+                            case R.id.nav_list_of_medicine:
+                                Intent intentMed = new Intent(SettingsLanguage.this, ListOfMedecineActivity.class);
+                                SettingsLanguage.this.startActivity(intentMed);
+                                finish();
+                                break;
+                            default:
+                                break;
+                        }
+                        mDrawerLayout.closeDrawers();
+
+
+                        return true;
+                    }
+                });
     }
 
 

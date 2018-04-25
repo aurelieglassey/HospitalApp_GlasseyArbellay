@@ -1,6 +1,8 @@
 package com.example.android.hospitalapp_arbellayglassey.patient;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +18,9 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncAddTreatment;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
+import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
+import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineModify;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 import com.example.android.hospitalapp_arbellayglassey.treatment.TreatmentDetails;
 
@@ -24,17 +28,22 @@ import java.util.concurrent.ExecutionException;
 
 public class PatientAdd extends AppCompatActivity {
 
+    // variable
     private Button okAddPatient;
     private PatientEntity patientEntity;
     private TreatmentEntity treatmentEntity;
     private String messageError = "";
+    private DrawerLayout mDrawerLayout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_add);
+
+        // set the message
         messageError = this.getString(R.string.error_enter_field);
+
         //Button to confirm that we want to add this new patient
         pressOkAddPatient();
 
@@ -160,12 +169,15 @@ public class PatientAdd extends AppCompatActivity {
         }
 
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.mainmenu, menu);
         setTitle(R.string.title_new_patient);
         setupActionBar();
+        setupNavBar();
         return true;
 
     }
@@ -194,6 +206,41 @@ public class PatientAdd extends AppCompatActivity {
         return true;
     }
 
+    //setup navigation drawer
+    //this method setup the navigation drawer and implement the button to go to the list
+    public void setupNavBar() {
+        mDrawerLayout = findViewById(R.id.drawer_layout_add_patient);
+
+        NavigationView navigationView = findViewById(R.id.nav_view_add_patient);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_list_of_patient:
+                                Intent intentPatient = new Intent(PatientAdd.this, ListOfPatientActivity.class);
+                                PatientAdd.this.startActivity(intentPatient);
+                                finish();
+                                break;
+                            case R.id.nav_list_of_medicine:
+                                Intent intentMed = new Intent(PatientAdd.this, ListOfMedecineActivity.class);
+                                PatientAdd.this.startActivity(intentMed);
+                                finish();
+                                break;
+                            default:
+                                break;
+                        }
+                        mDrawerLayout.closeDrawers();
+
+
+                        return true;
+                    }
+                });
+    }
 
 
 }

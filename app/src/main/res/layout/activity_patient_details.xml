@@ -1,257 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout_details_patient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".patient.PatientDetails"
+    android:background="@color/colorAppBackgroud"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:background="@color/colorAppBackgroud">
+    tools:context=".patient.PatientDetails">
 
-
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
 
 
-            <TextView
-                android:id="@+id/labelNamePatientsDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_name"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
 
-            <!--     Name and button layout       -->
-
-            <LinearLayout
-                android:id="@+id/nameAndButtonDetails"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/namePatientDetails"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-
-                <ImageButton
-                    android:id="@+id/btn_modify_Patient"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/colorAppBackgroud"
-                    app:srcCompat="@drawable/ic_mode_edit_black" />
-            </LinearLayout>
-
-
-            <!--     Age and Gender layout       -->
-
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <!--     Age layout       -->
-
-                <LinearLayout
-                    android:id="@+id/LayoutAgeDetails"
-                    android:layout_width="171dp"
-                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
+
                     <TextView
-                        android:id="@+id/labelAgePatientDetails"
+                        android:id="@+id/labelNamePatientsDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/label_name"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="18sp" />
+
+                    <!--     Name and button layout       -->
+
+                    <LinearLayout
+                        android:id="@+id/nameAndButtonDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/label_age"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/namePatientDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+                        <ImageButton
+                            android:id="@+id/btn_modify_Patient"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/colorAppBackgroud"
+                            app:srcCompat="@drawable/ic_mode_edit_black" />
+                    </LinearLayout>
+
+
+                    <!--     Age and Gender layout       -->
+
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <!--     Age layout       -->
+
+                        <LinearLayout
+                            android:id="@+id/LayoutAgeDetails"
+                            android:layout_width="171dp"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/labelAgePatientDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/label_age"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/agePatientDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+                        </LinearLayout>
+
+                        <!--     Gender layout       -->
+
+
+                        <LinearLayout
+                            android:id="@+id/LayoutGenderDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/labelGenderPatientDetail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/label_gender"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/genderPatientDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <!--     Room and blood layout       -->
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <!--     Room layout       -->
+
+                        <LinearLayout
+                            android:id="@+id/LayoutRoomDetails"
+                            android:layout_width="171dp"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/labelRoomPatientDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/label_room"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/roomPatientDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+                        </LinearLayout>
+
+
+                        <!--     Blood group layout       -->
+
+                        <LinearLayout
+                            android:id="@+id/LayoutBloodGroupDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/labelBloodGroupPatientDetail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/label_blood_group"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/bloodGroupPatientDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <!--     Reasons of admission       -->
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/labelAdmissionPatientDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/label_reasons_admission"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/agePatientDetails"
+                        android:id="@+id/admissionPatientDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-                </LinearLayout>
 
-                <!--     Gender layout       -->
-
-
-                <LinearLayout
-                    android:id="@+id/LayoutGenderDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/labelGenderPatientDetail"
+                    <View
+                        android:id="@+id/view4"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_weight="1" />
+
+
+                    <!--     Button show treatment      -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="@string/label_gender"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/genderPatientDetails"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+                        <View
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/btn_show_treatment"
+                            android:layout_width="194dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/generalbutton"
+                            android:text="@string/btn_show_treatment" />
+
+                        <View
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
                 </LinearLayout>
-            </LinearLayout>
+            </ScrollView>
 
+    </FrameLayout>
 
-            <!--     Room and blood layout       -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view_details_patient"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/nav_drawer" />
 
-            <View
-                android:id="@+id/view2"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <!--     Room layout       -->
-
-                <LinearLayout
-                    android:id="@+id/LayoutRoomDetails"
-                    android:layout_width="171dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/labelRoomPatientDetails"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/label_room"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/roomPatientDetails"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-                </LinearLayout>
-
-
-                <!--     Blood group layout       -->
-
-                <LinearLayout
-                    android:id="@+id/LayoutBloodGroupDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/labelBloodGroupPatientDetail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/label_blood_group"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/bloodGroupPatientDetails"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-                </LinearLayout>
-            </LinearLayout>
-
-
-            <!--     Reasons of admission       -->
-            <View
-                android:id="@+id/view3"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/labelAdmissionPatientDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_reasons_admission"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/admissionPatientDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-
-            <View
-                android:id="@+id/view4"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="1" />
-
-
-            <!--     Button show treatment      -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/btn_show_treatment"
-                    android:layout_width="194dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/generalbutton"
-                    android:text="@string/btn_show_treatment" />
-
-                <View
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>
+</android.support.v4.widget.DrawerLayout>

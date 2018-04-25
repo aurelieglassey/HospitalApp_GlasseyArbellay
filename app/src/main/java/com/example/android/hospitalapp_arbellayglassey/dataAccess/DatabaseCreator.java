@@ -1,5 +1,6 @@
 package com.example.android.hospitalapp_arbellayglassey.dataAccess;
 
+import android.annotation.SuppressLint;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.persistence.room.Room;
@@ -12,13 +13,16 @@ import static com.example.android.hospitalapp_arbellayglassey.dataAccess.AppData
 
 
 public class DatabaseCreator {
+    // we follow the same way as the assistant and try our best to implement this way in our application
 
     public static final String TAG = "DatabaseCreator";
 
     private static DatabaseCreator sInstance;
 
+    //LiveData has no publicly available methods to update the stored data so mutable expose the value
     private final MutableLiveData<Boolean> mIsDatabaseCreated = new MutableLiveData<>();
 
+    // db
     private AppDatabase mDb;
 
     private final AtomicBoolean mInitializing = new AtomicBoolean(true);
@@ -26,6 +30,7 @@ public class DatabaseCreator {
     // For Singleton instantiation
     private static final Object LOCK = new Object();
 
+    // singleton
     public synchronized static DatabaseCreator getInstance(Context context) {
         if (sInstance == null) {
             synchronized (LOCK) {
@@ -55,8 +60,10 @@ public class DatabaseCreator {
      * Although this uses an AsyncTask which currently uses a serial executor, it's thread-safe.
      */
 
+    @SuppressLint("StaticFieldLeak")
     public void createDb(Context context) {
 
+        // just a log
         Log.d("DatabaseCreator", "Creating DB from " + Thread.currentThread().getName());
 
         if (!mInitializing.compareAndSet(true, false)) {
@@ -73,7 +80,7 @@ public class DatabaseCreator {
                 Context context = params[0].getApplicationContext();
 
                 // Reset the database to have new data on every run.
-                context.deleteDatabase(DATABASE_NAME);
+                //context.deleteDatabase(DATABASE_NAME);
 
                 // Build the database!
                 AppDatabase db = Room.databaseBuilder(context.getApplicationContext(),
@@ -82,9 +89,9 @@ public class DatabaseCreator {
                 // Add a delay to simulate a long-running operation
                 addDelay();
 
-                // Add some data to the database
-                DatabaseInitUtil.initializeDb(db);
-                //Log.d(TAG, "DB was populated in thread " + Thread.currentThread().getName());
+                    // Add some data to the database
+                   // DatabaseInitUtil.initializeDb(db);
+                    //Log.d(TAG, "DB was populated in thread " + Thread.currentThread().getName());
 
                 mDb = db;
                 return null;

@@ -16,17 +16,18 @@ import java.util.List;
 @Dao
 public interface MedecineDao {
 
+    //insert medecine
     @Insert
     long insertMedecine(MedecineEntity medecine);
-
+    //delete medecine
     @Delete
     void deleteMedecine(MedecineEntity medecine);
-
+    //update medecine
     @Update
     void updateMedecine(MedecineEntity medecine);
 
     //Get a list of all Medecine
-    @Query("SELECT * FROM Medecine")
+    @Query("SELECT * FROM Medecine ORDER BY name")
     public List<MedecineEntity> getAllMedecine();
 
     //Get a medecine from ID

@@ -15,14 +15,14 @@ public class AsyncGetTreatment extends AsyncTask<Integer, Void, TreatmentEntity>
     // Weak references will still allow the Activity to be garbage-collected
     private final WeakReference<Context> mContext;
 
-    int id;
+    private int id;
 
     public AsyncGetTreatment(Context view, int id ) {
         mContext = new WeakReference<>(view);
         this.id = id;
     }
 
-
+  // get a tratment by id in background
     @Override
     protected TreatmentEntity doInBackground(Integer... integers) {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());
