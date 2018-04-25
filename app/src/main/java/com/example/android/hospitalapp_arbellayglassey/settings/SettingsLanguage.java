@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.android.hospitalapp_arbellayglassey.MainActivity;
 import com.example.android.hospitalapp_arbellayglassey.R;
 
 import java.util.Locale;
@@ -77,12 +78,17 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
             case R.id.btnSettingsLanguageEnglish:
                 lang = "en";
                 Toast.makeText(SettingsLanguage.this, " Language : English ", Toast.LENGTH_LONG).show();
-                finish();
+                Intent intent = new Intent(SettingsLanguage.this, MainActivity.class);
+                startActivity(intent);
+               // finish();
+                break;
 
             case R.id.btnSettingsLanguageFrench:
-                lang = "fr-rCH";
+                lang = "fr";
                 Toast.makeText(SettingsLanguage.this, " Langue : Français ", Toast.LENGTH_LONG).show();
-                finish();
+                Intent intent2 = new Intent(SettingsLanguage.this, MainActivity.class);
+                startActivity(intent2);
+                // finish();
                 break;
             default:
                 break;

@@ -124,7 +124,6 @@ public class ListOfPatientActivity extends AppCompatActivity {
     }
     public boolean onOptionsItemSelected(MenuItem item){
 
-
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
