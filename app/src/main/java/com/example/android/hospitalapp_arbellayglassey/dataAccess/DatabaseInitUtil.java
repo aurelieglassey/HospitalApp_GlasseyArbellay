@@ -41,7 +41,7 @@ public class DatabaseInitUtil {
         m1.setActiveIngredient("Paracetamol");
         m1.setApplication("Dilute in a glass of water");
         m1.setManufacturers("Brisol-myers");
-        m1.setSideEffects("Vomi");
+        m1.setSideEffects("Headaches");
         m1.setMaxPerDay(3);
 
         MedecineEntity m2 = new MedecineEntity();
@@ -69,7 +69,7 @@ public class DatabaseInitUtil {
         p1.setRoomNumber(302);
         p1.setBloodGroup("A");
         p1.setAge(21);
-        p1.setReasonAdmission("blabla");
+        p1.setReasonAdmission("Broken collarbone, with sever injuries due to a fall");
 
         PatientEntity p2 = new PatientEntity();
         p2.setIdP(2);
@@ -78,7 +78,7 @@ public class DatabaseInitUtil {
         p2.setRoomNumber(303);
         p2.setBloodGroup("O");
         p2.setAge(22);
-        p2.setReasonAdmission("blabla");
+        p2.setReasonAdmission("Broken heart, hope to find the love in this hospital or maybe in this application");
 
         PatientEntity p3 = new PatientEntity();
         p3.setIdP(3);
@@ -87,7 +87,7 @@ public class DatabaseInitUtil {
         p3.setRoomNumber(304);
         p3.setBloodGroup("B+");
         p3.setAge(21);
-        p3.setReasonAdmission("blabla");
+        p3.setReasonAdmission("Broken heart");
 
         //Add the patients created in the list of patient lp
         lp.add(p1);
