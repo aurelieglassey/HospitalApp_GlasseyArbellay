@@ -155,7 +155,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
                                 finish();
                                 break;
                             case R.id.nav_list_of_medicine:
-                                Toast.makeText(ListOfMedecineActivity.this, "You are already on this activity", Toast.LENGTH_LONG);
+                                Toast.makeText(ListOfMedecineActivity.this, "You are already on this activity", Toast.LENGTH_LONG).show();
                                 break;
                             default:
                                 break;

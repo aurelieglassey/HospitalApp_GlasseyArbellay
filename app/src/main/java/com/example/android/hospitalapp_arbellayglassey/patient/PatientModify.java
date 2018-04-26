@@ -26,8 +26,9 @@ import java.util.concurrent.ExecutionException;
 
 public class PatientModify extends AppCompatActivity {
 
-    //Variables
+
     private Button btnModifyPatient;
+    private String messageError = "";
     private PatientEntity patientEntity;
     private int idPatient;
     private EditText editTextName;
@@ -38,10 +39,16 @@ public class PatientModify extends AppCompatActivity {
     private EditText editTextAdmission;
     private DrawerLayout mDrawerLayout;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_modify);
+
+        //add the error message
+        messageError = this.getString(R.string.error_enter_field);
+
 
         try {
             readDB();
@@ -50,19 +57,25 @@ public class PatientModify extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        //set id and text
+        setId();
+        setText();
 
-        //Button to modify the Patient
+         //Button to modify the Patient
         pressBtnModifyPatient();
-
+}
         //fin view by id of the Edit text
+          public void setId() {
         editTextName = findViewById(R.id.namePatientModify);
         editTextAge = findViewById(R.id.agePatientModify);
         editTextGender = findViewById(R.id.genderPatientModify);
         editTextRoom = findViewById(R.id.ageRoomPatientModify);
         editTextBlood = findViewById(R.id.bloodGroupPatientModify);
         editTextAdmission = findViewById(R.id.admissionPatientModify);
+    }
 
-        //Set the text of the edit text
+      //Set the text of the edit text
+     public void setText(){
         editTextName.setText(patientEntity.getName());
         editTextAge.setText(String.valueOf(patientEntity.getAge()));
         editTextGender.setText(String.valueOf(patientEntity.getGender()));
@@ -72,7 +85,7 @@ public class PatientModify extends AppCompatActivity {
 
     }
 
-    //Read the DB
+
     public void readDB() throws ExecutionException, InterruptedException {
 
         //access to the databasecreator

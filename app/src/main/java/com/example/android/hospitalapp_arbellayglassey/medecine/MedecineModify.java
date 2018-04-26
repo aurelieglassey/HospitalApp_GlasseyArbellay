@@ -38,11 +38,15 @@ public class MedecineModify extends AppCompatActivity {
     private EditText editTextMaxDay;
     private EditText editTextApplication;
     private DrawerLayout mDrawerLayout;
+    private String messageError = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medecine_modify);
+
+        //add the error message
+        messageError = this.getString(R.string.error_enter_field);
 
         // read the db
         try {
@@ -59,6 +63,7 @@ public class MedecineModify extends AppCompatActivity {
         setText();
 
     }
+
 
     //Read the db and get the medecine
     public void readDB() throws ExecutionException, InterruptedException {
@@ -94,6 +99,8 @@ public class MedecineModify extends AppCompatActivity {
         editTextApplication.setText(medecineEntity.getApplication());
     }
 
+
+
     // When the user decide to modify the data of a medecine
     public void pressBtnModifyMedecine(){
 
@@ -105,15 +112,65 @@ public class MedecineModify extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Edit the Edit TExt
-                medecineEntity.setName(editTextName.getText().toString());
-                medecineEntity.setType(editTextType.getText().toString());
-                medecineEntity.setActiveIngredient(editTextIngredient.getText().toString());
-                medecineEntity.setManufacturers(editTextManufacturer.getText().toString());
-                medecineEntity.setActiveIngredient(editTextIngredient.getText().toString());
-                medecineEntity.setSideEffects(editTextEffects.getText().toString());
-                medecineEntity.setMaxPerDay(Integer.parseInt(editTextMaxDay.getText().toString()));
-                medecineEntity.setApplication(editTextApplication.getText().toString());
+
+                //check if the user has correctly fiel the fields
+                int error = 0;
+                //Check name
+                if (editTextName.getText().toString().length() == 0) {
+                    editTextName.setError(messageError);
+                    editTextName.requestFocus();
+                    error = 1;
+                }
+                //Check type
+                if (editTextType.getText().toString().length() == 0) {
+                    editTextType.setError(messageError);
+                    editTextType.requestFocus();
+                    error = 1;
+                }
+                //Check ingredient
+                if (editTextIngredient.getText().toString().length() == 0) {
+                    editTextIngredient.setError(messageError);
+                    editTextIngredient.requestFocus();
+                    error = 1;
+                }
+                //check manufacturer
+                if (editTextManufacturer.getText().toString().length() == 0) {
+                    editTextManufacturer.setError(messageError);
+                    editTextManufacturer.requestFocus();
+                    error = 1;
+                }
+                //check side effects
+                if (editTextEffects.getText().toString().length() == 0) {
+                    editTextEffects.setError(messageError);
+                    editTextEffects.requestFocus();
+                    error = 1;
+                }
+
+                //check max day of this medecine
+                if (editTextMaxDay.getText().toString().length() == 0) {
+                    editTextMaxDay.setError(messageError);
+                    editTextMaxDay.requestFocus();
+                    error = 1;
+                }
+                //check application
+                if (editTextApplication.getText().toString().length() == 0) {
+                    editTextApplication.setError(messageError);
+                    editTextApplication.requestFocus();
+                    error = 1;
+                }
+
+                //if error == 0 it means that the user has correctly fill all the fields
+                if (error == 0) {
+
+                     //Edit the Edit TExt
+}                    medecineEntity.setName(editTextName.getText().toString());
+                    medecineEntity.setType(editTextType.getText().toString());
+                    medecineEntity.setActiveIngredient(editTextIngredient.getText().toString());
+                    medecineEntity.setManufacturers(editTextManufacturer.getText().toString());
+                    medecineEntity.setActiveIngredient(editTextIngredient.getText().toString());
+                    medecineEntity.setSideEffects(editTextEffects.getText().toString());
+                    medecineEntity.setMaxPerDay(Integer.parseInt(editTextMaxDay.getText().toString()));
+                    medecineEntity.setApplication(editTextApplication.getText().toString());
 
                 //Update the medecine
                 new AsyncUpdateMedecine(MedecineModify.this).execute(medecineEntity);

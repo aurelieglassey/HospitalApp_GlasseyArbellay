@@ -96,8 +96,7 @@ public class Settings extends AppCompatActivity {
         btnTheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Settings.this, SettingsTheme.class);
-                Settings.this.startActivity(intent);
+                Toast.makeText(Settings.this, "Sorry, but this activity is not implemented ( ͡☉ ͜ʖ ͡☉) ", Toast.LENGTH_LONG).show();;
             }
         });
 
@@ -121,6 +120,14 @@ public class Settings extends AppCompatActivity {
             // Show the Up button in the action bar.
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+
+            finish();
+
+
+        return true;
     }
 
     //setup navigation drawer
