@@ -11,6 +11,7 @@
     android:paddingTop="16dp"
     tools:context=".settings.Settings">
 
+    <!-- Frame layout -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,6 +31,7 @@
                     android:layout_height="20dp"
                     android:layout_weight="1" />
 
+                <!-- Button settings language -->
                 <Button
                     android:id="@+id/btnSettingsLanguage"
                     android:layout_width="194dp"
@@ -44,6 +46,7 @@
                     android:layout_height="20dp"
                     android:layout_weight="1" />
 
+                <!-- Button settings about -->
                 <Button
                     android:id="@+id/btnSettingsAbout"
                     android:layout_width="194dp"
@@ -72,6 +75,7 @@
 
     </FrameLayout>
 
+    <!-- Nav bar-->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_settings"
         android:layout_width="wrap_content"

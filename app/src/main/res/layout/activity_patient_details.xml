@@ -11,6 +11,7 @@
     android:paddingTop="16dp"
     tools:context=".patient.PatientDetails">
 
+    <!-- >Frame layout -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,7 +42,6 @@
                         android:textSize="18sp" />
 
                     <!--     Name and button layout       -->
-
                     <LinearLayout
                         android:id="@+id/nameAndButtonDetails"
                         android:layout_width="match_parent"
@@ -67,8 +67,6 @@
 
 
                     <!--     Age and Gender layout       -->
-
-
                     <View
                         android:id="@+id/view"
                         android:layout_width="match_parent"
@@ -82,7 +80,6 @@
                         android:orientation="horizontal">
 
                         <!--     Age layout       -->
-
                         <LinearLayout
                             android:id="@+id/LayoutAgeDetails"
                             android:layout_width="171dp"
@@ -136,7 +133,6 @@
 
 
                     <!--     Room and blood layout       -->
-
                     <View
                         android:id="@+id/view2"
                         android:layout_width="match_parent"
@@ -177,7 +173,6 @@
 
 
                         <!--     Blood group layout       -->
-
                         <LinearLayout
                             android:id="@+id/LayoutBloodGroupDetails"
                             android:layout_width="match_parent"
@@ -265,6 +260,7 @@
 
     </FrameLayout>
 
+    <!-- Nav bar-->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_details_patient"
         android:layout_width="wrap_content"

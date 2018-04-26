@@ -11,6 +11,7 @@
     android:paddingTop="16dp"
     tools:context=".patient.PatientModify">
 
+    <!-- Frame layout -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,7 +42,6 @@
                         android:textSize="18sp" />
 
                     <!--     Name and button layout       -->
-
                     <EditText
                         android:id="@+id/namePatientModify"
                         android:layout_width="match_parent"
@@ -52,8 +52,6 @@
 
 
                     <!--     Age and Gender layout       -->
-
-
                     <View
                         android:id="@+id/view"
                         android:layout_width="match_parent"
@@ -67,7 +65,6 @@
                         android:orientation="horizontal">
 
                         <!--     Age layout       -->
-
                         <LinearLayout
                             android:id="@+id/LayoutAgeModify"
                             android:layout_width="171dp"
@@ -94,8 +91,6 @@
                         </LinearLayout>
 
                         <!--     Gender layout       -->
-
-
                         <LinearLayout
                             android:id="@+id/LayoutGenderModify"
                             android:layout_width="match_parent"
@@ -123,7 +118,6 @@
 
 
                     <!--     Room and blood layout       -->
-
                     <View
                         android:id="@+id/view2"
                         android:layout_width="match_parent"
@@ -165,7 +159,6 @@
 
 
                         <!--     Blood group layout       -->
-
                         <LinearLayout
                             android:id="@+id/LayoutBloodGroupModify"
                             android:layout_width="192dp"
@@ -256,6 +249,7 @@
 
     </FrameLayout>
 
+    <!-- Nav bar-->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_modify_patient"
         android:layout_width="wrap_content"
