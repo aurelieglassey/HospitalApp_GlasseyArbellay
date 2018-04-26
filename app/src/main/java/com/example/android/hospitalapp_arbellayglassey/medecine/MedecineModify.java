@@ -223,7 +223,7 @@ public class MedecineModify extends AppCompatActivity {
     public void setupNavBar() {
         mDrawerLayout = findViewById(R.id.drawer_layout_details_medecine);
 
-        NavigationView navigationView = findViewById(R.id.nav_view_details_medecine);
+        NavigationView navigationView = findViewById(R.id.nav_view_modify_medecine);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override

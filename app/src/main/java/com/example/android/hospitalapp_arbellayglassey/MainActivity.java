@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,15 +23,14 @@ import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatien
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 
 public class MainActivity extends AppCompatActivity {
+
+    //Variables
     private Button btnListOfPatient;
     private Button btnListOfMedecine;
     private Button btnSettings;
     private Button navBtnListOfPatient;
     private Button navBtnListOfMedecine;
-
     private DrawerLayout mDrawerLayout;
-
-    //test
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.mainmenu, menu);
-        return true;
-
-    }
-
 
     //When the user press on the button list of medecine
     public void pressBtnListOfMedecine() {
@@ -101,8 +91,41 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //setup navigation drawer
+    //on create the menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.mainmenu, menu);
+        setTitle(R.string.list_of_medecine);
+        setupActionBar();
+        return true;
 
+    }
+    private void setupActionBar() {
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, Settings.class);
+            startActivity(intent);
+        }
+        else{
+            finish();
+        }
+
+        return true;
+    }
+
+    //setup navigation drawer
     public void setupNavBar() {
         mDrawerLayout = findViewById(R.id.drawer_layout_main_activity);
 
