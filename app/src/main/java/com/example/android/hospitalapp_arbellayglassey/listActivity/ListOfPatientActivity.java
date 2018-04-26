@@ -38,6 +38,8 @@ public class ListOfPatientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_patient);
 
+
+
         //Button to add a new patient for the list
         pressBtnNewPatient();
         setupNavBar();
@@ -143,7 +145,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
                         switch (menuItem.getItemId()) {
                             case R.id.nav_list_of_patient:
-                                Toast.makeText(ListOfPatientActivity.this, "You are already on this activity", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ListOfPatientActivity.this, R.string.already_settings_activity, Toast.LENGTH_LONG).show();
                                 break;
                             case R.id.nav_list_of_medicine:
                                 Intent intentMed = new Intent(ListOfPatientActivity.this, ListOfMedecineActivity.class);

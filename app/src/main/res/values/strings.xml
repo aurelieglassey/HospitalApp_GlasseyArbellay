@@ -49,4 +49,6 @@
     <string name="btn_add_newPatient">Add a patient</string>
     <string name="btn_Language_English" translatable="false">English</string>
     <string name="btn_Language_French" translatable="false">Français (Suisse)</string>
+    <string name="already_settings_activity" translatable="false">You are already on this activity</string>
+    <string name="already_activity_settings">You are already on this page</string>
 </resources>

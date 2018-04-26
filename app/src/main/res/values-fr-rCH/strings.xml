@@ -48,4 +48,5 @@
     <string name="title_settings_language">Langues</string>
     <string name="title_settings_theme">Thèmes</string>
     <string name="btnSettingsTheme">Thèmes</string>
+    <string name="already_activity_settings">Vous êtes déjà sur la page</string>
 </resources>

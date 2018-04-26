@@ -28,21 +28,21 @@
                 android:orientation="horizontal">
 
                 <View
-                    android:layout_width="100dp"
+                    android:layout_width="190dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
                 <!-- Button list of patient-->
                 <Button
                     android:id="@+id/btn_mainActivity_listPatients"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/generalbutton"
                     android:text="@string/btn_list_of_patient" />
 
                 <View
-                    android:layout_width="100dp"
+                    android:layout_width="190dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
             </LinearLayout>
@@ -57,21 +57,21 @@
                 android:orientation="horizontal">
 
                 <View
-                    android:layout_width="100dp"
+                    android:layout_width="190dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
                 <!-- Button list of medecine-->
                 <Button
                     android:id="@+id/btn_mainActivity_listMedecine"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/generalbutton"
                     android:text="@string/btn_list_of_medicine" />
 
                 <View
-                    android:layout_width="100dp"
+                    android:layout_width="190dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
             </LinearLayout>
@@ -87,21 +87,21 @@
                 android:orientation="horizontal">
 
                 <View
-                    android:layout_width="100dp"
+                    android:layout_width="190dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
                 <!-- Button settings-->
                 <Button
                     android:id="@+id/btn_mainActivity_Settings"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/generalbutton"
                     android:text="@string/btn_settings" />
 
                 <View
-                    android:layout_width="100dp"
+                    android:layout_width="190dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
             </LinearLayout>

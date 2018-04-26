@@ -129,7 +129,7 @@ public class Settings extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
-                Toast.makeText(Settings.this, "You are already on this activity", Toast.LENGTH_LONG).show();
+                Toast.makeText(Settings.this, R.string.already_settings_activity, Toast.LENGTH_LONG).show();
                 break;
             case R.id.logo_hospital:
 
