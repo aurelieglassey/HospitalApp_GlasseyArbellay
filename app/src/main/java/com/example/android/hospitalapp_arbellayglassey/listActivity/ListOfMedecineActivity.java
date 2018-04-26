@@ -162,7 +162,6 @@ public class ListOfMedecineActivity extends AppCompatActivity {
                         }
                         mDrawerLayout.closeDrawers();
 
-                        finish();
                         return true;
                     }
                 });
