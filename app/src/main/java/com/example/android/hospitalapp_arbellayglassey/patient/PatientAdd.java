@@ -35,7 +35,6 @@ public class PatientAdd extends AppCompatActivity {
     private String messageError = "";
     private DrawerLayout mDrawerLayout;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,14 +150,15 @@ public class PatientAdd extends AppCompatActivity {
             Long id = new AsyncAddPatient(PatientAdd.this, patientEntity).execute().get();
 
             //Add a treatment for the new patient.
-            //Create a name just for the new patient
+            //Create a name  of a treatment just for the new patient
+            //By default the new name of treatment is : Treatment - xxx
             String namePatient = patientEntity.getName().toString();
             String officialNameTreatment = " Treatment - " + namePatient;
-
 
             //create a treatment
             //1 is the default value for max quantity of this new treatment assigned to this new patient
             treatmentEntity = new TreatmentEntity(officialNameTreatment, 1,  id.intValue());
+
             //Add the treatment in the db
             Long idTreatment = new AsyncAddTreatment(PatientAdd.this, treatmentEntity).execute().get();
 
@@ -167,9 +167,7 @@ public class PatientAdd extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -241,7 +239,5 @@ public class PatientAdd extends AppCompatActivity {
                     }
                 });
     }
-
-
 }
 

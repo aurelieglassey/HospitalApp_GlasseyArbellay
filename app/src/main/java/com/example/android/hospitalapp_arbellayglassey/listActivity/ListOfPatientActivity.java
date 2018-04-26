@@ -27,14 +27,11 @@ import java.util.concurrent.ExecutionException;
 
 public class ListOfPatientActivity extends AppCompatActivity {
 
-    //Button add a new patient
+    //Variables
     private Button btnNewPatient;
     private List<PatientEntity> patientEntities;
     private ListViewWithDelBtnAdapterPatient adapterPatient;
     private DrawerLayout mDrawerLayout;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +50,14 @@ public class ListOfPatientActivity extends AppCompatActivity {
         }
         ListView list;
 
-
         //Intent to switch between the activities
         Intent intent = new Intent(ListOfPatientActivity.this, PatientDetails.class);
         list = (ListView) findViewById(R.id.listofpatient);
         adapterPatient =  new ListViewWithDelBtnAdapterPatient( patientEntities, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton);
         list.setAdapter(adapterPatient);
 
-
-
-
     }
+
     @Override
     public void onRestart(){
         super.onRestart();
@@ -81,18 +75,13 @@ public class ListOfPatientActivity extends AppCompatActivity {
     //Read te db from our application
     public void readDB() throws ExecutionException, InterruptedException {
 
-
-
         //Access to the database creator
         //DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfPatientActivity.this);
 
         //Execute and get all the patients from our database
         patientEntities = new AsyncGetPatients(ListOfPatientActivity.this).execute().get();
 
-
-
     }
-
 
     //When the user decide to add a patient
     public void pressBtnNewPatient(){

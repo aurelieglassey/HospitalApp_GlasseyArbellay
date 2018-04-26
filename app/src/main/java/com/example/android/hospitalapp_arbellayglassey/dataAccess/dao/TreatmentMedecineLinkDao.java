@@ -19,9 +19,11 @@ public interface TreatmentMedecineLinkDao {
     @Query("SELECT * FROM treatmentmedecinelink WHERE idTreatment = :idTreamtentSearch")
     public List<TreatmentMedecineLinkEntity> getAllTreatmentMedecineByIdTreatment(int idTreamtentSearch);
 
+    //Insert alink
     @Insert
     public long insertTreatmentMedecine (TreatmentMedecineLinkEntity treatmentMedecineLink);
 
+    //Delete a link
     @Delete
     public void deleteTreatmentMedecine (TreatmentMedecineLinkEntity treatmentMedecineLink);
 

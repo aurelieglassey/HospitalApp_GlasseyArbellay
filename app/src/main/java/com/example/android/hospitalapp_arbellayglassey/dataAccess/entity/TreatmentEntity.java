@@ -44,6 +44,7 @@ public class TreatmentEntity {
     public TreatmentEntity() {
     }
 
+    //Full constructor of TreatmentEntity
     public TreatmentEntity(String name, int maxQuantity, int idPatient) {
         this.name = name;
         this.maxQuantity = maxQuantity;

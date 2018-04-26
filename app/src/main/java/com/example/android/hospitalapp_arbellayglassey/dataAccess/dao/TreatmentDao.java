@@ -17,13 +17,16 @@ import java.util.List;
 @Dao
 public interface TreatmentDao {
 
+    //Insert a treatment
     @Insert
     long insertTreatment(TreatmentEntity treatment);
 
+    // Delete a treatment
     // never used but it will be deleted on cascade when the patient is deleted
     @Delete
     void deleteTreatment(TreatmentEntity treatment);
 
+    //Update a treatment
     @Update
     void updatetTreatment(TreatmentEntity treatment);
 

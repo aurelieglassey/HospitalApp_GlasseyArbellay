@@ -11,7 +11,8 @@ import java.lang.ref.WeakReference;
 public class AsyncUpdateMedecine extends AsyncTask<MedecineEntity, Void, Void> {
 
     private final WeakReference<Context> mContext;
-    // constructor
+
+    // constructor of AsyncUpdateMedecine
     public AsyncUpdateMedecine (Context context){
         this.mContext = new WeakReference<>(context);
     }

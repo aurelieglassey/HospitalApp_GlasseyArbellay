@@ -21,7 +21,7 @@ public class AsyncGetMedecine extends AsyncTask<Integer, Void, MedecineEntity> {
     }
 
 
-    //Get a patient form his ID
+    //Get a medecine form his ID
     @Override
     protected MedecineEntity doInBackground(Integer... integers) {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());

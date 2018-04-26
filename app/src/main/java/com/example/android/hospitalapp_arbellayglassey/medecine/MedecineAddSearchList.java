@@ -32,7 +32,6 @@ public class MedecineAddSearchList extends AppCompatActivity {
     private int idT;
     private int idP;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +39,6 @@ public class MedecineAddSearchList extends AppCompatActivity {
 
         // adding list
         ListView list;
-
-
 
         // read the db
         try {
@@ -52,7 +49,7 @@ public class MedecineAddSearchList extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //get the intent to know the id to creat the link
+        //get the intent to know the id to create the link
         Intent intentGetID = getIntent();
         idT = intentGetID.getIntExtra("idT",0);
         idP = intentGetID.getIntExtra("idP", 0);
@@ -60,10 +57,7 @@ public class MedecineAddSearchList extends AppCompatActivity {
 
         //one funny adapter
         list.setAdapter(new ListViewWithAddBtnAdapter(MedecineEntities, idT,idP,MedecineAddSearchList.this, R.layout.listmedecineaddsearchlist_layout, R.id.listview_listofmedecineaddsearchlist, R.id.addMedecineForTreatmentButton));
-
-
     }
-
 
     //Read the db from our application
     public void readDB() throws ExecutionException, InterruptedException {
@@ -79,7 +73,6 @@ public class MedecineAddSearchList extends AppCompatActivity {
         for (MedecineEntity p : MedecineEntities){
             medecines.add(p.getName());
         }
-
 
     }
     // on create menu
@@ -105,7 +98,6 @@ public class MedecineAddSearchList extends AppCompatActivity {
 
     // setup the button of the action bar
     public boolean onOptionsItemSelected(MenuItem item){
-
 
         int id = item.getItemId();
 

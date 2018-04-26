@@ -49,15 +49,16 @@ public class MedecineDetails extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //find the textview by his id
+        //id , text of the textview
         setId();
         setText();
-        pressBtnModifyTreatment();
+
+        //Button to modify a medecine
+        pressBtnModifyMedecine();
     }
 
-
     //When the user decide to modify the data of a medecine
-    public void pressBtnModifyTreatment(){
+    public void pressBtnModifyMedecine(){
 
         //Find the id view for the button modify the data of a medecine
         btnModifyMedecine = (ImageButton) findViewById(R.id.btn_modify_MedecineDetails);
@@ -70,12 +71,8 @@ public class MedecineDetails extends AppCompatActivity {
                 Intent intent = new Intent(MedecineDetails.this, MedecineModify.class);
                 intent.putExtra("idM", idMedecine);
                 MedecineDetails.this.startActivity(intent);
-
-
-
             }
         });
-
     }
 
     // on restart to set the text with the new value
@@ -91,8 +88,7 @@ public class MedecineDetails extends AppCompatActivity {
         setText();
     }
 
-
- // i can't be more precise that the name of the method
+     //Set the id of the textview
     public void setId(){
         textViewName = findViewById(R.id.textNameMedecineDetails);
         textViewType = findViewById(R.id.textTypeMedecineDetails);
@@ -102,7 +98,7 @@ public class MedecineDetails extends AppCompatActivity {
         textViewMaxDay = findViewById(R.id.textMaxDayMedecineDetails);
         textViewApplication = findViewById(R.id.textApplicationMedecineDetails);
     }
-    // i can't be more precise that the name of the method
+    // set the text of the textview
     public void setText(){
         textViewName.setText(medecineEntity.getName());
         textViewType.setText(medecineEntity.getType());
@@ -123,7 +119,6 @@ public class MedecineDetails extends AppCompatActivity {
 
         medecineEntity = new AsyncGetMedecine(MedecineDetails.this, idMedecine).execute().get();
 
-
     }
 
     // set up the menu
@@ -137,6 +132,7 @@ public class MedecineDetails extends AppCompatActivity {
         return true;
 
     }
+
     private void setupActionBar() {
 
         ActionBar actionBar = getSupportActionBar();
@@ -146,7 +142,6 @@ public class MedecineDetails extends AppCompatActivity {
         }
     }
     public boolean onOptionsItemSelected(MenuItem item){
-
 
         int id = item.getItemId();
 

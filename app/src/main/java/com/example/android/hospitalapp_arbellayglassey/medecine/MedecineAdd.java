@@ -24,7 +24,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MedecineAdd extends AppCompatActivity {
 
-    //Button to add a new Medecine and different variable used
+    //Variables
     private Button btnAddNewMedecine;
     private MedecineEntity medecineEntity;
     private String messageError = "";
@@ -48,7 +48,6 @@ public class MedecineAdd extends AppCompatActivity {
     //button ok
     public void pressBtnOKAddNewMedecine(){
 
-
         //find the Id of the button ok
         btnAddNewMedecine = (Button) findViewById(R.id.buttonOKNewMedecine);
 
@@ -57,8 +56,7 @@ public class MedecineAdd extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                //Get all (id) data of a madecine of the texte view
+                //Get all (id) data of a medecine of the texte view
                 EditText nameMedecine = (EditText)findViewById(R.id.editNameMedecineAdd);
                 EditText typeMedecine = (EditText)findViewById(R.id.editTypeMedecineAdd);
                 EditText ingredientMedecine = (EditText)findViewById(R.id.editActiveIngredientMedecineAdd);
@@ -126,9 +124,11 @@ public class MedecineAdd extends AppCompatActivity {
 
                     //Call the method add Medecine
                     addMedecine(medecineEntity);
+
                     //MedecineAdd.this.startActivity(intent);
                     finish();
                 }
+                error = 0;
 
             }
         });
@@ -168,7 +168,6 @@ public class MedecineAdd extends AppCompatActivity {
     //  button of the action bar
     public boolean onOptionsItemSelected(MenuItem item){
 
-
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -179,7 +178,6 @@ public class MedecineAdd extends AppCompatActivity {
         else{
             finish();
         }
-
         return true;
     }
 

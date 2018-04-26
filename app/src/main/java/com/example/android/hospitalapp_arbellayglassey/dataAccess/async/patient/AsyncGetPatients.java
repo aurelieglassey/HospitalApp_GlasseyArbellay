@@ -12,11 +12,10 @@ import java.util.List;
 
 public class AsyncGetPatients extends AsyncTask<Void,Void, List<PatientEntity>> {
 
-
     // Weak references will still allow the Activity to be garbage-collected
     private final WeakReference<Context> mContext;
 
-    //constructor
+    //constructor AsyncGetPatients
     public AsyncGetPatients(Context c) {
         mContext = new WeakReference<>(c);
     }

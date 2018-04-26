@@ -40,7 +40,6 @@ public class PatientDetails extends AppCompatActivity {
     private TextView textViewAdmission;
     private DrawerLayout mDrawerLayout;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +52,10 @@ public class PatientDetails extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
+        //Set the id, text and navbar
         setId();
         setText();
         setupNavBar();
-
-
 
         //Press on the button Show Treatment
         pressBtnShowTreatment();
@@ -66,7 +63,7 @@ public class PatientDetails extends AppCompatActivity {
 
 
     }
-    // on restart methode that
+    // on restart
     @Override
     public void onRestart() {
         super.onRestart();
@@ -78,6 +75,7 @@ public class PatientDetails extends AppCompatActivity {
         }
         setText();
     }
+
     //find by id
     public void setId(){
         textViewName = findViewById(R.id.namePatientDetails);
@@ -87,8 +85,6 @@ public class PatientDetails extends AppCompatActivity {
         textViewBloodGroup = findViewById(R.id.bloodGroupPatientDetails);
         textViewAdmission = findViewById(R.id.admissionPatientDetails);
     }
-
-
 
     // set the tex
     public void setText(){
@@ -100,8 +96,6 @@ public class PatientDetails extends AppCompatActivity {
         textViewAdmission.setText(patientEntity.getReasonAdmission());
     }
 
-
-
     //Read the db
     public void readDB() throws ExecutionException, InterruptedException {
 
@@ -111,7 +105,6 @@ public class PatientDetails extends AppCompatActivity {
         idPatient = intentGetId.getIntExtra("idP", 0);
 
         patientEntity = new AsyncGetPatient(PatientDetails.this, idPatient).execute().get();
-
 
     }
 

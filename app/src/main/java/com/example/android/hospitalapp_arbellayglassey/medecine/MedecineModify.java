@@ -50,15 +50,15 @@ public class MedecineModify extends AppCompatActivity {
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
-        // Method to be more lisible
+
+        //When the user press on the button modify
         pressBtnModifyMedecine();
+
+        //Set id and text
         setId();
         setText();
 
-
-
     }
-
 
     //Read the db and get the medecine
     public void readDB() throws ExecutionException, InterruptedException {
@@ -70,6 +70,7 @@ public class MedecineModify extends AppCompatActivity {
 
     }
 
+    //Set the id of the edittext
     public void setId (){
         editTextName = findViewById(R.id.editTextNameMedecineModify);
         editTextType = findViewById(R.id.editTextTypeMedecineModify);
@@ -80,6 +81,8 @@ public class MedecineModify extends AppCompatActivity {
         editTextMaxDay = findViewById(R.id.editTextMaxDayMedecineModify);
         editTextApplication = findViewById(R.id.editTextApplicationMedecineModify);
     }
+
+    //Set the text of the edittext
     public void setText(){
         editTextName.setText(medecineEntity.getName());
         editTextType.setText(medecineEntity.getType());
@@ -90,8 +93,6 @@ public class MedecineModify extends AppCompatActivity {
         editTextMaxDay.setText(String.valueOf(medecineEntity.getMaxPerDay()));
         editTextApplication.setText(medecineEntity.getApplication());
     }
-
-
 
     // When the user decide to modify the data of a medecine
     public void pressBtnModifyMedecine(){
@@ -104,6 +105,7 @@ public class MedecineModify extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //Edit the Edit TExt
                 medecineEntity.setName(editTextName.getText().toString());
                 medecineEntity.setType(editTextType.getText().toString());
                 medecineEntity.setActiveIngredient(editTextIngredient.getText().toString());
@@ -113,6 +115,7 @@ public class MedecineModify extends AppCompatActivity {
                 medecineEntity.setMaxPerDay(Integer.parseInt(editTextMaxDay.getText().toString()));
                 medecineEntity.setApplication(editTextApplication.getText().toString());
 
+                //Update the medecine
                 new AsyncUpdateMedecine(MedecineModify.this).execute(medecineEntity);
 
                 finish();
@@ -132,7 +135,7 @@ public class MedecineModify extends AppCompatActivity {
         return true;
 
     }
-    //
+    // set up the action bar
     private void setupActionBar() {
 
         ActionBar actionBar = getSupportActionBar();

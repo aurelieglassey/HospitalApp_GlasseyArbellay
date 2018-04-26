@@ -14,7 +14,8 @@ public class AsyncGetMedecines extends AsyncTask<Void, Void, List<MedecineEntity
 
     // Weak references will still allow the Activity to be garbage-collected
     private final WeakReference<Context> mContext;
-    //constructor
+
+    //constructor AsyncGetMedecines
     public AsyncGetMedecines(Context c) {
         mContext = new WeakReference<>(c);
     }

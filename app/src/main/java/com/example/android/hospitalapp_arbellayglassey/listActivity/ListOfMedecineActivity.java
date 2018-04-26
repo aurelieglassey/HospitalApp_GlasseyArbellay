@@ -30,12 +30,11 @@ import java.util.concurrent.ExecutionException;
 
 public class ListOfMedecineActivity extends AppCompatActivity {
 
-    //Button add a new medecine and variable
+    //Variables
     private Button btnAddNewMedecine;
     private List<MedecineEntity> MedecineEntities;
     private ListViewWithDelBtnAdapterMedecine adapterMedecine;
     private DrawerLayout mDrawerLayout;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +51,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
+
         ListView list;
 
         //Switch between activities
@@ -60,9 +60,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         adapterMedecine = (new ListViewWithDelBtnAdapterMedecine(MedecineEntities, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
         list.setAdapter(adapterMedecine);
 
-
     }
-
 
     //When the user press on the button add new medecine
     public void pressBtnAddNewMedecine(){
@@ -74,7 +72,6 @@ public class ListOfMedecineActivity extends AppCompatActivity {
                 ListOfMedecineActivity.this.startActivity(intent);
             }
         });
-
 
     }
     // on restart the activity, to refrehs the data
@@ -91,7 +88,6 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         }
 
         adapterMedecine.refreshEvents(MedecineEntities);
-
 
     }
     //Read the db from our application
@@ -125,7 +121,6 @@ public class ListOfMedecineActivity extends AppCompatActivity {
     }
     public boolean onOptionsItemSelected(MenuItem item){
 
-
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -139,6 +134,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
 
         return true;
     }
+
     //this method setup the navigation drawer and implement the button to go to the list
     public void setupNavBar() {
         mDrawerLayout = findViewById(R.id.drawer_layout_list_of_medecine);

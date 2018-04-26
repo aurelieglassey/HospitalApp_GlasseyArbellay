@@ -12,7 +12,7 @@ public class PatientEntity {
     @ColumnInfo(name = "idP")
     private int idP;
 
-    // somme stuff you can read it
+    // somme stuff
 
     @ColumnInfo(name = "name")
     private String name;
@@ -41,20 +41,6 @@ public class PatientEntity {
 
     }
 
-/*
-    public PatientEntity(String name, char gender, int roomNumber, String bloodGroup, int age, String reasonAdmission, int idTreatment) {
-        //this.idP = id;
-        this.name = name;
-        this.gender = gender;
-        this.roomNumber = roomNumber;
-        this.bloodGroup = bloodGroup;
-        this.age = age;
-        this.reasonAdmission = reasonAdmission;
-        this.idTreatment = idTreatment;
-
-    }
-
- */
     //Getters and setters
 
     public String getName() {
@@ -122,4 +108,21 @@ public class PatientEntity {
     public void setIdTreatment(int idTreatment) {
         this.idTreatment = idTreatment;
     }
+
+
+/*
+//Full constructor of PatientEntity
+    public PatientEntity(String name, char gender, int roomNumber, String bloodGroup, int age, String reasonAdmission, int idTreatment) {
+        //this.idP = id;
+        this.name = name;
+        this.gender = gender;
+        this.roomNumber = roomNumber;
+        this.bloodGroup = bloodGroup;
+        this.age = age;
+        this.reasonAdmission = reasonAdmission;
+        this.idTreatment = idTreatment;
+
+    }
+
+ */
 }

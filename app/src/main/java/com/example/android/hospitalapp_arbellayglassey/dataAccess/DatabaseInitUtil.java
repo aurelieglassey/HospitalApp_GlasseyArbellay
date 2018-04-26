@@ -30,7 +30,7 @@ public class DatabaseInitUtil {
         insertData(db);
     }
 
-    //Create some data for the 2 lists
+    //Create some data for the lists
     private static void generateData(){
 
         //Create medecine

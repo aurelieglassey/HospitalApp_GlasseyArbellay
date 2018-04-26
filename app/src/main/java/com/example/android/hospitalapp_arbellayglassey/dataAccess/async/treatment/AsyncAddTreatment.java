@@ -14,7 +14,7 @@ public class AsyncAddTreatment extends AsyncTask<TreatmentEntity, Void, Long> {
 
     private TreatmentEntity treatmentEntity;
 
-    //constructor
+    //constructor of AsyncAddTreatment
     public AsyncAddTreatment(Context context, TreatmentEntity treatmentEntity) {
         this.mContext = new WeakReference<>(context);
         this.treatmentEntity = treatmentEntity;

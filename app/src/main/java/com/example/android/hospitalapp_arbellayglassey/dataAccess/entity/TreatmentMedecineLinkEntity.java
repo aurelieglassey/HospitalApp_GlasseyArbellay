@@ -11,7 +11,6 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 //LINK TABLE
 @Entity(tableName = "TreatmentMedecineLink",
-
         //CANNOT ADD TWO PK
         //primaryKeys = {"idTreatment", "idMedecine"},
         indices = {@Index(value = {"idTreatment"})},
@@ -38,13 +37,7 @@ public class TreatmentMedecineLinkEntity {
     private int idMedecine;
 
 
-    /*
-    public TreatmentMedecineLinkEntity(int idTreatment, int idMedecine, String quantityPerDay) {
-        this.idTreatment = idTreatment;
-        this.idMedecine = idMedecine;
 
-    }
-    */
     // constructor
     public TreatmentMedecineLinkEntity() {
 
@@ -77,5 +70,13 @@ public class TreatmentMedecineLinkEntity {
     }
 
 
+     /*
+     //Full constructor of TreatmentMedecineLinkEntity
+    public TreatmentMedecineLinkEntity(int idTreatment, int idMedecine, String quantityPerDay) {
+        this.idTreatment = idTreatment;
+        this.idMedecine = idMedecine;
+
+    }
+    */
 
 }

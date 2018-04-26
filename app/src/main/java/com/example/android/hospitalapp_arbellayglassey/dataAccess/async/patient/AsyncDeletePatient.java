@@ -15,7 +15,7 @@ public class AsyncDeletePatient extends AsyncTask<PatientEntity, Void, Void> {
 
     private PatientEntity pe;
 
-    //constructor of the AsyncAddMedecine
+    //constructor of the AsyncDeletePatient
     public AsyncDeletePatient(Context c, PatientEntity pe) {
         mContext = new WeakReference<>(c);
         this.pe = pe;

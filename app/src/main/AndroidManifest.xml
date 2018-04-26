@@ -41,7 +41,6 @@
         <activity android:name=".treatment.TreatmentModify" />
         <activity android:name=".settings.SettingsAbout" />
         <activity android:name=".settings.SettingsLanguage" />
-        <activity android:name=".settings.SettingsTheme"></activity>
     </application>
 
 </manifest>

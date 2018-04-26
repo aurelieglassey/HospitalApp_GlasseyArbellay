@@ -97,7 +97,7 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
 
-                
+
             case R.id.btnSettingsLanguageFrench:
                 lang = "fr";
                 Toast.makeText(SettingsLanguage.this, " Langue : Français ", Toast.LENGTH_LONG).show();

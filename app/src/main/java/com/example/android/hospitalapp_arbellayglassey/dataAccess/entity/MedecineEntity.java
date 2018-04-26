@@ -40,18 +40,7 @@ public class MedecineEntity {
 
     }
 
-    /*
-    public MedecineEntity(int id, String name, String type, String activeIngredient, String manufacturers, String application, String sideEffects, int maxPerDay) {
-        this.idM = id;
-        this.name = name;
-        this.type = type;
-        this.activeIngredient = activeIngredient;
-        this.manufacturers = manufacturers;
-        this.application = application;
-        this.sideEffects = sideEffects;
-        this.maxPerDay = maxPerDay;
-    }
-    */
+
 
 
     //Getters and setters
@@ -120,6 +109,20 @@ public class MedecineEntity {
         this.maxPerDay = maxPerDay;
     }
 
+
+        /*
+        //Full constructor of MedecineEntity
+    public MedecineEntity(int id, String name, String type, String activeIngredient, String manufacturers, String application, String sideEffects, int maxPerDay) {
+        this.idM = id;
+        this.name = name;
+        this.type = type;
+        this.activeIngredient = activeIngredient;
+        this.manufacturers = manufacturers;
+        this.application = application;
+        this.sideEffects = sideEffects;
+        this.maxPerDay = maxPerDay;
+    }
+    */
 
 
 }

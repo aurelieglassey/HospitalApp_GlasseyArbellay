@@ -16,13 +16,15 @@ import java.util.List;
 @Dao
 public interface PatientDao {
 
-
+    //Insert a patient
     @Insert
     long insertPatient(PatientEntity patient);
 
+    //Delete a patient
     @Delete
     void deletePatient(PatientEntity patient);
 
+    //Update a patient
     @Update
     void updatePatient(PatientEntity patient);
 

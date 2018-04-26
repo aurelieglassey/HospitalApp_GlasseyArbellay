@@ -16,13 +16,13 @@ public class AsyncAddLink extends AsyncTask<TreatmentMedecineLinkEntity, Void, L
 
     private TreatmentMedecineLinkEntity linkEntity;
 
-    //constructor of the AsyncAddMedecine
+    //constructor of the AsyncAddLink
     public AsyncAddLink(Context c, TreatmentMedecineLinkEntity linkEntity) {
         mContext = new WeakReference<>(c);
         this.linkEntity = linkEntity;
     }
 
-    //Call the DB and insert a new medecine in the DB
+    //Call the DB and insert a new link in the DB
     @Override
     protected Long doInBackground(TreatmentMedecineLinkEntity... patientEntities) throws SQLiteConstraintException {
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(mContext.get().getApplicationContext());

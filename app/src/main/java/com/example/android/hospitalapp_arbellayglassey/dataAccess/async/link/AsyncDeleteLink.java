@@ -15,7 +15,7 @@ public class AsyncDeleteLink extends AsyncTask<TreatmentMedecineLinkEntity, Void
 
     private TreatmentMedecineLinkEntity link;
 
-    //constructor of the AsyncAddMedecine
+    //constructor of the AsyncDeleteLink
     public AsyncDeleteLink(Context c, TreatmentMedecineLinkEntity link) {
         mContext = new WeakReference<>(c);
         this.link = link;

@@ -26,9 +26,8 @@ import java.util.concurrent.ExecutionException;
 
 public class PatientModify extends AppCompatActivity {
 
-
+    //Variables
     private Button btnModifyPatient;
-
     private PatientEntity patientEntity;
     private int idPatient;
     private EditText editTextName;
@@ -39,13 +38,10 @@ public class PatientModify extends AppCompatActivity {
     private EditText editTextAdmission;
     private DrawerLayout mDrawerLayout;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_modify);
-
 
         try {
             readDB();
@@ -55,8 +51,10 @@ public class PatientModify extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //Button to modify the Patient
         pressBtnModifyPatient();
 
+        //fin view by id of the Edit text
         editTextName = findViewById(R.id.namePatientModify);
         editTextAge = findViewById(R.id.agePatientModify);
         editTextGender = findViewById(R.id.genderPatientModify);
@@ -64,6 +62,7 @@ public class PatientModify extends AppCompatActivity {
         editTextBlood = findViewById(R.id.bloodGroupPatientModify);
         editTextAdmission = findViewById(R.id.admissionPatientModify);
 
+        //Set the text of the edit text
         editTextName.setText(patientEntity.getName());
         editTextAge.setText(String.valueOf(patientEntity.getAge()));
         editTextGender.setText(String.valueOf(patientEntity.getGender()));
@@ -73,14 +72,16 @@ public class PatientModify extends AppCompatActivity {
 
     }
 
-
+    //Read the DB
     public void readDB() throws ExecutionException, InterruptedException {
 
+        //access to the databasecreator
         DatabaseCreator dbCreator = DatabaseCreator.getInstance(PatientModify.this);
 
         Intent intentGetId = getIntent();
         idPatient = intentGetId.getIntExtra("idP", 0);
 
+        //Get the patient with AsyncGetPatient
         patientEntity = new AsyncGetPatient(PatientModify.this, idPatient).execute().get();
 
 
@@ -103,6 +104,7 @@ public class PatientModify extends AppCompatActivity {
                 patientEntity.setBloodGroup(editTextBlood.getText().toString());
                 patientEntity.setReasonAdmission(editTextAdmission.getText().toString());
 
+                //Update the patient
                 new AsyncUpdatePatient(PatientModify.this).execute(patientEntity);
 
                 finish();
