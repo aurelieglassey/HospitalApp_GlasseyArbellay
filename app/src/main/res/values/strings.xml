@@ -44,7 +44,7 @@
     <string name="btnSettingsTheme">Theme</string>
     <string name="actionbar_title_listPatient">List of Patients</string>
     <string name="Error_fill_this_fields">Please fill this field</string>
-    <string name="txt_about">This application was developped by 2 students in the HES-SO Valais/Wallis. The goal of this application is to provide to the nurse the possiblity to manage the data of their patients with their treatment and medecine.</string>
+    <string name="txt_about">This application was developped by 2 students in the HES-SO Valais/Wallis. The purpose of this application is to provide to the nurse the possiblity to manage the data of their patients with their treatment and medecine.</string>
     <string name="logo_hospital">Logo hospital</string>
     <string name="btn_add_newPatient">Add a patient</string>
     <string name="btn_Language_English" translatable="false">English</string>

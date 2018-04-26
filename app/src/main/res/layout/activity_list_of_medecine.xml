@@ -8,62 +8,71 @@
     android:background="@color/colorAppBackgroud"
     tools:context=".listActivity.ListOfMedecineActivity">
 
+    <!-- FrameLayout-->
     <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <View
-            android:layout_width="150dp"
-            android:layout_height="20dp"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <View
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
-        <Button
-            android:id="@+id/btn_add_medecine"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_add_circle_black" />
-        <View
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ListView
-            android:id="@+id/listofmedecine"
+        <!-- LinearLayout-->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        </ListView>
-    </LinearLayout>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <!-- LinearLayout-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <!-- Button add a new medecine-->
+                <Button
+                    android:id="@+id/btn_add_medecine"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_add_circle_black" />
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!-- List of medecine-->
+                <ListView
+                    android:id="@+id/listofmedecine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+
+                </ListView>
+            </LinearLayout>
+        </LinearLayout>
+
 
     </FrameLayout>
+
+    <!-- Nav Bar-->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_list_medecine"
         android:layout_width="wrap_content"

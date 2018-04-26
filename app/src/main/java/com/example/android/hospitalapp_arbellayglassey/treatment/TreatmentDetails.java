@@ -40,9 +40,8 @@ import java.util.concurrent.ExecutionException;
 
 public class TreatmentDetails extends AppCompatActivity {
 
-    //Button to add a medecine to a treatment
+    //Variables
     private Button btnAddMedecineToTreatment;
-    //Button to modify a treatment
     private ImageButton btnModifyTreatment;
     private TreatmentEntity treatmentEntity;
     private PatientEntity patientEntity;
@@ -57,14 +56,12 @@ public class TreatmentDetails extends AppCompatActivity {
     private ListViewWithDelBtnAdapterLink adapterLink;
     private List<MedecineEntity> medecineEntityList;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_details);
 
-
+        //Read the DB
         try {
             readDB();
         } catch (ExecutionException | InterruptedException e) {
@@ -110,6 +107,7 @@ public class TreatmentDetails extends AppCompatActivity {
     }
 
 
+    //Set the id
     public void setId(){
         textViewAdmission = findViewById(R.id.AdmissionTreatmentDetails);
         textViewName = findViewById(R.id.nameTreatmentDetails);
@@ -117,6 +115,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
     }
 
+    //Set the text
     public void setText(){
         textViewName.setText(treatmentEntity.getName());
         textViewQuantityName.setText(String.valueOf(treatmentEntity.getMaxQuantity()));

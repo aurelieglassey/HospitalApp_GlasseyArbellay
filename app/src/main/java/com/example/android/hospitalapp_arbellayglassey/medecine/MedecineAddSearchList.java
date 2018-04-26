@@ -25,7 +25,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MedecineAddSearchList extends AppCompatActivity {
 
-    // variabeles
+    // variables
     private DrawerLayout mDrawerLayout;
     private List<MedecineEntity> MedecineEntities;
     private ArrayList<String> medecines;

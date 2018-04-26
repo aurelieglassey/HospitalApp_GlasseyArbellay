@@ -112,7 +112,6 @@ public class MedecineModify extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 //check if the user has correctly fiel the fields
                 int error = 0;
                 //Check name
@@ -163,7 +162,7 @@ public class MedecineModify extends AppCompatActivity {
                 if (error == 0) {
 
                      //Edit the Edit TExt
-}                    medecineEntity.setName(editTextName.getText().toString());
+                    medecineEntity.setName(editTextName.getText().toString());
                     medecineEntity.setType(editTextType.getText().toString());
                     medecineEntity.setActiveIngredient(editTextIngredient.getText().toString());
                     medecineEntity.setManufacturers(editTextManufacturer.getText().toString());
@@ -172,11 +171,13 @@ public class MedecineModify extends AppCompatActivity {
                     medecineEntity.setMaxPerDay(Integer.parseInt(editTextMaxDay.getText().toString()));
                     medecineEntity.setApplication(editTextApplication.getText().toString());
 
-                //Update the medecine
-                new AsyncUpdateMedecine(MedecineModify.this).execute(medecineEntity);
+                    //Update the medecine
+                    new AsyncUpdateMedecine(MedecineModify.this).execute(medecineEntity);
 
-                finish();
+                    finish();
+                }
             }
+
         });
 
     }

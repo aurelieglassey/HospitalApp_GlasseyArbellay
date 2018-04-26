@@ -32,6 +32,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
+                <!-- Button list of patient-->
                 <Button
                     android:id="@+id/btn_mainActivity_listPatients"
                     android:layout_width="wrap_content"
@@ -60,6 +61,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
+                <!-- Button list of medecine-->
                 <Button
                     android:id="@+id/btn_mainActivity_listMedecine"
                     android:layout_width="wrap_content"
@@ -89,6 +91,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
+                <!-- Button settings-->
                 <Button
                     android:id="@+id/btn_mainActivity_Settings"
                     android:layout_width="wrap_content"
@@ -105,6 +108,8 @@
         </LinearLayout>
 
     </FrameLayout>
+
+    <!-- Nav bar-->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_main"
         android:layout_width="wrap_content"

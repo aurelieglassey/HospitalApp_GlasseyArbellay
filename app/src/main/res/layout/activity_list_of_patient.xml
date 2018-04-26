@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context=".listActivity.ListOfPatientActivity">
 
-
+    <!-- FrameLayout-->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -40,6 +40,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
+                <!-- Button add a patient-->
                 <Button
                     android:id="@+id/btn_add_patient"
                     android:layout_width="50dp"
@@ -51,8 +52,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
-
-            </LinearLayout>
+             </LinearLayout>
 
 
             <LinearLayout
@@ -77,6 +77,7 @@
 
     </FrameLayout>
 
+    <!-- Nav bar-->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_list_patient"
         android:layout_width="wrap_content"

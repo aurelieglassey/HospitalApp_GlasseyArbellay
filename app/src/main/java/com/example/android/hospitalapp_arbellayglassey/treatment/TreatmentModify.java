@@ -29,7 +29,7 @@ import java.util.concurrent.ExecutionException;
 
 public class TreatmentModify extends AppCompatActivity {
 
-    //modification traitement ok
+    //Variables
     private Button btnModifyTreatmentOk;
     private TreatmentEntity treatmentEntity;
     private PatientEntity patientEntity;
@@ -55,37 +55,70 @@ public class TreatmentModify extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //Btn modify the treatment
         pressBtnModifyTreatment();
 
-        //find view by id
+        //set id and text
+        setid();
+        setText();
+
+    }
+    //find view by id
+    public void setid(){
         textViewAdmission = findViewById(R.id.AdmissionTreatmentModify);
         editTextName = findViewById(R.id.nameTreatmentModify);
         editTextQuantity = findViewById(R.id.quantityTreatmentModify);
 
-        //set text
+    }
+
+    //set text
+    public void setText(){
         textViewAdmission.setText(patientEntity.getReasonAdmission());
         editTextName.setText(treatmentEntity.getName());
         editTextQuantity.setText(String.valueOf(treatmentEntity.getMaxQuantity()));
 
     }
 
+
     //When the user want to apply the changes he has made for the treatment
     public void pressBtnModifyTreatment() {
 
+        //find the button from his id
         btnModifyTreatmentOk = (Button) findViewById(R.id.btn_modify_treatment);
 
         btnModifyTreatmentOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                treatmentEntity.setName(editTextName.getText().toString());
-                treatmentEntity.setMaxQuantity(Integer.parseInt(editTextQuantity.getText().toString()));
+                //check if the user has correctly fiel the fields
+                int error = 0;
+                //Check name
+                if (editTextName.getText().toString().length() == 0) {
+                    editTextName.setError(messageError);
+                    editTextName.requestFocus();
+                    error = 1;
+                }
+                //Check quantity
+                if (editTextQuantity.getText().toString().length() == 0) {
+                    editTextQuantity.setError(messageError);
+                    editTextQuantity.requestFocus();
+                    error = 1;
+                }
 
-                new AsyncUpdateTreatment(TreatmentModify.this).execute(treatmentEntity);
-                finish();
+                //if error == 0 it means that the user has correctly fill all the fields
+                if (error == 0) {
 
-            }
-        });
+                     //Edit the Edit TExt
+
+                    treatmentEntity.setName(editTextName.getText().toString());
+                    treatmentEntity.setMaxQuantity(Integer.parseInt(editTextQuantity.getText().toString()));
+
+                    new AsyncUpdateTreatment(TreatmentModify.this).execute(treatmentEntity);
+                    finish();
+                    }
+
+                }
+            });
     }
 
     //Read the db and get the treatement

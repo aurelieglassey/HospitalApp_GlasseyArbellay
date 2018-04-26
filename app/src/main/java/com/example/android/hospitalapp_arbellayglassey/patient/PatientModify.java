@@ -65,25 +65,25 @@ public class PatientModify extends AppCompatActivity {
         pressBtnModifyPatient();
 }
         //fin view by id of the Edit text
-          public void setId() {
-        editTextName = findViewById(R.id.namePatientModify);
-        editTextAge = findViewById(R.id.agePatientModify);
-        editTextGender = findViewById(R.id.genderPatientModify);
-        editTextRoom = findViewById(R.id.ageRoomPatientModify);
-        editTextBlood = findViewById(R.id.bloodGroupPatientModify);
-        editTextAdmission = findViewById(R.id.admissionPatientModify);
-    }
+        public void setId() {
+            editTextName = findViewById(R.id.namePatientModify);
+            editTextAge = findViewById(R.id.agePatientModify);
+            editTextGender = findViewById(R.id.genderPatientModify);
+            editTextRoom = findViewById(R.id.ageRoomPatientModify);
+            editTextBlood = findViewById(R.id.bloodGroupPatientModify);
+            editTextAdmission = findViewById(R.id.admissionPatientModify);
+
+         }
 
       //Set the text of the edit text
-     public void setText(){
-        editTextName.setText(patientEntity.getName());
-        editTextAge.setText(String.valueOf(patientEntity.getAge()));
-        editTextGender.setText(String.valueOf(patientEntity.getGender()));
-        editTextRoom.setText(String.valueOf(patientEntity.getRoomNumber()));
-        editTextBlood.setText(patientEntity.getBloodGroup());
-        editTextAdmission.setText(patientEntity.getReasonAdmission());
-
-    }
+       public void setText(){
+            editTextName.setText(patientEntity.getName());
+            editTextAge.setText(String.valueOf(patientEntity.getAge()));
+            editTextGender.setText(String.valueOf(patientEntity.getGender()));
+            editTextRoom.setText(String.valueOf(patientEntity.getRoomNumber()));
+            editTextBlood.setText(patientEntity.getBloodGroup());
+            editTextAdmission.setText(patientEntity.getReasonAdmission());
+        }
 
 
     public void readDB() throws ExecutionException, InterruptedException {

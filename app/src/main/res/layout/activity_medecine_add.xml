@@ -11,7 +11,7 @@
     android:paddingTop="16dp"
     tools:context=".medecine.MedecineAdd">
 
-
+    <!-- Frame Layout-->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <!-- Name -->
                 <TextView
                     android:id="@+id/labelNameMedecineAdd"
                     android:layout_width="match_parent"
@@ -247,6 +248,7 @@
 
     </FrameLayout>
 
+    <!-- Nav bar-->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_add_medecine"
         android:layout_width="wrap_content"
