@@ -52,38 +52,38 @@ public class PatientModify extends AppCompatActivity {
 
         try {
             readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
         //set id and text
         setId();
         setText();
 
-         //Button to modify the Patient
+        //Button to modify the Patient
         pressBtnModifyPatient();
-}
-        //fin view by id of the Edit text
-        public void setId() {
-            editTextName = findViewById(R.id.namePatientModify);
-            editTextAge = findViewById(R.id.agePatientModify);
-            editTextGender = findViewById(R.id.genderPatientModify);
-            editTextRoom = findViewById(R.id.ageRoomPatientModify);
-            editTextBlood = findViewById(R.id.bloodGroupPatientModify);
-            editTextAdmission = findViewById(R.id.admissionPatientModify);
+    }
 
-         }
 
-      //Set the text of the edit text
-       public void setText(){
-            editTextName.setText(patientEntity.getName());
-            editTextAge.setText(String.valueOf(patientEntity.getAge()));
-            editTextGender.setText(String.valueOf(patientEntity.getGender()));
-            editTextRoom.setText(String.valueOf(patientEntity.getRoomNumber()));
-            editTextBlood.setText(patientEntity.getBloodGroup());
-            editTextAdmission.setText(patientEntity.getReasonAdmission());
-        }
+    //fin view by id of the Edit text
+    public void setId() {
+        editTextName = findViewById(R.id.namePatientModify);
+        editTextAge = findViewById(R.id.agePatientModify);
+        editTextGender = findViewById(R.id.genderPatientModify);
+        editTextRoom = findViewById(R.id.ageRoomPatientModify);
+        editTextBlood = findViewById(R.id.bloodGroupPatientModify);
+        editTextAdmission = findViewById(R.id.admissionPatientModify);
+    }
+
+    //Set the text of the edit text
+    public void setText() {
+        editTextName.setText(patientEntity.getName());
+        editTextAge.setText(String.valueOf(patientEntity.getAge()));
+        editTextGender.setText(String.valueOf(patientEntity.getGender()));
+        editTextRoom.setText(String.valueOf(patientEntity.getRoomNumber()));
+        editTextBlood.setText(patientEntity.getBloodGroup());
+        editTextAdmission.setText(patientEntity.getReasonAdmission());
+
+    }
 
 
     public void readDB() throws ExecutionException, InterruptedException {
@@ -100,8 +100,8 @@ public class PatientModify extends AppCompatActivity {
 
     }
 
-   // When the user decide to modify the data of a patient
-    public void pressBtnModifyPatient(){
+    // When the user decide to modify the data of a patient
+    public void pressBtnModifyPatient() {
 
         //Find the id view for the button modify the data of a patient
         btnModifyPatient = (Button) findViewById(R.id.btn_ok_modify_patient);
@@ -110,17 +110,72 @@ public class PatientModify extends AppCompatActivity {
         btnModifyPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                patientEntity.setName(editTextName.getText().toString());
-                patientEntity.setAge(Integer.parseInt(editTextAge.getText().toString()));
-                patientEntity.setGender(editTextGender.getText().charAt(0));
-                patientEntity.setRoomNumber(Integer.parseInt(editTextRoom.getText().toString()));
-                patientEntity.setBloodGroup(editTextBlood.getText().toString());
-                patientEntity.setReasonAdmission(editTextAdmission.getText().toString());
 
-                //Update the patient
-                new AsyncUpdatePatient(PatientModify.this).execute(patientEntity);
 
-                finish();
+
+
+                //Check if there is an error when the user fill the textview
+                //or if the user doesn't fill anyting.
+                int error = 0;
+
+                //Check name
+                if (editTextName.getText().toString().length() == 0  ){
+                    //namePatient.setError(messageError);
+                    editTextName.setError(messageError);
+                    editTextName.requestFocus();
+                    error = 1;
+                }
+
+                //Check age
+                if(editTextAge.getText().toString().length() == 0){
+                    editTextAge.setError(messageError);
+                    editTextAge.requestFocus();
+                    error = 1;
+                }
+
+                //Check Gender
+                if (editTextGender.getText().toString().length() != 1){
+                    editTextGender.setError(messageError);
+                    editTextGender.requestFocus();
+                    error = 1;
+                }
+
+                //Check Room
+                if(editTextRoom.getText().toString().length() == 0){
+                    editTextRoom.setError(messageError);
+                    editTextRoom.requestFocus();
+                    error = 1;
+                }
+
+                //Check blood Group
+                if (editTextBlood.getText().toString().length() == 0  ){
+                    editTextBlood.setError(messageError);
+                    editTextBlood.requestFocus();
+                    error = 1;
+                }
+
+                //Check reason of admission
+                if (editTextAdmission.getText().toString().length() == 0  ){
+                    editTextAdmission.setError(messageError);
+                    editTextAdmission.requestFocus();
+                    error = 1;
+                }
+
+
+                //if the error is 0, it means that the fields are correctly fill
+                if (error == 0) {
+                    patientEntity.setName(editTextName.getText().toString());
+                    patientEntity.setAge(Integer.parseInt(editTextAge.getText().toString()));
+                    patientEntity.setGender(editTextGender.getText().charAt(0));
+                    patientEntity.setRoomNumber(Integer.parseInt(editTextRoom.getText().toString()));
+                    patientEntity.setBloodGroup(editTextBlood.getText().toString());
+                    patientEntity.setReasonAdmission(editTextAdmission.getText().toString());
+
+                    //Update the patient
+                    new AsyncUpdatePatient(PatientModify.this).execute(patientEntity);
+
+                    finish();
+                }
             }
         });
 
