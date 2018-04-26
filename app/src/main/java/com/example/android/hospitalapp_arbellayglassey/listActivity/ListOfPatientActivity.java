@@ -154,10 +154,10 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
                         switch (menuItem.getItemId()) {
                             case R.id.nav_list_of_patient:
-                                Toast.makeText(ListOfPatientActivity.this, "You are already on this activity", Toast.LENGTH_LONG);
+                                Toast.makeText(ListOfPatientActivity.this, "You are already on this activity", Toast.LENGTH_LONG).show();
                                 break;
                             case R.id.nav_list_of_medicine:
-                                Intent intentMed = new Intent(ListOfPatientActivity.this, ListOfPatientActivity.class);
+                                Intent intentMed = new Intent(ListOfPatientActivity.this, ListOfMedecineActivity.class);
                                 ListOfPatientActivity.this.startActivity(intentMed);
                                 finish();
                                 break;

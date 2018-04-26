@@ -39,11 +39,15 @@ public class TreatmentModify extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextQuantity;
     private DrawerLayout mDrawerLayout;
+    private String messageError = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_modify);
+
+        //add the error message
+        messageError = this.getString(R.string.error_enter_field);
 
         try {
             readDB();

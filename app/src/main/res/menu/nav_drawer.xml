@@ -9,7 +9,7 @@
             android:icon="@drawable/ic_group_black_36dp"/>
         <item
             android:id="@+id/nav_list_of_medicine"
-            android:title="@string/btn_list_of_medicine" />
-
+            android:title="@string/btn_list_of_medicine"
+            android:icon="@drawable/ic_colorize_black_36dp"/>
     </group>
 </menu>

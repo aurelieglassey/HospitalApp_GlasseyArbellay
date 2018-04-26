@@ -28,7 +28,7 @@ public class PatientModify extends AppCompatActivity {
 
 
     private Button btnModifyPatient;
-
+    private String messageError = "";
     private PatientEntity patientEntity;
     private int idPatient;
     private EditText editTextName;
@@ -45,6 +45,9 @@ public class PatientModify extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_modify);
+
+        //add the error message
+        messageError = this.getString(R.string.error_enter_field);
 
 
         try {
