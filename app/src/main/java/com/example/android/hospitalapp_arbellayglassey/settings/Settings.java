@@ -49,7 +49,7 @@ public class Settings extends AppCompatActivity {
 
     //When the user press on "About"
     //The button direct the user to the AboutActivity
-    public void pressBtnAbout(){
+    public void pressBtnAbout() {
 
         //find the button by his id
         btnAbout = (Button) findViewById(R.id.btnSettingsAbout);
@@ -68,7 +68,7 @@ public class Settings extends AppCompatActivity {
 
     //When the user press on "Language"
     //The button direct the user to the LanguageActivity
-    public void pressBtnLanguage(){
+    public void pressBtnLanguage() {
 
         //find the button by his id
         btnLanguage = (Button) findViewById(R.id.btnSettingsLanguage);
@@ -86,7 +86,7 @@ public class Settings extends AppCompatActivity {
 
     //When the user press on "Background"
     //The button direct the user to the BackgroundActivity
-    public void pressBtnBackground(){
+    public void pressBtnBackground() {
 
         //find the button by his id
         btnTheme = (Button) findViewById(R.id.btnSettingsTheme);
@@ -95,7 +95,8 @@ public class Settings extends AppCompatActivity {
         btnTheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Settings.this, "Sorry, but this activity is not implemented ( ͡☉ ͜ʖ ͡☉) ", Toast.LENGTH_LONG).show();;
+                Toast.makeText(Settings.this, "Sorry, but this activity is not implemented ( ͡☉ ͜ʖ ͡☉) ", Toast.LENGTH_LONG).show();
+                ;
             }
         });
 
@@ -121,10 +122,24 @@ public class Settings extends AppCompatActivity {
         }
     }
 
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-            finish();
 
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        switch (id) {
+            case R.id.action_settings:
+                Toast.makeText(Settings.this, "You are already on this activity", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.logo_hospital:
+
+                break;
+            default:
+                finish();
+                break;
+
+
+        }
 
         return true;
     }
