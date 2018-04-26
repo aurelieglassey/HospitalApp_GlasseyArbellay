@@ -20,7 +20,6 @@ import com.example.android.hospitalapp_arbellayglassey.patient.PatientModify;
 
 public class Settings extends AppCompatActivity {
 
-
     //buttons of the the settings
     private Button btnAbout;
     private Button btnLanguage;

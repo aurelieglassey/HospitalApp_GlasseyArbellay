@@ -138,6 +138,7 @@ public class TreatmentModify extends AppCompatActivity {
         return true;
     }
 
+
     //setup navigation drawer
     //this method setup the navigation drawer and implement the button to go to the list
     public void setupNavBar() {
