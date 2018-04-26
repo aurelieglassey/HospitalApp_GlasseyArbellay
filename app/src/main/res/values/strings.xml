@@ -48,5 +48,5 @@
     <string name="logo_hospital">Logo hospital</string>
     <string name="btn_add_newPatient">Add a patient</string>
     <string name="btn_Language_English" translatable="false">English</string>
-    <string name="btn_Language_French" translatable="false">Français</string>
+    <string name="btn_Language_French" translatable="false">Français (Suisse)</string>
 </resources>
