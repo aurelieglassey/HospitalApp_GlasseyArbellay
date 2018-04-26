@@ -11,6 +11,7 @@
     android:paddingTop="16dp"
     tools:context=".treatment.TreatmentModify">
 
+    <!-- Frame layout -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,7 +38,6 @@
                     android:textSize="18sp" />
 
                 <!--     Reasons of admissions and button layout       -->
-
                 <LinearLayout
                     android:id="@+id/AdmissionAndButtonModify"
                     android:layout_width="match_parent"
@@ -58,8 +58,6 @@
 
 
                 <!--     Name and quantity layout       -->
-
-
                 <View
                     android:id="@+id/view"
                     android:layout_width="match_parent"
@@ -73,7 +71,6 @@
                     android:orientation="horizontal">
 
                     <!--     Name layout       -->
-
                     <LinearLayout
                         android:id="@+id/LayoutNameTreatmentModify"
                         android:layout_width="250dp"
@@ -100,8 +97,6 @@
                     </LinearLayout>
 
                     <!--     Quantity layout       -->
-
-
                     <LinearLayout
                         android:id="@+id/LayoutQuantityTreatmentModify"
                         android:layout_width="match_parent"
@@ -109,6 +104,7 @@
                         android:layout_gravity="right"
                         android:orientation="vertical">
 
+                        <!-- Quantity -->
                         <TextView
                             android:id="@+id/labelQuantityTreatmentModify"
                             android:layout_width="match_parent"
@@ -149,6 +145,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
 
+                    <!-- Button modify treatment -->
                     <Button
                         android:id="@+id/btn_modify_treatment"
                         android:layout_width="194dp"
@@ -169,6 +166,7 @@
 
     </FrameLayout>
 
+    <!-- Nav bar-->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_treatment_modify"
         android:layout_width="wrap_content"

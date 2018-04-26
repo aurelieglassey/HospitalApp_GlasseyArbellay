@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         >
 
+        <!-- List of medecine for treatment-->
         <TextView
             android:id="@+id/listview_listofmedecinefortreatment"
             android:layout_width="wrap_content"
@@ -24,9 +25,9 @@
             android:textStyle="bold"
             />
 
+        <!-- <button delete medecine for the treatment-->
         <ImageButton
             android:id="@+id/deleteMedecineForTreatmentButton"
-
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

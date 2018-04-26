@@ -41,8 +41,6 @@
                         android:textSize="18sp" />
 
                     <!--     Name and button layout       -->
-
-
                     <EditText
                         android:id="@+id/namePatientDetails"
                         android:layout_width="match_parent"
@@ -53,8 +51,6 @@
 
 
                     <!--     Age and Gender layout       -->
-
-
                     <View
                         android:id="@+id/view"
                         android:layout_width="match_parent"
@@ -97,8 +93,6 @@
                         </LinearLayout>
 
                         <!--     Gender layout       -->
-
-
                         <LinearLayout
                             android:id="@+id/LayoutGenderAdd"
                             android:layout_width="match_parent"
@@ -126,7 +120,6 @@
 
 
                     <!--     Room and blood layout       -->
-
                     <View
                         android:id="@+id/view2"
                         android:layout_width="match_parent"
@@ -170,7 +163,6 @@
 
 
                         <!--     Blood group layout       -->
-
                         <LinearLayout
                             android:id="@+id/LayoutBloodGroupAdd"
                             android:layout_width="192dp"
@@ -261,6 +253,7 @@
 
     </FrameLayout>
 
+    <!-- Nav bar-->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view_add_patient"
         android:layout_width="wrap_content"
