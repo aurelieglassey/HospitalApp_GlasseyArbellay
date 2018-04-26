@@ -60,7 +60,6 @@ public class MedecineModify extends AppCompatActivity {
         setText();
 
 
-
     }
 
 
@@ -74,7 +73,7 @@ public class MedecineModify extends AppCompatActivity {
 
     }
 
-    public void setId (){
+    public void setId() {
         editTextName = findViewById(R.id.editTextNameMedecineModify);
         editTextType = findViewById(R.id.editTextTypeMedecineModify);
         editTextIngredient = findViewById(R.id.editTextActiveIngredientModify);
@@ -84,7 +83,8 @@ public class MedecineModify extends AppCompatActivity {
         editTextMaxDay = findViewById(R.id.editTextMaxDayMedecineModify);
         editTextApplication = findViewById(R.id.editTextApplicationMedecineModify);
     }
-    public void setText(){
+
+    public void setText() {
         editTextName.setText(medecineEntity.getName());
         editTextType.setText(medecineEntity.getType());
         editTextIngredient.setText(medecineEntity.getActiveIngredient());
@@ -96,98 +96,86 @@ public class MedecineModify extends AppCompatActivity {
     }
 
 
-
     // When the user decide to modify the data of a medecine
-    public void pressBtnModifyMedecine(){
+    public void pressBtnModifyMedecine() {
 
         //Find the id view for the button modify the data of a medecine
         btnModifyMedecine = (Button) findViewById(R.id.buttonOkModifyMedecine);
-
-
-
-        //check if the user has correctly fiel the fields
-        int error = 0;
-        //Check name
-        if (editTextName.getText().toString().length() == 0 ){
-            editTextName.setError(messageError);
-            editTextName.requestFocus();
-            error = 1;
-        }
-        //Check type
-        if (editTextType.getText().toString().length() == 0 ){
-            editTextType.setError(messageError);
-            editTextType.requestFocus();
-            error = 1;
-        }
-        //Check ingredient
-        if (editTextIngredient.getText().toString().length() == 0 ){
-            editTextIngredient.setError(messageError);
-            editTextIngredient.requestFocus();
-            error = 1;
-        }
-        //check manufacturer
-        if (editTextManufacturer.getText().toString().length() == 0 ){
-            editTextManufacturer.setError(messageError);
-            editTextManufacturer.requestFocus();
-            error = 1;
-        }
-        //check side effects
-        if (editTextEffects.getText().toString().length() == 0 ){
-            editTextEffects.setError(messageError);
-            editTextEffects.requestFocus();
-            error = 1;
-        }
-
-        //check max day of this medecine
-        if(editTextMaxDay.getText().toString().length() == 0){
-            editTextMaxDay.setError(messageError);
-            editTextMaxDay.requestFocus();
-            error = 1;
-        }
-        //check application
-        if (editTextApplication.getText().toString().length() == 0 ){
-            editTextApplication.setError(messageError);
-            editTextApplication.requestFocus();
-            error = 1;
-        }
-
-        //if error == 0 it means that the user has correctly fill all the fields
-        if (error == 0){
-            medecineEntity = new MedecineEntity();
-            medecineEntity.setName(editTextName.getText().toString());
-            medecineEntity.setType(editTextType.getText().toString());
-            medecineEntity.setActiveIngredient(editTextIngredient.getText().toString());
-            medecineEntity.setManufacturers(editTextManufacturer.getText().toString());
-            medecineEntity.setSideEffects(editTextEffects.getText().toString());
-            medecineEntity.setMaxPerDay(Integer.parseInt(editTextMaxDay.getText().toString()));
-            medecineEntity.setApplication(editTextApplication.getText().toString());
-
-            //Call the method add Medecine
-            addMedecine(medecineEntity);
-            //MedecineAdd.this.startActivity(intent);
-            finish();
-
         //Add a listener to modify the data of a medecine
         btnModifyMedecine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                medecineEntity.setName(editTextName.getText().toString());
-                medecineEntity.setType(editTextType.getText().toString());
-                medecineEntity.setActiveIngredient(editTextIngredient.getText().toString());
-                medecineEntity.setManufacturers(editTextManufacturer.getText().toString());
-                medecineEntity.setActiveIngredient(editTextIngredient.getText().toString());
-                medecineEntity.setSideEffects(editTextEffects.getText().toString());
-                medecineEntity.setMaxPerDay(Integer.parseInt(editTextMaxDay.getText().toString()));
-                medecineEntity.setApplication(editTextApplication.getText().toString());
 
-                new AsyncUpdateMedecine(MedecineModify.this).execute(medecineEntity);
+                //check if the user has correctly fiel the fields
+                int error = 0;
+                //Check name
+                if (editTextName.getText().toString().length() == 0) {
+                    editTextName.setError(messageError);
+                    editTextName.requestFocus();
+                    error = 1;
+                }
+                //Check type
+                if (editTextType.getText().toString().length() == 0) {
+                    editTextType.setError(messageError);
+                    editTextType.requestFocus();
+                    error = 1;
+                }
+                //Check ingredient
+                if (editTextIngredient.getText().toString().length() == 0) {
+                    editTextIngredient.setError(messageError);
+                    editTextIngredient.requestFocus();
+                    error = 1;
+                }
+                //check manufacturer
+                if (editTextManufacturer.getText().toString().length() == 0) {
+                    editTextManufacturer.setError(messageError);
+                    editTextManufacturer.requestFocus();
+                    error = 1;
+                }
+                //check side effects
+                if (editTextEffects.getText().toString().length() == 0) {
+                    editTextEffects.setError(messageError);
+                    editTextEffects.requestFocus();
+                    error = 1;
+                }
 
-                finish();
+                //check max day of this medecine
+                if (editTextMaxDay.getText().toString().length() == 0) {
+                    editTextMaxDay.setError(messageError);
+                    editTextMaxDay.requestFocus();
+                    error = 1;
+                }
+                //check application
+                if (editTextApplication.getText().toString().length() == 0) {
+                    editTextApplication.setError(messageError);
+                    editTextApplication.requestFocus();
+                    error = 1;
+                }
+
+                //if error == 0 it means that the user has correctly fill all the fields
+                if (error == 0) {
+
+                    medecineEntity.setName(editTextName.getText().toString());
+                    medecineEntity.setType(editTextType.getText().toString());
+                    medecineEntity.setActiveIngredient(editTextIngredient.getText().toString());
+                    medecineEntity.setManufacturers(editTextManufacturer.getText().toString());
+                    medecineEntity.setActiveIngredient(editTextIngredient.getText().toString());
+                    medecineEntity.setSideEffects(editTextEffects.getText().toString());
+                    medecineEntity.setMaxPerDay(Integer.parseInt(editTextMaxDay.getText().toString()));
+                    medecineEntity.setApplication(editTextApplication.getText().toString());
+
+                    new AsyncUpdateMedecine(MedecineModify.this).execute(medecineEntity);
+
+                    finish();
+
+
+                }
             }
         });
 
     }
+
 
     // setup the option menu
     @Override
@@ -200,6 +188,7 @@ public class MedecineModify extends AppCompatActivity {
         return true;
 
     }
+
     //
     private void setupActionBar() {
 
@@ -209,16 +198,16 @@ public class MedecineModify extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
+
     // implement button
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this, Settings.class);
             startActivity(intent);
-        }
-        else{
+        } else {
             finish();
         }
 

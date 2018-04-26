@@ -57,25 +57,31 @@ public class PatientModify extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        setId();
+        setText();
         pressBtnModifyPatient();
 
+
+
+
+
+    }
+    public void setId() {
         editTextName = findViewById(R.id.namePatientModify);
         editTextAge = findViewById(R.id.agePatientModify);
         editTextGender = findViewById(R.id.genderPatientModify);
         editTextRoom = findViewById(R.id.ageRoomPatientModify);
         editTextBlood = findViewById(R.id.bloodGroupPatientModify);
         editTextAdmission = findViewById(R.id.admissionPatientModify);
+    }
 
+    public void setText(){
         editTextName.setText(patientEntity.getName());
         editTextAge.setText(String.valueOf(patientEntity.getAge()));
         editTextGender.setText(String.valueOf(patientEntity.getGender()));
         editTextRoom.setText(String.valueOf(patientEntity.getRoomNumber()));
         editTextBlood.setText(patientEntity.getBloodGroup());
-        editTextAdmission.setText(patientEntity.getReasonAdmission());
-
-    }
-
+        editTextAdmission.setText(patientEntity.getReasonAdmission());}
 
     public void readDB() throws ExecutionException, InterruptedException {
 
