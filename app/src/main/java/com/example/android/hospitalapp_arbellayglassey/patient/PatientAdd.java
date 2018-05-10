@@ -6,6 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,8 +15,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncAddPatient;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncAddTreatment;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
@@ -23,7 +22,13 @@ import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatien
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineModify;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 import com.example.android.hospitalapp_arbellayglassey.treatment.TreatmentDetails;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 public class PatientAdd extends AppCompatActivity {
@@ -128,7 +133,7 @@ public class PatientAdd extends AppCompatActivity {
                     patientEntity.setReasonAdmission(admissionPatient.getText().toString());
 
                     //Call the method add patient
-                    addPatient(patientEntity);
+                    addPatientFirebase(patientEntity);
 
                     //PatientAdd.this.startActivity(intent);
                     finish();
@@ -143,30 +148,55 @@ public class PatientAdd extends AppCompatActivity {
 
 
     //Add a patient with the class AsyncAddPatient
-    public void addPatient(PatientEntity patientEntity){
+    public void addPatientFirebase(PatientEntity patientEntity){
 
-        try {
-            //Add the new patient in the db
-            Long id = new AsyncAddPatient(PatientAdd.this, patientEntity).execute().get();
+            patientEntity.setIdP(UUID.randomUUID().toString());
 
-            //Add a treatment for the new patient.
-            //Create a name  of a treatment just for the new patient
-            //By default the new name of treatment is : Treatment - xxx
+            FirebaseDatabase.getInstance()
+                    .getReference("Patients")
+                    .child(patientEntity.getIdP())
+                    .setValue(patientEntity, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                            if (databaseError != null) {
+                                Log.d("PatientAdd", "Firebase DB Insert failure!");
+                            } else {
+                                //Sucessful : we can create a new treatment for this new Patient
+                                Log.d("PatientAdd", "Firebase DB Insert successful!");
+
+                            }
+                        }
+                    });
+
+            //Create a new treatment for this new patient
+            //With a random id, a specific name and the patient id
+            treatmentEntity.setIdT(UUID.randomUUID().toString());
             String namePatient = patientEntity.getName().toString();
             String officialNameTreatment = " Treatment - " + namePatient;
+            treatmentEntity = new TreatmentEntity(officialNameTreatment, 1,  patientEntity.getIdP());
 
-            //create a treatment
-            //1 is the default value for max quantity of this new treatment assigned to this new patient
-            treatmentEntity = new TreatmentEntity(officialNameTreatment, 1,  id.intValue());
 
-            //Add the treatment in the db
-            Long idTreatment = new AsyncAddTreatment(PatientAdd.this, treatmentEntity).execute().get();
+            FirebaseDatabase.getInstance()
+                    .getReference("Patients")
+                    .child(patientEntity.getIdP())
+                    .child("Treatment")
+                    .child(treatmentEntity.getIdT())
+                    .setValue(patientEntity, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                            if (databaseError != null) {
+                                Log.d("PatientAdd + treatment", "Firebase DB Insert failure!");
+                            } else {
+                                //Sucessful : we can create a new treatment for this new Patient
+                                Log.d("PatientAdd + treatment", "Firebase DB Insert successful!");
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+                            }
+                        }
+                    });
+
+
+
+
     }
 
     @Override

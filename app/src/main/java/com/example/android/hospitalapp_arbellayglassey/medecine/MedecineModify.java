@@ -67,7 +67,7 @@ public class MedecineModify extends AppCompatActivity {
     }
 
 
-    //Read the db and get the medecine
+    //Read Firebase and get the medecine
     public void readFirebase() throws ExecutionException, InterruptedException {
 
         //DatabaseCreator dbCreator = DatabaseCreator.getInstance(MedecineModify.this);
@@ -75,7 +75,7 @@ public class MedecineModify extends AppCompatActivity {
         idMedecine = intentGetId.getStringExtra("idM");
         //medecineEntity = new AsyncGetMedecine(MedecineModify.this, idMedecine).execute().get();
 
-       // get Medecine
+       // get Medecine from firebase
         FirebaseDatabase.getInstance()
                 .getReference("Medecines")
                 .child(idMedecine)
