@@ -39,7 +39,7 @@ public class TreatmentDetails extends AppCompatActivity {
     private TreatmentEntity treatmentEntity;
     private PatientEntity patientEntity;
     private List<TreatmentMedecineLinkEntity>  listLinkEntity;
-    private int idPatient;
+    private String idPatient;
     private TextView textViewAdmission;
     private TextView textViewName;
     private TextView textViewQuantityName;
@@ -53,13 +53,6 @@ public class TreatmentDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_details);
-
-        //Read the DB
-        try {
-            readDB();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
 
         //find the textview by his id
         setId();
@@ -75,8 +68,9 @@ public class TreatmentDetails extends AppCompatActivity {
 
 
         Intent intent = new Intent(TreatmentDetails.this, MedecineDetails.class);
+
         list = (ListView) findViewById(R.id.listofmedicinefortreatment);
-        adapterLink = new ListViewWithDelBtnAdapterLink(listLinkEntity,medecineEntityList,TreatmentDetails.this, intent, R.layout.listofmedicinefortreatment_layout, R.id.listview_listofmedecinefortreatment, R.id.deleteMedecineForTreatmentButton);
+        adapterLink = new ListViewWithDelBtnAdapterLink(listLinkEntity,medecineEntityList,idPatient,TreatmentDetails.this, intent, R.layout.listofmedicinefortreatment_layout, R.id.listview_listofmedecinefortreatment, R.id.deleteMedecineForTreatmentButton);
         list.setAdapter(adapterLink);
     }
 
@@ -156,7 +150,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
         //get the intent and add th id to the variable
         Intent intentGetId = getIntent();
-        idPatient = intentGetId.getIntExtra("idP", 0);
+        idPatient = intentGetId.getStringExtra("idP");
 
         // get the data
         treatmentEntity = new AsyncGetTreatment(TreatmentDetails.this, idPatient).execute().get();
