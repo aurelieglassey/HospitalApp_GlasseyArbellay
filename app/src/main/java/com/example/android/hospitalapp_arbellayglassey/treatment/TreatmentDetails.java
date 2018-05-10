@@ -16,10 +16,7 @@ import android.widget.TextView;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterLink;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.link.AsyncGetLinks;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncGetMedecine;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncGetTreatment;
+
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;

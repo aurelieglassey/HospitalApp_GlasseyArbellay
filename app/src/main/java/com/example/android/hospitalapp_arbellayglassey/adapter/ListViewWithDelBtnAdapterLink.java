@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +14,13 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.link.AsyncDeleteLink;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncDeleteMedecine;
+
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentMedecineLinkEntity;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -28,14 +31,16 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
     private int listViewLayout;
     private Context context;
     private Intent intent;
-    List<MedecineEntity> Entities;
-    List<TreatmentMedecineLinkEntity> linkEntities;
-    int idDelButton;
+    private String idPatient;
+    private List<MedecineEntity> Entities;
+    private List<TreatmentMedecineLinkEntity> linkEntities;
+    private int idDelButton;
 
 
     // constructor to get all the necessary variables
     public ListViewWithDelBtnAdapterLink(
-            List<TreatmentMedecineLinkEntity> linkEntities,List<MedecineEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
+            List<TreatmentMedecineLinkEntity> linkEntities,List<MedecineEntity> Entities,
+            String idPatient,Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
         this.linkEntities = linkEntities;
         this.context = context;
         this.intent = intent;
@@ -43,6 +48,8 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
         this.listViewLayout = idListViewLayout;
         this.idDelButton = idDelButton;
         this.Entities = Entities;
+        this.idPatient = idPatient;
+
     }
 
     @Override
@@ -104,13 +111,7 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
                                 Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
 
 
-
-                                new AsyncDeleteLink(context, linkEntities.get(position)).execute();
-
-                              // delete the entites that was delete and notify changes
-                                Entities.remove(position);
-                                linkEntities.remove(position);
-                                notifyDataSetChanged();
+                                deleteLink(linkEntities.get(position), position);
 
 
 
@@ -123,6 +124,39 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
 
         return view;
     }
+
+
+
+
+
+    public void deleteLink(final TreatmentMedecineLinkEntity entity, final int position){
+        FirebaseDatabase.getInstance()
+                .getReference("Patients")
+                .child(idPatient)
+                .child(entity.getIdTreatment())
+                .child(entity.getIdL())
+                .removeValue(new DatabaseReference.CompletionListener(){
+
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null){
+                            Log.d("adapterlistlink", "delete failure", databaseError.toException());}
+                        else    {
+                            Log.d("adapterlistlink", "delete successufl", databaseError.toException());}
+                        Entities.remove(position);
+                        linkEntities.remove(position);
+                        notifyDataSetChanged();
+                    }
+
+
+
+                });
+
+    }
+
+
+
+
 
     // this method refresh the list to get the new data in the adapter
     public void refreshEvents(List<MedecineEntity> medecineEntities, List<TreatmentMedecineLinkEntity> linkEntities) {
