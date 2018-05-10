@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseCreator;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncGetTreatment;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncUpdateTreatment;
@@ -22,7 +21,6 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Patient
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
-import com.example.android.hospitalapp_arbellayglassey.patient.PatientModify;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 
 import java.util.concurrent.ExecutionException;

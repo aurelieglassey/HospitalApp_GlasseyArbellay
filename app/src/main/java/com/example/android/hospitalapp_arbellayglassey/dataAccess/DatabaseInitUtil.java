@@ -16,6 +16,7 @@ public class DatabaseInitUtil {
    protected static List<TreatmentEntity> lt;
    protected static List<TreatmentMedecineLinkEntity> ll;
 
+   /*
     //Initalize the database
     static void initializeDb (AppDatabase db){
 
@@ -144,17 +145,17 @@ public class DatabaseInitUtil {
         db.beginTransaction();
 
         try {
-            db.medecineDao().insertAllMedecine(lm);
-            db.patientDao().insertAllPatient(lp);
-            db.treatmentDao().insertAllTreatment(lt);
+           //db.medecineDao().insertAllMedecine(lm);
+            //db.patientDao().insertAllPatient(lp);
+            //db.treatmentDao().insertAllTreatment(lt);
 
-            db.treatmentMedecineLinkDao().insertAllLink(ll);
+            //db.treatmentMedecineLinkDao().insertAllLink(ll);
 
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
         }
-    }
+    }*/
 
 
 }
