@@ -5,38 +5,24 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
-//LINK TABLE
-@Entity(tableName = "TreatmentMedecineLink",
-        //CANNOT ADD TWO PK
-        //primaryKeys = {"idTreatment", "idMedecine"},
-        indices = {@Index(value = {"idTreatment"})},
-        //Link 2 foreign key from Treatment et medecine
-        foreignKeys =
-                //FK de Table Treatment
-                {@ForeignKey(entity=TreatmentEntity.class, parentColumns = "idT", childColumns = "idTreatment", onDelete = CASCADE) ,
-                        //FK de Table Medecine
-                        @ForeignKey(entity = MedecineEntity.class, parentColumns = "idM", childColumns = "idMedecine", onDelete = CASCADE)})
+
 public class TreatmentMedecineLinkEntity {
 
-    // we need to add a link id to be sure, because when creating a link with the same pk it crash
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "idL")
+
+    @NonNull
     private int idL;
-
-
-    @ColumnInfo(name = "idTreatment")
-    @Nullable
     private int idTreatment;
-
-    @ColumnInfo(name = "idMedecine")
-    @Nullable
     private int idMedecine;
-
-
 
     // constructor
     public TreatmentMedecineLinkEntity() {
@@ -70,13 +56,13 @@ public class TreatmentMedecineLinkEntity {
     }
 
 
-     /*
-     //Full constructor of TreatmentMedecineLinkEntity
-    public TreatmentMedecineLinkEntity(int idTreatment, int idMedecine, String quantityPerDay) {
-        this.idTreatment = idTreatment;
-        this.idMedecine = idMedecine;
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("idTreatement", idMedecine);
+        result.put("idMedecine", idTreatment);
 
+        return result;
     }
-    */
 
 }

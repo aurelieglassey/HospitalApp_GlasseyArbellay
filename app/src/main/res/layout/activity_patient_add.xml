@@ -174,7 +174,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Blood"
+                                android:text="@string/label_blood_group"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="18sp" />

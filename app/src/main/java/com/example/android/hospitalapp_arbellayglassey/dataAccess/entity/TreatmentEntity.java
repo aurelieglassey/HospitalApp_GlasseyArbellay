@@ -9,36 +9,20 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 
-// this table have a foreign key which is the patient who have one treatment
-@Entity (tableName = "Treatment",
-        foreignKeys = @ForeignKey(entity = PatientEntity.class,
-                parentColumns = "idP",
-                childColumns = "idPatient",
-                onDelete = CASCADE,
-                onUpdate = CASCADE),
-        indices = {
-                @Index(
-                        value = {"idPatient"}
-                )})
 public class TreatmentEntity {
- //PK
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "idT")
+
+    @NonNull
     private int idT;
-
-
-    //Some stuff
-    @ColumnInfo(name = "name")
     private String name;
-
-    @ColumnInfo(name = "Max_quantity")
     private int maxQuantity;
-
-    @ColumnInfo(name = "idPatient")
-    @Nullable
     private int idPatient;
 
     public TreatmentEntity() {
@@ -50,6 +34,7 @@ public class TreatmentEntity {
         this.maxQuantity = maxQuantity;
         this.idPatient = idPatient;
     }
+
     //Getters and setters
     public int getIdT() {
         return idT;
@@ -82,5 +67,15 @@ public class TreatmentEntity {
 
     public void setMaxQuantity(int maxQuantity) {
         this.maxQuantity = maxQuantity;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("name", name);
+        result.put("max_quantity", maxQuantity);
+        result.put("idPatient", idPatient);
+
+        return result;
     }
 }

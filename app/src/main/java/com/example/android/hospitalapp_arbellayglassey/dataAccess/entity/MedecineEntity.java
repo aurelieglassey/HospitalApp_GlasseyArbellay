@@ -5,34 +5,22 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.google.firebase.database.Exclude;
 
-@Entity(tableName = "Medecine")
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class MedecineEntity {
 
-    //PK
-    @PrimaryKey(autoGenerate = true)
+    @NonNull
     private int idM;
-
-    // somme stuff
-    @ColumnInfo(name = "name")
     private String name;
-
-    @ColumnInfo(name = "type")
     private String type;
-
-    @ColumnInfo(name = "active_ingredient")
     private String activeIngredient;
-
-    @ColumnInfo(name = "manufacturers")
     private String manufacturers;
-
-    @ColumnInfo(name = "application")
     private String application;
-
-    @ColumnInfo(name = "side_effects")
     private String sideEffects;
-
-    @ColumnInfo(name = "max_per_day")
     private int maxPerDay;
 
     // empty constructor
@@ -40,10 +28,9 @@ public class MedecineEntity {
 
     }
 
-
-
-
     //Getters and setters
+
+    @Exclude
     public int getIdM() {
         return idM;
     }
@@ -110,19 +97,20 @@ public class MedecineEntity {
     }
 
 
-        /*
-        //Full constructor of MedecineEntity
-    public MedecineEntity(int id, String name, String type, String activeIngredient, String manufacturers, String application, String sideEffects, int maxPerDay) {
-        this.idM = id;
-        this.name = name;
-        this.type = type;
-        this.activeIngredient = activeIngredient;
-        this.manufacturers = manufacturers;
-        this.application = application;
-        this.sideEffects = sideEffects;
-        this.maxPerDay = maxPerDay;
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("name", name);
+        result.put("type", type);
+        result.put("active_ingredient", activeIngredient);
+        result.put("manufacturers", manufacturers);
+        result.put("application", application);
+        result.put("side_effects", sideEffects);
+        result.put("max_per_day", maxPerDay);
+
+        return result;
     }
-    */
+
 
 
 }

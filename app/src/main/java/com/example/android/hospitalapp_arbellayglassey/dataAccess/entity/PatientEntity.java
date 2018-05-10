@@ -3,39 +3,26 @@ package com.example.android.hospitalapp_arbellayglassey.dataAccess.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-@Entity(tableName = "Patient")
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class PatientEntity {
 
-    // PK
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "idP")
+
+    @NonNull
     private int idP;
-
-    // somme stuff
-
-    @ColumnInfo(name = "name")
     private String name;
-
-    @ColumnInfo(name = "gender")
     private char gender;
-
-    @ColumnInfo(name = "room_number")
     private int roomNumber;
-
-    @ColumnInfo(name = "blood_group")
     private String bloodGroup;
-
-    @ColumnInfo(name = "age")
     private int age;
-
-    @ColumnInfo(name = "reason_of_admission")
     private String reasonAdmission;
-
-
-    @ColumnInfo(name = "idTreatment")
-    private int idTreatment;
-
+    //private int idTreatment;
 
     public PatientEntity() {
 
@@ -71,10 +58,6 @@ public class PatientEntity {
         return reasonAdmission;
     }
 
-    public int getIdTreatment() {
-        return idTreatment;
-    }
-
 
     public void setIdP(int id) {
         this.idP = id;
@@ -105,24 +88,18 @@ public class PatientEntity {
         this.reasonAdmission = reasonAdmission;
     }
 
-    public void setIdTreatment(int idTreatment) {
-        this.idTreatment = idTreatment;
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("name", name);
+        result.put("gender", gender);
+        result.put("room_number", roomNumber);
+        result.put("blood_group", bloodGroup);
+        result.put("age", age);
+        result.put("reason_of_admission", reasonAdmission);
+
+        return result;
     }
 
-
-/*
-//Full constructor of PatientEntity
-    public PatientEntity(String name, char gender, int roomNumber, String bloodGroup, int age, String reasonAdmission, int idTreatment) {
-        //this.idP = id;
-        this.name = name;
-        this.gender = gender;
-        this.roomNumber = roomNumber;
-        this.bloodGroup = bloodGroup;
-        this.age = age;
-        this.reasonAdmission = reasonAdmission;
-        this.idTreatment = idTreatment;
-
-    }
-
- */
 }
