@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncDeletePatient;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
+
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
-import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
+
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,9 +108,8 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
                                 //toaaast
                                 Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
 
+                                deletePatient(Entities.get(position));
 
-                                // delete the patient, may he repose in peace
-                                new AsyncDeletePatient(context, Entities.get(position)).execute();
 
                                 // remove the patient from the list RIP
                                  Entities.remove(position);
@@ -125,6 +127,32 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
 
         return view;
     }
+
+
+    public void deletePatient(final PatientEntity entity){
+        FirebaseDatabase.getInstance()
+                .getReference("Patients")
+                .child(entity.getIdP())
+                .removeValue(new DatabaseReference.CompletionListener(){
+
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null){
+                            Log.d("adapterlistpatient", "delete failure", databaseError.toException());}
+                            else    {
+                            Log.d("adapterlistpatient", "delete successufl", databaseError.toException());}
+                            Entities.remove(entity);
+                            notifyDataSetChanged();
+                        }
+
+
+
+                });
+
+    }
+
+
+
     // like always, get a new list an refresh the list
     public void refreshEvents(List<PatientEntity> patientEntities) {
         this.Entities.clear();

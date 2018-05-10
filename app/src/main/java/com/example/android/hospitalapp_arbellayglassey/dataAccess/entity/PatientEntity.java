@@ -15,7 +15,7 @@ public class PatientEntity {
 
 
     @NonNull
-    private int idP;
+    private String idP;
     private String name;
     private char gender;
     private int roomNumber;
@@ -34,7 +34,7 @@ public class PatientEntity {
         return name;
     }
 
-    public int getIdP() {
+    public String getIdP() {
         return idP;
     }
 
@@ -59,7 +59,7 @@ public class PatientEntity {
     }
 
 
-    public void setIdP(int id) {
+    public void setIdP(String id) {
         this.idP = id;
     }
 

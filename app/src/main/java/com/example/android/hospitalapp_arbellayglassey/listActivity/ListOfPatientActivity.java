@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,13 +16,20 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterPatient;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatients;
+
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientAdd;
 import com.example.android.hospitalapp_arbellayglassey.patient.PatientDetails;
 import com.example.android.hospitalapp_arbellayglassey.R;
+import com.example.android.hospitalapp_arbellayglassey.patient.PatientModify;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -42,12 +50,28 @@ public class ListOfPatientActivity extends AppCompatActivity {
         pressBtnNewPatient();
         setupNavBar();
 
-        //try to read the DB
-        try {
-            readDB();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        FirebaseDatabase.getInstance()
+                .getReference("Patients")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()){
+                            patientEntities.clear();
+                            patientEntities.addAll(toPatients(dataSnapshot));
+                            adapterPatient.refreshEvents(patientEntities);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("listpatientact", "getAll: onCancelled", databaseError.toException());
+                    }
+                });
+
+
+
+
         ListView list;
 
         //Intent to switch between the activities
@@ -62,25 +86,41 @@ public class ListOfPatientActivity extends AppCompatActivity {
     public void onRestart(){
         super.onRestart();
 
-        try {
-            readDB();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        FirebaseDatabase.getInstance()
+                .getReference("Patients")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()){
+                            patientEntities.clear();
+                            patientEntities.addAll(toPatients(dataSnapshot));
+                            adapterPatient.refreshEvents(patientEntities);
+                        }
+                    }
 
-        adapterPatient.refreshEvents(patientEntities);
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("listpatientact", "getAll: onCancelled", databaseError.toException());
+                    }
+                });
+
 
     }
 
     //Read te db from our application
-    public void readDB() throws ExecutionException, InterruptedException {
+    public List<PatientEntity> toPatients(DataSnapshot dataSnapshot) {
 
         //Access to the database creator
         //DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfPatientActivity.this);
 
-        //Execute and get all the patients from our database
-        patientEntities = new AsyncGetPatients(ListOfPatientActivity.this).execute().get();
-
+        //Execute and get all the patients from our  firebase database
+        List<PatientEntity> patientEntities = new ArrayList<>();
+        for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()){
+            PatientEntity entity = childDataSnapshot.getValue(PatientEntity.class);
+            entity.setIdP(childDataSnapshot.getKey());
+            patientEntities.add(entity);
+        }
+        return patientEntities;
     }
 
     //When the user decide to add a patient

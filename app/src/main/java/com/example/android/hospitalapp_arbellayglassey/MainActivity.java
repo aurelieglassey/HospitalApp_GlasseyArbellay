@@ -1,18 +1,24 @@
 package com.example.android.hospitalapp_arbellayglassey;
 
+
 import android.content.Intent;
+
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.android.hospitalapp_arbellayglassey.dataAccess.DatabaseInitUtil;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnListOfPatient;
@@ -20,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSettings;
     private Button navBtnListOfPatient;
     private Button navBtnListOfMedecine;
+    private DatabaseReference mDatabase;
+
 
     private DrawerLayout mDrawerLayout;
 
@@ -30,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final DatabaseCreator databaseCreator = DatabaseCreator.getInstance(this.getApplication());
-        databaseCreator.createDb(this.getApplication());
+//        final DatabaseCreator databaseCreator = DatabaseCreator.getInstance(this.getApplication());
+//        databaseCreator.createDb(this.getApplication());
 
-
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         setupNavBar();
 
         //The 3 Buttons of the main activity
