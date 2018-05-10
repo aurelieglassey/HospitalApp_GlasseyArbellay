@@ -6,6 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,12 +14,15 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncGetMedecine;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncUpdateMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.ExecutionException;
 
@@ -26,7 +30,7 @@ public class MedecineModify extends AppCompatActivity {
 
     //Variables
     private Button btnModifyMedecine;
-    private int idMedecine;
+    private String idMedecine;
     private MedecineEntity medecineEntity;
     private EditText editTextName;
     private EditText editTextType;
@@ -48,7 +52,7 @@ public class MedecineModify extends AppCompatActivity {
 
         // read the db
         try {
-            readDB();
+            readFirebase();
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -64,12 +68,31 @@ public class MedecineModify extends AppCompatActivity {
 
 
     //Read the db and get the medecine
-    public void readDB() throws ExecutionException, InterruptedException {
+    public void readFirebase() throws ExecutionException, InterruptedException {
 
-        DatabaseCreator dbCreator = DatabaseCreator.getInstance(MedecineModify.this);
+        //DatabaseCreator dbCreator = DatabaseCreator.getInstance(MedecineModify.this);
         Intent intentGetId = getIntent();
-        idMedecine = intentGetId.getIntExtra("idM", 0);
-        medecineEntity = new AsyncGetMedecine(MedecineModify.this, idMedecine).execute().get();
+        idMedecine = intentGetId.getStringExtra("idM");
+        //medecineEntity = new AsyncGetMedecine(MedecineModify.this, idMedecine).execute().get();
+
+       // get Medecine
+        FirebaseDatabase.getInstance()
+                .getReference("Medecines")
+                .child(idMedecine)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        medecineEntity = dataSnapshot.getValue(MedecineEntity.class);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("medecine modify ", "getmedecine for modify: onCancelled", databaseError.toException());
+                    }
+                });
+
+
+
 
     }
 
@@ -170,7 +193,8 @@ public class MedecineModify extends AppCompatActivity {
                     medecineEntity.setApplication(editTextApplication.getText().toString());
 
                     //Update the medecine
-                    new AsyncUpdateMedecine(MedecineModify.this).execute(medecineEntity);
+                    //new AsyncUpdateMedecine(MedecineModify.this).execute(medecineEntity);
+                    updateMedecine(medecineEntity);
 
                     finish();
                 }
@@ -179,6 +203,24 @@ public class MedecineModify extends AppCompatActivity {
         });
 
     }
+    private void updateMedecine(final MedecineEntity medecineEntity) {
+        FirebaseDatabase.getInstance()
+                .getReference("Medecines")
+                .child(medecineEntity.getIdM())
+                .updateChildren(medecineEntity.toMap(), new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null) {
+                            Log.d("medecineModify", "Firebase DB update failure!");
+                        } else {
+                            Log.d("medecineModify", "Firebase DB update successful!");
+
+
+                        }
+                    }
+                });
+    }
+
 
     // setup the option menu
     @Override

@@ -6,6 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,13 +16,18 @@ import android.widget.Toast;
 
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterMedecine;
 
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncGetMedecines;
+
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineAdd;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineDetails;
 import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -42,12 +48,26 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         pressBtnAddNewMedecine();
         setupNavBar();
 
-        //Try to access to the database
-        try {
-            readDB();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        FirebaseDatabase.getInstance()
+                .getReference("Medecines")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()){
+                            MedecineEntities.clear();
+                            MedecineEntities.addAll(toMedecines(dataSnapshot));
+                            adapterMedecine.refreshEvents(MedecineEntities);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("listOfMedecine", "getAll: onCancelled", databaseError.toException());
+                    }
+                });
+
+
+
 
         ListView list;
 
@@ -76,28 +96,43 @@ public class ListOfMedecineActivity extends AppCompatActivity {
     public void onRestart(){
         super.onRestart();
 
-        try {
-            readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        FirebaseDatabase.getInstance()
+                .getReference("Medecines")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()){
+                            MedecineEntities.clear();
+                            MedecineEntities.addAll(toMedecines(dataSnapshot));
+                            adapterMedecine.refreshEvents(MedecineEntities);
+                        }
+                    }
 
-        adapterMedecine.refreshEvents(MedecineEntities);
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("listOfMedecine", "getAll: onCancelled", databaseError.toException());
+                    }
+                });
+
+
+
 
     }
     //Read the db from our application
-    public void readDB() throws ExecutionException, InterruptedException {
+    public List<MedecineEntity> toMedecines(DataSnapshot dataSnapshot) {
 
-        //access to the database creator
-        DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfMedecineActivity.this);
+        //Access to the database creator
+        //DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfMedecineActivity.this);
 
-        //Get all medecines form our db
-        MedecineEntities = new AsyncGetMedecines(ListOfMedecineActivity.this).execute().get();
-
+        //Execute and get all the patients from our  firebase database
+        List<MedecineEntity> medecineEntities = new ArrayList<>();
+        for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()){
+            MedecineEntity entity = childDataSnapshot.getValue(MedecineEntity.class);
+            entity.setIdM(childDataSnapshot.getKey());
+            medecineEntities.add(entity);
+        }
+        return medecineEntities;
     }
-
     //on create the menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

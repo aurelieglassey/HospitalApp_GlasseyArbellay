@@ -1,11 +1,14 @@
 package com.example.android.hospitalapp_arbellayglassey.medecine;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,17 +17,22 @@ import android.widget.EditText;
 
 import com.example.android.hospitalapp_arbellayglassey.MainActivity;
 import com.example.android.hospitalapp_arbellayglassey.R;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncAddMedecine;
+
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 public class MedecineAdd extends AppCompatActivity {
 
     //Variables
+    private Context context;
     private Button btnAddNewMedecine;
     private MedecineEntity medecineEntity;
     private String messageError = "";
@@ -123,8 +131,7 @@ public class MedecineAdd extends AppCompatActivity {
                     medecineEntity.setApplication(applicationMedecine.getText().toString());
 
                     //Call the method add Medecine
-                    addMedecine(medecineEntity);
-
+                    addMedecineFirebase(medecineEntity);
                     //MedecineAdd.this.startActivity(intent);
                     finish();
                 }
@@ -134,15 +141,31 @@ public class MedecineAdd extends AppCompatActivity {
         });
     }
 
-    //Add a new medecine with the class AsyncAddMedecine
-    public void addMedecine(MedecineEntity medecineEntity){
-        try {
-            Long id = new AsyncAddMedecine(MedecineAdd.this, medecineEntity).execute().get();
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
+    //Add a new medecine
+
+    private void addMedecineFirebase(MedecineEntity medecineEntity) {
+
+        medecineEntity.setIdM(UUID.randomUUID().toString());
+        FirebaseDatabase.getInstance()
+                .getReference("Medecines")
+                .child(medecineEntity.getIdM())
+                .setValue(medecineEntity, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null) {
+                            Log.d("MedecineAdd", "Firebase DB Insert failure!");
+                        } else {
+                            Log.d("MedecineAdd", "Firebase DB Insert successful!");
+
+                        }
+                    }
+                });
+
+
 
     }
+
+
 
     // create the menu
     @Override
