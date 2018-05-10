@@ -20,9 +20,9 @@ public class TreatmentMedecineLinkEntity {
 
 
     @NonNull
-    private int idL;
-    private int idTreatment;
-    private int idMedecine;
+    private String idL;
+    private String idTreatment;
+    private String idMedecine;
 
     // constructor
     public TreatmentMedecineLinkEntity() {
@@ -31,27 +31,27 @@ public class TreatmentMedecineLinkEntity {
 
     //Getters and setters
 
-    public int getIdTreatment() {
+    public String getIdTreatment() {
         return idTreatment;
     }
 
-    public int getIdMedecine() {
+    public String getIdMedecine() {
         return idMedecine;
     }
 
-    public void setIdTreatment(int idTreatment) {
+    public void setIdTreatment(String idTreatment) {
         this.idTreatment = idTreatment;
     }
 
-    public void setIdMedecine(int idMedecine) {
+    public void setIdMedecine(String idMedecine) {
         this.idMedecine = idMedecine;
     }
 
-    public int getIdL() {
+    public String getIdL() {
         return idL;
     }
 
-    public void setIdL(int idL) {
+    public void setIdL(String idL) {
         this.idL = idL;
     }
 

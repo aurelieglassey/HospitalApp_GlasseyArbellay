@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,11 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncDeleteMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,15 +106,6 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
                                 // make a roasted toast
                                 Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
 
-                                //delete in the db
-                                new AsyncDeleteMedecine(context, Entities.get(position)).execute();
-                                // delete the entites that was delete and notify changes
-                                Entities.remove(position);
-                                // notify the change
-                                notifyDataSetChanged();
-
-
-                                
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
 
@@ -121,6 +115,30 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
         return view;
     }
+
+
+    public void deleteMedecine(final MedecineEntity entity){
+        FirebaseDatabase.getInstance()
+                .getReference("Medecine")
+                .child(entity.getIdM())
+                .removeValue(new DatabaseReference.CompletionListener(){
+
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null){
+                            Log.d("adapterlistmedecine", "delete failure", databaseError.toException());}
+                        else    {
+                            Log.d("adapterlistmedecine", "delete successufl", databaseError.toException());}
+                        Entities.remove(entity);
+                        notifyDataSetChanged();
+                    }
+
+
+
+                });
+
+    }
+
 
     //get new value to refresh the list
     public void refreshEvents(List<MedecineEntity> medecineEntities) {

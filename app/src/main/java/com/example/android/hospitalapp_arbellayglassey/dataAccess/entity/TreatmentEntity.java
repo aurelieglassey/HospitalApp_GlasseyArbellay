@@ -20,36 +20,34 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 public class TreatmentEntity {
 
     @NonNull
-    private int idT;
+    private String idT;
     private String name;
     private int maxQuantity;
-    private int idPatient;
+    private String idPatient;
 
     public TreatmentEntity() {
     }
 
     //Full constructor of TreatmentEntity
-    public TreatmentEntity(String name, int maxQuantity, int idPatient) {
+    public TreatmentEntity(String name, int maxQuantity, String idPatient) {
         this.name = name;
         this.maxQuantity = maxQuantity;
         this.idPatient = idPatient;
     }
 
     //Getters and setters
-    public int getIdT() {
+    public String getIdT() {
         return idT;
     }
-
     public String getName() {
         return name;
     }
 
-    public int getIdPatient() {
+    public String getIdPatient() {
         return idPatient;
     }
 
-
-    public void setIdT(int id) {
+    public void setIdT(String id) {
         this.idT = id;
     }
 
@@ -57,7 +55,7 @@ public class TreatmentEntity {
         this.name = name;
     }
 
-    public void setIdPatient(int idPatient) {
+    public void setIdPatient(String idPatient) {
         this.idPatient = idPatient;
     }
 

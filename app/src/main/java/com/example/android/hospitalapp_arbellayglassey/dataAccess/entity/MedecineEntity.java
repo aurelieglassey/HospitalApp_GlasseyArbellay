@@ -1,10 +1,7 @@
 package com.example.android.hospitalapp_arbellayglassey.dataAccess.entity;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
 import com.google.firebase.database.Exclude;
 
 import java.util.HashMap;
@@ -14,7 +11,7 @@ import java.util.Map;
 public class MedecineEntity {
 
     @NonNull
-    private int idM;
+    private String idM;
     private String name;
     private String type;
     private String activeIngredient;
@@ -31,7 +28,7 @@ public class MedecineEntity {
     //Getters and setters
 
     @Exclude
-    public int getIdM() {
+    public String getIdM() {
         return idM;
     }
 
@@ -64,7 +61,7 @@ public class MedecineEntity {
     }
 
 
-    public void setIdM(int id) {
+    public void setIdM(String id) {
         this.idM = id;
     }
 
