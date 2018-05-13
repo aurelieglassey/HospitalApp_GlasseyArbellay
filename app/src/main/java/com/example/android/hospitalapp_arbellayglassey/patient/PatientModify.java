@@ -175,7 +175,7 @@ public class PatientModify extends AppCompatActivity {
                 if (error == 0) {
                     patientEntity.setName(editTextName.getText().toString());
                     patientEntity.setAge(Integer.parseInt(editTextAge.getText().toString()));
-                    patientEntity.setGender(editTextGender.getText().charAt(0));
+                    patientEntity.setGender(editTextGender.getText().toString());
                     patientEntity.setRoomNumber(Integer.parseInt(editTextRoom.getText().toString()));
                     patientEntity.setBloodGroup(editTextBlood.getText().toString());
                     patientEntity.setReasonAdmission(editTextAdmission.getText().toString());

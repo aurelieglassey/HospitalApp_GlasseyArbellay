@@ -127,7 +127,7 @@ public class PatientAdd extends AppCompatActivity {
                     patientEntity = new PatientEntity();
                     patientEntity.setName(namePatient.getText().toString());
                     patientEntity.setAge(Integer.parseInt(agePatient.getText().toString()));
-                    patientEntity.setGender(genderPatient.getText().charAt(0));
+                    patientEntity.setGender(genderPatient.getText().toString());
                     patientEntity.setRoomNumber(Integer.parseInt(roomPatient.getText().toString()));
                     patientEntity.setBloodGroup(bloodPatient.getText().toString());
                     patientEntity.setReasonAdmission(admissionPatient.getText().toString());

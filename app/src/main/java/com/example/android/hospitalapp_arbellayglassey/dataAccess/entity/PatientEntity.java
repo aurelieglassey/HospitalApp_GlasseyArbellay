@@ -17,7 +17,7 @@ public class PatientEntity {
     @NonNull
     private String idP;
     private String name;
-    private char gender;
+    private String gender;
     private int roomNumber;
     private String bloodGroup;
     private int age;
@@ -38,8 +38,8 @@ public class PatientEntity {
         return idP;
     }
 
-    public char getGender() {
-        return gender;
+    public String getGender() {
+       return gender;
     }
 
     public int getRoomNumber() {
@@ -68,7 +68,7 @@ public class PatientEntity {
         this.name = name;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
