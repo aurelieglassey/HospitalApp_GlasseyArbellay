@@ -6,16 +6,20 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import com.example.android.hospitalapp_arbellayglassey.R;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncGetMedecines;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithAddBtnAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +31,8 @@ public class MedecineAddSearchList extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private List<MedecineEntity> MedecineEntities;
     private ArrayList<String> medecines;
-    private int idT;
-    private int idP;
+    private String idT;
+    private String idP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,40 +42,52 @@ public class MedecineAddSearchList extends AppCompatActivity {
         // adding list
         ListView list;
 
-        // read the db
-        try {
-            readDB();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        // read firebase
+        FirebaseDatabase.getInstance()
+                .getReference("Medecines")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()){
+                            MedecineEntities.clear();
+                            MedecineEntities.addAll(toMedecines(dataSnapshot));
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("listOfMedecine", "getAll: onCancelled", databaseError.toException());
+                    }
+                });
+
 
         //get the intent to know the id to create the link
         Intent intentGetID = getIntent();
-        idT = intentGetID.getIntExtra("idT",0);
-        idP = intentGetID.getIntExtra("idP", 0);
+        idT = intentGetID.getStringExtra("idT");
+        idP = intentGetID.getStringExtra("idP");
         list = (ListView) findViewById(R.id.listofmedecinesearchlist);
 
         //one funny adapter
         list.setAdapter(new ListViewWithAddBtnAdapter(MedecineEntities, idT,idP,MedecineAddSearchList.this, R.layout.listmedecineaddsearchlist_layout, R.id.listview_listofmedecineaddsearchlist, R.id.addMedecineForTreatmentButton));
     }
 
+
     //Read the db from our application
-    public void readDB() throws ExecutionException, InterruptedException {
+    public List<MedecineEntity> toMedecines(DataSnapshot dataSnapshot) {
 
-        medecines = new ArrayList<String>();
+        //Access to the database creator
+        //DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfMedecineActivity.this);
 
-        //access to the database creator
-        DatabaseCreator dbCreator = DatabaseCreator.getInstance(MedecineAddSearchList.this);
-        //Get all medecines form our db
-        MedecineEntities = new AsyncGetMedecines(MedecineAddSearchList.this).execute().get();
-
-        //Add all the medecine in the list to display it
-        for (MedecineEntity p : MedecineEntities){
-            medecines.add(p.getName());
+        //Execute and get all the patients from our  firebase database
+        List<MedecineEntity> medecineEntities = new ArrayList<>();
+        for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()){
+            MedecineEntity entity = childDataSnapshot.getValue(MedecineEntity.class);
+            entity.setIdM(childDataSnapshot.getKey());
+            medecineEntities.add(entity);
         }
-
+        return medecineEntities;
     }
     // on create menu
     @Override

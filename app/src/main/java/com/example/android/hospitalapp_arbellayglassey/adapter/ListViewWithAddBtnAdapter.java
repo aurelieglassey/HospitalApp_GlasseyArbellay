@@ -100,7 +100,7 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
                 // set the id to the link
                 linkEn.setIdMedecine(Entities.get(position).getIdM());
                 linkEn.setIdTreatment(idT);
-                addClientInFirebase(linkEn);
+                addLinkInFirebase(linkEn);
 
             }
         });
@@ -109,7 +109,7 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
         return view;
     }
 
-    private void addClientInFirebase(TreatmentMedecineLinkEntity entity) {
+    private void addLinkInFirebase(TreatmentMedecineLinkEntity entity) {
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .child(idP)
