@@ -14,9 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncGetTreatment;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.treatment.AsyncUpdateTreatment;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.TreatmentEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
@@ -31,8 +28,8 @@ public class TreatmentModify extends AppCompatActivity {
     private Button btnModifyTreatmentOk;
     private TreatmentEntity treatmentEntity;
     private PatientEntity patientEntity;
-    private int idTreatment;
-    private int idPatient;
+    private String idTreatment;
+    private String idPatient;
     private TextView textViewAdmission;
     private EditText editTextName;
     private EditText editTextQuantity;
@@ -47,11 +44,7 @@ public class TreatmentModify extends AppCompatActivity {
         //add the error message
         messageError = this.getString(R.string.error_enter_field);
 
-        try {
-            readDB();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        readFirebase();
 
         //Btn modify the treatment
         pressBtnModifyTreatment();
@@ -120,16 +113,16 @@ public class TreatmentModify extends AppCompatActivity {
     }
 
     //Read the db and get the treatement
-    public void readDB() throws ExecutionException, InterruptedException {
+    public void readFirebase()  {
 
-        DatabaseCreator dbCreator = DatabaseCreator.getInstance(TreatmentModify.this);
+
         Intent intentGetId = getIntent();
-        // we also call
-        idTreatment = intentGetId.getIntExtra("idT", 0);
-        treatmentEntity = new AsyncGetTreatment(TreatmentModify.this, idTreatment).execute().get();
 
-        idPatient = intentGetId.getIntExtra("idP", 0);
-        patientEntity = new AsyncGetPatient(TreatmentModify.this, idPatient).execute().get();
+        idTreatment = intentGetId.getStringExtra("idT");
+        //treatmentEntity = new AsyncGetTreatment(TreatmentModify.this, idTreatment).execute().get();
+
+        idPatient = intentGetId.getStringExtra("idP", 0);
+        //patientEntity = new AsyncGetPatient(TreatmentModify.this, idPatient).execute().get();
 
 
     }

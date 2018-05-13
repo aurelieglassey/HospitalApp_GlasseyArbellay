@@ -82,11 +82,9 @@ public class TreatmentDetails extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        try {
-            readFirebase();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        readFirebase();
+
         setText();
         adapterLink.refreshEvents(medecineEntityList, listLinkEntity);
 
@@ -151,7 +149,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
     }
 
-    public void readFirebase() throws ExecutionException, InterruptedException {
+    public void readFirebase()  {
 
         //get the intent and add th id to the variable
         Intent intentGetId = getIntent();

@@ -50,12 +50,8 @@ public class MedecineModify extends AppCompatActivity {
         //add the error message
         messageError = this.getString(R.string.error_enter_field);
 
-        // read the db
-        try {
-            readFirebase();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        readFirebase();
 
         //When the user press on the button modify
         pressBtnModifyMedecine();
@@ -68,7 +64,7 @@ public class MedecineModify extends AppCompatActivity {
 
 
     //Read Firebase and get the medecine
-    public void readFirebase() throws ExecutionException, InterruptedException {
+    public void readFirebase() {
 
         //DatabaseCreator dbCreator = DatabaseCreator.getInstance(MedecineModify.this);
         Intent intentGetId = getIntent();

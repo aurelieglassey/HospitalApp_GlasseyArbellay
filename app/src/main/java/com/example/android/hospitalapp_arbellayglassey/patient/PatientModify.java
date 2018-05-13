@@ -6,6 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,12 +14,15 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncUpdatePatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.ExecutionException;
 
@@ -29,7 +33,7 @@ public class PatientModify extends AppCompatActivity {
     private Button btnModifyPatient;
     private String messageError = "";
     private PatientEntity patientEntity;
-    private int idPatient;
+    private String idPatient;
     private EditText editTextName;
     private EditText editTextAge;
     private EditText editTextGender;
@@ -48,12 +52,8 @@ public class PatientModify extends AppCompatActivity {
         //add the error message
         messageError = this.getString(R.string.error_enter_field);
 
+        readFirebase();
 
-        try {
-            readDB();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
         //set id and text
         setId();
         setText();
@@ -85,16 +85,29 @@ public class PatientModify extends AppCompatActivity {
     }
 
 
-    public void readDB() throws ExecutionException, InterruptedException {
-
-        //access to the databasecreator
-        DatabaseCreator dbCreator = DatabaseCreator.getInstance(PatientModify.this);
+    public void readFirebase(){
 
         Intent intentGetId = getIntent();
-        idPatient = intentGetId.getIntExtra("idP", 0);
+        idPatient = intentGetId.getStringExtra("idP");
 
         //Get the patient with AsyncGetPatient
-        patientEntity = new AsyncGetPatient(PatientModify.this, idPatient).execute().get();
+       // patientEntity = new AsyncGetPatient(PatientModify.this, idPatient).execute().get();
+
+        // get Medecine from firebase
+        FirebaseDatabase.getInstance()
+                .getReference("Patients")
+                .child(idPatient)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        patientEntity = dataSnapshot.getValue(PatientEntity.class);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("Patient modify ", "getPatientForModify for modify: onCancelled", databaseError.toException());
+                    }
+                });
 
 
     }
@@ -109,9 +122,6 @@ public class PatientModify extends AppCompatActivity {
         btnModifyPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
 
                 //Check if there is an error when the user fill the textview
                 //or if the user doesn't fill anyting.
@@ -171,13 +181,33 @@ public class PatientModify extends AppCompatActivity {
                     patientEntity.setReasonAdmission(editTextAdmission.getText().toString());
 
                     //Update the patient
-                    new AsyncUpdatePatient(PatientModify.this).execute(patientEntity);
+                    //new AsyncUpdatePatient(PatientModify.this).execute(patientEntity);
+                    updatePatient(patientEntity);
 
                     finish();
                 }
             }
         });
 
+    }
+
+    //Update the patient
+    private void updatePatient(final PatientEntity patientEntity) {
+        FirebaseDatabase.getInstance()
+                .getReference("Patients")
+                .child(patientEntity.getIdP())
+                .updateChildren(patientEntity.toMap(), new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null) {
+                            Log.d("patientModify", "Firebase DB update failure!");
+                        } else {
+                            Log.d("patientModify", "Firebase DB update successful!");
+
+
+                        }
+                    }
+                });
     }
 
     //set up the action bar
