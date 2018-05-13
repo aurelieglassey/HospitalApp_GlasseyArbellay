@@ -6,6 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,11 @@ import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.Treatme
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.ExecutionException;
 
@@ -104,7 +110,9 @@ public class TreatmentModify extends AppCompatActivity {
                     treatmentEntity.setName(editTextName.getText().toString());
                     treatmentEntity.setMaxQuantity(Integer.parseInt(editTextQuantity.getText().toString()));
 
-                    new AsyncUpdateTreatment(TreatmentModify.this).execute(treatmentEntity);
+                    //new AsyncUpdateTreatment(TreatmentModify.this).execute(treatmentEntity);
+
+                    updateTreatment(treatmentEntity);
                     finish();
                     }
 
@@ -112,17 +120,71 @@ public class TreatmentModify extends AppCompatActivity {
             });
     }
 
+    //Update the Treatment
+    private void updateTreatment(final TreatmentEntity treatmentEntity) {
+        FirebaseDatabase.getInstance()
+                .getReference("Patients")
+                .child(patientEntity.getIdP())
+                .child(treatmentEntity.getIdT())
+                .updateChildren(treatmentEntity.toMap(), new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null) {
+                            Log.d("treatmentModify", "Firebase DB update failure!");
+                        } else {
+                            Log.d("treatmentModify", "Firebase DB update successful!");
+
+
+                        }
+                    }
+                });
+    }
+
     //Read the db and get the treatement
     public void readFirebase()  {
-
 
         Intent intentGetId = getIntent();
 
         idTreatment = intentGetId.getStringExtra("idT");
         //treatmentEntity = new AsyncGetTreatment(TreatmentModify.this, idTreatment).execute().get();
 
-        idPatient = intentGetId.getStringExtra("idP", 0);
+        idPatient = intentGetId.getStringExtra("idP");
         //patientEntity = new AsyncGetPatient(TreatmentModify.this, idPatient).execute().get();
+
+
+        // get patient
+        FirebaseDatabase.getInstance()
+                .getReference("Patients")
+                .child(idPatient)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        patientEntity = dataSnapshot.getValue(PatientEntity.class);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("treat details", "getPatient: onCancelled", databaseError.toException());
+                    }
+                });
+
+        //get treatment
+        FirebaseDatabase.getInstance()
+                .getReference("Patients")
+                .child(idPatient)
+                .child("treatment")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        treatmentEntity = dataSnapshot.getValue(TreatmentEntity.class);
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("treat details", "getTreatment: onCancelled", databaseError.toException());
+                    }
+                });
 
 
     }
