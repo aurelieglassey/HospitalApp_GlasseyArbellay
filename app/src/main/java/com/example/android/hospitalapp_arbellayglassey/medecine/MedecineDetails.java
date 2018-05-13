@@ -6,6 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,11 +14,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.medecine.AsyncGetMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.ExecutionException;
 
@@ -26,7 +30,7 @@ public class MedecineDetails extends AppCompatActivity {
     //Variables
     private ImageButton btnModifyMedecine;
     private DrawerLayout mDrawerLayout;
-    private int idMedecine;
+    private String idMedecine;
     private MedecineEntity medecineEntity;
     private TextView textViewName;
     private TextView textViewType;
@@ -42,11 +46,7 @@ public class MedecineDetails extends AppCompatActivity {
         setContentView(R.layout.activity_medecine_details);
 
         //Read the db
-        try {
-            readDB();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+       readFirebase();
 
         //id , text of the textview
         setId();
@@ -79,11 +79,7 @@ public class MedecineDetails extends AppCompatActivity {
     public void onRestart() {
         super.onRestart();
 
-        try {
-            readDB();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+       readFirebase();
         setText();
     }
 
@@ -108,15 +104,30 @@ public class MedecineDetails extends AppCompatActivity {
         textViewApplication.setText(medecineEntity.getApplication());
 
     }
-    //Read the db and get the medecine
-    public void readDB() throws ExecutionException, InterruptedException {
 
-        DatabaseCreator dbCreator = DatabaseCreator.getInstance(MedecineDetails.this);
+    //Read the firebase and get the medecine
+    public void readFirebase()  {
 
+       // DatabaseCreator dbCreator = DatabaseCreator.getInstance(MedecineDetails.this);
         Intent intentGetId = getIntent();
-        idMedecine = intentGetId.getIntExtra("idM", 0);
+        idMedecine = intentGetId.getStringExtra("idM");
 
-        medecineEntity = new AsyncGetMedecine(MedecineDetails.this, idMedecine).execute().get();
+       // get Medecine form firebase
+        FirebaseDatabase.getInstance()
+                .getReference("Medecines")
+                .child(idMedecine)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        medecineEntity = dataSnapshot.getValue(MedecineEntity.class);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("medecine details ", "getmedecine for modify: onCancelled", databaseError.toException());
+                    }
+                });
+
 
     }
 

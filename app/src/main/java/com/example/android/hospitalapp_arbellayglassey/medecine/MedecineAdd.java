@@ -141,10 +141,10 @@ public class MedecineAdd extends AppCompatActivity {
         });
     }
 
-    //Add a new medecine
-
+    //Add a new medecine in  Firebase
     private void addMedecineFirebase(MedecineEntity medecineEntity) {
 
+        //Set a new random ID and add the medecine
         medecineEntity.setIdM(UUID.randomUUID().toString());
         FirebaseDatabase.getInstance()
                 .getReference("Medecines")
