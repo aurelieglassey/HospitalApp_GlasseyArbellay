@@ -6,6 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,14 +15,17 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.android.hospitalapp_arbellayglassey.R;
-import com.example.android.hospitalapp_arbellayglassey.dataAccess.async.patient.AsyncGetPatient;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.PatientEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 import com.example.android.hospitalapp_arbellayglassey.treatment.TreatmentDetails;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.util.concurrent.ExecutionException;
+
 
 public class PatientDetails extends AppCompatActivity {
 
@@ -29,7 +33,7 @@ public class PatientDetails extends AppCompatActivity {
     private Button btnShowTreatment;
     private ImageButton btnModifyPatient;
     private PatientEntity patientEntity;
-    private int idPatient;
+    private String idPatient;
     private TextView textViewName;
     private TextView textViewAge;
     private TextView textViewGender;
@@ -43,13 +47,7 @@ public class PatientDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_details);
 
-        //Read the db
-        try {
-            readDB();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
-
+    readFirebase();
         //Set the id, text and navbar
         setId();
         setText();
@@ -66,11 +64,7 @@ public class PatientDetails extends AppCompatActivity {
     public void onRestart() {
         super.onRestart();
 
-        try {
-            readDB();
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        readFirebase();
         setText();
     }
 
@@ -94,15 +88,30 @@ public class PatientDetails extends AppCompatActivity {
         textViewAdmission.setText(patientEntity.getReasonAdmission());
     }
 
-    //Read the db
-    public void readDB() throws ExecutionException, InterruptedException {
-
-        DatabaseCreator dbCreator = DatabaseCreator.getInstance(PatientDetails.this);
+    public void readFirebase(){
 
         Intent intentGetId = getIntent();
-        idPatient = intentGetId.getIntExtra("idP", 0);
+        idPatient = intentGetId.getStringExtra("idP");
 
-        patientEntity = new AsyncGetPatient(PatientDetails.this, idPatient).execute().get();
+        //Get the patient with AsyncGetPatient
+        // patientEntity = new AsyncGetPatient(PatientModify.this, idPatient).execute().get();
+
+        // get Medecine from firebase
+        FirebaseDatabase.getInstance()
+                .getReference("Patients")
+                .child(idPatient)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        patientEntity = dataSnapshot.getValue(PatientEntity.class);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("Patient modify ", "getPatientForModify for modify: onCancelled", databaseError.toException());
+                    }
+                });
+
 
     }
 
