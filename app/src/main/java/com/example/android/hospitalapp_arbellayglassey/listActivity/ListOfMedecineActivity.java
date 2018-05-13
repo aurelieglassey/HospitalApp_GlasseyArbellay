@@ -35,7 +35,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
 
     //Variables
     private Button btnAddNewMedecine;
-    private List<MedecineEntity> MedecineEntities = new ArrayList<>();
+    private List<MedecineEntity> MedecineEntities ;
     private ListViewWithDelBtnAdapterMedecine adapterMedecine;
     private DrawerLayout mDrawerLayout;
 
@@ -48,6 +48,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         pressBtnAddNewMedecine();
         setupNavBar();
 
+        MedecineEntities = new ArrayList<>();
         FirebaseDatabase.getInstance()
                 .getReference("Medecines")
                 .addValueEventListener(new ValueEventListener() {

@@ -156,7 +156,7 @@ public class MedecineAdd extends AppCompatActivity {
                             Log.d("MedecineAdd", "Firebase DB Insert failure!");
                         } else {
                             Log.d("MedecineAdd", "Firebase DB Insert successful!");
-
+                            finish();
                         }
                     }
                 });
