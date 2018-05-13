@@ -35,7 +35,7 @@ public class ListOfMedecineActivity extends AppCompatActivity {
 
     //Variables
     private Button btnAddNewMedecine;
-    private List<MedecineEntity> MedecineEntities;
+    private List<MedecineEntity> MedecineEntities = new ArrayList<>();
     private ListViewWithDelBtnAdapterMedecine adapterMedecine;
     private DrawerLayout mDrawerLayout;
 

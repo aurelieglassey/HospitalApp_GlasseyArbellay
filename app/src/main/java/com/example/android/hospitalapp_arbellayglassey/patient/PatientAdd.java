@@ -148,11 +148,19 @@ public class PatientAdd extends AppCompatActivity {
 
 
     //Add a patient with the class AsyncAddPatient
-    public void addPatientFirebase(PatientEntity patientEntity){
+    public void addPatientFirebase(final PatientEntity patientEntity){
 
-            patientEntity.setIdP(UUID.randomUUID().toString());
+        //random ID for the new patient
+        patientEntity.setIdP(UUID.randomUUID().toString());
 
-            FirebaseDatabase.getInstance()
+        //Create a new treatment for this new patient
+        //With a random id, a specific name and the patient id
+        String namePatient = patientEntity.getName().toString();
+        String officialNameTreatment = " Treatment - " + namePatient;
+        treatmentEntity = new TreatmentEntity(officialNameTreatment, 1,  patientEntity.getIdP());
+        treatmentEntity.setIdT(UUID.randomUUID().toString());
+
+        FirebaseDatabase.getInstance()
                     .getReference("Patients")
                     .child(patientEntity.getIdP())
                     .setValue(patientEntity, new DatabaseReference.CompletionListener() {
@@ -167,13 +175,6 @@ public class PatientAdd extends AppCompatActivity {
                             }
                         }
                     });
-
-            //Create a new treatment for this new patient
-            //With a random id, a specific name and the patient id
-            treatmentEntity.setIdT(UUID.randomUUID().toString());
-            String namePatient = patientEntity.getName().toString();
-            String officialNameTreatment = " Treatment - " + namePatient;
-            treatmentEntity = new TreatmentEntity(officialNameTreatment, 1,  patientEntity.getIdP());
 
 
             FirebaseDatabase.getInstance()

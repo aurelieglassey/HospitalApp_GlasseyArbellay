@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
 
-    //test
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

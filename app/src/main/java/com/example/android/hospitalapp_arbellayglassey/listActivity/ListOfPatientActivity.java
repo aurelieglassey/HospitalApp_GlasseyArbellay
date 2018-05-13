@@ -37,7 +37,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
     //Variables
     private Button btnNewPatient;
-    private List<PatientEntity> patientEntities = new ArrayList<>();
+    private List<PatientEntity> patientEntities  = new ArrayList<>();
     private ListViewWithDelBtnAdapterPatient adapterPatient;
     private DrawerLayout mDrawerLayout;
 
