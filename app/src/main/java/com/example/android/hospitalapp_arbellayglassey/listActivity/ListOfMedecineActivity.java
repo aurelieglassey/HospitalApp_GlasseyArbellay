@@ -19,6 +19,7 @@ import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBt
 
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineAdd;
+import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineAddSearchList;
 import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineDetails;
 import com.example.android.hospitalapp_arbellayglassey.R;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
@@ -48,7 +49,15 @@ public class ListOfMedecineActivity extends AppCompatActivity {
         pressBtnAddNewMedecine();
         setupNavBar();
 
+
+
+        ListView list;
+
+        //Switch between activities
         MedecineEntities = new ArrayList<>();
+
+
+
         FirebaseDatabase.getInstance()
                 .getReference("Medecines")
                 .addValueEventListener(new ValueEventListener() {
@@ -57,7 +66,9 @@ public class ListOfMedecineActivity extends AppCompatActivity {
                         if (dataSnapshot.exists()){
                             MedecineEntities.clear();
                             MedecineEntities.addAll(toMedecines(dataSnapshot));
-                            adapterMedecine.refreshEvents(MedecineEntities);
+                            List<MedecineEntity> tempList = new ArrayList<>(MedecineEntities);
+                            adapterMedecine.refreshEvents(tempList);
+
                         }
                     }
 
@@ -66,13 +77,6 @@ public class ListOfMedecineActivity extends AppCompatActivity {
                         Log.d("listOfMedecine", "getAll: onCancelled", databaseError.toException());
                     }
                 });
-
-
-
-
-        ListView list;
-
-        //Switch between activities
         Intent intent = new Intent(ListOfMedecineActivity.this, MedecineDetails.class);
         list = (ListView) findViewById(R.id.listofmedecine);
         adapterMedecine = (new ListViewWithDelBtnAdapterMedecine(MedecineEntities, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
