@@ -54,12 +54,7 @@ public class PatientModify extends AppCompatActivity {
 
         readFirebase();
 
-        //set id and text
-        setId();
-        setText();
 
-        //Button to modify the Patient
-        pressBtnModifyPatient();
     }
 
 
@@ -101,6 +96,12 @@ public class PatientModify extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         patientEntity = dataSnapshot.getValue(PatientEntity.class);
+                        //set id and text
+                        setId();
+                        setText();
+
+                        //Button to modify the Patient
+                        pressBtnModifyPatient();
                     }
 
                     @Override

@@ -47,15 +47,10 @@ public class PatientDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_details);
 
-    readFirebase();
-        //Set the id, text and navbar
-        setId();
-        setText();
+        readFirebase();
+
         setupNavBar();
 
-        //Press on the button Show Treatment
-        pressBtnShowTreatment();
-        pressBtnModifyPatient();
 
 
     }
@@ -104,6 +99,13 @@ public class PatientDetails extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         patientEntity = dataSnapshot.getValue(PatientEntity.class);
+                        //Set the id, text and navbar
+                        setId();
+                        setText();
+                        //Press on the button Show Treatment
+                        pressBtnShowTreatment();
+                        pressBtnModifyPatient();
+
                     }
 
                     @Override

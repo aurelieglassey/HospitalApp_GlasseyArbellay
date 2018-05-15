@@ -53,6 +53,8 @@ public class MedecineModify extends AppCompatActivity {
 
         readFirebase();
 
+        //When the user press on the button modify
+        pressBtnModifyMedecine();
 
 
 
@@ -80,8 +82,6 @@ public class MedecineModify extends AppCompatActivity {
                         setId();
                         setText();
 
-                        //When the user press on the button modify
-                        pressBtnModifyMedecine();
                     }
 
                     @Override
@@ -211,6 +211,7 @@ public class MedecineModify extends AppCompatActivity {
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                         if (databaseError != null) {
                             Log.d("medecineModify", "Firebase DB update failure!");
+
                         } else {
                             Log.d("medecineModify", "Firebase DB update successful!");
 

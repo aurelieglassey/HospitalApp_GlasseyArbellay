@@ -59,7 +59,8 @@ public class ListOfPatientActivity extends AppCompatActivity {
                         if (dataSnapshot.exists()){
                             patientEntities.clear();
                             patientEntities.addAll(toPatients(dataSnapshot));
-                            adapterPatient.refreshEvents(patientEntities);
+                            List<PatientEntity> tempList = new ArrayList<>(patientEntities);
+                            adapterPatient.refreshEvents(tempList);
                         }
                     }
 
@@ -94,7 +95,8 @@ public class ListOfPatientActivity extends AppCompatActivity {
                         if (dataSnapshot.exists()){
                             patientEntities.clear();
                             patientEntities.addAll(toPatients(dataSnapshot));
-                            adapterPatient.refreshEvents(patientEntities);
+                            List<PatientEntity> tempList = new ArrayList<>(patientEntities);
+                            adapterPatient.refreshEvents(tempList);
                         }
                     }
 
