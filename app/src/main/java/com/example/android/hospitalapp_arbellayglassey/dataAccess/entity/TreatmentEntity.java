@@ -36,9 +36,11 @@ public class TreatmentEntity {
     }
 
     //Getters and setters
+    @Exclude
     public String getIdT() {
         return idT;
     }
+
     public String getName() {
         return name;
     }
