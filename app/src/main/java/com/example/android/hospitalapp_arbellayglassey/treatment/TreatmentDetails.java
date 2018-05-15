@@ -43,7 +43,7 @@ public class TreatmentDetails extends AppCompatActivity {
     private ImageButton btnModifyTreatment;
     private TreatmentEntity treatmentEntity;
     private PatientEntity patientEntity;
-    private List<TreatmentMedecineLinkEntity>  listLinkEntity;
+    private List<TreatmentMedecineLinkEntity>  listLinkEntity = new ArrayList<>();
     private String idPatient;
     private TextView textViewAdmission;
     private TextView textViewName;
@@ -52,7 +52,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
  //private TextView textViewAdmission;
     private ListViewWithDelBtnAdapterLink adapterLink;
-    private List<MedecineEntity> medecineEntityList;
+    private List<MedecineEntity> medecineEntityList  = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,6 +164,7 @@ public class TreatmentDetails extends AppCompatActivity {
                         //find the textview by his id
                         setId();
                         setText();
+                        setTitle(patientEntity.getName());
 
                     }
 
@@ -273,7 +274,7 @@ public class TreatmentDetails extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.mainmenu, menu);
-        setTitle(patientEntity.getName());
+
         setupActionBar();
         setupNavBar();
         return true;
