@@ -140,7 +140,7 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
                         if (databaseError != null){
                             Log.d("adapterlistpatient", "delete failure", databaseError.toException());}
                             else    {
-                            Log.d("adapterlistpatient", "delete successufl", databaseError.toException());}
+                            Log.d("adapterlistpatient","delete successufl");}
                             Entities.remove(entity);
                             notifyDataSetChanged();
                         }

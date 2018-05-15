@@ -52,12 +52,8 @@ public class MedecineModify extends AppCompatActivity {
 
 
         readFirebase();
-
         //When the user press on the button modify
         pressBtnModifyMedecine();
-
-
-
 
     }
 
@@ -84,6 +80,7 @@ public class MedecineModify extends AppCompatActivity {
                         //Set id and text
                         setId();
                         setText();
+
 
                     }
 

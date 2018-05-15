@@ -59,9 +59,6 @@ public class TreatmentDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_details);
 
-        //find the textview by his id
-        setId();
-        setText();
 
 
         //Add a medecine to the treatment of a patient
@@ -163,7 +160,11 @@ public class TreatmentDetails extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         patientEntity = dataSnapshot.getValue(PatientEntity.class);
-                        }
+                        //find the textview by his id
+                        setId();
+                        setText();
+
+                    }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {

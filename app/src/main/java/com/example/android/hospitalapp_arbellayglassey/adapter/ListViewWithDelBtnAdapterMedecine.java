@@ -3,6 +3,7 @@ package com.example.android.hospitalapp_arbellayglassey.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Entity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -103,6 +104,7 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
                             public void onClick(DialogInterface dialog, int whichButton) {
 
+                                deleteMedecine(Entities.get(position));
                                 // make a roasted toast
                                 Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
 
@@ -119,18 +121,18 @@ public class ListViewWithDelBtnAdapterMedecine extends BaseAdapter implements Li
 
     public void deleteMedecine(final MedecineEntity entity){
         FirebaseDatabase.getInstance()
-                .getReference("Medecine")
+                .getReference("Medecines")
                 .child(entity.getIdM())
                 .removeValue(new DatabaseReference.CompletionListener(){
-
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                         if (databaseError != null){
                             Log.d("adapterlistmedecine", "delete failure", databaseError.toException());}
                         else    {
-                            Log.d("adapterlistmedecine", "delete successufl", databaseError.toException());}
-                        Entities.remove(entity);
-                        notifyDataSetChanged();
+                            Entities.remove(entity);
+                            notifyDataSetChanged();
+                            Log.d("adapterlistmedecine", "delete successufl");}
+
                     }
 
 

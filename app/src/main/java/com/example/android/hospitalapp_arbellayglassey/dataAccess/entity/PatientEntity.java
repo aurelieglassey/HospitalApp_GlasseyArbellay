@@ -12,6 +12,7 @@ import java.util.Map;
 
 
 public class PatientEntity {
+
     @NonNull
     private String idP;
     private String name;
