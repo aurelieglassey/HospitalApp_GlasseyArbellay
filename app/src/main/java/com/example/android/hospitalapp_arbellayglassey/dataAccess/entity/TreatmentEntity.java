@@ -23,6 +23,7 @@ public class TreatmentEntity {
     private String idT;
     private String name;
     private int maxQuantity;
+    @Exclude
     private String idPatient;
 
     public TreatmentEntity() {
@@ -44,6 +45,7 @@ public class TreatmentEntity {
     public String getName() {
         return name;
     }
+
 
     public String getIdPatient() {
         return idPatient;
@@ -73,8 +75,8 @@ public class TreatmentEntity {
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("name", name);
-        result.put("max_quantity", maxQuantity);
-        result.put("idPatient", idPatient);
+        result.put("maxQuantity", maxQuantity);
+        //result.put("idPatient", idPatient);
 
         return result;
     }

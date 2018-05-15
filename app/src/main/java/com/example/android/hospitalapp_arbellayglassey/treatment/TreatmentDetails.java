@@ -178,7 +178,7 @@ public class TreatmentDetails extends AppCompatActivity {
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .child(idPatient)
-                .child("treatment")
+                .child("Treatment")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

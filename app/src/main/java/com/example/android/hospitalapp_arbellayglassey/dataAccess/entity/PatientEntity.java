@@ -94,10 +94,10 @@ public class PatientEntity {
         HashMap<String, Object> result = new HashMap<>();
         result.put("name", name);
         result.put("gender", gender);
-        result.put("room_number", roomNumber);
-        result.put("blood_group", bloodGroup);
+        result.put("roomNumber", roomNumber);
+        result.put("bloodGroup", bloodGroup);
         result.put("age", age);
-        result.put("reason_of_admission", reasonAdmission);
+        result.put("reasonAdmission", reasonAdmission);
 
         return result;
     }

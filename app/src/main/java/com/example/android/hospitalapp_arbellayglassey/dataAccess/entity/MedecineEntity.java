@@ -99,11 +99,11 @@ public class MedecineEntity {
         HashMap<String, Object> result = new HashMap<>();
         result.put("name", name);
         result.put("type", type);
-        result.put("active_ingredient", activeIngredient);
+        result.put("activeIngredient", activeIngredient);
         result.put("manufacturers", manufacturers);
         result.put("application", application);
-        result.put("side_effects", sideEffects);
-        result.put("max_per_day", maxPerDay);
+        result.put("sideEffects", sideEffects);
+        result.put("maxPerDay", maxPerDay);
 
         return result;
     }
