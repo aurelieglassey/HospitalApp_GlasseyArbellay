@@ -64,7 +64,7 @@ public class TreatmentDetails extends AppCompatActivity {
         //Add a medecine to the treatment of a patient
         pressAddMedecineToTreatment();
         pressBtnModifyTreatment();
-
+        readFirebase();
         // adding list
         ListView list;
 
@@ -162,7 +162,7 @@ public class TreatmentDetails extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         patientEntity = dataSnapshot.getValue(PatientEntity.class);
                         //find the textview by his id
-                       
+
                         setTitle(patientEntity.getName());
 
                     }
@@ -177,13 +177,14 @@ public class TreatmentDetails extends AppCompatActivity {
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .child(idPatient)
-                .child("Treatment")
+                .child("treatment")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         treatmentEntity = dataSnapshot.getValue(TreatmentEntity.class);
                         setId();
                         setText();
+
                     }
 
                     @Override

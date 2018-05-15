@@ -180,8 +180,7 @@ public class PatientAdd extends AppCompatActivity {
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .child(patientEntity.getIdP())
-                .child("Treatment")
-                .child(treatmentEntity.getIdT())
+                .child("treatment")
                 .setValue(treatmentEntity, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
