@@ -78,6 +78,8 @@ public class MedecineModify extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         medecineEntity = dataSnapshot.getValue(MedecineEntity.class);
+                        medecineEntity.setIdM(dataSnapshot.getKey());
+
                         //Set id and text
                         setId();
                         setText();
