@@ -76,7 +76,7 @@ public class TreatmentDetails extends AppCompatActivity {
         list.setAdapter(adapterLink);
     }
 
-    
+
     @Override
     protected void onRestart() {
         super.onRestart();
