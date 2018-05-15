@@ -23,6 +23,7 @@ public class TreatmentMedecineLinkEntity {
     private String idL;
     private String idTreatment;
     private String idMedecine;
+    //private Map<String, Boolean> medecines = new HashMap<>();
 
     // constructor
     public TreatmentMedecineLinkEntity() {
