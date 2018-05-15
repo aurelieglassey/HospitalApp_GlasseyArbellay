@@ -55,9 +55,7 @@ public class TreatmentModify extends AppCompatActivity {
         //Btn modify the treatment
         pressBtnModifyTreatment();
 
-        //set id and text
-        setid();
-        setText();
+
 
     }
     //find view by id
@@ -151,7 +149,6 @@ public class TreatmentModify extends AppCompatActivity {
         idPatient = intentGetId.getStringExtra("idP");
         //patientEntity = new AsyncGetPatient(TreatmentModify.this, idPatient).execute().get();
 
-
         // get patient
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
@@ -160,6 +157,9 @@ public class TreatmentModify extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         patientEntity = dataSnapshot.getValue(PatientEntity.class);
+                        //set id and text
+                        setid();
+                        setText();
                     }
 
                     @Override
