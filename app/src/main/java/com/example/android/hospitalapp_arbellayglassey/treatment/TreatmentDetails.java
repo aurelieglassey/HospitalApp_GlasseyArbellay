@@ -162,8 +162,7 @@ public class TreatmentDetails extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         patientEntity = dataSnapshot.getValue(PatientEntity.class);
                         //find the textview by his id
-                        setId();
-                        setText();
+                       
                         setTitle(patientEntity.getName());
 
                     }
@@ -183,7 +182,8 @@ public class TreatmentDetails extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         treatmentEntity = dataSnapshot.getValue(TreatmentEntity.class);
-
+                        setId();
+                        setText();
                     }
 
                     @Override

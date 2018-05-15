@@ -158,7 +158,7 @@ public class PatientAdd extends AppCompatActivity {
         String namePatient = patientEntity.getName().toString();
         String officialNameTreatment = " Treatment - " + namePatient;
         treatmentEntity = new TreatmentEntity(officialNameTreatment, 1,  patientEntity.getIdP());
-        treatmentEntity.setIdT(UUID.randomUUID().toString());
+        //treatmentEntity.setIdT(UUID.randomUUID().toString());
 
         FirebaseDatabase.getInstance()
                     .getReference("Patients")

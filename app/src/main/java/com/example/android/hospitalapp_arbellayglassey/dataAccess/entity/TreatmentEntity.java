@@ -19,7 +19,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 public class TreatmentEntity {
 
-    @NonNull
+    @Exclude
     private String idT;
     private String name;
     private int maxQuantity;
