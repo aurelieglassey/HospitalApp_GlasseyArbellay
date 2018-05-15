@@ -20,6 +20,7 @@ import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatien
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -45,15 +46,15 @@ public class MedecineDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medecine_details);
 
+        // DatabaseCreator dbCreator = DatabaseCreator.getInstance(MedecineDetails.this);
+        Intent intentGetId = getIntent();
+        idMedecine = intentGetId.getStringExtra("idM");
+
+
         //Read the db
-       readFirebase();
+        readFirebase();
 
-        //id , text of the textview
-        setId();
-        setText();
 
-        //Button to modify a medecine
-        pressBtnModifyMedecine();
     }
 
     //When the user decide to modify the data of a medecine
@@ -112,14 +113,24 @@ public class MedecineDetails extends AppCompatActivity {
         Intent intentGetId = getIntent();
         idMedecine = intentGetId.getStringExtra("idM");
 
-       // get Medecine form firebase
-        FirebaseDatabase.getInstance()
-                .getReference("Medecines")
-                .child(idMedecine)
-                .addValueEventListener(new ValueEventListener() {
+        final FirebaseDatabase fd = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = fd.getReference("Medecines").child(idMedecine);
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        medecineEntity = dataSnapshot.getValue(MedecineEntity.class);
+                        if (dataSnapshot.exists()) {
+                            medecineEntity = dataSnapshot.getValue(MedecineEntity.class);
+
+                            //id , text of the textview
+                            setId();
+                            setText();
+
+                            //Button to modify a medecine
+                            pressBtnModifyMedecine();
+
+                        }
+
                     }
 
                     @Override

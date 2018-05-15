@@ -109,7 +109,9 @@ public class ListOfMedecineActivity extends AppCompatActivity {
                         if (dataSnapshot.exists()){
                             MedecineEntities.clear();
                             MedecineEntities.addAll(toMedecines(dataSnapshot));
-                            adapterMedecine.refreshEvents(MedecineEntities);
+                            List<MedecineEntity> tempList = new ArrayList<>(MedecineEntities);
+                            adapterMedecine.refreshEvents(tempList);
+
                         }
                     }
 
