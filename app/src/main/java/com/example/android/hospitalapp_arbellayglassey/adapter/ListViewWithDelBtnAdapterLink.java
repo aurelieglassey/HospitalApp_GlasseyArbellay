@@ -133,8 +133,8 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .child(idPatient)
-                .child(entity.getIdTreatment())
-                .child(entity.getIdL())
+                .child("treatment")
+                .child("links")
                 .removeValue(new DatabaseReference.CompletionListener(){
 
                     @Override

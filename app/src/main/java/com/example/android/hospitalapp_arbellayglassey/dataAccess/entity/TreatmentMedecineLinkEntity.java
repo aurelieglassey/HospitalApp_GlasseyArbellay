@@ -19,7 +19,22 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 public class TreatmentMedecineLinkEntity {
 
 
-    @NonNull
+    private String idM ;
+
+
+    public String getIdM() {
+        return idM;
+    }
+
+    public void setIdM(String idM) {
+        this.idM = idM;
+    }
+
+
+
+
+
+   /* @NonNull
     private String idL;
     private String idTreatment;
     private String idMedecine;
@@ -63,6 +78,6 @@ public class TreatmentMedecineLinkEntity {
         result.put("idMedecine", idTreatment);
 
         return result;
-    }
+    }*/
 
 }

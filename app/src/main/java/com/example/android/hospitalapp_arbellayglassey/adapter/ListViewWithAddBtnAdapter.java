@@ -98,8 +98,9 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
                 Toast.makeText(context, "Object to add: "+ Entities.get(position).getName(), Toast.LENGTH_LONG).show();
                 TreatmentMedecineLinkEntity linkEn = new TreatmentMedecineLinkEntity();
                 // set the id to the link
-                linkEn.setIdMedecine(Entities.get(position).getIdM());
-                linkEn.setIdTreatment(idT);
+
+               // linkEn.setIdMedecine(Entities.get(position).getIdM());
+                //linkEn.setIdTreatment(idT);
                 addLinkInFirebase(linkEn);
 
             }

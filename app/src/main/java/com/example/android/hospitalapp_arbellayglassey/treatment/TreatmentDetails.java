@@ -34,7 +34,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class TreatmentDetails extends AppCompatActivity {
 
@@ -163,7 +162,7 @@ public class TreatmentDetails extends AppCompatActivity {
                         patientEntity = dataSnapshot.getValue(PatientEntity.class);
                         //find the textview by his id
 
-                        setTitle(patientEntity.getName());
+
 
                     }
 
@@ -182,8 +181,6 @@ public class TreatmentDetails extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         treatmentEntity = dataSnapshot.getValue(TreatmentEntity.class);
-                        setId();
-                        setText();
 
                     }
 
@@ -194,6 +191,7 @@ public class TreatmentDetails extends AppCompatActivity {
                 });
 
 
+        medecineEntityList= new ArrayList<>();
         //get list of links
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
@@ -205,7 +203,18 @@ public class TreatmentDetails extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()){
                             listLinkEntity.clear();
-                            listLinkEntity.addAll(toAccounts(dataSnapshot));
+                            listLinkEntity.addAll(toLinks(dataSnapshot));
+                            List<TreatmentMedecineLinkEntity> tempList = new ArrayList<>(listLinkEntity);
+
+                            //poulate the list
+                            for (TreatmentMedecineLinkEntity linkEntity: listLinkEntity) {
+                                medecineEntityList.add(getOneMedecine(linkEntity));
+                            }
+                            setTitle(patientEntity.getName());
+                            setId();
+                            setText();
+
+                            adapterLink.refreshEvents(medecineEntityList,tempList);
 
                         }
                     }
@@ -221,12 +230,8 @@ public class TreatmentDetails extends AppCompatActivity {
         // get medecine
 
         //listLinkEntity = new AsyncGetLinks(TreatmentDetails.this, treatmentEntity.getIdT()).execute().get();
-        medecineEntityList= new ArrayList<>();
 
-        //poulate the list
-        for (TreatmentMedecineLinkEntity linkEntity: listLinkEntity) {
-            medecineEntityList.add(getOneMedecine(linkEntity));
-        }
+
 
 
     }
@@ -239,7 +244,7 @@ public class TreatmentDetails extends AppCompatActivity {
         // get medecine
         FirebaseDatabase.getInstance()
                 .getReference("Medecines")
-                .child(entity.getIdMedecine())
+                .child(entity.getIdM())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -257,7 +262,7 @@ public class TreatmentDetails extends AppCompatActivity {
         return medecineEntity[0];
     }
 
-    private List<TreatmentMedecineLinkEntity> toAccounts(DataSnapshot snapshot) {
+    private List<TreatmentMedecineLinkEntity> toLinks (DataSnapshot snapshot) {
 
         List<TreatmentMedecineLinkEntity> links = new ArrayList<>();
         for (DataSnapshot childSnapshot : snapshot.getChildren()) {
