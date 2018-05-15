@@ -177,23 +177,23 @@ public class PatientAdd extends AppCompatActivity {
                     });
 
 
-            FirebaseDatabase.getInstance()
-                    .getReference("Patients")
-                    .child(patientEntity.getIdP())
-                    .child("Treatment")
-                    .child(treatmentEntity.getIdT())
-                    .setValue(patientEntity, new DatabaseReference.CompletionListener() {
-                        @Override
-                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                            if (databaseError != null) {
-                                Log.d("PatientAdd + treatment", "Firebase DB Insert failure!");
-                            } else {
-                                //Sucessful : we can create a new treatment for this new Patient
-                                Log.d("PatientAdd + treatment", "Firebase DB Insert successful!");
+        FirebaseDatabase.getInstance()
+                .getReference("Patients")
+                .child(patientEntity.getIdP())
+                .child("Treatment")
+                .child(treatmentEntity.getIdT())
+                .setValue(treatmentEntity, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null) {
+                            Log.d("PatientAdd + treatment", "Firebase DB Insert failure!");
+                        } else {
+                            //Sucessful : we can create a new treatment for this new Patient
+                            Log.d("PatientAdd + treatment", "Firebase DB Insert successful!");
 
-                            }
                         }
-                    });
+                    }
+                });
 
 
 
