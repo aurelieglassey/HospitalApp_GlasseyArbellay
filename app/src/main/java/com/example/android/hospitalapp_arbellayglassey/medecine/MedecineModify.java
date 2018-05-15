@@ -261,9 +261,9 @@ public class MedecineModify extends AppCompatActivity {
     //setup navigation drawer
     //this method setup the navigation drawer and implement the button to go to the list
     public void setupNavBar() {
-        mDrawerLayout = findViewById(R.id.drawer_layout_details_medecine);
+        mDrawerLayout = findViewById(R.id.drawer_layout_modify_medecine);
 
-        NavigationView navigationView = findViewById(R.id.nav_view_details_medecine);
+        NavigationView navigationView = findViewById(R.id.nav_view_modify_medecine);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
