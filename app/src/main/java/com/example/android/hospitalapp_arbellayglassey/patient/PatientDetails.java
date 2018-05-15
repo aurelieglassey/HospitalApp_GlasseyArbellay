@@ -128,7 +128,7 @@ public class PatientDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PatientDetails.this, TreatmentDetails.class);
-                intent.putExtra("idP", patientEntity.getIdP());
+                intent.putExtra("idP", idPatient);
                 PatientDetails.this.startActivity(intent);
             }
         });
@@ -146,7 +146,7 @@ public class PatientDetails extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(PatientDetails.this, PatientModify.class);
-                    intent.putExtra("idP", patientEntity.getIdP());
+                    intent.putExtra("idP", idPatient);
                     PatientDetails.this.startActivity(intent);
                 }
             });
