@@ -53,12 +53,9 @@ public class MedecineModify extends AppCompatActivity {
 
         readFirebase();
 
-        //When the user press on the button modify
-        pressBtnModifyMedecine();
 
-        //Set id and text
-        setId();
-        setText();
+
+
 
     }
 
@@ -79,6 +76,12 @@ public class MedecineModify extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         medecineEntity = dataSnapshot.getValue(MedecineEntity.class);
+                        //Set id and text
+                        setId();
+                        setText();
+
+                        //When the user press on the button modify
+                        pressBtnModifyMedecine();
                     }
 
                     @Override
