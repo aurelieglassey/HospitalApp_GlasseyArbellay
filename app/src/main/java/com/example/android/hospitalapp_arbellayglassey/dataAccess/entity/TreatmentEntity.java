@@ -30,10 +30,10 @@ public class TreatmentEntity {
     }
 
     //Full constructor of TreatmentEntity
-    public TreatmentEntity(String name, int maxQuantity, String idPatient) {
+    public TreatmentEntity(String name, int maxQuantity) {
         this.name = name;
         this.maxQuantity = maxQuantity;
-        this.idPatient = idPatient;
+
     }
 
     //Getters and setters

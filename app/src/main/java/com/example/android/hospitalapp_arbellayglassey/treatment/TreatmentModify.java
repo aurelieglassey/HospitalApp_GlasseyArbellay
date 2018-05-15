@@ -122,8 +122,8 @@ public class TreatmentModify extends AppCompatActivity {
     private void updateTreatment(final TreatmentEntity treatmentEntity) {
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
-                .child(patientEntity.getIdP())
-                .child(treatmentEntity.getIdT())
+                .child(idPatient)
+                .child("treatment")
                 .updateChildren(treatmentEntity.toMap(), new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
@@ -157,9 +157,7 @@ public class TreatmentModify extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         patientEntity = dataSnapshot.getValue(PatientEntity.class);
-                        //set id and text
-                        setid();
-                        setText();
+
                     }
 
                     @Override
@@ -177,7 +175,9 @@ public class TreatmentModify extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         treatmentEntity = dataSnapshot.getValue(TreatmentEntity.class);
-
+                        //set id and text
+                        setid();
+                        setText();
                     }
 
                     @Override
