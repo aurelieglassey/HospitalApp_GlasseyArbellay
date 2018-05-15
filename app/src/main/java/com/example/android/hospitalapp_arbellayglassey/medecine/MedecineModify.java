@@ -80,6 +80,7 @@ public class MedecineModify extends AppCompatActivity {
                         medecineEntity = dataSnapshot.getValue(MedecineEntity.class);
                         medecineEntity.setIdM(dataSnapshot.getKey());
 
+
                         //Set id and text
                         setId();
                         setText();
