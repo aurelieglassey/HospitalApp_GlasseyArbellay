@@ -53,7 +53,8 @@ public class PatientModify extends AppCompatActivity {
         messageError = this.getString(R.string.error_enter_field);
 
         readFirebase();
-
+        //Button to modify the Patient
+        pressBtnModifyPatient();
 
     }
 
@@ -96,12 +97,13 @@ public class PatientModify extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         patientEntity = dataSnapshot.getValue(PatientEntity.class);
+                        patientEntity.setIdP(dataSnapshot.getKey());
+
                         //set id and text
                         setId();
                         setText();
 
-                        //Button to modify the Patient
-                        pressBtnModifyPatient();
+
                     }
 
                     @Override
