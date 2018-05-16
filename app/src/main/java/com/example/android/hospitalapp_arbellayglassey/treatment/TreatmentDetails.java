@@ -204,42 +204,33 @@ public class TreatmentDetails extends AppCompatActivity {
                         if (dataSnapshot.exists()){
                             listLinkEntity.clear();
                             listLinkEntity.addAll(toLinks(dataSnapshot));
-                            List<TreatmentMedecineLinkEntity> tempList = new ArrayList<>(listLinkEntity);
+                            final List<TreatmentMedecineLinkEntity> tempList = new ArrayList<>(listLinkEntity);
 
-                            //poulate the list
-                            for (TreatmentMedecineLinkEntity linkEntity: listLinkEntity) {
-
-                                FirebaseDatabase.getInstance()
-                                        .getReference("Medecines")
-                                        .child(linkEntity.getIdM())
-                                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                                if (dataSnapshot.exists()) {
-                                                    medecineEntityList.add( dataSnapshot.getValue(MedecineEntity.class));
-                                                }
-                                            }
-
-                                            @Override
-                                            public void onCancelled(DatabaseError databaseError) {
-                                                Log.d("treat details", "getPatient: onCancelled", databaseError.toException());
-                                            }
-                                        });
+                            final List<MedecineEntity> tempListMed = getMedecineEntityList(tempList);
 
 
 
-                            }
-                            setTitle(patientEntity.getName());
-                            setId();
-                            setText();
+                            FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    setTitle(patientEntity.getName());
+                                    setId();
+                                    setText();
+                                    adapterLink.refreshEvents(tempListMed,tempList);
+                                }
 
-                            List<MedecineEntity> tempListMed = new ArrayList<>(medecineEntityList);
-                            adapterLink.refreshEvents(tempListMed,tempList);
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
+
+
+
 
                         }
                     }
-
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
@@ -258,30 +249,36 @@ public class TreatmentDetails extends AppCompatActivity {
     }
 
 
- /*   private MedecineEntity getOneMedecine(TreatmentMedecineLinkEntity entity){
+    private List<MedecineEntity> getMedecineEntityList(List<TreatmentMedecineLinkEntity> listLinkEntityentity){
 
-        final MedecineEntity[] medecineEntity = new MedecineEntity[1];
+        final List<MedecineEntity> list = new ArrayList<>();
 
-        // get medecine
-        FirebaseDatabase.getInstance()
-                .getReference("Medecines")
-                .child(entity.getIdM())
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            medecineEntity[0] = dataSnapshot.getValue(MedecineEntity.class);
+        //poulate the list
+        for (TreatmentMedecineLinkEntity linkEntity: listLinkEntity) {
+
+            // get medecine
+            FirebaseDatabase.getInstance()
+                    .getReference("Medecines")
+                    .child(linkEntity.getIdM())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                list.add(dataSnapshot.getValue(MedecineEntity.class));
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.d("treat details", "getPatient: onCancelled", databaseError.toException());
-                    }
-                });
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Log.d("treat details", "getPatient: onCancelled", databaseError.toException());
+                        }
+                    });
 
-        return medecineEntity[0];
-    }*/
+
+        }
+
+        return list;
+    }
 
     private List<TreatmentMedecineLinkEntity> toLinks (DataSnapshot snapshot) {
 
@@ -296,6 +293,8 @@ public class TreatmentDetails extends AppCompatActivity {
 
 
     }
+
+
     //set up the action bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
