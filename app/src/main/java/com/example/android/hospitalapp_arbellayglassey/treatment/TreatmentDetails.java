@@ -198,7 +198,7 @@ public class TreatmentDetails extends AppCompatActivity {
                 .child(idPatient)
                 .child("treatment")
                 .child("links")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
+                .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()){
@@ -208,16 +208,37 @@ public class TreatmentDetails extends AppCompatActivity {
 
                             //poulate the list
                             for (TreatmentMedecineLinkEntity linkEntity: listLinkEntity) {
-                                medecineEntityList.add(getOneMedecine(linkEntity));
+
+                                FirebaseDatabase.getInstance()
+                                        .getReference("Medecines")
+                                        .child(linkEntity.getIdM())
+                                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                if (dataSnapshot.exists()) {
+                                                    medecineEntityList.add( dataSnapshot.getValue(MedecineEntity.class));
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+                                                Log.d("treat details", "getPatient: onCancelled", databaseError.toException());
+                                            }
+                                        });
+
+
+
                             }
                             setTitle(patientEntity.getName());
                             setId();
                             setText();
 
-                            adapterLink.refreshEvents(medecineEntityList,tempList);
+                            List<MedecineEntity> tempListMed = new ArrayList<>(medecineEntityList);
+                            adapterLink.refreshEvents(tempListMed,tempList);
 
                         }
                     }
+
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
@@ -237,7 +258,7 @@ public class TreatmentDetails extends AppCompatActivity {
     }
 
 
-    private MedecineEntity getOneMedecine(TreatmentMedecineLinkEntity entity){
+ /*   private MedecineEntity getOneMedecine(TreatmentMedecineLinkEntity entity){
 
         final MedecineEntity[] medecineEntity = new MedecineEntity[1];
 
@@ -260,15 +281,15 @@ public class TreatmentDetails extends AppCompatActivity {
                 });
 
         return medecineEntity[0];
-    }
+    }*/
 
     private List<TreatmentMedecineLinkEntity> toLinks (DataSnapshot snapshot) {
 
         List<TreatmentMedecineLinkEntity> links = new ArrayList<>();
         for (DataSnapshot childSnapshot : snapshot.getChildren()) {
             TreatmentMedecineLinkEntity entity = childSnapshot.getValue(TreatmentMedecineLinkEntity.class);
-           /* entity.setIdTreatment(childSnapshot.getKey());
-            entity.setIdMedecine(childSnapshot.getChildren());*/
+
+            entity.setIdL(childSnapshot.getKey());
             links.add(entity);
         }
         return links;

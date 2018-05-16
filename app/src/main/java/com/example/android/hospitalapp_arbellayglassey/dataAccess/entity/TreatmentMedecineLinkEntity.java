@@ -21,6 +21,8 @@ public class TreatmentMedecineLinkEntity {
 
     private String idM ;
 
+    private String idL;
+
 
     public String getIdM() {
         return idM;
@@ -28,6 +30,15 @@ public class TreatmentMedecineLinkEntity {
 
     public void setIdM(String idM) {
         this.idM = idM;
+    }
+
+
+    public String getIdL() {
+        return idL;
+    }
+
+    public void setIdL(String idL) {
+        this.idL = idL;
     }
 
 
@@ -70,15 +81,15 @@ public class TreatmentMedecineLinkEntity {
     public void setIdL(String idL) {
         this.idL = idL;
     }
-
+*/
 
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("idTreatement", idMedecine);
-        result.put("idMedecine", idTreatment);
+
+        result.put("idM", idM);
 
         return result;
-    }*/
+    }
 
 }
