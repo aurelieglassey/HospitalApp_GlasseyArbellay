@@ -162,8 +162,6 @@ public class TreatmentDetails extends AppCompatActivity {
                         patientEntity = dataSnapshot.getValue(PatientEntity.class);
                         //find the textview by his id
 
-
-
                     }
 
                     @Override

@@ -33,6 +33,7 @@ public class TreatmentMedecineLinkEntity {
     }
 
 
+    @Exclude
     public String getIdL() {
         return idL;
     }
