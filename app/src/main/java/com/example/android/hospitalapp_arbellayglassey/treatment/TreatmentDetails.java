@@ -182,7 +182,6 @@ public class TreatmentDetails extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         treatmentEntity = dataSnapshot.getValue(TreatmentEntity.class);
-                       //Set id + text
                         setId();
                         setText();
 

@@ -18,12 +18,11 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 public class TreatmentMedecineLinkEntity {
 
-
     @NonNull
     private String idL;
     private String idTreatment;
     private String idMedecine;
-    //private Map<String, Boolean> medecines = new HashMap<>();
+
 
     // constructor
     public TreatmentMedecineLinkEntity() {
@@ -62,7 +61,7 @@ public class TreatmentMedecineLinkEntity {
         HashMap<String, Object> result = new HashMap<>();
         result.put("idTreatement", idMedecine);
         result.put("idMedecine", idTreatment);
-
+       
         return result;
     }
 
