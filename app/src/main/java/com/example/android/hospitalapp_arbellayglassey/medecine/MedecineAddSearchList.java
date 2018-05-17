@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import com.example.android.hospitalapp_arbellayglassey.R;
+import com.example.android.hospitalapp_arbellayglassey.adapter.ListViewWithDelBtnAdapterMedecine;
 import com.example.android.hospitalapp_arbellayglassey.dataAccess.entity.MedecineEntity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfMedecineActivity;
 import com.example.android.hospitalapp_arbellayglassey.listActivity.ListOfPatientActivity;
@@ -33,6 +34,7 @@ public class MedecineAddSearchList extends AppCompatActivity {
     private ArrayList<String> medecines;
     private String idT;
     private String idP;
+    private ListViewWithAddBtnAdapter adapterMedecine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class MedecineAddSearchList extends AppCompatActivity {
         // adding list
         ListView list;
 
+        MedecineEntities = new ArrayList<>();
 
         // read firebase
         FirebaseDatabase.getInstance()
@@ -52,6 +55,9 @@ public class MedecineAddSearchList extends AppCompatActivity {
                         if (dataSnapshot.exists()){
                             MedecineEntities.clear();
                             MedecineEntities.addAll(toMedecines(dataSnapshot));
+                            List<MedecineEntity> tempList = new ArrayList<>(MedecineEntities);
+                            adapterMedecine.refreshEvents(tempList);
+
 
                         }
                     }
@@ -63,15 +69,18 @@ public class MedecineAddSearchList extends AppCompatActivity {
                 });
 
 
-        //get the intent to know the id to create the link
+        Intent intent = new Intent( MedecineAddSearchList.this, MedecineDetails.class);
         Intent intentGetID = getIntent();
-        idT = intentGetID.getStringExtra("idT");
-        idP = intentGetID.getStringExtra("idP");
         list = (ListView) findViewById(R.id.listofmedecinesearchlist);
 
-        //one funny adapter
-        list.setAdapter(new ListViewWithAddBtnAdapter(MedecineEntities, idT,idP,MedecineAddSearchList.this, R.layout.listmedecineaddsearchlist_layout, R.id.listview_listofmedecineaddsearchlist, R.id.addMedecineForTreatmentButton));
-    }
+        //find the it of the patient
+        idP = intentGetID.getStringExtra("idP");
+
+        adapterMedecine = (new ListViewWithAddBtnAdapter(MedecineEntities, idP,MedecineAddSearchList.this, R.layout.listmedecineaddsearchlist_layout, R.id.listview_listofmedecineaddsearchlist, R.id.addMedecineForTreatmentButton));
+        list.setAdapter(adapterMedecine);
+
+
+   }
 
 
     //Read the db from our application

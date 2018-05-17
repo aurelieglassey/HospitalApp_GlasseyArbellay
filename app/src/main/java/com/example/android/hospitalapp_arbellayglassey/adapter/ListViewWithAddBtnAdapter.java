@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapter {
@@ -37,13 +38,13 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
     private Context context;
     private Intent intent;
     List<MedecineEntity> Entities;
-    private String idT;
+   // private String idT;
     private String idP;
     int idAddButton;
 
     // constructor to get all the necessary variables
 
-    public ListViewWithAddBtnAdapter(List<MedecineEntity> Entities, String idT, String idP, Context context,  int layout, int idListViewLayout, int idAddButton) {
+    public ListViewWithAddBtnAdapter(List<MedecineEntity> Entities,  String idP, Context context,  int layout, int idListViewLayout, int idAddButton) {
 
         this.context = context;
         this.intent = intent;
@@ -51,7 +52,6 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
         this.listViewLayout = idListViewLayout;
         this.idAddButton = idAddButton;
         this.Entities = Entities;
-        this.idT = idT;
         this.idP = idP;
     }
 
@@ -101,7 +101,7 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
 
                // linkEn.setIdMedecine(Entities.get(position).getIdM());
                 //linkEn.setIdTreatment(idT);
-                addLinkInFirebase(linkEn);
+                addLinkInFirebase(linkEn,position);
 
             }
         });
@@ -110,11 +110,13 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
         return view;
     }
 
-    private void addLinkInFirebase(TreatmentMedecineLinkEntity entity) {
+    private void addLinkInFirebase(TreatmentMedecineLinkEntity entity, int pos) {
+        entity.setIdL(UUID.randomUUID().toString());
+        entity.setIdM(Entities.get(pos).getIdM());
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .child(idP)
-                .child(idT)
+                .child("treatment")
                 .child("links")
                 .setValue(entity, new DatabaseReference.CompletionListener() {
                     @Override
@@ -132,7 +134,12 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
     }
 
 
-
+    //get new value to refresh the list
+    public void refreshEvents(List<MedecineEntity> medecineEntities) {
+        this.Entities.clear();
+        this.Entities.addAll(medecineEntities);
+        notifyDataSetChanged();
+    }
 
 
 }
