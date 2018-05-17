@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -29,10 +30,14 @@ import com.example.android.hospitalapp_arbellayglassey.medecine.MedecineDetails;
 import com.example.android.hospitalapp_arbellayglassey.settings.Settings;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class TreatmentDetails extends AppCompatActivity {
@@ -43,6 +48,7 @@ public class TreatmentDetails extends AppCompatActivity {
     private TreatmentEntity treatmentEntity;
     private PatientEntity patientEntity;
     private List<TreatmentMedecineLinkEntity>  listLinkEntity = new ArrayList<>();
+    private List<MedecineEntity> MedecineEntities = new ArrayList<>();
     private String idPatient;
     private TextView textViewAdmission;
     private TextView textViewName;
@@ -83,7 +89,7 @@ public class TreatmentDetails extends AppCompatActivity {
         readFirebase();
 
         setText();
-        adapterLink.refreshEvents(medecineEntityList, listLinkEntity);
+
 
     }
 
@@ -148,6 +154,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
     public void readFirebase()  {
 
+
         //get the intent and add th id to the variable
         Intent intentGetId = getIntent();
         idPatient = intentGetId.getStringExtra("idP");
@@ -191,6 +198,9 @@ public class TreatmentDetails extends AppCompatActivity {
                 });
 
 
+
+
+
         medecineEntityList= new ArrayList<>();
         //get list of links
         FirebaseDatabase.getInstance()
@@ -204,29 +214,6 @@ public class TreatmentDetails extends AppCompatActivity {
                         if (dataSnapshot.exists()){
                             listLinkEntity.clear();
                             listLinkEntity.addAll(toLinks(dataSnapshot));
-                            final List<TreatmentMedecineLinkEntity> tempList = new ArrayList<>(listLinkEntity);
-
-                            final List<MedecineEntity> tempListMed = getMedecineEntityList(tempList);
-
-
-
-                            FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    setTitle(patientEntity.getName());
-                                    setId();
-                                    setText();
-                                    adapterLink.refreshEvents(tempListMed,tempList);
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-
-                                }
-                            });
-
-
-
 
 
                         }
@@ -238,7 +225,6 @@ public class TreatmentDetails extends AppCompatActivity {
                 });
 
 
-
         // get medecine
 
         //listLinkEntity = new AsyncGetLinks(TreatmentDetails.this, treatmentEntity.getIdT()).execute().get();
@@ -246,39 +232,68 @@ public class TreatmentDetails extends AppCompatActivity {
 
 
 
-    }
+        FirebaseDatabase.getInstance()
+                .getReference("Medecines")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()){
+                            MedecineEntities.clear();
+                            MedecineEntities.addAll(toMedecines(dataSnapshot));
+                            List<MedecineEntity> tempListMed = new ArrayList<>(MedecineEntities);
+                            List<TreatmentMedecineLinkEntity> tempListLink = new ArrayList<>(listLinkEntity);
+                            List<MedecineEntity> realListMed = new ArrayList<>();
 
 
-    private List<MedecineEntity> getMedecineEntityList(List<TreatmentMedecineLinkEntity> listLinkEntityentity){
 
-        final List<MedecineEntity> list = new ArrayList<>();
 
-        //poulate the list
-        for (TreatmentMedecineLinkEntity linkEntity: listLinkEntity) {
+                            for (MedecineEntity med : tempListMed){
+                                for ( TreatmentMedecineLinkEntity link : tempListLink){
 
-            // get medecine
-            FirebaseDatabase.getInstance()
-                    .getReference("Medecines")
-                    .child(linkEntity.getIdM())
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.exists()) {
-                                list.add(dataSnapshot.getValue(MedecineEntity.class));
+                                    if(link.getIdM().equals(med.getIdM())) {
+                                        realListMed.add(med);
+                                    }
+                                }
+
+
                             }
+
+
+                            setTitle(patientEntity.getName());
+                            setId();
+                            setText();
+                            adapterLink.refreshEvents(realListMed,  tempListLink) ;
+
+
                         }
+                    }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.d("treat details", "getPatient: onCancelled", databaseError.toException());
-                        }
-                    });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("listOfMedecine", "getAll: onCancelled", databaseError.toException());
+                    }
+                });
 
 
-        }
-
-        return list;
     }
+
+    //Read the db from our application
+    public List<MedecineEntity> toMedecines(DataSnapshot dataSnapshot) {
+
+        //Access to the database creator
+        //DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfMedecineActivity.this);
+
+        //Execute and get all the patients from our  firebase database
+        List<MedecineEntity> medecineEntities = new ArrayList<>();
+        for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()){
+            MedecineEntity entity = childDataSnapshot.getValue(MedecineEntity.class);
+            entity.setIdM(childDataSnapshot.getKey());
+            medecineEntities.add(entity);
+        }
+        return medecineEntities;
+    }
+
+
 
     private List<TreatmentMedecineLinkEntity> toLinks (DataSnapshot snapshot) {
 
@@ -293,6 +308,7 @@ public class TreatmentDetails extends AppCompatActivity {
 
 
     }
+
 
 
     //set up the action bar

@@ -90,7 +90,7 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
             public void onClick(View v) {
                 intent.putExtra("idM", Entities.get(position).getIdM());
                 context.startActivity(intent);
-                Toast.makeText(context, "Object to see details: "+ Entities.get(position).toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Object to see details: "+ Entities.get(position).getName(), Toast.LENGTH_LONG).show();
 
             }
         });
