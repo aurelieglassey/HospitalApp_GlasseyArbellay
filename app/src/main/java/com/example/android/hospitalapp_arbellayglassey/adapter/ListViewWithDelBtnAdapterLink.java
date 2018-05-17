@@ -95,6 +95,7 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
             }
         });
 
+
         //Handle buttons and add onClickListeners
         ImageButton delbtn= (ImageButton)view.findViewById(idDelButton);
         delbtn.setOnClickListener(new View.OnClickListener(){
