@@ -136,7 +136,7 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
 
 
 
-    
+
     //get new value to refresh the list
     public void refreshEvents(List<MedecineEntity> medecineEntities) {
         this.Entities.clear();
