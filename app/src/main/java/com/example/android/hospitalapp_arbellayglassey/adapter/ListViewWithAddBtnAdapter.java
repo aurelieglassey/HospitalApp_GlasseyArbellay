@@ -118,6 +118,7 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
                 .child(idP)
                 .child("treatment")
                 .child("links")
+                .child(entity.getIdL())
                 .setValue(entity, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
