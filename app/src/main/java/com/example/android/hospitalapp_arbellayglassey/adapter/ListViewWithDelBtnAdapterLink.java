@@ -111,10 +111,8 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
 
-
-                                deleteLink(linkEntities.get(position), position);
-
-
+                                // When we decide to delete the link
+                               deleteLink(linkEntities.get(position), position);
 
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
@@ -122,14 +120,11 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
             }
         });
 
-
         return view;
     }
 
 
-
-
-
+    // Delete the link with the position form firebase
     public void deleteLink(final TreatmentMedecineLinkEntity entity, final int position){
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
@@ -154,9 +149,6 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
                 });
 
     }
-
-
-
 
 
     // this method refresh the list to get the new data in the adapter

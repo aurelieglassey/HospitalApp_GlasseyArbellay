@@ -33,6 +33,7 @@ public class PatientEntity {
         return name;
     }
 
+    //Exclude the IdP in firebase
     @Exclude
     public String getIdP() {
         return idP;

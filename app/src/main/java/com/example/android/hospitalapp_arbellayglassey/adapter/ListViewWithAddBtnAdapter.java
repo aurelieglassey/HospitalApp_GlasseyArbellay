@@ -34,16 +34,15 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
     //variable of the adapter
     private int layout ;
     private int listViewLayout;
-
     private Context context;
     private Intent intent;
     List<MedecineEntity> Entities;
-   // private String idT;
+
+    // private String idT;
     private String idP;
     int idAddButton;
 
     // constructor to get all the necessary variables
-
     public ListViewWithAddBtnAdapter(List<MedecineEntity> Entities,  String idP, Context context,  int layout, int idListViewLayout, int idAddButton) {
 
         this.context = context;
@@ -86,8 +85,6 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
         TextView txtView = (TextView)view.findViewById(listViewLayout);
         txtView.setText(Entities.get(position).getName());
 
-
-
         //Handle buttons and add onClickListeners
         ImageButton addBtn= (ImageButton)view.findViewById(idAddButton);
         addBtn.setOnClickListener(new View.OnClickListener(){
@@ -109,9 +106,18 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
         return view;
     }
 
+    // It is possible to add a medecine inside a treatment of a patient from the list of medecine
+    // For that we need to create a link, like that in the treatment we can add severa medecine
+    // and also several the same medecine.
+    // the medecine is added form the existing list of medecine.
+    // When the medecine is added, it has the same Id as the list
+    // We juste need to create new link inside the treatment to put the medecine inside
     private void addLinkInFirebase(TreatmentMedecineLinkEntity entity, int pos) {
+       //Set a new id for the link
         entity.setIdL(UUID.randomUUID().toString());
+        //Get the medecine we would like to add in the list.
         entity.setIdM(Entities.get(pos).getIdM());
+        //Add the link with the medecine inside the data strucutre
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .child(idP)
@@ -132,10 +138,6 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
                     }
                 });
     }
-
-
-
-
 
     //get new value to refresh the list
     public void refreshEvents(List<MedecineEntity> medecineEntities) {

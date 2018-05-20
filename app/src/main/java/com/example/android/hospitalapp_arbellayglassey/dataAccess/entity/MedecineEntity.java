@@ -26,7 +26,7 @@ public class MedecineEntity {
     }
 
     //Getters and setters
-
+    //Exclude the field IdM in firebase
     @Exclude
     public String getIdM() {
         return idM;

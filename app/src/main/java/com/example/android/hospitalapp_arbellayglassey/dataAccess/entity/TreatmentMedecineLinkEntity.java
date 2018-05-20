@@ -18,9 +18,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 public class TreatmentMedecineLinkEntity {
 
-
     private String idM ;
-
     private String idL;
 
 

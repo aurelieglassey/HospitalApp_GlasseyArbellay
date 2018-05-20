@@ -19,10 +19,13 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 public class TreatmentEntity {
 
+    //Exclude the idT in firebase
     @Exclude
     private String idT;
     private String name;
     private int maxQuantity;
+
+    //Exclude the idPatient in firebase
     @Exclude
     private String idPatient;
 
@@ -37,6 +40,7 @@ public class TreatmentEntity {
     }
 
     //Getters and setters
+    //Exclude the idT in firebase
     @Exclude
     public String getIdT() {
         return idT;

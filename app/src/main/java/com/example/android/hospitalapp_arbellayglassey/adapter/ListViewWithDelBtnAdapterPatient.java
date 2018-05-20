@@ -37,7 +37,6 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
 
 
     // constructor to get all the necessary variables
-
     public ListViewWithDelBtnAdapterPatient( List<PatientEntity> Entities, Context context, Intent intent, int layout, int idListViewLayout, int idDelButton ) {
 
         this.context = context;
@@ -108,8 +107,8 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
                                 //toaaast
                                 Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
 
+                                //Delete the patient with his position
                                 deletePatient(Entities.get(position));
-
 
                                 // remove the patient from the list RIP
                                  Entities.remove(position);
@@ -128,7 +127,8 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
         return view;
     }
 
-
+    // Delete a patient from firebase
+    // Get the id of the patient and delete it
     public void deletePatient(final PatientEntity entity){
         FirebaseDatabase.getInstance()
                 .getReference("Patients")

@@ -87,7 +87,7 @@ public class PatientModify extends AppCompatActivity {
 
         Intent intentGetId = getIntent();
         idPatient = intentGetId.getStringExtra("idP");
-        
+
         // get Medecine from firebase
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
