@@ -47,23 +47,23 @@ public class ListOfMedecineActivity extends AppCompatActivity {
 
         //Button to add a new Medecine to the list of medecine
         pressBtnAddNewMedecine();
+
+        //navBar
         setupNavBar();
-
-
 
         ListView list;
 
         //Switch between activities
         MedecineEntities = new ArrayList<>();
 
-
-
+        //Access to firebase to get a list of medecine
         FirebaseDatabase.getInstance()
                 .getReference("Medecines")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()){
+                            //Clear the MedecineEntities and add all medecines founded in firebase
                             MedecineEntities.clear();
                             MedecineEntities.addAll(toMedecines(dataSnapshot));
                             List<MedecineEntity> tempList = new ArrayList<>(MedecineEntities);
@@ -72,12 +72,18 @@ public class ListOfMedecineActivity extends AppCompatActivity {
                         }
                     }
 
+                    //IF there is any error
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                         Log.d("listOfMedecine", "getAll: onCancelled", databaseError.toException());
                     }
                 });
+
+        //Intent to switch between the activities
         Intent intent = new Intent(ListOfMedecineActivity.this, MedecineDetails.class);
+
+        //find the list in the app
+        //and add with the adapter the list
         list = (ListView) findViewById(R.id.listofmedecine);
         adapterMedecine = (new ListViewWithDelBtnAdapterMedecine(MedecineEntities, ListOfMedecineActivity.this, intent, R.layout.listofmedecine_layout, R.id.listview_listofmedecine, R.id.deleteMedecineButton));
         list.setAdapter(adapterMedecine);
@@ -100,7 +106,6 @@ public class ListOfMedecineActivity extends AppCompatActivity {
     @Override
     public void onRestart(){
         super.onRestart();
-
         FirebaseDatabase.getInstance()
                 .getReference("Medecines")
                 .addValueEventListener(new ValueEventListener() {
@@ -111,7 +116,6 @@ public class ListOfMedecineActivity extends AppCompatActivity {
                             MedecineEntities.addAll(toMedecines(dataSnapshot));
                             List<MedecineEntity> tempList = new ArrayList<>(MedecineEntities);
                             adapterMedecine.refreshEvents(tempList);
-
                         }
                     }
 
@@ -125,13 +129,11 @@ public class ListOfMedecineActivity extends AppCompatActivity {
 
 
     }
-    //Read the db from our application
+
+
     public List<MedecineEntity> toMedecines(DataSnapshot dataSnapshot) {
 
-        //Access to the database creator
-        //DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfMedecineActivity.this);
-
-        //Execute and get all the patients from our  firebase database
+        //Execute and get all the medecines from our  firebase database
         List<MedecineEntity> medecineEntities = new ArrayList<>();
         for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()){
             MedecineEntity entity = childDataSnapshot.getValue(MedecineEntity.class);

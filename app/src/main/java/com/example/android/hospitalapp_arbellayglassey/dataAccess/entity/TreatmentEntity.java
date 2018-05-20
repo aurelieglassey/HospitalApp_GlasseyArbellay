@@ -71,6 +71,7 @@ public class TreatmentEntity {
         this.maxQuantity = maxQuantity;
     }
 
+    //map for firebase
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();

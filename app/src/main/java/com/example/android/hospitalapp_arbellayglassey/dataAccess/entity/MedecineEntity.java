@@ -94,6 +94,7 @@ public class MedecineEntity {
     }
 
 
+    //map for firebase
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();

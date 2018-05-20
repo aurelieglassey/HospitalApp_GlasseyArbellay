@@ -145,6 +145,7 @@ public class MedecineAdd extends AppCompatActivity {
     private void addMedecineFirebase(MedecineEntity medecineEntity) {
 
         //Set a new random ID and add the medecine
+        //and add the medecine inside the data strcuture in Firebase
         medecineEntity.setIdM(UUID.randomUUID().toString());
         FirebaseDatabase.getInstance()
                 .getReference("Medecines")

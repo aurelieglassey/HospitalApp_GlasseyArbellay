@@ -56,6 +56,7 @@ public class PatientAdd extends AppCompatActivity {
     //When the user want to add a new patient and the data are ok to be added
     //button ok
     public void pressOkAddPatient(){
+
         //Find the id view for the button ok to add a patient
         okAddPatient = (Button) findViewById(R.id.btn_ok_add_patient);
 
@@ -147,7 +148,7 @@ public class PatientAdd extends AppCompatActivity {
     }
 
 
-    //Add a patient with the class AsyncAddPatient
+    //Add a patient with firebase
     public void addPatientFirebase(final PatientEntity patientEntity){
 
         //random ID for the new patient
@@ -158,8 +159,8 @@ public class PatientAdd extends AppCompatActivity {
         String namePatient = patientEntity.getName().toString();
         String officialNameTreatment = " Treatment - " + namePatient;
         treatmentEntity = new TreatmentEntity(officialNameTreatment, 1);
-        //treatmentEntity.setIdT(UUID.randomUUID().toString());
 
+        //Add the patient in the database strucutre
         FirebaseDatabase.getInstance()
                     .getReference("Patients")
                     .child(patientEntity.getIdP())
@@ -176,7 +177,8 @@ public class PatientAdd extends AppCompatActivity {
                         }
                     });
 
-
+        //When a patient is created a treatment is automatically added
+        //Get fire
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .child(patientEntity.getIdP())

@@ -42,48 +42,7 @@ public class TreatmentMedecineLinkEntity {
         this.idL = idL;
     }
 
-
-
-
-
-   /* @NonNull
-    private String idL;
-    private String idTreatment;
-    private String idMedecine;
-    //private Map<String, Boolean> medecines = new HashMap<>();
-
-    // constructor
-    public TreatmentMedecineLinkEntity() {
-
-    }
-
-    //Getters and setters
-
-    public String getIdTreatment() {
-        return idTreatment;
-    }
-
-    public String getIdMedecine() {
-        return idMedecine;
-    }
-
-    public void setIdTreatment(String idTreatment) {
-        this.idTreatment = idTreatment;
-    }
-
-    public void setIdMedecine(String idMedecine) {
-        this.idMedecine = idMedecine;
-    }
-
-    public String getIdL() {
-        return idL;
-    }
-
-    public void setIdL(String idL) {
-        this.idL = idL;
-    }
-*/
-
+    //map for firebase
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();

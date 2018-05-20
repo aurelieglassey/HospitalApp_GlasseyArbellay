@@ -50,39 +50,39 @@ public class ListOfPatientActivity extends AppCompatActivity {
         pressBtnNewPatient();
         setupNavBar();
 
-
+        //Access to the patients in firebase
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()){
+                            //Get all patient in firebase and add them in the list
                             patientEntities.clear();
                             patientEntities.addAll(toPatients(dataSnapshot));
                             List<PatientEntity> tempList = new ArrayList<>(patientEntities);
                             adapterPatient.refreshEvents(tempList);
                         }
                     }
-
+                    //if there is any error
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                         Log.d("listpatientact", "getAll: onCancelled", databaseError.toException());
                     }
                 });
 
-
-
-
         ListView list;
 
         //Intent to switch between the activities
         Intent intent = new Intent(ListOfPatientActivity.this, PatientDetails.class);
+        //find the list
         list = (ListView) findViewById(R.id.listofpatient);
         adapterPatient =  new ListViewWithDelBtnAdapterPatient( patientEntities, ListOfPatientActivity.this, intent, R.layout.listofpatient_laylout, R.id.listview_listofpatient, R.id.deletePatientButton);
         list.setAdapter(adapterPatient);
 
     }
 
+    // on restart the activity, to refrehs the data
     @Override
     public void onRestart(){
         super.onRestart();
@@ -109,7 +109,7 @@ public class ListOfPatientActivity extends AppCompatActivity {
 
     }
 
-    //Read te db from our application
+
     public List<PatientEntity> toPatients(DataSnapshot dataSnapshot) {
 
         //Access to the database creator

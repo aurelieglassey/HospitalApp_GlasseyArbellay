@@ -52,6 +52,7 @@ public class MedecineModify extends AppCompatActivity {
 
 
         readFirebase();
+
         //When the user press on the button modify
         pressBtnModifyMedecine();
 
@@ -61,12 +62,10 @@ public class MedecineModify extends AppCompatActivity {
     //Read Firebase and get the medecine
     public void readFirebase() {
 
-        //DatabaseCreator dbCreator = DatabaseCreator.getInstance(MedecineModify.this);
         Intent intentGetId = getIntent();
         idMedecine = intentGetId.getStringExtra("idM");
-        //medecineEntity = new AsyncGetMedecine(MedecineModify.this, idMedecine).execute().get();
 
-       // get Medecine from firebase
+       // get Medecine from firebase and set the data to modify this medecine
         FirebaseDatabase.getInstance()
                 .getReference("Medecines")
                 .child(idMedecine)
@@ -76,22 +75,18 @@ public class MedecineModify extends AppCompatActivity {
                         medecineEntity = dataSnapshot.getValue(MedecineEntity.class);
                         medecineEntity.setIdM(dataSnapshot.getKey());
 
-
                         //Set id and text
                         setId();
                         setText();
 
-
                     }
 
+                    //if there is any error
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                         Log.d("medecine modify ", "getmedecine for modify: onCancelled", databaseError.toException());
                     }
                 });
-
-
-
 
     }
 
@@ -202,6 +197,8 @@ public class MedecineModify extends AppCompatActivity {
         });
 
     }
+
+    //Update the medecine when the user decide to modify it
     private void updateMedecine(final MedecineEntity medecineEntity) {
         FirebaseDatabase.getInstance()
                 .getReference("Medecines")

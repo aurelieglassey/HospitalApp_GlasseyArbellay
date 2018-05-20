@@ -109,13 +109,13 @@ public class MedecineDetails extends AppCompatActivity {
     //Read the firebase and get the medecine
     public void readFirebase()  {
 
-       // DatabaseCreator dbCreator = DatabaseCreator.getInstance(MedecineDetails.this);
         Intent intentGetId = getIntent();
         idMedecine = intentGetId.getStringExtra("idM");
 
         final FirebaseDatabase fd = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = fd.getReference("Medecines").child(idMedecine);
 
+        //Get the value of the medecine to see the details
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -133,6 +133,7 @@ public class MedecineDetails extends AppCompatActivity {
 
                     }
 
+                    //if there is any error
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                         Log.d("medecine details ", "getmedecine for modify: onCancelled", databaseError.toException());

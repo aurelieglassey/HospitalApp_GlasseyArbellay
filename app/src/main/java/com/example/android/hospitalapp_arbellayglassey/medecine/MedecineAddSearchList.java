@@ -31,8 +31,6 @@ public class MedecineAddSearchList extends AppCompatActivity {
     // variables
     private DrawerLayout mDrawerLayout;
     private List<MedecineEntity> MedecineEntities;
-    private ArrayList<String> medecines;
-    private String idT;
     private String idP;
     private ListViewWithAddBtnAdapter adapterMedecine;
 
@@ -46,13 +44,14 @@ public class MedecineAddSearchList extends AppCompatActivity {
 
         MedecineEntities = new ArrayList<>();
 
-        // read firebase
+        // read firebase and get the list of medecines
         FirebaseDatabase.getInstance()
                 .getReference("Medecines")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()){
+                            //Clear and add the list
                             MedecineEntities.clear();
                             MedecineEntities.addAll(toMedecines(dataSnapshot));
                             List<MedecineEntity> tempList = new ArrayList<>(MedecineEntities);
@@ -69,6 +68,7 @@ public class MedecineAddSearchList extends AppCompatActivity {
                 });
 
 
+        //Intent to switch between activities
         Intent intent = new Intent( MedecineAddSearchList.this, MedecineDetails.class);
         Intent intentGetID = getIntent();
         list = (ListView) findViewById(R.id.listofmedecinesearchlist);
@@ -76,18 +76,14 @@ public class MedecineAddSearchList extends AppCompatActivity {
         //find the it of the patient
         idP = intentGetID.getStringExtra("idP");
 
+        //Add the list inside the adapter
         adapterMedecine = (new ListViewWithAddBtnAdapter(MedecineEntities, idP,MedecineAddSearchList.this, R.layout.listmedecineaddsearchlist_layout, R.id.listview_listofmedecineaddsearchlist, R.id.addMedecineForTreatmentButton));
         list.setAdapter(adapterMedecine);
 
 
    }
 
-
-    //Read the db from our application
     public List<MedecineEntity> toMedecines(DataSnapshot dataSnapshot) {
-
-        //Access to the database creator
-        //DatabaseCreator dbCreator = DatabaseCreator.getInstance(ListOfMedecineActivity.this);
 
         //Execute and get all the patients from our  firebase database
         List<MedecineEntity> medecineEntities = new ArrayList<>();
