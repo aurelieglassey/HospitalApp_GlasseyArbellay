@@ -29,7 +29,7 @@ import java.util.concurrent.ExecutionException;
 
 public class PatientModify extends AppCompatActivity {
 
-
+    //Variables
     private Button btnModifyPatient;
     private String messageError = "";
     private PatientEntity patientEntity;
@@ -52,7 +52,9 @@ public class PatientModify extends AppCompatActivity {
         //add the error message
         messageError = this.getString(R.string.error_enter_field);
 
+        //Read firebase
         readFirebase();
+
         //Button to modify the Patient
         pressBtnModifyPatient();
 
@@ -80,15 +82,12 @@ public class PatientModify extends AppCompatActivity {
 
     }
 
-
+    //Read the firebase
     public void readFirebase(){
 
         Intent intentGetId = getIntent();
         idPatient = intentGetId.getStringExtra("idP");
-
-        //Get the patient with AsyncGetPatient
-       // patientEntity = new AsyncGetPatient(PatientModify.this, idPatient).execute().get();
-
+        
         // get Medecine from firebase
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
