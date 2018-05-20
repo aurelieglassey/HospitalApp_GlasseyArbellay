@@ -47,7 +47,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Modify"
+                        
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
 
@@ -86,7 +86,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Modify"
+
+                                android:inputType="number"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                         </LinearLayout>
 
@@ -111,7 +112,7 @@
                                 android:id="@+id/genderPatientModify"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Modify"
+
                                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                         </LinearLayout>
                     </LinearLayout>
@@ -153,7 +154,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Modify"
+
+                                android:inputType="number"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                         </LinearLayout>
 
@@ -179,7 +181,7 @@
                                 android:id="@+id/bloodGroupPatientModify"
                                 android:layout_width="match_parent"
                                 android:layout_height="54dp"
-                                android:text="Modify"
+
                                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
                         </LinearLayout>
                     </LinearLayout>
@@ -207,7 +209,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Modify"
+
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
                     <View
