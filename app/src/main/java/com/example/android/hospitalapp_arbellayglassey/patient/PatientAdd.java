@@ -178,7 +178,7 @@ public class PatientAdd extends AppCompatActivity {
                     });
 
         //When a patient is created a treatment is automatically added
-        //Get fire
+        //Add the treatment in the firebase strucutre
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .child(patientEntity.getIdP())

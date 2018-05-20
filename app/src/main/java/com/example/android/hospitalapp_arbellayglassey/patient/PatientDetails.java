@@ -47,10 +47,10 @@ public class PatientDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_details);
 
+        //read firebase
         readFirebase();
 
         setupNavBar();
-
 
 
     }
@@ -59,6 +59,7 @@ public class PatientDetails extends AppCompatActivity {
     public void onRestart() {
         super.onRestart();
 
+        //read firebase
         readFirebase();
         setText();
     }
@@ -83,15 +84,13 @@ public class PatientDetails extends AppCompatActivity {
         textViewAdmission.setText(patientEntity.getReasonAdmission());
     }
 
+    //read Firebase
     public void readFirebase(){
 
         Intent intentGetId = getIntent();
         idPatient = intentGetId.getStringExtra("idP");
 
-        //Get the patient with AsyncGetPatient
-        // patientEntity = new AsyncGetPatient(PatientModify.this, idPatient).execute().get();
-
-        // get Medecine from firebase
+        // get the Patient from firebase
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .child(idPatient)
