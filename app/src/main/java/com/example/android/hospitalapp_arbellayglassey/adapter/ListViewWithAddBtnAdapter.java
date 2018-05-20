@@ -105,8 +105,7 @@ public class ListViewWithAddBtnAdapter extends BaseAdapter implements ListAdapte
 
             }
         });
-
-
+        
         return view;
     }
 
