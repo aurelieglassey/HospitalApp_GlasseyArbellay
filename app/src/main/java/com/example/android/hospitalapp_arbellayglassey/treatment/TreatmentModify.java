@@ -144,12 +144,12 @@ public class TreatmentModify extends AppCompatActivity {
         Intent intentGetId = getIntent();
 
         idTreatment = intentGetId.getStringExtra("idT");
-        //treatmentEntity = new AsyncGetTreatment(TreatmentModify.this, idTreatment).execute().get();
+
 
         idPatient = intentGetId.getStringExtra("idP");
-        //patientEntity = new AsyncGetPatient(TreatmentModify.this, idPatient).execute().get();
 
-        // get patient
+
+        // get patient to get the reason of admission
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .child(idPatient)
