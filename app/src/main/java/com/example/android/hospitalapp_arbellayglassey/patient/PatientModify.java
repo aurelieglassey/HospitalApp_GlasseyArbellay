@@ -95,6 +95,14 @@ public class PatientModify extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                         if (dataSnapshot.exists()) {
+                             patientEntity = dataSnapshot.getValue(PatientEntity.class);
+                            patientEntity.setIdP(dataSnapshot.getKey());
+
+                            //set id and text
+                            setId();
+                            setText();
+                         }
                         patientEntity = dataSnapshot.getValue(PatientEntity.class);
                         patientEntity.setIdP(dataSnapshot.getKey());
 

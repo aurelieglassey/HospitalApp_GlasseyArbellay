@@ -72,12 +72,14 @@ public class MedecineModify extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        medecineEntity = dataSnapshot.getValue(MedecineEntity.class);
-                        medecineEntity.setIdM(dataSnapshot.getKey());
+                        if (dataSnapshot.exists()) {
+                            medecineEntity = dataSnapshot.getValue(MedecineEntity.class);
+                            medecineEntity.setIdM(dataSnapshot.getKey());
 
-                        //Set id and text
-                        setId();
-                        setText();
+                            //Set id and text
+                            setId();
+                            setText();
+                        }
 
                     }
 
