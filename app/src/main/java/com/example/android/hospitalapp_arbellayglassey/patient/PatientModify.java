@@ -104,6 +104,7 @@ public class PatientModify extends AppCompatActivity {
                             setText();
                          }
 
+
                     }
 
                     @Override
