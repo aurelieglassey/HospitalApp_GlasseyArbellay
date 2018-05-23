@@ -92,8 +92,9 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
             case R.id.btnSettingsLanguageEnglish:
                 lang = "en";
                 Toast.makeText(SettingsLanguage.this, " Language : English ", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(SettingsLanguage.this, MainActivity.class);
-                startActivity(intent);
+                Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
                 finish();
                 break;
 
@@ -101,8 +102,9 @@ public class SettingsLanguage extends AppCompatActivity implements View.OnClickL
             case R.id.btnSettingsLanguageFrench:
                 lang = "fr";
                 Toast.makeText(SettingsLanguage.this, " Langue : Français ", Toast.LENGTH_LONG).show();
-                Intent intent2 = new Intent(SettingsLanguage.this, MainActivity.class);
-                startActivity(intent2);
+                Intent i2 = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+                i2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i2);
                 finish();
                 break;
             default:
