@@ -111,7 +111,7 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
                                 deletePatient(Entities.get(position));
 
                                 // remove the patient from the list RIP
-                                 Entities.remove(position);
+                                 //Entities.remove(position);
 
                                 // notify the change
                                 notifyDataSetChanged();
@@ -141,7 +141,7 @@ public class ListViewWithDelBtnAdapterPatient extends BaseAdapter implements Lis
                             Log.d("adapterlistpatient", "delete failure", databaseError.toException());}
                             else    {
                             Log.d("adapterlistpatient","delete successufl");}
-                            Entities.remove(entity);
+                            //Entities.remove(entity);
                             notifyDataSetChanged();
                         }
 

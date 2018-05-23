@@ -61,7 +61,7 @@ public class PatientDetails extends AppCompatActivity {
 
         //read firebase
         readFirebase();
-        setText();
+
     }
 
     //find by id
@@ -98,6 +98,8 @@ public class PatientDetails extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         patientEntity = dataSnapshot.getValue(PatientEntity.class);
+
+
                         //Set the id, text and navbar
                         setId();
                         setText();
