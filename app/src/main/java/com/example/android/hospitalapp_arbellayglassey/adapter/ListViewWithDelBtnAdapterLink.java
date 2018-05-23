@@ -111,8 +111,13 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 Toast.makeText(context, "Object to vanish: "+ Entities.get(position).getName(), Toast.LENGTH_SHORT).show();
 
+
                                 // When we decide to delete the link
-                               deleteLink(linkEntities.get(position), position);
+                               deleteLink(linkEntities.get(position));
+
+                                // delete the medecine with the position to "syncronize" with the link deleted
+                               Entities.remove(position);
+
 
                             }})
                         .setNegativeButton(android.R.string.no, null).show();
@@ -125,12 +130,13 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
 
 
     // Delete the link with the position form firebase
-    public void deleteLink(final TreatmentMedecineLinkEntity entity, final int position){
+    public void deleteLink(final TreatmentMedecineLinkEntity entity){
         FirebaseDatabase.getInstance()
                 .getReference("Patients")
                 .child(idPatient)
                 .child("treatment")
                 .child("links")
+                .child(entity.getIdL())
                 .removeValue(new DatabaseReference.CompletionListener(){
 
                     @Override
@@ -138,9 +144,9 @@ public class ListViewWithDelBtnAdapterLink extends BaseAdapter implements ListAd
                         if (databaseError != null){
                             Log.d("adapterlistlink", "delete failure", databaseError.toException());}
                         else    {
-                            Log.d("adapterlistlink", "delete successufl", databaseError.toException());}
-                        Entities.remove(position);
-                        linkEntities.remove(position);
+                            Log.d("adapterlistlink", "delete successufl");}
+
+                            //notify the delete of the links
                         notifyDataSetChanged();
                     }
 
