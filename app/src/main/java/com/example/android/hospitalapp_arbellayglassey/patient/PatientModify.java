@@ -103,13 +103,6 @@ public class PatientModify extends AppCompatActivity {
                             setId();
                             setText();
                          }
-                        patientEntity = dataSnapshot.getValue(PatientEntity.class);
-                        patientEntity.setIdP(dataSnapshot.getKey());
-
-                        //set id and text
-                        setId();
-                        setText();
-
 
                     }
 

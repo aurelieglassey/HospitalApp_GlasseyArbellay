@@ -176,10 +176,12 @@ public class TreatmentModify extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        treatmentEntity = dataSnapshot.getValue(TreatmentEntity.class);
-                        //set id and text
-                        setid();
-                        setText();
+                        if (dataSnapshot.exists()) {
+                            treatmentEntity = dataSnapshot.getValue(TreatmentEntity.class);
+                            //set id and text
+                            setid();
+                            setText();
+                        }
                     }
 
                     @Override
