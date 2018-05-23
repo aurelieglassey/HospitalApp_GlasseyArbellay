@@ -164,7 +164,9 @@ public class TreatmentDetails extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        patientEntity = dataSnapshot.getValue(PatientEntity.class);
+                        if (dataSnapshot.exists()) {
+                            patientEntity = dataSnapshot.getValue(PatientEntity.class);
+                        }
 
                     }
 
@@ -182,7 +184,9 @@ public class TreatmentDetails extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        treatmentEntity = dataSnapshot.getValue(TreatmentEntity.class);
+                        if (dataSnapshot.exists()) {
+                            treatmentEntity = dataSnapshot.getValue(TreatmentEntity.class);
+                        }
 
                     }
                     @Override

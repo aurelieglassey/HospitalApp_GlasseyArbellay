@@ -156,7 +156,9 @@ public class TreatmentModify extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        patientEntity = dataSnapshot.getValue(PatientEntity.class);
+                        if (dataSnapshot.exists()) {
+                            patientEntity = dataSnapshot.getValue(PatientEntity.class);
+                        }
 
                     }
 
