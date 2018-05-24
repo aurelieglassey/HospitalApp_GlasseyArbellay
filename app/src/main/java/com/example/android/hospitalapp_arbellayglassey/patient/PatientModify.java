@@ -81,6 +81,7 @@ public class PatientModify extends AppCompatActivity {
         editTextAdmission.setText(patientEntity.getReasonAdmission());
 
     }
+    
 
     //Read the firebase
     public void readFirebase(){
