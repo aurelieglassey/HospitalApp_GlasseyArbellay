@@ -10,6 +10,7 @@ import java.util.Map;
 
 public class MedecineEntity {
 
+
     @NonNull
     private String idM;
     private String name;
