@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "891585357885",
+    "firebase_url": "https://hospitalapp-firebase.firebaseio.com",
+    "project_id": "hospitalapp-firebase",
+    "storage_bucket": "hospitalapp-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891585357885:android:15ba3d7bf1ac37ba",
+        "android_client_info": {
+          "package_name": "com.example.android.hospitalapp_arbellayglassey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "891585357885-vcvffn22qdh3nm4bn5s08c3oolc5rji0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.hospitalapp_arbellayglassey",
+            "certificate_hash": "a2b4386268c2964419a49e6277f92c1ce7047351"
+          }
+        },
+        {
+          "client_id": "891585357885-mjporvit48d4uojb5832cdp61dedetgr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.hospitalapp_arbellayglassey",
+            "certificate_hash": "4e5b612163128c83979b33ba8063e1ee04da40cd"
+          }
+        },
+        {
+          "client_id": "891585357885-c00nl9m838gc3urm4ej4hng1b4up47hg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiUa9I8wplEFlCxrFqbvYpgrDFH7VcOr8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "891585357885-c00nl9m838gc3urm4ej4hng1b4up47hg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
